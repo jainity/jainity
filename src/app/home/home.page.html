@@ -1,0 +1,38 @@
+<ion-content>
+    <ion-grid style="background-color:#ef7635;min-height: 150px;">
+        <ion-row>
+            <ion-col>
+                <ion-icon (click)="onLogoutClick()" style="text-align: start;margin-top: 10px;margin-left: 10px;color: white;" name="power-outline"></ion-icon>
+            </ion-col>
+            <ion-col style="text-align: end;margin-top: 10px;margin-right: 10px;color: white;">
+                <ion-icon name="search-outline"></ion-icon>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-img class="imgheight" src="../../assets/img/jainitywhite.png" style="padding: 40px;"></ion-img>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+    <ion-tabs tabbarPlacement="top">
+        <ion-tab-bar slot="top">
+            <ion-tab-button class="tab-nav-box" tab="SCHEMEGROUP">
+                <ion-label color="tertiary">SCHEME GROUP</ion-label>
+            </ion-tab-button>
+
+            <ion-tab-button class="tab-nav-box" tab="INSTITUTE">
+                <ion-label color="tertiary">INSTITUTE</ion-label>
+            </ion-tab-button>
+
+            <ion-tab-button class="tab-nav-box" tab="MYDONATION">
+                <ion-label color="tertiary">MY DONATION</ion-label>
+            </ion-tab-button>
+
+            <ion-tab-button class="tab-nav-box" tab="ALLDONATION">
+                <ion-label color="tertiary">ALL DONATION</ion-label>
+            </ion-tab-button>
+        </ion-tab-bar>
+    </ion-tabs>
+</ion-content>

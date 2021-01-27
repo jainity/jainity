@@ -1,0 +1,59 @@
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-img  class="img-height" src="../../assets/img/JainityLogo.png"></ion-img>
+            </ion-col>
+        </ion-row>
+
+        <ion-row style="text-align: center;">
+            <ion-col>
+                <ion-label style="margin-left: 25px;margin-right: 25px; text-align: center;">Please Enter Register Details</ion-label>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                    <ion-label position="floating">First Name</ion-label>
+                    <ion-input type="text" min="3"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                    <ion-label position="floating">Last Name</ion-label>
+                    <ion-input type="text" min="3"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                    <ion-label position="floating">Mobile Number</ion-label>
+                    <ion-input type="tel" maxlength="10"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row style="margin-top: 20px;">
+            <ion-col>
+                <ion-button (click)="cliRegister()" shape="round" expand="block" style="margin-top: 10px;text-align: center !important;">REGISTER</ion-button>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col style="text-align: end;">
+                <ion-label (click)="onLogClick()">Already have an account ? </ion-label>
+            </ion-col>
+            <ion-col style="text-align: start;">
+                <ion-label (click)="onLogClick()" color="primary"><u>Login</u></ion-label>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+</ion-content>

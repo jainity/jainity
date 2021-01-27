@@ -1,0 +1,56 @@
+#container {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.item-input {
+    padding-right: 0;
+    position: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+ion-tabs {
+    margin-top: 177px;
+    height: auto;
+}
+
+.tab-nav-box {
+    width: 100%;
+    max-width: 50% !important;
+    float: left;
+    color: #969696;
+    font-size: 12px;
+    background-color: #e0dbd8;
+    border-bottom: 2px solid transparent;
+}
+
+.tab-nav-box.tab-selected {
+    color: #204c55;
+    border-bottom: 2px solid #204c55;
+}
+
+.imgheight {
+    height: 180px;
+    margin-top: -40px;
+}
+
+#container strong {
+    font-size: 20px;
+    line-height: 26px;
+}
+
+#container p {
+    font-size: 16px;
+    line-height: 22px;
+    color: #8c8c8c;
+    margin: 0;
+}
+
+#container a {
+    text-decoration: none;
+}
