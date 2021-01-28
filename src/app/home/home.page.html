@@ -1,38 +1,60 @@
 <ion-content>
-    <ion-grid style="background-color:#ef7635;min-height: 150px;">
-        <ion-row>
-            <ion-col>
-                <ion-icon (click)="onLogoutClick()" style="text-align: start;margin-top: 10px;margin-left: 10px;color: white;" name="power-outline"></ion-icon>
-            </ion-col>
-            <ion-col style="text-align: end;margin-top: 10px;margin-right: 10px;color: white;">
-                <ion-icon name="search-outline"></ion-icon>
-            </ion-col>
-        </ion-row>
+    <div id="header">
+        <div class="header-block">
+            <div class="container">
+                <div class="header-box">
+                    <ion-grid class="p-0">
+                        <ion-row>
+                            <ion-col class="menubars p-0">
+                                <ion-icon (click)="onLogoutClick()"  name="power-outline"></ion-icon>
+                            </ion-col>
+                            <ion-col class="logo_box p-0">
+                                <ion-img src="../../assets/img/logo-w.png"></ion-img>
+                            </ion-col>
+                            <ion-col class="search_block p-0">
+                                <div class="search_box">
+                                    <ion-input [(ngModel)]="keyword" placeholder="Search" (keyup.enter)="onEnter($event)"></ion-input>
+                                    <ion-img *ngIf="keyword.trim().length>0" class="close_btn" src="assets/img/close.png" (click)="clearSearch($event)"></ion-img>
+                                    <ion-img class="search_btn" src="assets/img/search-w.png" (click)="getItems($event)"></ion-img>
+                                </div>                                
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <ion-row>
-            <ion-col>
-                <ion-img class="imgheight" src="../../assets/img/jainitywhite.png" style="padding: 40px;"></ion-img>
-            </ion-col>
-        </ion-row>
+    <section id="section">
+        <div id="tabbing">
+            <div class="container">
+                <div class="tabbing-box">
+                    <ion-tabs tabbarPlacement="top">
+                        <ion-tab-bar slot="top">
+                            <ion-tab-button class="tab-nav-box" tab="SCHEMEGROUP">
+                                <ion-label color="tertiary">SCHEME GROUP</ion-label>
+                            </ion-tab-button>
+                
+                            <ion-tab-button class="tab-nav-box" tab="INSTITUTE">
+                                <ion-label color="tertiary">INSTITUTE</ion-label>
+                            </ion-tab-button>
+                
+                            <ion-tab-button class="tab-nav-box" tab="MYDONATION">
+                                <ion-label color="tertiary">MY DONATION</ion-label>
+                            </ion-tab-button>
+                
+                            <ion-tab-button class="tab-nav-box" tab="ALLDONATION">
+                                <ion-label color="tertiary">ALL DONATION</ion-label>
+                            </ion-tab-button>
+                        </ion-tab-bar>
+                    </ion-tabs>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    </ion-grid>
-    <ion-tabs tabbarPlacement="top">
-        <ion-tab-bar slot="top">
-            <ion-tab-button class="tab-nav-box" tab="SCHEMEGROUP">
-                <ion-label color="tertiary">SCHEME GROUP</ion-label>
-            </ion-tab-button>
+    
 
-            <ion-tab-button class="tab-nav-box" tab="INSTITUTE">
-                <ion-label color="tertiary">INSTITUTE</ion-label>
-            </ion-tab-button>
 
-            <ion-tab-button class="tab-nav-box" tab="MYDONATION">
-                <ion-label color="tertiary">MY DONATION</ion-label>
-            </ion-tab-button>
-
-            <ion-tab-button class="tab-nav-box" tab="ALLDONATION">
-                <ion-label color="tertiary">ALL DONATION</ion-label>
-            </ion-tab-button>
-        </ion-tab-bar>
-    </ion-tabs>
+    
 </ion-content>

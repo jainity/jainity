@@ -8,8 +8,20 @@ import { AlertController } from '@ionic/angular';
 })
 export class HomePage {
 
+  keyword=""
+
+
   constructor(public alertController: AlertController) {}
- 
+  onEnter(event) {
+
+  }
+
+  clearSearch(event) {
+
+  }
+  getItems(event) {
+
+  }
     async onLogoutClick() {
       const alert = await this.alertController.create({
         cssClass: 'my-custom-class',

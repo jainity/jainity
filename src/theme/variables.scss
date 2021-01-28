@@ -67,6 +67,22 @@
     --ion-color-light-contrast-rgb: 0, 0, 0;
     --ion-color-light-shade: #d7d8da;
     --ion-color-light-tint: #f5f6f9;
+    --ion-font-family: 'Poppins';
+}
+
+
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/poppins-regular.eot');
+   
+    src: local('Poppins Regular'), local('Poppins-Regular'), url('../assets/fonts/poppins-regular.eot?#iefix') format('embedded-opentype'), 
+    url('../assets/fonts/poppins-regular.woff2') format('woff2'),
+    url('../assets/fonts/poppins-regular.woff') format('woff'), 
+    url('../assets/fonts/poppins-regular.ttf') format('truetype'), 
+    url('../assets/fonts/poppins-regular.svg#Poppins') format('svg');
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -93,11 +109,11 @@
         --ion-color-tertiary-contrast-rgb: 255, 255, 255;
         --ion-color-tertiary-shade: #5d58e0;
         --ion-color-tertiary-tint: #7974ff;
-        --ion-color-success: #2fdf75;
+        --ion-color-success: #ef7635;
         --ion-color-success-rgb: 47, 223, 117;
         --ion-color-success-contrast: #000000;
         --ion-color-success-contrast-rgb: 0, 0, 0;
-        --ion-color-success-shade: #29c467;
+        --ion-color-success-shade: #ef7635;
         --ion-color-success-tint: #44e283;
         --ion-color-warning: #ffd534;
         --ion-color-warning-rgb: 255, 213, 52;
@@ -196,4 +212,6 @@
         --ion-tab-bar-background: #1f1f1f;
         --ion-card-background: #1e1e1e;
     }
+
+
 }

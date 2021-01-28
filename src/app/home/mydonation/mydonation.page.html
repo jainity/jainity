@@ -1,24 +1,22 @@
 <ion-content>
-
     <ion-grid>
-        <ion-row *ngFor="let item of items; let i = index" style="background-color:#204c55; min-height: 45px; border-radius: 3px; margin-left: 3px; margin-right: 3px; margin-top: 5px;margin-bottom: 8px;">
-            <ion-col>
-                <ion-label color="light">{{i+1}}</ion-label>
-            </ion-col>
-            <ion-col>
-                <ion-row>
-                    <ion-label color="light">{{item}}</ion-label>
-                </ion-row>
-                <ion-row>
-                    <ion-label color="light">{{item}}</ion-label>
-                </ion-row>
-                <ion-row>
-                    <ion-label color="light">{{item}}</ion-label>
-                </ion-row>
-                <ion-row>
-                    <ion-button (click)="onReceiptClick()" shape="round" expand="block" style="margin-top: 10px; height: 22px;width: 65px;font-size: 10px;">RECEIPT</ion-button>
+        <ion-row>
+            <ion-col class="list_block" *ngFor="let item of items; let i = index">
+                <ion-row class="list_box">
+                    <ion-col class="list_count">
+                        <ion-label color="light">{{i+1}}</ion-label>
+                    </ion-col>
+                    <ion-col class="list_content">
+                        <ion-label class="white content">{{item}}</ion-label>
+                        <ion-label class="white content">{{item}}</ion-label>
+                        <ion-label class="white content">{{item}}</ion-label>
+                        <div class="button_box">
+                            <ion-button class="btn-orange" (click)="onReceiptClick()" shape="round" expand="block">RECEIPT</ion-button>
+                        </div>
+                    </ion-col>
                 </ion-row>
             </ion-col>
         </ion-row>
+        
     </ion-grid>
 </ion-content>

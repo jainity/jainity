@@ -8,6 +8,9 @@ import { Location } from '@angular/common';
 })
 export class SchemedetailsPage implements OnInit {
 
+  keyword=""
+
+
   items:any=[];
   amount:any=0;
   getValue: any;
@@ -15,12 +18,22 @@ export class SchemedetailsPage implements OnInit {
 
   constructor(private location: Location) {
 
+
     for(let i = 0; i <= 4; i++){
        this.items.push('Details'+(i+1));
      }
     
    }
 
+   onEnter(event) {
+
+  }
+
+  clearSearch(event) {
+
+  }
+  getItems(event) {
+  }
    ngOnInit() {
 
 
