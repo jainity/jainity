@@ -29,7 +29,7 @@ const routes: Routes = [
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'otpverification/:mno',
+    path: 'otpverification/:mno/:dotp',
     loadChildren: () => import('./otpverification/otpverification.module').then( m => m.OtpverificationPageModule)
   },
   {
