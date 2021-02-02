@@ -1,3 +1,4 @@
+import { AuthGuard } from './shared/authguard.service';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -7,12 +8,12 @@ const routes: Routes = [
   //here to redirect page from splash screen
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
 
   {
-    path: 'home',
+    path: 'home', canActivate: [AuthGuard],
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
  
@@ -29,7 +30,7 @@ const routes: Routes = [
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'otpverification/:mno/:dotp',
+    path: 'otpverification',
     loadChildren: () => import('./otpverification/otpverification.module').then( m => m.OtpverificationPageModule)
   },
   {
@@ -58,7 +59,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    //RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, {useHash: true})
   ],
   exports: [RouterModule]
 })

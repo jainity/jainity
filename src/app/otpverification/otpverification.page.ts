@@ -12,7 +12,7 @@ import { Tools } from '../shared/tools';
 })
 export class OtpverificationPage implements OnInit {
 mno:any='';
-dotp:any='';
+//dotp:any='';
 
 otpcode:any = "";
 
@@ -22,10 +22,12 @@ loginForm: FormGroup;
 
 
   constructor(private router: Router, public route: ActivatedRoute,public formBuilder: FormBuilder,
-    private apiServices: ApiService,public tools: Tools,
-    public toastController: ToastController) { 
-      this.mno = this.route.snapshot.paramMap.get('mno')  
-      this.dotp = this.route.snapshot.paramMap.get('dotp')  
+    private apiServices: ApiService,public tools: Tools) { 
+      //this.mno = this.route.snapshot.paramMap.get('mno')  
+     // this.dotp = this.route.snapshot.paramMap.get('dotp')  
+
+     this.mno =localStorage.getItem('mobileno');
+
 
       console.log('params1 =>', this.mno);
       this.verificont="Please Enter Verification Code Send to ******"+this.mno.substr(this.mno.length - 4)
@@ -48,16 +50,18 @@ loginForm: FormGroup;
 
       if (this.tools.isNetwork()) {
         this.tools.openLoader();
-        this.apiServices.VerificationOTP(this.otpcode).subscribe(response => {
+        this.apiServices.VerificationOTP(this.otpcode,this.mno).subscribe(response => {
           this.tools.closeLoader();
           let res: any = response;
-          console.log('response ', res.token);
 
-          if(res.status && res.data.user.activated != '0'){
+
+          if(res.status){
             localStorage.setItem('login_token', res.token);
-            localStorage.setItem('userdata', JSON.stringify(res.data));
-           // this.route.navigateByUrl('/home');
-            this.router.navigate(['/home']);
+            console.log('response ', res.data[0]);
+            //localStorage.setItem('userdata', JSON.stringify(res.data[0]));
+            this.apiServices.setUserData(res.data[0])
+            this.router.navigateByUrl('/home', { replaceUrl: true });
+           // this.router.navigate(['/home'], { replaceUrl: true });
           }else{
             this.tools.presentAlert('','Something Wrong...', 'Ok');
           }

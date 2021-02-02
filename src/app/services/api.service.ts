@@ -18,6 +18,7 @@ export class ApiService {
 
   }
   setHeader() {
+    console.log('getLoginToken ' , this.getLoginToken())
     if (this.getLoginToken() == undefined) {
       console.log('Basic auth ' + this.bacisAuth)
       this.httpOptions = {
@@ -60,13 +61,24 @@ export class ApiService {
     return;
   }
   getUserId() {
+    console.log('User Info--> ',this.getUserData())
     return this.getUserData().id;
   }
   getUserData() {
+    console.log('User Data --> ',localStorage['userdata'])
     if (localStorage['userdata']) {
       return JSON.parse(localStorage.getItem('userdata'));
     }
     return;
+  }
+  setUserData(user) {
+    console.log(user)
+    if (user != null) {
+      return localStorage.setItem('userdata', JSON.stringify(user));
+    } else {
+      localStorage.removeItem('userdata');
+      return user;
+    }
   }
 
 
@@ -80,12 +92,16 @@ export class ApiService {
     // postData.append('file', imageFile);
     postData.append("Mobile", username);
     postData.append("device_token", this.device.uuid);
+
+    console.log('Params ',postData);
+
     return this.http.post(environment.BaseUrl + "auth/send_otp", postData, this.httpOptions);
   }
-  VerificationOTP(OTP) {
+  VerificationOTP(OTP,Mobile) {
     let postData = new FormData();
     // postData.append('file', imageFile);
     postData.append("OTP", OTP);
+    postData.append("Mobile", Mobile);
     postData.append("device_token", this.device.uuid);
     return this.http.post(environment.BaseUrl + "auth/verify_otp", postData, this.httpOptions);
   }
@@ -103,6 +119,11 @@ export class ApiService {
     postData.append("device_token", this.device.uuid);
     return this.http.post(environment.BaseUrl + "auth/register", postData, this.httpOptions);
   }
+  getSchemeGroup(): any {
+    this.setHeader();
+    return this.http.get(environment.BaseUrl + "/scheme_group", this.httpOptions);
+  }
+
   userData(isShow?): any {
     this.http.get(environment.BaseUrl + "/auth/user_data",  this.httpOptions).subscribe(response => {
       let res: any = response;
@@ -320,7 +341,9 @@ export class ApiService {
       localStorage.removeItem('customer');
       return customer;
     }
+  
   }
+  
   
   getProductData() {
     if (window.localStorage['product']) {

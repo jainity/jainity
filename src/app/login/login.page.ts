@@ -61,12 +61,12 @@ export class LoginPage {
           //if(res.status && res.data.user.activated != '0'){
           if(res.status){
             //localStorage.setItem('userdata', JSON.stringify(res.data.user));
-            this.route.navigateByUrl('/otpverification/'+this.mobileno+'/'+res.DefaultOTP);
+            localStorage.setItem('mobileno', this.mobileno);
+            this.route.navigate(['/otpverification']);
           }else{
             this.tools.presentAlert('','Something wrong...', 'Ok');
           }
         }, (error: Response) => {
-          this.tools.closeLoader();
           this.tools.closeLoader();
           console.log('Error ', error);
           let err:any = error;

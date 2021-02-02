@@ -66,14 +66,12 @@ export class RegisterPage implements OnInit {
           this.apiServices.Register(this.Fname,this.Lname,this.mobileno).subscribe(response => {
             this.tools.closeLoader();
             let res: any = response;
-            console.log('response ', res.login_token);
+            //console.log('response ', res.login_token);
   
-            if(res.status && res.data.user.activated != '0'){
-              localStorage.setItem('login_token', res.login_token);
-              localStorage.setItem('userdata', JSON.stringify(res.data.user));
-              this.route.navigateByUrl('/otpverification/'+this.mobileno);
+            if(res.status){
+              this.route.navigate(['/otpverification']);
             }else{
-              this.tools.presentAlert('','Successfully Send OTP . Please wait for the admin to approve your request.', 'Ok');
+              this.tools.presentAlert('','Something Wrong...', 'Ok');
             }
           }, (error: Response) => {
             this.tools.closeLoader();
@@ -81,9 +79,6 @@ export class RegisterPage implements OnInit {
             console.log('Error ', error);
             let err:any = error;
             this.tools.openAlertToken(err.status, err.error.message);
-      
-            // }
-            //  this.router.navigateByUrl('/dashboard');
           });
         } else {
           this.tools.closeLoader();
