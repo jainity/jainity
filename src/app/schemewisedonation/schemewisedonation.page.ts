@@ -8,6 +8,7 @@ import { Location } from '@angular/common';
 })
 export class SchemewisedonationPage implements OnInit {
 
+  keyword=""
   items:any=[];
   constructor(private location: Location) { 
     
@@ -16,8 +17,21 @@ export class SchemewisedonationPage implements OnInit {
     }
   }
 
+
+  onEnter(event) {
+
+  }
+
+  clearSearch(event) {
+
+  }
+  getItems(event) {
+
+  }
+
   ngOnInit() {
   }
+
 
   onBackClick(){
     this.location.back();
