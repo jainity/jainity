@@ -41,6 +41,12 @@ MIT
 @ionic-native/core
 MIT
 
+@ionic-native/device
+MIT
+
+@ionic-native/network
+MIT
+
 @ionic-native/splash-screen
 MIT
 

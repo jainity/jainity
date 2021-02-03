@@ -1,19 +1,20 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
-import { IonicModule } from '@ionic/angular';
-
-import { OtpverificationPageRoutingModule } from './otpverification-routing.module';
-
 import { OtpverificationPage } from './otpverification.page';
+import { Routes, RouterModule } from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: OtpverificationPage
+  }
+];
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    OtpverificationPageRoutingModule
+    SharedModule,FormsModule,
+    RouterModule.forChild(routes)
   ],
   declarations: [OtpverificationPage]
 })

@@ -6,7 +6,7 @@
                     <ion-grid class="p-0">
                         <ion-row>
                             <ion-col class="menubars p-0">
-                                <ion-icon (click)="onLogoutClick()"  name="power-outline"></ion-icon>
+                                <ion-icon style="cursor: pointer;" (click)="onLogoutClick()" name="power-outline"></ion-icon>
                             </ion-col>
                             <ion-col class="logo_box p-0">
                                 <ion-img src="../../assets/img/logo-w.png"></ion-img>
@@ -16,7 +16,7 @@
                                     <ion-input [(ngModel)]="keyword" placeholder="Search" (keyup.enter)="onEnter($event)"></ion-input>
                                     <ion-img *ngIf="keyword.trim().length>0" class="close_btn" src="assets/img/close.png" (click)="clearSearch($event)"></ion-img>
                                     <ion-img class="search_btn" src="assets/img/search-w.png" (click)="getItems($event)"></ion-img>
-                                </div>                                
+                                </div>
                             </ion-col>
                         </ion-row>
                     </ion-grid>
@@ -31,19 +31,19 @@
                 <div class="tabbing-box">
                     <ion-tabs tabbarPlacement="top">
                         <ion-tab-bar slot="top">
-                            <ion-tab-button class="tab-nav-box" tab="SCHEMEGROUP">
+                            <ion-tab-button class="tab-nav-box" tab="schemegroup">
                                 <ion-label color="tertiary">SCHEME GROUP</ion-label>
                             </ion-tab-button>
-                
-                            <ion-tab-button class="tab-nav-box" tab="INSTITUTE">
+
+                            <ion-tab-button class="tab-nav-box" tab="institute">
                                 <ion-label color="tertiary">INSTITUTE</ion-label>
                             </ion-tab-button>
-                
-                            <ion-tab-button class="tab-nav-box" tab="MYDONATION">
+
+                            <ion-tab-button class="tab-nav-box" tab="mydonation">
                                 <ion-label color="tertiary">MY DONATION</ion-label>
                             </ion-tab-button>
-                
-                            <ion-tab-button class="tab-nav-box" tab="ALLDONATION">
+
+                            <ion-tab-button class="tab-nav-box" tab="alldonation">
                                 <ion-label color="tertiary">ALL DONATION</ion-label>
                             </ion-tab-button>
                         </ion-tab-bar>
@@ -52,9 +52,4 @@
             </div>
         </div>
     </section>
-
-    
-
-
-    
 </ion-content>

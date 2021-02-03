@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  username: 'admin',
+  password:'API@JAINITY@123',
+  apikey:'kkcoswggwgwkkc8w4ok808o48kswc40c0www4wss',
+  BaseUrl:'https://jainity.blenzabi.com/api/',
+    // BaseUrl: 'http://192.168.0.109/wemeasure/api/v1/',
 };
 
 /*

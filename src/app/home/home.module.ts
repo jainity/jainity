@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,11 +13,11 @@ const routes: Routes = [
     children: [
       {
         path: "",
-        redirectTo: "tabs/(SCHEMEGROUP:SCHEMEGROUP)",
+        redirectTo: "tabs/(schemegroup:schemegroup)",
         pathMatch: "full"
       },
       {
-        path: "SCHEMEGROUP",
+        path: "schemegroup",
         children: [
           {
             path: "",
@@ -26,7 +27,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: "INSTITUTE",
+        path: "institute",
         children: [
           {
             path: "",
@@ -37,7 +38,7 @@ const routes: Routes = [
         ]
       }, 
       {
-        path: "MYDONATION",
+        path: "mydonation",
         children: [
           {
             path: "",
@@ -47,7 +48,7 @@ const routes: Routes = [
         ]
       }, 
       {
-        path: "ALLDONATION",
+        path: "alldonation",
         children: [
           {
             path: "",
@@ -61,19 +62,15 @@ const routes: Routes = [
   },
   {
     path: "",
-    redirectTo: "tabs/SCHEMEGROUP",
-    pathMatch: "full"
+    redirectTo: "tabs/schemegroup",
+    pathMatch: ""
   }
 ];
 
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    
-    
+    SharedModule,FormsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [HomePage]
