@@ -1,17 +1,17 @@
 <ion-content>
     <ion-grid>
         <ion-row>
-            <ion-col class="list_block" *ngFor="let item of items; let i = index" (click)="onInstiDetails(item)">
+            <ion-col class="list_block" *ngFor="let item of INSLIST; let i = index" (click)="onInstiDetails(item)">
                 <ion-row class="list_box">
                     <ion-col class="list_count">
                         <ion-label class="roundedInput" color="light">{{i+1}}</ion-label>
                     </ion-col>
                     <ion-col class="list_content">
-                        <ion-label color="light">{{item}}</ion-label>
+                        <ion-label color="light">{{item.InstituteName}}</ion-label>
                     </ion-col>
                 </ion-row>
             </ion-col>
         </ion-row>
-        
+
     </ion-grid>
 </ion-content>

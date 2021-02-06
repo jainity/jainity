@@ -123,6 +123,14 @@ export class ApiService {
     this.setHeader();
     return this.http.get(environment.BaseUrl + "/scheme_group", this.httpOptions);
   }
+  getInstituteList(): any {
+    this.setHeader();
+    return this.http.get(environment.BaseUrl + "/institute", this.httpOptions);
+  }
+  getInstituteWiseDonationList(): any {
+    this.setHeader();
+    return this.http.get(environment.BaseUrl + "/report/institute_wise_report", this.httpOptions);
+  }
 
   userData(isShow?): any {
     this.http.get(environment.BaseUrl + "/auth/user_data",  this.httpOptions).subscribe(response => {
