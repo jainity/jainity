@@ -28,10 +28,14 @@ export class HomePage {
   getItems(event) {
 
   }
+  
   onLogoutClick() {   
     this.presentLogout('Are you sure you want to logout?', 'Logout', 'Cancel')
   }
+  onSearchClick() {   
+    this.router.navigateByUrl('/searchitem', { replaceUrl: true });
 
+  }
   async presentLogout(message, btnYes, btnNo) {
     const alert = await this.alertController.create({
         message: message,

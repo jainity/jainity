@@ -17,12 +17,16 @@ export class InstitutePage implements OnInit {
   constructor(private route: Router,public alertController: AlertController, public apiService: ApiService,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,
     public toastController: ToastController)  { 
-  
+      localStorage.removeItem('InstituteId');
   }
 
    onInstiDetails(item){
-    this.route.navigate(['/schemedetails',{item:item}])
-    //this.route.navigate(['/schemedetails']);
+    localStorage.setItem('InstituteId',item.InstituteID)
+    localStorage.setItem('TYPE','Institute')
+    localStorage.setItem('Tittle',item.InstituteName)
+
+    this.route.navigate(['/schemedetails'])
+
     }
 
   ngOnInit() {

@@ -11,13 +11,17 @@
                             <ion-col class="logo_box p-0">
                                 <ion-img src="../../assets/img/logo-w.png"></ion-img>
                             </ion-col>
-                            <ion-col class="search_block p-0">
+                            <ion-col class="menubars p-0">
+                                <ion-icon style="cursor: pointer;" (click)="onSearchClick()" name="search-outline"></ion-icon>
+                            </ion-col>
+
+                            <!-- <ion-col class="search_block p-0">
                                 <div class="search_box">
                                     <ion-input [(ngModel)]="keyword" placeholder="Search" (keyup.enter)="onEnter($event)"></ion-input>
                                     <ion-img *ngIf="keyword.trim().length>0" class="close_btn" src="assets/img/close.png" (click)="clearSearch($event)"></ion-img>
                                     <ion-img class="search_btn" src="assets/img/search-w.png" (click)="getItems($event)"></ion-img>
                                 </div>
-                            </ion-col>
+                            </ion-col> -->
                         </ion-row>
                     </ion-grid>
                 </div>

@@ -7,13 +7,20 @@ import { IonicModule } from '@ionic/angular';
 import { SchemedetailsPageRoutingModule } from './schemedetails-routing.module';
 
 import { SchemedetailsPage } from './schemedetails.page';
+import { Routes, RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: SchemedetailsPage
+  }
+];
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    SchemedetailsPageRoutingModule
+    SharedModule,FormsModule,
+    RouterModule.forChild(routes)
   ],
   declarations: [SchemedetailsPage]
 })

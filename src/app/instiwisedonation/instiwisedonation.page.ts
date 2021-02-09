@@ -15,6 +15,7 @@ export class InstiwisedonationPage implements OnInit {
   keyword=""
   Institutewise=[];
     pageMsg = 'Data not available';
+    INSTotalCount:any = "";
 
   constructor(private location: Location,private route: Router,public alertController: AlertController, public apiService: ApiService,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,
@@ -35,6 +36,7 @@ getInstitutewise() {
       this.tools.closeLoader();
       let res: any = response;
       if(res.data !=undefined){
+        this.INSTotalCount=res.TotalAmount
         this.Institutewise = res.data;
       }else{
         this.pageMsg=res.message

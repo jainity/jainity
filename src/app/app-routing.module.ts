@@ -54,6 +54,10 @@ const routes: Routes = [
     path: 'reciept',
     loadChildren: () => import('./reciept/reciept.module').then( m => m.RecieptPageModule)
   },
+  {
+    path: 'paymentconfir',
+    loadChildren: () => import('./paymentconfir/paymentconfir.module').then( m => m.PaymentconfirPageModule)
+  },
 
 ];
 

@@ -1,0 +1,9 @@
+p {
+    color: #fff !important
+}
+
+.prise_boxs ion-item {
+    --ion-background-color: #204c55;
+    --placeholder-color: white;
+    color: var(--ion-color-tertiary-contrast);
+}

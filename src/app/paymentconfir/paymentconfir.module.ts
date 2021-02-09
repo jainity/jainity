@@ -1,22 +1,27 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { IonicModule } from '@ionic/angular';
 
+import { PaymentconfirPageRoutingModule } from './paymentconfir-routing.module';
 
-import { SearchitemPage } from './searchitem.page';
+import { PaymentconfirPage } from './paymentconfir.page';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+
 const routes: Routes = [
   {
     path: '',
-    component: SearchitemPage
+    component: PaymentconfirPage
   }
 ];
+
 @NgModule({
   imports: [
     SharedModule,FormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [SearchitemPage]
+  declarations: [PaymentconfirPage]
 })
-export class SearchitemPageModule {}
+export class PaymentconfirPageModule {}

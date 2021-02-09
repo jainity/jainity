@@ -45,10 +45,10 @@ export class ApiService {
           'Access-Control-Allow-Headers': "Access-Control-Allow-Headers,Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
           'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
           'Access-Control-Allow-Origin': '*',
-          'Authorization': this.bacisAuth,
+          //'Authorization': this.bacisAuth,
           'X-JAINITY-API-KEY': environment.apikey,
           'User-Id': this.getUserId(),
-          'X-JAINITY-LOGIN-TOKEN': this.getLoginToken(),
+          'Authorization': 'Bearer '+this.getLoginToken(),
         })
       };
 
@@ -119,9 +119,26 @@ export class ApiService {
     postData.append("device_token", this.device.uuid);
     return this.http.post(environment.BaseUrl + "auth/register", postData, this.httpOptions);
   }
+  getSchemeWiseDetailList(ID) {
+    let postData = new FormData();
+    postData.append("SchemeGroupID", ID);
+    postData.append("device_token", this.device.uuid);
+    return this.http.post(environment.BaseUrl + "scheme", postData, this.httpOptions);
+  }
+  getSearchScheme(search) {
+    let postData = new FormData();
+    postData.append("search", search);
+    return this.http.post(environment.BaseUrl + "scheme/search", postData, this.httpOptions);
+  }
+
+  getMyDonation(ID): any {
+    this.setHeader();
+    return this.http.get(environment.BaseUrl + "trasaction/?user_id="+ID, this.httpOptions);
+  }
+
   getSchemeGroup(): any {
     this.setHeader();
-    return this.http.get(environment.BaseUrl + "/scheme_group", this.httpOptions);
+    return this.http.get(environment.BaseUrl + "scheme_group", this.httpOptions);
   }
   getInstituteList(): any {
     this.setHeader();
@@ -130,6 +147,10 @@ export class ApiService {
   getInstituteWiseDonationList(): any {
     this.setHeader();
     return this.http.get(environment.BaseUrl + "/report/institute_wise_report", this.httpOptions);
+  }
+  getSchemeWiseDonationList(): any {
+    this.setHeader();
+    return this.http.get(environment.BaseUrl + "/report/scheme_wise_report", this.httpOptions);
   }
 
   userData(isShow?): any {
