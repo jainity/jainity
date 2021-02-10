@@ -54,7 +54,7 @@ export class SearchitemPage implements OnInit {
 
         this.tools.closeLoader();
         let res: any = response;
-        if(res.data !=undefined){
+        if(res.status){
           this.SearchList = res.data;
         }else{
           this.pageMsg=res.message

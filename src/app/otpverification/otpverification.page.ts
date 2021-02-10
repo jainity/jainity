@@ -19,6 +19,7 @@ otpcode:any = "";
 verificont:any = "";
 
 loginForm: FormGroup;
+errorMsg:any='';
 
 
   constructor(private router: Router, public route: ActivatedRoute,public formBuilder: FormBuilder,
@@ -45,9 +46,10 @@ loginForm: FormGroup;
     } 
 
     if (msg != '') {
-      this.tools.openAlert(msg);
+      this.errorMsg=msg;
+      //this.tools.openAlert(msg);
     } else {
-
+      this.errorMsg='';
       if (this.tools.isNetwork()) {
         this.tools.openLoader();
         this.apiServices.VerificationOTP(this.otpcode,this.mno).subscribe(response => {

@@ -2,7 +2,7 @@
 
     <ion-grid>
         <ion-row>
-            <ion-col class="list_block" *ngFor="let item of SGList; let i = index" (click)="onSchemeDetails(item)">
+            <ion-col style="cursor: pointer;" class="list_block" *ngFor="let item of SGList; let i = index" (click)="onSchemeDetails(item)">
                 <ion-row class="list_box">
                     <ion-col class="list_count">
                         <ion-label class="roundedInput" color="light">{{i+1}}</ion-label>
@@ -12,6 +12,12 @@
                     </ion-col>
                 </ion-row>
             </ion-col>
+            <div style="margin-top: 150px;" class="page_block">
+                <ion-col style="color: #ef7635;" *ngIf="SGList.length==0">
+                    <ion-label><b><h2>{{this.pageMsg}}</h2></b></ion-label>
+
+                </ion-col>
+            </div>
         </ion-row>
     </ion-grid>
 </ion-content>

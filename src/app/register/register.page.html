@@ -8,13 +8,13 @@
                     </ion-col>
                 </ion-row>
 
-                <ion-row>
+                <ion-row style="margin-top: 15px;">
                     <ion-col>
                         <ion-label class="content">Please Enter Register Details</ion-label>
                     </ion-col>
                 </ion-row>
 
-                <ion-row>
+                <ion-row style="margin-top: 30px;">
                     <ion-col>
                         <ion-item>
                             <ion-label position="floating">First Name</ion-label>
@@ -22,7 +22,11 @@
                         </ion-item>
                     </ion-col>
                 </ion-row>
-
+                <ion-row>
+                    <div *ngIf="fnameerror != ''">
+                        <ion-label style="color: red; margin-left: 20px;" innerHtml="{{fnameerror}}"></ion-label>
+                    </div>
+                </ion-row>
                 <ion-row>
                     <ion-col>
                         <ion-item>
@@ -30,8 +34,13 @@
                             <ion-input [(ngModel)]="Lname" type="text" min="3"></ion-input>
                         </ion-item>
                     </ion-col>
-                </ion-row>
 
+                </ion-row>
+                <ion-row>
+                    <div *ngIf="lnameerror != ''">
+                        <ion-label style="color: red; margin-left: 20px;" innerHtml="{{lnameerror}}"></ion-label>
+                    </div>
+                </ion-row>
                 <ion-row>
                     <ion-col>
                         <ion-item>
@@ -39,17 +48,22 @@
                             <ion-input [(ngModel)]="mobileno" type="tel" maxlength="10"></ion-input>
                         </ion-item>
                     </ion-col>
-                </ion-row>
 
+                </ion-row>
+                <ion-row>
+                    <div *ngIf="moberror != ''">
+                        <ion-label style="color: red; margin-left: 20px;" innerHtml="{{moberror}}"></ion-label>
+                    </div>
+                </ion-row>
                 <ion-row>
                     <ion-col>
-                        <ion-button class="btn-orange w-100" (click)="cliRegister()" shape="round" expand="block">REGISTER</ion-button>
+                        <ion-button style="margin-top: 30px; min-height: 40px;" class="btn-orange w-100" (click)="cliRegister()" shape="round" expand="block">REGISTER</ion-button>
                     </ion-col>
                 </ion-row>
 
                 <ion-row>
-                    <ion-col style="text-align: end;">
-                        <ion-label class="content d-inline" style="margin-right: 15px;" (click)="onLogClick()">Already have an account ? </ion-label>
+                    <ion-col style="text-align: center;">
+                        <ion-label class="content d-inline" (click)="onLogClick()">Already have an account ? </ion-label>
                         <ion-label class="content d-inline" style="color: #ef7635 !important; cursor: pointer;" (click)="onLogClick()" color="primary"><u>Login</u></ion-label>
                     </ion-col>
                 </ion-row>

@@ -70,7 +70,7 @@ getSGDTLLISTCall() {
 
         this.tools.closeLoader();
         let res: any = response;
-        if(res.data !=undefined){
+        if(res.status){
           this.SchemeList = res.data;
         }else{
           this.pageMsg=res.message

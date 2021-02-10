@@ -12,6 +12,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class LoginPage {
   mobileno:any = "";
+  errorMsg:any='';
   loginForm: FormGroup;
 
   constructor(private route: Router,public formBuilder: FormBuilder,
@@ -48,9 +49,10 @@ export class LoginPage {
       }
     
     if (msg != '') {
-      this.tools.openAlert(msg);
+      this.errorMsg=msg;
+  // this.tools.openAlert(msg);
     } else {
-
+      this.errorMsg='';
       if (this.tools.isNetwork()) {
         this.tools.openLoader();
         this.apiServices.SendOTP(this.mobileno).subscribe(response => {

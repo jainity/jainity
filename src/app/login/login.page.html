@@ -7,7 +7,7 @@
                         <ion-img class="logo"  src="../../assets/img/logo.png"></ion-img>
                     </ion-col>
                 </ion-row>
-                <ion-row>
+                <ion-row style="margin-top: 15px;">
                     <ion-col>
                         <ion-label class="content">Please Enter Your Mobile No. to Receive <br> Verification Code.</ion-label>
                     </ion-col>
@@ -19,10 +19,14 @@
                             <ion-input [(ngModel)]="mobileno" type="tel" maxlength="10"></ion-input>
                         </ion-item>
                     </ion-col>
+                    <div *ngIf="errorMsg != ''">
+                        <ion-label style="color: red; margin-left: 20px;" innerHtml="{{errorMsg}}">
+                        </ion-label>
+                    </div>
                 </ion-row>
                 <ion-row>
                     <ion-col>
-                        <ion-button class="btn-orange w-100" (click)="onLoginClick()" shape="round" expand="block">SEND OTP</ion-button>
+                        <ion-button style="margin-top: 30px; min-height: 40px;" class="btn-orange w-100" (click)="onLoginClick()" shape="round" expand="block">SEND OTP</ion-button>
                     </ion-col>
                 </ion-row>
                 <ion-row>

@@ -18,6 +18,11 @@ export class RegisterPage implements OnInit {
 
   loginForm: FormGroup;
   
+  fnameerror:any='';
+  lnameerror:any='';
+  moberror:any='';
+
+
   constructor(private route: Router,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,
     public toastController: ToastController) {
@@ -58,9 +63,13 @@ export class RegisterPage implements OnInit {
       }
 
       if (msg != '') {
-        this.tools.openAlert(msg);
+        this.fnameerror=msg;
+       // this.tools.openAlert(msg);
       } else {
-  
+        this.fnameerror='';
+        this.lnameerror='';
+        this.moberror='';
+
         if (this.tools.isNetwork()) {
           this.tools.openLoader();
           this.apiServices.Register(this.Fname,this.Lname,this.mobileno).subscribe(response => {

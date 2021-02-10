@@ -50,7 +50,7 @@ export class SchemegroupPage implements OnInit {
 
         this.tools.closeLoader();
         let res: any = response;
-        if(res.data !=undefined){
+        if(res.status){
           this.SGList = res.data;
         }else{
           this.pageMsg=res.message

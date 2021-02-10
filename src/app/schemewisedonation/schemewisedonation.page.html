@@ -6,7 +6,7 @@
                     <ion-grid class="p-0">
                         <ion-row>
                             <ion-col class="back_icon p-0">
-                                <ion-icon (click)="onBackClick()" style="text-align: start; margin-left: 0; color: white; font-size: 30px;" name="arrow-back-outline"></ion-icon>
+                                <ion-icon (click)="onBackClick()" style="cursor: pointer; text-align: start; margin-left: 0; color: white; font-size: 30px;" name="arrow-back-outline"></ion-icon>
                             </ion-col>
                             <ion-col class="page_title p-0">
                                 <ion-label style="text-align: center; font-size: medium;" color="light">SCHEME GROUP-WISE DONATION</ion-label>
@@ -47,6 +47,12 @@
                                     </ion-row>
                                 </div>
                             </ion-col>
+                            <div style="margin-top: 150px;" class="page_block">
+                                <ion-col style="color: #ef7635;" *ngIf="Schemewise.length==0">
+                                    <ion-label><b><h2>{{this.pageMsg}}</h2></b></ion-label>
+
+                                </ion-col>
+                            </div>
                         </ion-row>
                     </ion-grid>
                 </div>

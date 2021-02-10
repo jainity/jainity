@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
-import { userInfo } from 'os';
 import { ApiService } from '../services/api.service';
 import { Tools } from '../shared/tools';
 import { Location } from '@angular/common';

@@ -43,7 +43,7 @@ getInstiLISTCall() {
 
       this.tools.closeLoader();
       let res: any = response;
-      if(res.data !=undefined){
+      if(res.status){
         this.INSLIST = res.data;
       }else{
         this.pageMsg=res.message

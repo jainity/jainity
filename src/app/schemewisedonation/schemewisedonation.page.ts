@@ -36,7 +36,7 @@ export class SchemewisedonationPage implements OnInit {
   
         this.tools.closeLoader();
         let res: any = response;
-        if(res.data !=undefined){
+        if(res.status){
           this.SCMTotalCount=res.TotalAmount
           this.Schemewise = res.data;
         }else{

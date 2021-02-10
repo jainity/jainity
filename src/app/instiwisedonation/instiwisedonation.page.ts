@@ -35,7 +35,7 @@ getInstitutewise() {
 
       this.tools.closeLoader();
       let res: any = response;
-      if(res.data !=undefined){
+      if(res.status){
         this.INSTotalCount=res.TotalAmount
         this.Institutewise = res.data;
       }else{
