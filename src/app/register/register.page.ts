@@ -48,27 +48,46 @@ export class RegisterPage implements OnInit {
       var msg = ''
 
       
+      // if (this.Fname =='') {
+      //   msg = msg + 'Please enter First name<br />'
+      // } else if (this.Fname.length != 3) {
+      //   msg = msg + 'First name should be at least 3 letters long and without any space<br />'
+      // }else if (this.Lname =='') {
+      //   msg = msg + 'Please enter Last name<br />'
+      // } else if (this.Lname.length != 3) {
+      //   msg = msg + 'Last name should be at least 3 letters long and without any space<br />'
+      // }else if (this.mobileno =='') {
+      //   msg = msg + 'Please enter mobile number<br />'
+      // } else if (this.mobileno.length != 10) {
+      //   msg = msg + 'Please enter valid mobile number<br />'
+      // }
+      this.errClr();
+
       if (this.Fname =='') {
         msg = msg + 'Please enter First name<br />'
-      } else if (this.Fname.length != 3) {
+       this.fnameerror = 'Please enter First name<br />'
+     } else if (this.Fname.length < 3) {
         msg = msg + 'First name should be at least 3 letters long and without any space<br />'
-      }else if (this.Lname =='') {
+       this.fnameerror = 'First name should be at least 3 letters long and without any space'
+     }else if (this.Lname =='') {
         msg = msg + 'Please enter Last name<br />'
-      } else if (this.Lname.length != 3) {
+       this.lnameerror='Please enter Last name<br />'
+     } else if (this.Lname.length < 3) {
         msg = msg + 'Last name should be at least 3 letters long and without any space<br />'
-      }else if (this.mobileno =='') {
-        msg = msg + 'Please enter mobile number<br />'
-      } else if (this.mobileno.length != 10) {
-        msg = msg + 'Please enter valid mobile number<br />'
-      }
+       this.lnameerror= 'Last name should be at least 3 letters long and without any space'
+     }else if (this.mobileno =='') {
+       msg = msg + 'Please enter mobile number<br />'
+      this.moberror= 'Please enter mobile number'
+     } else if (this.mobileno.length != 10) {
+       msg = msg + 'Please enter valid mobile number<br />'
+       this.moberror= 'Please enter valid mobile number'
+     }
 
       if (msg != '') {
-        this.fnameerror=msg;
+        //this.fnameerror=msg;
        // this.tools.openAlert(msg);
       } else {
-        this.fnameerror='';
-        this.lnameerror='';
-        this.moberror='';
+        this.errClr();
 
         if (this.tools.isNetwork()) {
           this.tools.openLoader();
@@ -94,6 +113,12 @@ export class RegisterPage implements OnInit {
         }
       }
     }
+  errClr() {
+    this.fnameerror='';
+    this.lnameerror='';
+    this.moberror='';
+
+  }
 
 
   // async cliRegister() {
