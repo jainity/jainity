@@ -49,8 +49,13 @@ console.log('Selected Item ',item)
       this.tools.openAlert(msg);
     } else {
       localStorage.setItem('Name',this.Tittle)
-      localStorage.setItem('AMT',item.amount)
- 
+      localStorage.setItem('RazorpayMID',item.RazorpayMID)
+      localStorage.setItem('AMT',item.amount) 
+      localStorage.setItem('SchemeDesc',item.SchemeDesc)
+      localStorage.setItem('InstituteSchemeID',item.InstituteSchemeID)
+      localStorage.setItem('InstituteID',item.InstituteID)
+      localStorage.setItem('SchemeName',item.SchemeName)
+
      this.route.navigate(['/paymentconfir'])
     }
       

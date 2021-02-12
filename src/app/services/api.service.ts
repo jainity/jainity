@@ -110,6 +110,30 @@ export class ApiService {
     postData.append("DeviceID", this.device.uuid);
     return this.http.post(environment.BaseUrl + "/auth/logout", postData, this.httpOptions);
   }
+
+  CaptureAmountAPI(PaymentID,AMT) {
+    let postData = new FormData();
+    console.log('Params ',postData);
+
+   let httpOptions = {
+      headers: new HttpHeaders({
+        // 'Accept': 'application/json,',
+        // 'Content-Type': 'multipart/form-data',
+        // 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8',
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Headers': "Access-Control-Allow-Headers,Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': this.bacisAuth,
+        'X-JAINITY-API-KEY': environment.apikey,
+      })
+    };
+    postData.append("amount",AMT);
+    postData.append("currency",'INR');
+
+    return this.http.post(environment.BaseUrl + "https://api.razorpay.com/v1/payments/"+PaymentID+"/capture", postData, httpOptions);
+  }
   Register(Fname,Lname,Mobileno) {
     let postData = new FormData();
     // postData.append('file', imageFile);
