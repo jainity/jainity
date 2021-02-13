@@ -81,6 +81,8 @@ export class SearchitemPage implements OnInit {
   }
 
   onBackClick(){
+    console.log('Click');
     this.location.back();
+    // this.tools.backPage();
    }
 }

@@ -33,7 +33,7 @@ export class HomePage {
     this.presentLogout('Are you sure you want to logout?', 'Logout', 'Cancel')
   }
   onSearchClick() {   
-    this.router.navigateByUrl('/searchitem', { replaceUrl: true });
+    this.router.navigateByUrl('/searchitem');
 
   }
   async presentLogout(message, btnYes, btnNo) {
