@@ -240,7 +240,7 @@ export class Tools {
                     text: btnOk,
                     handler: () => {
                         if(isMove)
-                        this.router.navigateByUrl('/dashboard', { replaceUrl: true });
+                        this.router.navigateByUrl('/home', { replaceUrl: true });
                     }
                 }
             ]

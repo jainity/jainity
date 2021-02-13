@@ -30,7 +30,8 @@ export class PaymentconfirPage implements OnInit {
 
   currency: string = 'INR';
   currencyIcon: string = '₹';
-  razor_key = 'rzp_test_Z9FfOii1jGcjLM';
+  //razor_key = 'rzp_test_gvQZfFxrBXARoJ';
+  razor_key = 'rzp_live_uhxDubpeOj3IkE';
   cardDetails: any = {};
 
   constructor(private route: Router,public router: ActivatedRoute,public alertController: AlertController, public apiService: ApiService,public formBuilder: FormBuilder,
@@ -106,7 +107,7 @@ export class PaymentconfirPage implements OnInit {
     var successCallback = function (payment_id) {
       
      // alert('payment_id: ' + payment_id);
-     self.CaptureAmount(payment_id);
+     self.PayemntCall(payment_id);
 
     };
 
@@ -117,18 +118,19 @@ export class PaymentconfirPage implements OnInit {
     RazorpayCheckout.open(options, successCallback, cancelCallback);
   }
 
-  CaptureAmount(PaymentID){
+
+
+  PayemntCall(PaymentID){
     if (this.tools.isNetwork()) {
       this.tools.openLoader();
-      this.apiService.CaptureAmountAPI(PaymentID,(parseInt(this.AMT)*100)).subscribe(response => {
+      this.apiService.PayemntCall(this.Rname,this.user.id,PaymentID,(parseInt(this.AMT)*100),this.InstituteSchemeID,this.InstituteID,this.SchemeName,this.RazorpayMID).subscribe(response => {
         this.tools.closeLoader();
         let res: any = response;
-        console.log('response ', res.login_token);
+        console.log('response ', res);
 
         if(res.status){
-          //localStorage.setItem('userdata', JSON.stringify(res.data.user));
-          //localStorage.setItem('mobileno', this.mobileno);
-          //this.route.navigate(['/otpverification']);
+          this.tools.presentAlert('',res.message, 'Ok',true);
+        //  this.route.navigate(['/home']);
         }else{
           this.tools.presentAlert('','Something wrong...', 'Ok');
         }
@@ -143,6 +145,7 @@ export class PaymentconfirPage implements OnInit {
       this.tools.closeLoader();
     }
   }
+
   onBackClick(){
     this.location.back();
    }
