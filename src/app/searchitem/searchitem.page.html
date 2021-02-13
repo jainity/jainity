@@ -18,8 +18,7 @@
         </div>
     </div>
 
-    <ion-grid style="margin-top: 50px;">
-
+    <ion-grid class="search_boxss">
         <ion-row>
             <ion-col>
                 <ion-item>
@@ -45,6 +44,7 @@
                         <ion-row class="list_row">
                             <ion-col class="list_col" *ngFor="let item of SearchList">
                                 <div class="list_inner_box">
+                                    <ion-grid>
                                     <ion-row class="p-0">
                                         <ion-col class="p-0">
                                             <ion-label class="white content">{{item.SchemeName}}</ion-label>
@@ -69,14 +69,12 @@
                                     <ion-row>
                                         <ion-label style="color: #ef7635 !important;">* Donate Upto 1 Lakh.</ion-label>
                                     </ion-row>
+                                </ion-grid>
                                 </div>
                             </ion-col>
-                            <div style="margin-top: 150px;" class="page_block">
-                                <ion-col style="color: #ef7635;" *ngIf="SearchList.length==0">
+                                <ion-col style="color: #ef7635; text-align: center;" *ngIf="SearchList.length==0">
                                     <ion-label><b><h2>{{this.pageMsg}}</h2></b></ion-label>
-
                                 </ion-col>
-                            </div>
                         </ion-row>
                     </ion-grid>
                 </div>

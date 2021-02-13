@@ -39,13 +39,13 @@
                         <ion-row class="list_row">
                             <ion-col class="list_col" *ngFor="let item of SchemeList">
                                 <div class="list_inner_box">
+                                    <ion-grid>
                                     <ion-row class="p-0">
                                         <ion-col class="p-0">
                                             <ion-label class="white content">{{item.SchemeName}}</ion-label>
                                             <ion-label class="white content">{{item.SchemeGroup}}</ion-label>
                                             <ion-label class="white content">{{item.InstituteName}}</ion-label>
-                                            <ion-label class="white content">{{item.SchemeDesc}}</ion-label>
-
+                                            <ion-label class="white content" innerHtml="{{item.SchemeDesc}}"></ion-label>
                                         </ion-col>
                                     </ion-row>
                                     <ion-row class="prise_boxs">
@@ -63,14 +63,12 @@
                                     <ion-row>
                                         <ion-label style="color: #ef7635 !important;">* Donate Upto 1 Lakh.</ion-label>
                                     </ion-row>
+                                </ion-grid>
                                 </div>
                             </ion-col>
-                            <div style="margin-top: 150px;" class="page_block">
-                                <ion-col style="color: #ef7635;" *ngIf="SchemeList.length==0">
+                                <ion-col  style="color: #ef7635; text-align: center;"  *ngIf="SchemeList.length==0">
                                     <ion-label><b><h2>{{this.pageMsg}}</h2></b></ion-label>
-
                                 </ion-col>
-                            </div>
                         </ion-row>
                     </ion-grid>
                 </div>

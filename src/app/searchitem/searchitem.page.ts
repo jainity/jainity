@@ -57,6 +57,7 @@ export class SearchitemPage implements OnInit {
         if(res.status){
           this.SearchList = res.data;
         }else{
+          this.SearchList=[];
           this.pageMsg=res.message
         }
         console.log(res)

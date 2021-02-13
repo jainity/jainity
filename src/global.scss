@@ -102,6 +102,11 @@ div#tabbing {
     width: 33.33333%;
 }
 
+.list_block ion-grid, .list_inner_box ion-grid{
+    padding: 0px !important;
+    height: 100% !important;
+}
+
 .list_box {
     background-color: #204c55;
     border-radius: 5px;
@@ -113,21 +118,27 @@ div#tabbing {
 
 .list_count {
     background: #fff;
-    flex: 0 0 40px;
-    height: 40px;
+    flex: 0 0 60px;
+    height: 60px;
     border-radius: 50%;
     margin-right: 10px;
     width: 100%;
 }
 
 .list_count ion-label {
-    color: #204c55 !important;
-    text-align: center;
-    display: block;
-    line-height: 32px !important;
-    font-size: 15px !important;
+	color: #204c55 !important;
+	text-align: center;
+	display: block;
+	line-height: 52px !important;
+	font-size: 14px !important;
+	white-space: nowrap;
+	word-spacing: -2px;
 }
 
+ion-tabs {
+    margin-top: 120px;
+    height: auto !important;
+}
 ion-tab-bar {
     height: 50px !important;
     padding: 0px 15px;
@@ -216,8 +227,8 @@ ion-tab-bar {
     width: 30px;
     color: #fff;
     font-size: 30px !important;
-    padding-top: 28px !important;
 }
+
 
 #header .open .search_box {
     background: #fff;
@@ -235,29 +246,39 @@ ion-tab-bar {
 }
 
 .page_title {
-    width: 100%;
-    text-align: center;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
-    max-width: 310px;
+	width: 100%;
+	text-align: center;
+	position: relative;
+	left: auto;
+	transform: translate(-0%, 0);
 }
+
 
 #header2 .search_box {
     margin-top: 0px;
 }
 
 #header2 .back_icon {
-    flex: 0 0 30px;
+	flex: 0 0 30px;
+	height: 30px;
 }
 
 #header #header2 {
-    height: 69px;
+	height: 69px;
+	line-height: 46px;
+}
+
+#header .menubars {
+	flex: 0 0 24px;
+	width: 24px;
+	font-size: 24px !important;
+	height: 30px;
 }
 
 #header ion-row {
-    justify-content: space-between;
-    align-items: center;
+	justify-content: space-between;
+	align-items: center;
+	text-align: center;
 }
 
 .page_wapper {
@@ -273,13 +294,14 @@ ion-tab-bar {
     border-radius: 5px;
     padding: 15px;
     margin: 2px;
+    height: 100%;
 }
 
 .list_inner_box .white.content {
     color: #fff;
     display: block;
-    line-height: 15px;
-    margin-bottom: 10px;
+    line-height: 18px;
+    margin-bottom: 6px;    
 }
 
 .prise_boxs {
@@ -394,6 +416,13 @@ p {
     letter-spacing: 1px;
 }
 
+
+.search_boxss {
+	max-width: 340px;
+	margin: 0 auto;
+	padding-top: 70px;
+}
+
 @media (max-width: 1200px) {
     #header .header-block {
         right: 0;
@@ -414,18 +443,8 @@ p {
         flex: 0 0 50%;
         width: 50%;
     }
-    .page_title {
-        width: 100%;
-        text-align: left;
-        position: relative;
-        left: auto;
-        transform: translate(0%, 0);
-        max-width: 100%;
-        margin-left: 18px;
-    }
-    .page_title {
-        padding-right: 44px !important;
-    }
+   
+  
     #header2 .search_block {
         flex: 0 0 300px;
         width: 300px;
@@ -436,24 +455,20 @@ p {
     #header #header2 {
         height: 50px;
         padding: 10px 0;
+        line-height: 9px;
     }
-    .page_title {
-        padding-right: 44px !important;
-        position: relative;
-        top: -4px;
-    }
-    #header .open .search_box {
-        height: 40px;
-    }
+ 
     .page_wapper {
         padding-top: 50px;
+    }
+
+    #header .menubars {
+        height: auto !important;
     }
 }
 
 @media (max-width: 992px) {
-    #header .menubars {
-        padding-top: 0px !important;
-    }
+
     #header .search_box {
         border-radius: 6px;
         margin-top: 0;
@@ -468,12 +483,9 @@ p {
         right: 0;
         height: 180px;
     }
-    div#tabbing {
-        height: calc(100vh - 180px) !important;
-        position: absolute;
-        width: 100%;
-        left: 0px;
-        top: 180px !important;
+    ion-tabs {
+        margin-top: 180px;
+        height: auto !important;
     }
     .tab-nav-box ion-label {
         white-space: nowrap;
