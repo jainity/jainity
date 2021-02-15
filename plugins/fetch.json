@@ -62,5 +62,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "com.razorpay.cordova": {
+    "source": {
+      "type": "registry",
+      "id": "git+https://github.com/razorpay/razorpay-cordova.git"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

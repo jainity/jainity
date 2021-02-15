@@ -7,6 +7,9 @@
     "files": {}
   },
   "installed_plugins": {
+    "com.razorpay.cordova": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
