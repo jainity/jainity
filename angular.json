@@ -40,9 +40,9 @@
               }
             ],
             "scripts": [
-                              "src/assets/js/jquery.min.js",
-                "src/assets/js/jquery-3.1.1.js",
-                 "src/assets/js/custom.js"
+              "src/assets/js/jquery.min.js",
+              "src/assets/js/jquery-3.1.1.js",
+              "src/assets/js/custom.js"
             ]
           },
           "configurations": {
@@ -132,7 +132,9 @@
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "e2e": {
@@ -178,7 +180,8 @@
     }
   },
   "cli": {
-    "defaultCollection": "@ionic/angular-toolkit"
+    "defaultCollection": "@ionic/angular-toolkit",
+    "analytics": "f2a518a1-eac1-48c7-8e45-a3f8b179c8bc"
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {
