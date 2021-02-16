@@ -14,7 +14,7 @@ import { Tools } from '../shared/tools';
 export class SchemedetailsPage implements OnInit {
 
   SchemeList =[];
-  pageMsg = 'Data not available';
+  pageMsg = '';
 
   SGid:any;
   INid:any;
@@ -34,10 +34,7 @@ export class SchemedetailsPage implements OnInit {
       this.INid=localStorage.getItem('InstituteId');
       this.Type=localStorage.getItem('TYPE');
       this.Tittle=localStorage.getItem('Tittle');
-
-
    }
-
    onDonateClick(item){
     var msg = ''
 console.log('Selected Item ',item)
@@ -48,7 +45,8 @@ console.log('Selected Item ',item)
     if (msg != '') {
       this.tools.openAlert(msg);
     } else {
-      localStorage.setItem('Name',this.Tittle)
+      if(parseFloat(item.amount)<=100000){
+        localStorage.setItem('Name',this.Tittle)
       localStorage.setItem('RazorpayMID',item.RazorpayMID)
       localStorage.setItem('AMT',item.amount) 
       localStorage.setItem('SchemeDesc',item.SchemeDesc)
@@ -57,6 +55,11 @@ console.log('Selected Item ',item)
       localStorage.setItem('SchemeName',item.SchemeName)
 
      this.route.navigate(['/paymentconfir'])
+      }
+      else{
+        this.tools.openAlert('Donation amount cannot be greater 1 lakh rupees');
+      }
+      
     }
       
 
@@ -87,7 +90,7 @@ getSGDTLLISTCall() {
         this.tools.closeLoader();
         let err:any = error;
         console.log('Error ', err);
-       // this.tools.openAlertToken(err.status, err.error.message);
+       this.tools.openAlertToken(err.status, err.error.message);
   
       });
     } else {

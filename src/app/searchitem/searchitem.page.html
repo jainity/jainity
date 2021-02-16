@@ -1,24 +1,20 @@
-<ion-content>
-    <div id="header">
-        <div class="header-block" id="header2">
-            <div class="container">
-                <div class="header-box">
-                    <ion-grid class="p-0">
-                        <ion-row>
-                            <ion-col class="back_icon p-0" >
-                                <ion-icon (click)="onBackClick()"   style="cursor: pointer; text-align: start; margin-left: 0; color: white; font-size: 30px;" name="arrow-back-outline"></ion-icon>
-                            </ion-col>
-                            <ion-col class="page_title p-0">
-                                <ion-label style="text-align: center; font-size: medium;" color="light">SEARCH ITEM</ion-label>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </div>
-            </div>
-        </div>
-    </div>
+<ion-header>
+    <ion-toolbar>
+        <ion-grid class="container">
+            <ion-row>
+                <ion-col class="back_icon p-0" >
+                    <ion-icon (click)="onBackClick()"   style="cursor: pointer; text-align: start; margin-left: 0; color: white; font-size: 30px;" name="arrow-back-outline"></ion-icon>
+                </ion-col>
+                <ion-col class="page_title p-0">
+                    <ion-label style="text-align: center; font-size: medium;" color="light">SEARCH ITEM</ion-label>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        </ion-toolbar>
+        </ion-header>
 
-    <ion-grid class="search_boxss">
+<ion-content>
+     <ion-grid class="search_boxss">
         <ion-row>
             <ion-col>
                 <ion-item>
@@ -29,7 +25,7 @@
         </ion-row>
         <ion-row>
             <ion-col>
-                <ion-button style="margin-top: 30px; min-height: 40px;" shape="round" expand="block" style="margin-top: 10px;text-align: center !important;" (click)="onSearch()">SCHEME GROUP-WISE DONATION</ion-button>
+                <ion-button style="margin-top: 30px; min-height: 40px;" shape="round" expand="block" style="margin-top: 10px;text-align: center !important; text-transform: capitalize;" (click)="onSearch()">Search</ion-button>
             </ion-col>
         </ion-row>
     </ion-grid>
@@ -59,7 +55,10 @@
                                         <ion-col class="p-0">
                                             <ion-item>
                                                 <ion-label position="floating">Amount</ion-label>
-                                                <ion-input [(ngModel)]="item.amount" type="tel" maxlength="6"></ion-input>
+                                                <ion-input [(ngModel)]="item.amount" 
+                                                type="tel" maxlength="6"  required
+                                                    min="1" inputmode="numeric" pattern="[0-9]*" (keydown)="this.tools.isValidNumber($event)"
+                                                    max="100000" pattern="[0-9]{6}"></ion-input>
                                             </ion-item>
                                         </ion-col>
                                         <ion-col class="p-0">
@@ -73,7 +72,7 @@
                                 </div>
                             </ion-col>
                                 <ion-col style="color: #ef7635; text-align: center;" *ngIf="SearchList.length==0">
-                                    <ion-label><b><h2>{{this.pageMsg}}</h2></b></ion-label>
+                                    <ion-label><b>{{this.pageMsg}}</b></ion-label>
                                 </ion-col>
                         </ion-row>
                     </ion-grid>

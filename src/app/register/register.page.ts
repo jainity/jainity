@@ -92,14 +92,11 @@ export class RegisterPage implements OnInit {
         if (this.tools.isNetwork()) {
           this.tools.openLoader();
           this.apiServices.Register(this.Fname,this.Lname,this.mobileno).subscribe(response => {
-            this.tools.closeLoader();
             let res: any = response;
-            //console.log('response ', res.login_token);
-  
             if(res.status){
-              this.route.navigate(['/otpverification']);
+              this.callOTP();
             }else{
-              this.tools.presentAlert('','Something Wrong...', 'Ok');
+              this.tools.presentAlert('',res.message, 'Ok');
             }
           }, (error: Response) => {
             this.tools.closeLoader();
@@ -113,6 +110,25 @@ export class RegisterPage implements OnInit {
         }
       }
     }
+  callOTP() {
+    this.apiServices.SendOTP(this.mobileno).subscribe(response => {
+      this.tools.closeLoader();
+      let res: any = response;
+      if(res.status){
+        localStorage.setItem('mobileno', this.mobileno);
+        this.route.navigate(['/otpverification']);
+      }else{
+        this.tools.presentAlert('','Something wrong...', 'Ok');
+      }
+    }, (error: Response) => {
+      this.tools.closeLoader();
+      console.log('Error ', error);
+      let err:any = error;
+      this.tools.openAlertToken(err.status, err.error.message);
+
+    });
+
+  }
   errClr() {
     this.fnameerror='';
     this.lnameerror='';

@@ -17,7 +17,9 @@ export class HomePage {
 
   constructor(public alertController: AlertController, public apiService: ApiService,private router: Router, public route: ActivatedRoute,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,
-    public toastController: ToastController) {}
+    public toastController: ToastController) {
+      localStorage.removeItem('reciept');
+    }
   onEnter(event) {
 
   }

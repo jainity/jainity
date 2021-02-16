@@ -92,9 +92,7 @@ export class ApiService {
     // postData.append('file', imageFile);
     postData.append("Mobile", username);
     postData.append("device_token", this.device.uuid);
-
     console.log('Params ',postData);
-
     return this.http.post(environment.BaseUrl + "auth/send_otp", postData, this.httpOptions);
   }
   VerificationOTP(OTP,Mobile) {

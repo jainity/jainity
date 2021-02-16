@@ -14,7 +14,7 @@ import { Tools } from '../shared/tools';
 export class SearchitemPage implements OnInit {
 
   SearchList =[];
-  pageMsg = 'Data not available';
+  pageMsg = '';
   searchTerms:any;
 
   constructor(private route: Router,public alertController: AlertController, public apiService: ApiService,public formBuilder: FormBuilder,
@@ -37,8 +37,11 @@ export class SearchitemPage implements OnInit {
     } else {
       localStorage.setItem('Name',item.SchemeName)
       localStorage.setItem('AMT',item.amount)
- 
-     this.route.navigate(['/paymentconfir'])
+      if(parseFloat(item.amount)<=100000)
+        this.route.navigate(['/paymentconfir'])
+        else{
+          this.tools.openAlert('Donation amount cannot be greater 1 lakh rupees');
+        }
     }
       
 
@@ -67,7 +70,7 @@ export class SearchitemPage implements OnInit {
         this.tools.closeLoader();
         let err:any = error;
         console.log('Error ', err);
-       // this.tools.openAlertToken(err.status, err.error.message);
+       this.tools.openAlertToken(err.status, err.error.message);
   
       });
     } else {

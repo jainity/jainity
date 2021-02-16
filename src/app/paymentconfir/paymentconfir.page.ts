@@ -30,7 +30,8 @@ export class PaymentconfirPage implements OnInit {
 
   currency: string = 'INR';
   currencyIcon: string = '₹';
-  razor_key = 'rzp_test_gvQZfFxrBXARoJ';
+  // razor_key = 'rzp_test_gvQZfFxrBXARoJ';
+  razor_key = 'rzp_live_AaeZGFsxalFwFO';
   //razor_key = 'rzp_live_uhxDubpeOj3IkE';
   cardDetails: any = {};
 

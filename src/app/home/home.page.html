@@ -1,59 +1,44 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-grid class="container">
+            <ion-row style="margin: 20px auto;">
+                <ion-col class="menubars p-0">
+                    <ion-icon style="cursor: pointer;" (click)="onLogoutClick()" name="power-outline"></ion-icon>
+                </ion-col>
+                <ion-col class="logo_box p-0">
+                    <ion-img src="../../assets/img/logo-w.png"> </ion-img> </ion-col> <ion-col class="menubars p-0">
+                        <ion-icon style="cursor: pointer;" (click)="onSearchClick()" name="search-outline"></ion-icon>
+                </ion-col>
+
+                <!-- <ion-col class="search_block p-0">
+                        <div class="search_box">
+                            <ion-input [(ngModel)]="keyword" placeholder="Search" (keyup.enter)="onEnter($event)"></ion-input>
+                            <ion-img *ngIf="keyword.trim().length>0" class="close_btn" src="assets/img/close.png" (click)="clearSearch($event)"></ion-img>
+                            <ion-img class="search_btn" src="assets/img/search-w.png" (click)="getItems($event)"></ion-img>
+                        </div>
+                    </ion-col> -->
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-header>
 <ion-content>
-    <div id="header">
-        <div class="header-block">
-            <div class="container">
-                <div class="header-box">
-                    <ion-grid class="p-0">
-                        <ion-row>
-                            <ion-col class="menubars p-0">
-                                <ion-icon style="cursor: pointer;" (click)="onLogoutClick()" name="power-outline"></ion-icon>
-                            </ion-col>
-                            <ion-col class="logo_box p-0">
-                                <ion-img src="../../assets/img/logo-w.png"></ion-img>
-                            </ion-col>
-                            <ion-col class="menubars p-0">
-                                <ion-icon style="cursor: pointer;" (click)="onSearchClick()" name="search-outline"></ion-icon>
-                            </ion-col>
+    <ion-tabs tabbarPlacement="top">
+        <ion-tab-bar slot="top">
+            <ion-tab-button class="tab-nav-box" tab="schemegroup">
+                <ion-label color="tertiary">Scheme Group</ion-label>
+            </ion-tab-button>
 
-                            <!-- <ion-col class="search_block p-0">
-                                <div class="search_box">
-                                    <ion-input [(ngModel)]="keyword" placeholder="Search" (keyup.enter)="onEnter($event)"></ion-input>
-                                    <ion-img *ngIf="keyword.trim().length>0" class="close_btn" src="assets/img/close.png" (click)="clearSearch($event)"></ion-img>
-                                    <ion-img class="search_btn" src="assets/img/search-w.png" (click)="getItems($event)"></ion-img>
-                                </div>
-                            </ion-col> -->
-                        </ion-row>
-                    </ion-grid>
-                </div>
-            </div>
-        </div>
-    </div>
+            <ion-tab-button class="tab-nav-box" tab="institute">
+                <ion-label color="tertiary">Institute</ion-label>
+            </ion-tab-button>
 
-    <!-- <div id="section">
-        <div id="tabbing">
-            <div class="container">
-                <div class="tabbing-box"> -->
-                    <ion-tabs tabbarPlacement="top">
-                        <ion-tab-bar slot="top">
-                            <ion-tab-button class="tab-nav-box" tab="schemegroup">
-                                <ion-label color="tertiary">SCHEME GROUP</ion-label>
-                            </ion-tab-button>
+            <ion-tab-button class="tab-nav-box" tab="mydonation">
+                <ion-label color="tertiary">My Donation</ion-label>
+            </ion-tab-button>
 
-                            <ion-tab-button class="tab-nav-box" tab="institute">
-                                <ion-label color="tertiary">INSTITUTE</ion-label>
-                            </ion-tab-button>
-
-                            <ion-tab-button class="tab-nav-box" tab="mydonation">
-                                <ion-label color="tertiary">MY DONATION</ion-label>
-                            </ion-tab-button>
-
-                            <ion-tab-button class="tab-nav-box" tab="alldonation">
-                                <ion-label color="tertiary">ALL DONATION</ion-label>
-                            </ion-tab-button>
-                        </ion-tab-bar>
-                    </ion-tabs>
-                <!-- </div>
-            </div>
-        </div>
-    </div> -->
+            <ion-tab-button class="tab-nav-box" tab="alldonation">
+                <ion-label color="tertiary">All Donation</ion-label>
+            </ion-tab-button>
+        </ion-tab-bar>
+    </ion-tabs>
 </ion-content>

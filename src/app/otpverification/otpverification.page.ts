@@ -35,6 +35,9 @@ errorMsg:any='';
 
   }
 
+  onBackClick(){
+    this.tools.backPage();
+   }
   onSubmitClick() {
     //this.router.navigate(['/home']);
 

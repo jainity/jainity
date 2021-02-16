@@ -18,6 +18,21 @@ export class Tools {
       
     }
 
+    isValidNumber(event)
+    {
+        //return /\d|Backspace/.test(event.key);
+        if ([8, 13, 27, 37, 38, 39, 40].indexOf(event.keyCode) > -1) {
+            // backspace, enter, escape, arrows
+            return true;
+        } else if (event.keyCode >= 48 && event.keyCode <= 57) {
+            // numbers 0 to 9
+            return true;
+        } else if (event.keyCode >= 96 && event.keyCode <= 105) {
+            // numpad number
+            return true;
+        }
+        return false;
+    }
     backPage(){
         this.navCtrl.back();
     }
@@ -147,6 +162,9 @@ export class Tools {
 
     async openLoader(cssClass = '', msg?) {
         // console.log(' ===> ',msg);
+        if(this.loading !=undefined ){
+            this.closeLoader();
+        }
         this.loading = await this.loadingController.create({
             message: msg ? msg : '',
             keyboardClose: true,

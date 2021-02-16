@@ -15,7 +15,7 @@ export class SchemewisedonationPage implements OnInit {
 
   keyword=""
   Schemewise=[];
-    pageMsg = 'Data not available';
+    pageMsg = '';
     SCMTotalCount:any = "";
 
     constructor(private location: Location,private route: Router,public alertController: AlertController, public apiService: ApiService,public formBuilder: FormBuilder,
@@ -49,7 +49,7 @@ export class SchemewisedonationPage implements OnInit {
         this.tools.closeLoader();
         let err:any = error;
         console.log('Error ', err);
-       // this.tools.openAlertToken(err.status, err.error.message);
+       this.tools.openAlertToken(err.status, err.error.message);
   
       });
     } else {

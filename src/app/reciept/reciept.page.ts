@@ -8,8 +8,9 @@ import { Location } from '@angular/common';
 })
 export class RecieptPage implements OnInit {
 
+  pageUrl:any;
   constructor(private location: Location) {
-  
+    this.pageUrl = localStorage.getItem('reciept')
   }
 
   ngOnInit() {

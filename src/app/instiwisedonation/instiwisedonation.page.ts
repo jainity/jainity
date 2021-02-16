@@ -14,7 +14,7 @@ import { Tools } from '../shared/tools';
 export class InstiwisedonationPage implements OnInit {
   keyword=""
   Institutewise=[];
-    pageMsg = 'Data not available';
+    pageMsg = '';
     INSTotalCount:any = "";
 
   constructor(private location: Location,private route: Router,public alertController: AlertController, public apiService: ApiService,public formBuilder: FormBuilder,
@@ -48,7 +48,7 @@ getInstitutewise() {
       this.tools.closeLoader();
       let err:any = error;
       console.log('Error ', err);
-     // this.tools.openAlertToken(err.status, err.error.message);
+     this.tools.openAlertToken(err.status, err.error.message);
 
     });
   } else {

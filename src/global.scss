@@ -123,20 +123,21 @@ div#tabbing {
     border-radius: 50%;
     margin-right: 10px;
     width: 100%;
+    text-align: center;
+    display: flex;
 }
 
 .list_count ion-label {
 	color: #204c55 !important;
 	text-align: center;
-	display: block;
-	line-height: 52px !important;
 	font-size: 14px !important;
 	white-space: nowrap;
 	word-spacing: -2px;
+margin: auto;
+    vertical-align: middle;
 }
 
 ion-tabs {
-    margin-top: 120px;
     height: auto !important;
 }
 ion-tab-bar {
@@ -167,6 +168,15 @@ ion-tab-bar {
     padding: 0px 15px;
 }
 
+ion-toolbar{
+    background: #ef7635;
+    --background: #ef7635;
+}
+// .def-header{
+//     background: #ef7635;
+//     --background: #ef7635;
+
+// }
 #header .header-block {
     background: #ef7635;
     position: fixed;
@@ -181,22 +191,16 @@ ion-tab-bar {
     justify-content: space-between;
 }
 
-#header .logo_box {
-    flex: 0 0 150px;
-    width: 150px;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
-    top: 0px;
-}
 
-#header .logo_box ion-img {
+ion-header .logo_box ion-img {
     width: 100%;
+    max-width: 150px;
+    margin: 0px auto;
 }
 
-#header .search_box {
+ion-header .search_box {
     display: flex;
-    align-items: center;
+    align-items: center;    
     background: transparent;
     padding: 2px 0px;
     border-radius: 6px;
@@ -222,7 +226,7 @@ ion-tab-bar {
     margin: 0px 7px;
 }
 
-#header .menubars {
+ion-header .menubars {
     flex: 0 0 30px;
     width: 30px;
     color: #fff;
@@ -246,11 +250,8 @@ ion-tab-bar {
 }
 
 .page_title {
-	width: 100%;
 	text-align: center;
-	position: relative;
-	left: auto;
-	transform: translate(-0%, 0);
+    margin: auto;
 }
 
 
@@ -258,7 +259,7 @@ ion-tab-bar {
     margin-top: 0px;
 }
 
-#header2 .back_icon {
+ion-header .back_icon {
 	flex: 0 0 30px;
 	height: 30px;
 }
@@ -268,21 +269,15 @@ ion-tab-bar {
 	line-height: 46px;
 }
 
-#header .menubars {
+ion-header .menubars {
 	flex: 0 0 24px;
 	width: 24px;
 	font-size: 24px !important;
 	height: 30px;
 }
 
-#header ion-row {
+ion-header ion-row {
 	justify-content: space-between;
-	align-items: center;
-	text-align: center;
-}
-
-.page_wapper {
-    padding-top: 78px;
 }
 
 .list_col {
@@ -420,17 +415,12 @@ p {
 .search_boxss {
 	max-width: 340px;
 	margin: 0 auto;
-	padding-top: 70px;
 }
 
-@media (max-width: 1200px) {
-    #header .header-block {
-        right: 0;
-    }
-}
+
 
 @media (max-width: 1024px) {
-    #header .menubars {
+    ion-header .menubars {
         flex: 0 0 24px;
         width: 24px;
         font-size: 24px !important;
@@ -457,19 +447,15 @@ p {
         padding: 10px 0;
         line-height: 9px;
     }
- 
-    .page_wapper {
-        padding-top: 50px;
-    }
 
-    #header .menubars {
-        height: auto !important;
+    ion-header .menubars {
+        height: 30px !important;
     }
 }
 
 @media (max-width: 992px) {
 
-    #header .search_box {
+    ion-header .search_box {
         border-radius: 6px;
         margin-top: 0;
     }
@@ -484,7 +470,6 @@ p {
         height: 180px;
     }
     ion-tabs {
-        margin-top: 180px;
         height: auto !important;
     }
     .tab-nav-box ion-label {
@@ -497,8 +482,8 @@ p {
     .container {
         padding: 0px 5px;
     }
-    #header .container {
-        padding: 0px 12px;
+    ion-header .container {
+        padding: 5px 12px;
     }
 }
 
@@ -559,7 +544,7 @@ p {
     }
     .tab-nav-box ion-label {
         white-space: nowrap;
-        font-size: 12px !important;
+        font-size: 13px !important;
         word-spacing: -1px !important;
         letter-spacing: 0px !important;
     }

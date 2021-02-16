@@ -12,7 +12,7 @@ import { Tools } from 'src/app/shared/tools';
 })
 export class InstitutePage implements OnInit {
   INSLIST =[];
-  pageMsg = 'Data not available';
+  pageMsg = '';
 
   constructor(private route: Router,public alertController: AlertController, public apiService: ApiService,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,
@@ -55,7 +55,7 @@ getInstiLISTCall() {
       this.tools.closeLoader();
       let err:any = error;
       console.log('Error ', err);
-     // this.tools.openAlertToken(err.status, err.error.message);
+     this.tools.openAlertToken(err.status, err.error.message);
 
     });
   } else {

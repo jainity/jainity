@@ -13,7 +13,7 @@ import { onErrorResumeNext } from 'rxjs';
 })
 export class SchemegroupPage implements OnInit {
   SGList =[];
-  pageMsg = 'Data not available';
+  pageMsg = '';
 
   constructor(private route: Router,public alertController: AlertController, public apiService: ApiService,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,
@@ -62,7 +62,7 @@ export class SchemegroupPage implements OnInit {
         this.tools.closeLoader();
         let err:any = error;
         console.log('Error ', err);
-       // this.tools.openAlertToken(err.status, err.error.message);
+       this.tools.openAlertToken(err.status, err.error.message);
   
       });
     } else {
