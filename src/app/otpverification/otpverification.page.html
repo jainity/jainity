@@ -32,7 +32,7 @@
                     <ion-col>
                         <ion-item>
                             <ion-label position="floating">Enter OTP</ion-label>
-                            <ion-input [(ngModel)]="otpcode" type="tel" maxlength="6"></ion-input>
+                            <ion-input [(ngModel)]="otpcode" type="tel" maxlength="6" (keyup.enter)="onSubmitClick()"></ion-input>
                         </ion-item>
                     </ion-col>
 

@@ -38,7 +38,7 @@ export class SearchitemPage implements OnInit {
       localStorage.setItem('Name',item.SchemeName)
       localStorage.setItem('AMT',item.amount)
       if(parseFloat(item.amount)<=100000)
-        this.route.navigate(['/paymentconfir'])
+      this.route.navigateByUrl('/paymentconfir')
         else{
           this.tools.openAlert('Donation amount cannot be greater 1 lakh rupees');
         }

@@ -54,7 +54,7 @@ console.log('Selected Item ',item)
       localStorage.setItem('InstituteID',item.InstituteID)
       localStorage.setItem('SchemeName',item.SchemeName)
 
-     this.route.navigate(['/paymentconfir'])
+      this.route.navigateByUrl('/paymentconfir')
       }
       else{
         this.tools.openAlert('Donation amount cannot be greater 1 lakh rupees');
@@ -73,7 +73,7 @@ getSGDTLLISTCall() {
     if (this.tools.isNetwork()) {
       this.tools.openLoader();
       console.log('getSGLISTCall');
-      this.apiServices.getSchemeWiseDetailList((this.Type=='Institute')?this.INid:this.SGid).subscribe(response => {
+      this.apiServices.getSchemeWiseDetailList(this.Type,(this.Type=='Institute')?this.INid:this.SGid).subscribe(response => {
         console.log('RESPONSE>>>');
 
         this.tools.closeLoader();
@@ -100,7 +100,7 @@ getSGDTLLISTCall() {
   }
 
   onSearchClick() {   
-    this.route.navigateByUrl('/searchitem', { replaceUrl: true });
+    this.route.navigateByUrl('/searchitem');
 
   }
    ngOnInit() {

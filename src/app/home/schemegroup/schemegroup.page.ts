@@ -18,12 +18,8 @@ export class SchemegroupPage implements OnInit {
   constructor(private route: Router,public alertController: AlertController, public apiService: ApiService,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,
     public toastController: ToastController) {
+      this.tools.closeLoader();
       localStorage.removeItem('schemeId');
-
-  // for (let i = 0; i < 10; i++) {
-  //   this.SGList.push('SCHEME GROUP '+(i+1));
-  // }
-
    }
 
    onSchemeDetails(item){
@@ -31,7 +27,8 @@ export class SchemegroupPage implements OnInit {
      localStorage.setItem('TYPE','SchemeGroup')
      localStorage.setItem('Tittle',item.SchemeGroup)
      
-    this.route.navigate(['/schemedetails'])
+     this.route.navigateByUrl('/schemedetails')
+    
     }
 
   ngOnInit() {

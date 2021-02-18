@@ -30,8 +30,8 @@ export class PaymentconfirPage implements OnInit {
 
   currency: string = 'INR';
   currencyIcon: string = '₹';
-  // razor_key = 'rzp_test_gvQZfFxrBXARoJ';
-  razor_key = 'rzp_live_AaeZGFsxalFwFO';
+  razor_key = 'rzp_test_gvQZfFxrBXARoJ';
+  // razor_key = 'rzp_live_AaeZGFsxalFwFO';
   //razor_key = 'rzp_live_uhxDubpeOj3IkE';
   cardDetails: any = {};
 
@@ -85,7 +85,7 @@ export class PaymentconfirPage implements OnInit {
   payWithRazor() {
     var options = {
       description: this.SchemeDesc  ,
-      image: '../../assets/img/logo.png',
+      image: 'assets/img/logo.png',
       currency: this.currency,
       key: this.razor_key,
       amount: (parseInt(this.AMT)*100),

@@ -19,8 +19,8 @@ export class MydonationPage implements OnInit {
     public alertController: AlertController, private iab: InAppBrowser,
     public apiService: ApiService, public formBuilder: FormBuilder,
     private apiServices: ApiService, public tools: Tools,
-
     public toastController: ToastController) {
+      this.tools.closeLoader();
     localStorage.removeItem('reciept');
   }
 
@@ -75,10 +75,8 @@ export class MydonationPage implements OnInit {
 
         }
       );
-
     } else {
       this.tools.openAlert('Reciept not found!');
     }
-    // this.route.navigate(['/reciept']);
   }
 }

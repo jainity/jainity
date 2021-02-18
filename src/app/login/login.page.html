@@ -16,7 +16,7 @@
                     <ion-col>
                         <ion-item class="form-control">
                             <ion-label position="floating">Mobile Number</ion-label>
-                            <ion-input [(ngModel)]="mobileno" type="tel" maxlength="10"></ion-input>
+                            <ion-input [(ngModel)]="mobileno" type="tel" maxlength="10" (keyup.enter)="onLoginClick()"></ion-input>
                         </ion-item>
                     </ion-col>
                     <div *ngIf="errorMsg != ''">

@@ -15,14 +15,11 @@ export class HomePage {
   keyword=""
 
 
-  constructor(public alertController: AlertController, public apiService: ApiService,private router: Router, public route: ActivatedRoute,public formBuilder: FormBuilder,
-    private apiServices: ApiService,public tools: Tools,
-    public toastController: ToastController) {
+  constructor(public alertController: AlertController, public apiService: ApiService,private router: Router, public route: ActivatedRoute,public formBuilder: FormBuilder,public tools: Tools, public toastController: ToastController) {
+      this.tools.closeLoader();
       localStorage.removeItem('reciept');
     }
-  onEnter(event) {
-
-  }
+  
 
   clearSearch(event) {
 

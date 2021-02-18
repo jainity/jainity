@@ -26,7 +26,7 @@ export class RegisterPage implements OnInit {
   constructor(private route: Router,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,
     public toastController: ToastController) {
-
+      this.tools.closeLoader();
     this.loginForm = this.formBuilder.group({
       fname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50),Validators.pattern('[a-zA-Z]+')]],
       lname: ['', [Validators.required, Validators.maxLength(50),Validators.pattern('[a-zA-Z]+')]],
@@ -39,7 +39,7 @@ export class RegisterPage implements OnInit {
   }
 
   onLogClick() {
-    this.route.navigate(['/login']);
+    this.route.navigateByUrl('/login', { replaceUrl: true });
     }
 
 
@@ -47,20 +47,6 @@ export class RegisterPage implements OnInit {
 
       var msg = ''
 
-      
-      // if (this.Fname =='') {
-      //   msg = msg + 'Please enter First name<br />'
-      // } else if (this.Fname.length != 3) {
-      //   msg = msg + 'First name should be at least 3 letters long and without any space<br />'
-      // }else if (this.Lname =='') {
-      //   msg = msg + 'Please enter Last name<br />'
-      // } else if (this.Lname.length != 3) {
-      //   msg = msg + 'Last name should be at least 3 letters long and without any space<br />'
-      // }else if (this.mobileno =='') {
-      //   msg = msg + 'Please enter mobile number<br />'
-      // } else if (this.mobileno.length != 10) {
-      //   msg = msg + 'Please enter valid mobile number<br />'
-      // }
       this.errClr();
 
       if (this.Fname =='') {
@@ -116,7 +102,10 @@ export class RegisterPage implements OnInit {
       let res: any = response;
       if(res.status){
         localStorage.setItem('mobileno', this.mobileno);
-        this.route.navigate(['/otpverification']);
+        setTimeout(() => {              
+          this.route.navigateByUrl('/otpverification');
+        }, 100);
+
       }else{
         this.tools.presentAlert('','Something wrong...', 'Ok');
       }

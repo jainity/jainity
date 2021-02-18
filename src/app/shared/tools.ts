@@ -3,15 +3,15 @@ import { ToastController, LoadingController, AlertController, NavController } fr
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
-
 @Injectable()
 export class Tools {
    
     notification;
     loading;
+    isShowing =false;
 
     constructor(
-        public alertController: AlertController,private apiServices: ApiService,
+        public alertController: AlertController,
         public toastController: ToastController, public network: Network,
         public loadingController: LoadingController, public router: Router,private navCtrl: NavController,
     ) {
@@ -37,39 +37,6 @@ export class Tools {
         this.navCtrl.back();
     }
   
-      async callStateList(isShow?:any) {    
-        if (this.isNetwork()) {
-            if(isShow)
-            this.openLoader();
-             this.apiServices.stateList().subscribe(response => {
-                var res:any = response;  
-                this.closeLoader();              
-                if(res.status){
-                    localStorage.setItem('stateList',JSON.stringify(res.state_list))
-                }else{
-                    localStorage.setItem('stateList',JSON.stringify([]))
-                    return [];
-                }
-              }, (error: Response) => {
-                this.closeLoader(); 
-                console.log('Error ', error);
-              });
-            }else{
-                this.closeLoader(); 
-                return [];
-            }      
-      }
-
-     getCities(stateList,id){
-        if(stateList.length > 0){       
-            if(stateList.filter(x => x.StateID === id).length > 0 )     
-            return stateList.filter(x => x.StateID === id)[0].City;
-            else{
-                return [];
-            }
-        }
-      }
-      
 
     isNetwork(){
         this.closeLoader();
@@ -162,16 +129,20 @@ export class Tools {
 
     async openLoader(cssClass = '', msg?) {
         // console.log(' ===> ',msg);
-        if(this.loading !=undefined ){
-            this.closeLoader();
-        }
-        this.loading = await this.loadingController.create({
+        if (!this.isShowing) {
+            this.isShowing = true;
+               
+    this.loading = await this.loadingController.create({
             message: msg ? msg : '',
-            keyboardClose: true,
-            showBackdrop: true,
-            cssClass: cssClass
+            cssClass: cssClass,
         });
         await this.loading.present();
+    }else {
+        this.isShowing = true;
+      }
+        // setTimeout(() => {
+        //     this.loading.dismiss();
+        // }, 2000);
     }
 
     async openAlert(message) {
@@ -229,7 +200,8 @@ export class Tools {
         return await alert.present();
     }
     async presentAlertToLogin(title, msg, btnOk) {
-        this.closeLoader();
+        if(this.loading != undefined)
+        this.loading.dismiss();
         const alert = await this.alertController.create({
             header: title,
             message: msg,
@@ -250,6 +222,8 @@ export class Tools {
     }
 
     async presentAlert(title, msg, btnOk,isMove?) {
+        if(this.loading ! =undefined) 
+        this.loading.dismiss();
         const alert = await this.alertController.create({
             header: title,
             message: msg,
@@ -287,14 +261,28 @@ export class Tools {
         });
         return await alert.present();
     }
-    closeLoader() {
-        // setTimeout(() => {
-            if (this.loading) {
-                this.loading.dismiss();
-            }
-        // }, 500);
-    }
+    // closeLoader() {
+    //         if(this.loading != undefined)
+    //         this.loading.dismiss();
+    //     }
 
+    public async closeLoader(): Promise<void> {
+
+        // console.log('Loading dismissed ');     
+         if (this.isShowing) {
+           this.isShowing = false;
+           await this.loadingController.dismiss();
+         }
+       }
+// async closeLoader() {
+//   let topLoader = await this.loadingController.getTop();
+//   while (topLoader) {
+//     if (!(await topLoader.dismiss())) {
+//       throw new Error('Could not dismiss the topmost loader. Aborting...');
+//     }
+//     topLoader = await this.loadingController.getTop();
+//   }
+// }
     dataURItoBlob(dataURI) {
         // convert base64/URLEncoded data component to raw binary data held in a string
         let byteString;

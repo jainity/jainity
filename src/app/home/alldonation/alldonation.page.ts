@@ -1,6 +1,7 @@
 import { ToastController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Tools } from '../../shared/tools';
 
 @Component({
   selector: 'app-alldonation',
@@ -9,23 +10,17 @@ import { Router } from '@angular/router';
 })
 export class AlldonationPage implements OnInit {
 
-  constructor(private route: Router,public toastController: ToastController) { }
+  constructor(private route: Router,public toastController: ToastController,public tools:Tools) { 
+    this.tools.closeLoader();
+  }
 
   ngOnInit() {
   }
 
   oninstwiseClick() {
-
-    this.route.navigate(['/instiwisedonation']);
-
-    // const toast = await this.toastController.create({
-    //   message: 'This Is Institute wise',
-    //   duration: 2000 ,
-    //   color: 'primary'
-    // });
-    // toast.present();
+    this.route.navigateByUrl('/instiwisedonation');
   }
   onschemewiseClick() {
-    this.route.navigate(['/schemewisedonation']);
+    this.route.navigateByUrl('/schemewisedonation');
   }
 }

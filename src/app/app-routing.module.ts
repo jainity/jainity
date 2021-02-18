@@ -34,28 +34,28 @@ const routes: Routes = [
     loadChildren: () => import('./otpverification/otpverification.module').then( m => m.OtpverificationPageModule)
   },
   {
-    path: 'schemedetails',
+    path: 'schemedetails', canActivate: [AuthGuard],
     loadChildren: () => import('./schemedetails/schemedetails.module').then( m => m.SchemedetailsPageModule)
   },
 
   {
-    path: 'searchitem',
+    path: 'searchitem', canActivate: [AuthGuard],
     loadChildren: () => import('./searchitem/searchitem.module').then( m => m.SearchitemPageModule)
   },
   {
-    path: 'instiwisedonation',
+    path: 'instiwisedonation', canActivate: [AuthGuard],
     loadChildren: () => import('./instiwisedonation/instiwisedonation.module').then( m => m.InstiwisedonationPageModule)
   },
   {
-    path: 'schemewisedonation',
+    path: 'schemewisedonation', canActivate: [AuthGuard],
     loadChildren: () => import('./schemewisedonation/schemewisedonation.module').then( m => m.SchemewisedonationPageModule)
   },
   {
-    path: 'reciept',
+    path: 'reciept', canActivate: [AuthGuard],
     loadChildren: () => import('./reciept/reciept.module').then( m => m.RecieptPageModule)
   },
   {
-    path: 'paymentconfir',
+    path: 'paymentconfir', canActivate: [AuthGuard],
     loadChildren: () => import('./paymentconfir/paymentconfir.module').then( m => m.PaymentconfirPageModule)
   },
 

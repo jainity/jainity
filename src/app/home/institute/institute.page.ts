@@ -17,6 +17,7 @@ export class InstitutePage implements OnInit {
   constructor(private route: Router,public alertController: AlertController, public apiService: ApiService,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,
     public toastController: ToastController)  { 
+      this.tools.closeLoader();
       localStorage.removeItem('InstituteId');
   }
 
@@ -24,8 +25,7 @@ export class InstitutePage implements OnInit {
     localStorage.setItem('InstituteId',item.InstituteID)
     localStorage.setItem('TYPE','Institute')
     localStorage.setItem('Tittle',item.InstituteName)
-
-    this.route.navigate(['/schemedetails'])
+    this.route.navigateByUrl('/schemedetails');
 
     }
 

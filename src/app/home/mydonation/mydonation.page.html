@@ -5,11 +5,12 @@
                 <ion-grid>
                 <ion-row class="list_box">
                     <ion-col class="list_count">
-                        <ion-label color="light">₹ {{(item.PaidValue/100)}}</ion-label>
+                        <ion-label color="light">₹ {{(item.PaidValue)}}</ion-label>
                     </ion-col>
                     <ion-col class="list_content">
                         <ion-label class="white content">{{item.RefNO}}</ion-label>
-                        <ion-label class="white content">{{item.Txndate}}</ion-label>
+                        <!-- <ion-label class="white content">{{item.Txndate}}</ion-label> -->
+                        <ion-label class="white content">{{item.Txndate | date: 'dd-MM-yyyy'}} </ion-label>
                         <ion-label class="white content">{{item.SchemeName + '&nbsp;('+item.InstituteName+')'}}</ion-label>
                         <div class="button_box">
                             <ion-button class="btn-orange" (click)="onReceiptClick(item)" shape="round" expand="block">RECEIPT</ion-button>

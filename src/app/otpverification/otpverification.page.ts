@@ -23,16 +23,11 @@ errorMsg:any='';
 
 
   constructor(private router: Router, public route: ActivatedRoute,public formBuilder: FormBuilder,
-    private apiServices: ApiService,public tools: Tools) { 
-      //this.mno = this.route.snapshot.paramMap.get('mno')  
-     // this.dotp = this.route.snapshot.paramMap.get('dotp')  
-
+    private apiServices: ApiService,public tools: Tools) {
+      this.tools.closeLoader(); 
      this.mno =localStorage.getItem('mobileno');
-
-
-      console.log('params1 =>', this.mno);
+     if(this.mno != undefined && this.mno != null)
       this.verificont="Please Enter Verification Code Send to ******"+this.mno.substr(this.mno.length - 4)
-
   }
 
   onBackClick(){
@@ -58,14 +53,15 @@ errorMsg:any='';
         this.apiServices.VerificationOTP(this.otpcode,this.mno).subscribe(response => {
           this.tools.closeLoader();
           let res: any = response;
-
-
           if(res.status){
             localStorage.setItem('login_token', res.token);
             console.log('response ', res.data[0]);
             //localStorage.setItem('userdata', JSON.stringify(res.data[0]));
             this.apiServices.setUserData(res.data[0])
-            this.router.navigateByUrl('/home', { replaceUrl: true });
+            setTimeout(() => {              
+              this.router.navigateByUrl('/home', { replaceUrl: true });
+            }, 100);
+
            // this.router.navigate(['/home'], { replaceUrl: true });
           }else{
             this.tools.presentAlert('','Something Wrong...', 'Ok');

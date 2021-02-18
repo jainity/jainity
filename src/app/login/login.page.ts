@@ -18,7 +18,7 @@ export class LoginPage {
   constructor(private route: Router,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,
     public toastController: ToastController) {
-
+      
     this.loginForm = this.formBuilder.group({
       phone: ['',[Validators.required, Validators.maxLength(10),Validators.pattern('[0-9]+')]],
       //  email: ['pratik.aipl@gmail.com', [Validators.required, Validators.email]],
@@ -28,7 +28,7 @@ export class LoginPage {
   }
 
  onRegClick() {
-  this.route.navigate(['/register']);
+  this.route.navigateByUrl('/register');
   }
 
   onLoginClick() {
@@ -39,7 +39,6 @@ export class LoginPage {
       } else if (this.mobileno.length != 10) {
         msg = msg + 'Please enter valid mobile number<br />'
       }
-    
     if (msg != '') {
       this.errorMsg=msg;
   // this.tools.openAlert(msg);
@@ -48,20 +47,23 @@ export class LoginPage {
       if (this.tools.isNetwork()) {
         this.tools.openLoader();
         this.apiServices.SendOTP(this.mobileno).subscribe(response => {
-          this.tools.closeLoader();
+         
           let res: any = response;
           if(res.status){
             localStorage.setItem('mobileno', this.mobileno);
-            this.route.navigate(['/otpverification']);
+            setTimeout(() => {              
+              this.tools.closeLoader();
+              this.route.navigateByUrl('/otpverification');
+            }, 1000);
           }else{
+            this.tools.closeLoader();
             this.tools.presentAlert('','Something wrong...', 'Ok');
           }
         }, (error: Response) => {
           this.tools.closeLoader();
           console.log('Error ', error);
           let err:any = error;
-          this.tools.openAlertToken(err.status, err.error.message);
-    
+          this.tools.openAlertToken(err.status, err.error.message);    
         });
       } else {
         this.tools.closeLoader();

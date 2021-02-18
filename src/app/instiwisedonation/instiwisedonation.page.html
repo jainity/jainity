@@ -23,7 +23,7 @@
                         <ion-row>
                             <ion-col class="list_block " size="12" >
                                 <div class="list_box" style="text-align: center;">
-                                        <ion-label class="roundedInput" color="light"><b>Total Donation : Rs. {{INSTotalCount}}</b></ion-label>
+                                        <ion-label class="roundedInput" color="light"><b>Total Donation : {{ INSTotalCount | currency :'INR':'symbol':'1.2-2' }} </b></ion-label>
                                         </div>
                             </ion-col>
                             <ion-col class="list_block" *ngFor="let item of Institutewise;">
@@ -37,7 +37,7 @@
                                     <ion-row>
                                         <ion-col class="list_content">
                                             <ion-label color="light">
-                                                <b>Rs. {{item.Total}}</b>
+                                                <b>{{ item.Total | currency :'INR':'symbol':'1.2-2' }}</b>
                                             </ion-label>
                                         </ion-col>
                                     </ion-row>
