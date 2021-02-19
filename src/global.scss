@@ -416,8 +416,20 @@ p {
 	max-width: 340px;
 	margin: 0 auto;
 }
+.white.content.highlight {
+    background: #fff;
+    color: #ef7635;
+    padding: 7px 10px 7px 15px;
+    display: inline-block;
+    margin-bottom: 10px;
+    border-radius: 0px 15px 15px 0px;
+    position: relative;
+    left: -15px;
+}
 
-
+.list_inner_box .white.content p {
+	display: inline-block;
+}
 
 @media (max-width: 1024px) {
     ion-header .menubars {
