@@ -12,10 +12,10 @@ const routes: Routes = [
     pathMatch: 'full'
   },
 
-  {
-    path: 'home', canActivate: [AuthGuard],
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
+  // {
+  //   path: 'home', canActivate: [AuthGuard],
+  //   loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  // },
  
   {
     path: 'about',
@@ -57,6 +57,10 @@ const routes: Routes = [
   {
     path: 'paymentconfir', canActivate: [AuthGuard],
     loadChildren: () => import('./paymentconfir/paymentconfir.module').then( m => m.PaymentconfirPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
 
 ];
