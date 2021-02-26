@@ -24,7 +24,7 @@ ion-grid, ion-col {
 }
 .logo-title {
 	font-size: 18px !important;
-	font-family: 'Gotham-Light';
+	font-family: 'Poppins';
 	text-transform: uppercase;
 	letter-spacing: 7px;
 }
@@ -36,7 +36,7 @@ ion-grid, ion-col {
 	margin: 0px 10px;
 	display: inline-block;
 	color: #000;
-	font-family: 'Gotham-Light';
+	font-family: 'Poppins';
 	font-size: 16px !important;
 }
 .menu ion-label:first-child {
@@ -79,7 +79,7 @@ ion-grid, ion-col {
 	height: 50px;
 	border-radius: 50px;
 	overflow: hidden;
-	font-family: 'Gotham-Bold';
+	font-family: 'Poppins-Bold';
 	font-size: 18px;
 }
 .banner_list_box {
@@ -92,7 +92,7 @@ ion-grid, ion-col {
 }
 
 .banner_list_box ion-label {
-	font-family: 'Gotham-Light';
+	font-family: 'Poppins';
 	font-size: 16px !important;
 	color: #000;
 	text-transform: capitalize;
@@ -107,7 +107,7 @@ ion-grid, ion-col {
 }
 .tag-line {
 	font-size: 44px !important;
-	font-family: "Gotham-Bold";
+	font-family: 'Poppins-Bold';
 	text-transform: uppercase;
 	color: #fff;
 	margin: 0px;
@@ -120,7 +120,7 @@ ion-grid, ion-col {
 }
 .subtag-line {
 	font-size: 20px !important;
-	font-family: "Gotham-Book";
+	font-family: 'Poppins-SemiBold';
 	color: #fff;
 	margin: 0px;
 	padding: 0px;
@@ -137,7 +137,7 @@ ion-grid, ion-col {
 	color: #ed3237;
 	font-size: 30px !important;
 	display: block;
-	font-family: 'Gotham-Bold';
+	font-family: 'Poppins-Bold';
 	text-transform: uppercase;
 	padding-bottom: 15px;
 }
@@ -158,7 +158,7 @@ ion-grid, ion-col {
 .content {
 	color: #3a3636;
 	font-size: 16px !important;
-	font-family: 'Gotham-Book';
+	font-family: 'Poppins';
 	line-height: 22px !important;
 	display: block;
 }
@@ -174,16 +174,16 @@ ion-grid, ion-col {
 
 .tag-line-row ion-label{
 	font-size: 20px !important;
-    font-style: italic;
-    color: #fff;
-    letter-spacing: 0.8px;
-    text-align: center;
-    font-family: "Gotham-Book";
-    position: relative;
-    margin: 0 auto;
-    max-width: 620px;
-    display: block;
-    z-index: 2;
+font-style: italic;
+color: #fff;
+letter-spacing: 0.8px;
+text-align: center;
+position: relative;
+margin: 0 auto;
+max-width: 640px;
+display: block;
+z-index: 2;
+font-family: 'Poppins-SemiBold';
 }
 
 
@@ -195,16 +195,18 @@ ion-grid, ion-col {
 	opacity: 0.3;
 	position: absolute;
 	z-index: -1;
+	font-family: arial;
 }
 .tag-line-row ion-label span.left {
-	left: -35px;
-	top: -5px;
+	left: -20px;
+top: 0px;
+font-family: arial;
 }
 
 .tag-line-row ion-label span.right {
-	right: -44px;
-	top: -47px;
-	transform: rotate(175deg);
+	right: -24px;
+top: -44px;
+transform: rotate(175deg);
 }
 
 
@@ -242,7 +244,7 @@ ion-grid, ion-col {
 #work .title {
 	font-size: 20px !important;
     color: #fff;
-    font-family: "Gotham-Book";
+    font-family: 'Poppins-Bold';
     text-transform: uppercase;
     margin: 0px;
     padding: 0px;
@@ -276,7 +278,7 @@ ion-grid, ion-col {
 	display: block;
 	text-align: center;
 	text-transform: uppercase;
-	font-family: 'Gotham-Book';
+	font-family: 'Poppins-Bold';
 	font-size: 26px !important;
 	position: relative;
 	z-index: 2;
@@ -294,7 +296,7 @@ ion-grid, ion-col {
 }
 
 #advantage  .title {
-	font-family: 'Gotham-Book';
+	font-family: 'Poppins-Bold';
 	font-size: 28px !important;
 	margin-bottom: 10px;
 	display: block;
@@ -329,7 +331,7 @@ ion-grid, ion-col {
 
 #footer .title {
 	color: #fff;
-	font-family: 'Gotham-Book';
+	font-family: 'Poppins-Bold';
 	font-size: 22px !important;
 	border-bottom: 1px solid #fff;
 	display: inline-block;
@@ -342,7 +344,7 @@ ion-grid, ion-col {
 .link_box ion-label a {
 	color: #fff;
 	font-size: 15px;
-	font-family: 'Gotham-Book';
+	font-family: 'Poppins';
 }
 .link_box {
 	display: flex;
@@ -417,7 +419,7 @@ ion-grid, ion-col {
 
 .slider_box ion-label {
 	font-size: 16px !important;
-	font-family: 'Gotham-Book';
+	font-family: 'Poppins';
 	display: block;
 	line-height: 18px;
 	margin-top: 12px;
@@ -504,7 +506,7 @@ ion-grid, ion-col {
 }
 .slider_tabs ion-item ion-label .check_mark {
 	color: #000;
-	font-family: 'Gotham-Book';
+	font-family: 'Poppins';
 	font-size: 16px;
 	padding: 10px 22px;
 	background: transparent;
@@ -518,7 +520,7 @@ ion-grid, ion-col {
 
 .button_link {
 	color: #000;
-	font-family: 'Gotham-Book';
+	font-family: 'Poppins';
 	font-size: 18px;
 	padding: 0px;
 	--padding: 0px !important;
