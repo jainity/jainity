@@ -54,31 +54,10 @@ export class HomePage implements OnInit {
   ngOnInit() {
   }
   scrollTo(elementId:string) {
-    // let yOffset = document.getElementById(elementId).offsetTop;
-    // this.content.scrollTo(0, yOffset, 4000)
-
-    // let elem = document.getElementById(elementId);
-    // var box = elem.getBoundingClientRect();
-
-    // var body = document.body;
-    // var docEl = document.documentElement;
-
-    // var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
-    // var clientTop = docEl.clientTop || body.clientTop || 0;
-    // var top  = box.top +  scrollTop - clientTop;
-    // var cDim = this.content.getContentDimensions();
-
-    // var scrollOffset = Math.round(top) + cDim.scrollTop - cDim.contentTop;
-
-    // this.content.scrollTo(0, scrollOffset, 500);
-}
-  openHome(){
+    let todayItem = document.getElementById(elementId);
+    todayItem.scrollIntoView(true);
+    // this.content.scrollTo(0, todayItem.offsetTop, 1000);
   }
-  openAbout(){
-  }
-  openDonate(){
-  }
-  openContact(){
-  }
+
 
 }
