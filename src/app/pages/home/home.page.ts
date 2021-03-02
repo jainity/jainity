@@ -8,7 +8,9 @@ import { IonSlides } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
 
-  @ViewChild('mySlider')  slides: IonSlides
+  @ViewChild('InstiSlider')  InstiSlider: IonSlides
+  @ViewChild('GroupSlider')  GroupSlider: IonSlides
+
   @ViewChild('content') content: any;
   
   
@@ -30,13 +32,40 @@ export class HomePage implements OnInit {
     //   shadowScale: 0.94,
     // }
   }
-  swipeNext(){
-    this.slides.slideNext();
+  slideOpts2 ={
+    slidesPerView: 1,
+    initialSlide: 0,
+    autoplay:true,
+    speed: 700,
+    coverflowEffect: {
+      rotate: 100,
+      stretch: 0,
+      shadowOffset: 20,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
+     
+    }
+ 
   }
-  swipePrev(){
-    this.slides.slidePrev();
+  InstswipeNext(){
+    this.InstiSlider.slideNext();
   }
+  InstswipePrev(){
+    this.InstiSlider.slidePrev();
+  }
+
+  grpswipeNext(){
+    this.GroupSlider.slideNext();
+  }
+  grpswipePrev(){
+    this.GroupSlider.slidePrev();
+  }
+
   slideItem=[];
+  TopslideItem=[];
+  GroupslideItem=[];
+
   constructor() {
 
     this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Amizara Vasupujya ',loc:'Ghatkopar'})
@@ -48,6 +77,18 @@ export class HomePage implements OnInit {
     this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Munisvrat Derasar ',loc:'Matunga'})
     this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Shantinath Derasar ',loc:'Sion'})
     this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Parshvanath Derasar ',loc:'Borival'})
+
+    this.TopslideItem.push({img:'../../../assets/img/slider.jpg'})
+    this.TopslideItem.push({img:'../../../assets/img/slidedemo.jpg'})
+    this.TopslideItem.push({img:'../../../assets/img/slidesdemoo.jpg'})
+
+    this.GroupslideItem.push({img:'../../../assets/img/1.png ',title:'Dev Draviya',loc:'(Gujarat)'})
+    this.GroupslideItem.push({img:'../../../assets/img/2.png',title:'Sarva Sadharan',loc:'(Gujarat)'})
+    this.GroupslideItem.push({img:'../../../assets/img/3.png',title:'Gyan Puja',loc:'(Gujarat)'})
+
+    this.GroupslideItem.push({img:'../../../assets/img/1.png ',title:'Dev Draviya',loc:'(Gujarat)'})
+    this.GroupslideItem.push({img:'../../../assets/img/2.png',title:'Sarva Sadharan',loc:'(Gujarat)'})
+    this.GroupslideItem.push({img:'../../../assets/img/3.png',title:'Gyan Puja',loc:'(Gujarat)'})
 
    }
 
