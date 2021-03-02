@@ -15,6 +15,7 @@ export class HomePage implements OnInit {
   
   
   sliderType='Dehrasar'
+  
   slideOpts ={
     slidesPerView: 4,
     coverflowEffect: {
@@ -82,13 +83,13 @@ export class HomePage implements OnInit {
     this.TopslideItem.push({img:'../../../assets/img/slidedemo.jpg'})
     this.TopslideItem.push({img:'../../../assets/img/slidesdemoo.jpg'})
 
-    this.GroupslideItem.push({img:'../../../assets/img/1.png ',title:'Dev Draviya',loc:'(Gujarat)'})
-    this.GroupslideItem.push({img:'../../../assets/img/2.png',title:'Sarva Sadharan',loc:'(Gujarat)'})
-    this.GroupslideItem.push({img:'../../../assets/img/3.png',title:'Gyan Puja',loc:'(Gujarat)'})
+    this.GroupslideItem.push({img:'../../../assets/img/1.png ',title:'Dev Draviya'})
+    this.GroupslideItem.push({img:'../../../assets/img/2.png',title:'Sarva Sadharan'})
+    this.GroupslideItem.push({img:'../../../assets/img/3.png',title:'Gyan Puja'})
 
-    this.GroupslideItem.push({img:'../../../assets/img/1.png ',title:'Dev Draviya',loc:'(Gujarat)'})
-    this.GroupslideItem.push({img:'../../../assets/img/2.png',title:'Sarva Sadharan',loc:'(Gujarat)'})
-    this.GroupslideItem.push({img:'../../../assets/img/3.png',title:'Gyan Puja',loc:'(Gujarat)'})
+    this.GroupslideItem.push({img:'../../../assets/img/1.png ',title:'Dev Draviya'})
+    this.GroupslideItem.push({img:'../../../assets/img/2.png',title:'Sarva Sadharan'})
+    this.GroupslideItem.push({img:'../../../assets/img/3.png',title:'Gyan Puja'})
 
    }
 
