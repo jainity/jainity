@@ -1,5 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
+import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AlertController, IonSlides } from '@ionic/angular';
+import { ApiService } from 'src/app/services/api.service';
+import { Tools } from 'src/app/shared/tools';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +18,7 @@ export class HomePage implements OnInit {
   @ViewChild('content') content: any;
   
   
-  sliderType='Dehrasar'
+  sliderType:any;
   
   slideOpts ={
     slidesPerView: 4,
@@ -33,6 +37,7 @@ export class HomePage implements OnInit {
     //   shadowScale: 0.94,
     // }
   }
+
   slideOpts2 ={
     slidesPerView: 1,
     initialSlide: 0,
@@ -49,9 +54,11 @@ export class HomePage implements OnInit {
     }
  
   }
+
   InstswipeNext(){
     this.InstiSlider.slideNext();
   }
+
   InstswipePrev(){
     this.InstiSlider.slidePrev();
   }
@@ -59,6 +66,7 @@ export class HomePage implements OnInit {
   grpswipeNext(){
     this.GroupSlider.slideNext();
   }
+
   grpswipePrev(){
     this.GroupSlider.slidePrev();
   }
@@ -66,40 +74,181 @@ export class HomePage implements OnInit {
   slideItem=[];
   TopslideItem=[];
   GroupslideItem=[];
+  InstituteType=[];
 
-  constructor() {
 
-    this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Amizara Vasupujya ',loc:'Ghatkopar'})
-    this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Munisvrat Derasar ',loc:'Matunga'})
-    this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Shantinath Derasar ',loc:'Sion'})
-    this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Parshvanath Derasar ',loc:'Borival'})
+  constructor(private route: Router,public alertController: AlertController,
+     public apiService: ApiService,public formBuilder: FormBuilder,
+    public tools: Tools) {
 
-    this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Amizara Vasupujya ',loc:'Ghatkopar'})
-    this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Munisvrat Derasar ',loc:'Matunga'})
-    this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Shantinath Derasar ',loc:'Sion'})
-    this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Parshvanath Derasar ',loc:'Borival'})
+      this.tools.closeLoader();
 
-    this.TopslideItem.push({img:'../../../assets/img/slider.jpg'})
-    this.TopslideItem.push({img:'../../../assets/img/slidedemo.jpg'})
-    this.TopslideItem.push({img:'../../../assets/img/slidesdemoo.jpg'})
 
-    this.GroupslideItem.push({img:'../../../assets/img/1.png ',title:'Dev Draviya'})
-    this.GroupslideItem.push({img:'../../../assets/img/2.png',title:'Sarva Sadharan'})
-    this.GroupslideItem.push({img:'../../../assets/img/3.png',title:'Gyan Puja'})
+    // this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Amizara Vasupujya ',loc:'Ghatkopar'})
+    // this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Munisvrat Derasar ',loc:'Matunga'})
+    // this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Shantinath Derasar ',loc:'Sion'})
+    // this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Parshvanath Derasar ',loc:'Borival'})
 
-    this.GroupslideItem.push({img:'../../../assets/img/1.png ',title:'Dev Draviya'})
-    this.GroupslideItem.push({img:'../../../assets/img/2.png',title:'Sarva Sadharan'})
-    this.GroupslideItem.push({img:'../../../assets/img/3.png',title:'Gyan Puja'})
+    // this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Amizara Vasupujya ',loc:'Ghatkopar'})
+    // this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Munisvrat Derasar ',loc:'Matunga'})
+    // this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Shantinath Derasar ',loc:'Sion'})
+    // this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Parshvanath Derasar ',loc:'Borival'})
+
+    // this.TopslideItem.push({img:'../../../assets/img/slider.jpg'})
+    // this.TopslideItem.push({img:'../../../assets/img/slidedemo.jpg'})
+    // this.TopslideItem.push({img:'../../../assets/img/slidesdemoo.jpg'})
+
+    // this.GroupslideItem.push({img:'../../../assets/img/1.png ',title:'Dev Draviya'})
+    // this.GroupslideItem.push({img:'../../../assets/img/2.png',title:'Sarva Sadharan'})
+    // this.GroupslideItem.push({img:'../../../assets/img/3.png',title:'Gyan Puja'})
+
+    // this.GroupslideItem.push({img:'../../../assets/img/1.png ',title:'Dev Draviya'})
+    // this.GroupslideItem.push({img:'../../../assets/img/2.png',title:'Sarva Sadharan'})
+    // this.GroupslideItem.push({img:'../../../assets/img/3.png',title:'Gyan Puja'})
 
    }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+
+  ionViewDidEnter() {
+    this.getBannerCall();
+}
+
   scrollTo(elementId:string) {
     let todayItem = document.getElementById(elementId);
     todayItem.scrollIntoView(true);
     // this.content.scrollTo(0, todayItem.offsetTop, 1000);
   }
+  onInstituteList(item){
+    this.getInstitutetypeList(item.InstituteTypeID);
 
+   }
+  getBannerCall() {
+    if (this.tools.isNetwork()) {
+      this.tools.openLoader();
+      console.log('getSGLISTCall');
+      this.apiService.getHomeBanner().subscribe(response => {
+        console.log('getBanner_RESPONSE>>>');
+
+        //this.tools.closeLoader();
+        let res: any = response;
+        this.getInstitutetype();
+        this.getSGLISTCall();
+
+        if(res.status){
+          this.TopslideItem = res.data;
+        }else{
+          this.TopslideItem=res.message
+        }
+        console.log(res)
+      }, (error: Response) => {
+        console.log('ERORR>>>');
+        this.tools.closeLoader();
+        this.tools.closeLoader();
+        let err:any = error;
+        console.log('Error ', err);
+       this.tools.openAlertToken(err.status, err.error.message);
+  
+      });
+    } else {
+      console.log('ELSE>> ');
+      this.tools.closeLoader();
+    }
+  }
+
+  getInstitutetype() {
+    if (this.tools.isNetwork()) {
+      //this.tools.openLoader();
+      console.log('getSGLISTCall');
+      this.apiService.getInstituteType().subscribe(response => {
+        console.log('getInstitutetype_RESPONSE>>>');
+
+        //this.tools.closeLoader();
+        let res: any = response;
+        
+        if(res.status){
+          this.InstituteType = res.data;
+
+          this.sliderType = res.data[0].InstituteType;
+        this.getInstitutetypeList(res.data[0].InstituteTypeID);
+
+        }else{
+          this.InstituteType=res.message
+        }
+        console.log(res)
+      }, (error: Response) => {
+        console.log('ERORR>>>');
+        this.tools.closeLoader();
+        this.tools.closeLoader();
+        let err:any = error;
+        console.log('Error ', err);
+       this.tools.openAlertToken(err.status, err.error.message);
+  
+      });
+    } else {
+      console.log('ELSE>> ');
+      this.tools.closeLoader();
+    }
+  }
+
+  getInstitutetypeList(ID) {
+    if (this.tools.isNetwork()) {
+      //this.tools.openLoader();
+      console.log('getSGLISTCall');
+      this.apiService.getInstituteTypeList(ID).subscribe(response => {
+        console.log('RESPONSE>>>');
+
+       // this.tools.closeLoader();
+        let res: any = response;
+        if (res.status) {
+          this.slideItem = res.data;
+        } else {
+          this.slideItem = res.message
+        }
+        console.log(res)
+      }, (error: Response) => {
+        console.log('ERORR>>>');
+        this.tools.closeLoader();
+        this.tools.closeLoader();
+        let err: any = error;
+        console.log('Error ', err);
+        this.tools.openAlertToken(err.status, err.error.message);
+
+      });
+    } else {
+      console.log('ELSE>> ');
+      this.tools.closeLoader();
+    }
+  }
+
+  getSGLISTCall() {
+    if (this.tools.isNetwork()) {
+      //this.tools.openLoader();
+      console.log('getSGLISTCall');
+      this.apiService.getHomeSchemeGroup().subscribe(response => {
+        console.log('getSGLISTCall_RESPONSE>>>');
+
+        this.tools.closeLoader();
+        let res: any = response;
+        if(res.status){
+          this.GroupslideItem = res.data;
+        }else{
+          this.GroupslideItem=res.message
+        }
+        console.log(res)
+      }, (error: Response) => {
+        console.log('ERORR>>>');
+        this.tools.closeLoader();
+        this.tools.closeLoader();
+        let err:any = error;
+        console.log('Error ', err);
+       this.tools.openAlertToken(err.status, err.error.message);
+  
+      });
+    } else {
+      console.log('ELSE>> ');
+      this.tools.closeLoader();
+    }
+  }
 
 }

@@ -138,11 +138,27 @@ export class ApiService {
     this.setHeader();
     return this.http.get(environment.BaseUrl + "trasaction/?user_id="+ID, this.httpOptions);
   }
-
   getSchemeGroup(): any {
     this.setHeader();
     return this.http.get(environment.BaseUrl + "scheme_group", this.httpOptions);
   }
+  getHomeBanner(): any {
+    this.setHeader();
+    return this.http.get(environment.BaseUrl + "banner", this.httpOptions);
+  }
+  getHomeSchemeGroup(): any {
+    this.setHeader();
+    return this.http.get(environment.BaseUrl + "home_page/scheme_group", this.httpOptions);
+  }
+  getInstituteType(): any {
+    this.setHeader();
+    return this.http.get(environment.BaseUrl + "home_page/institute_type", this.httpOptions);
+  }
+  getInstituteTypeList(ID): any {
+    this.setHeader();
+    return this.http.get(environment.BaseUrl + "home_page/institute?InstituteTypeID="+ID, this.httpOptions);
+  }
+
   getInstituteList(): any {
     this.setHeader();
     return this.http.get(environment.BaseUrl + "/institute", this.httpOptions);

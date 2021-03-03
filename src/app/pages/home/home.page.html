@@ -24,7 +24,7 @@
                     <ion-slides pager="true" [options]="slideOpts2" #mySlider>
                         <ion-slide class="page_banner" *ngFor="let item of TopslideItem">
                             <div class="page_banner">
-                                <ion-img [src]='item.img'></ion-img>
+                                <ion-img [src]='item.Image'></ion-img>
                             </div>
                         </ion-slide>
                     </ion-slides>
@@ -106,7 +106,7 @@
     <ion-grid id="community">
         <ion-row class="tag-line-row">
             <ion-col>
-                <ion-label><span class="left">&#x0201C;</span>It is the most impactful way to give to the jain community<span class="right">&#x0201C;</span></ion-label>
+                <ion-label><span class="left" style="margin-left: -10px;">&#x0201C;</span>It is the most impactful way to give to the jain community<span class="right" style="margin-right: -10px;">&#x0201C;</span></ion-label>
             </ion-col>
         </ion-row>
     </ion-grid>
@@ -203,12 +203,14 @@
                                 <ion-row>
                                     <div class="cont_icon">
                                         <ion-img src="../../../assets/img/content.png"></ion-img>
+
                                     </div>
                                     <ion-col>
                                         <ion-label style="font-size: 4px;color: white;">
                                             Make Payment using your bank account or payment card and provide copy of your identity document such as PAN and AADHAR CARD.
                                         </ion-label>
                                     </ion-col>
+
                                 </ion-row>
 
                                 <ion-row>
@@ -396,14 +398,14 @@
                             <ion-label class="content-title" style="margin-left: 50px;">INSTITUTE</ion-label>
 
                             <ion-radio-group [(ngModel)]="sliderType" class="slider_tabs">
-                                <ion-item>
+                                <ion-item *ngFor="let item of InstituteType" (click)="onInstituteList(item)">
                                     <ion-label>
-                                        <ion-radio value="Dehrasar"></ion-radio>
-                                        <span class="check_mark">Dehrasar</span>
+                                        <ion-radio value={{item.InstituteType}}></ion-radio>
+                                        <span class="check_mark">{{item.InstituteType}}</span>
                                     </ion-label>
                                 </ion-item>
 
-                                <ion-item>
+                                <!-- <ion-item>
                                     <ion-label>
                                         <ion-radio value="Trust"></ion-radio>
                                         <span class="check_mark">Trust</span>
@@ -436,7 +438,8 @@
                                         <ion-radio value="Education"></ion-radio>
                                         <span class="check_mark">Education</span>
                                     </ion-label>
-                                </ion-item>
+                                </ion-item> -->
+
                             </ion-radio-group>
                         </ion-col>
                     </ion-row>
@@ -446,9 +449,9 @@
                             <ion-slides pager="true" [options]="slideOpts" #InstiSlider>
                                 <ion-slide class="slider_box" *ngFor="let item of slideItem">
                                     <div class="slider_img">
-                                        <ion-img [src]='item.img'></ion-img>
+                                        <ion-img [src]='item.InstituteLogo'></ion-img>
                                     </div>
-                                    <ion-label>{{item.title}} <span>({{item.loc}})</span></ion-label>
+                                    <ion-label>{{item.InstituteName}} <span>({{item.Address2}})</span></ion-label>
                                 </ion-slide>
                             </ion-slides>
                             <ion-img class="nav left_nav" src="assets/img/left_nav.png" (click)="InstswipePrev()"></ion-img>
@@ -484,9 +487,9 @@
                             <ion-slides pager="true" [options]="slideOpts" #GroupSlider>
                                 <ion-slide class="slider_box" *ngFor="let item of GroupslideItem">
                                     <div class="slider_img_scheme">
-                                        <ion-img [src]='item.img'></ion-img>
+                                        <ion-img [src]='item.SchemeGroupImage'></ion-img>
                                     </div>
-                                    <ion-label>{{item.title}} </ion-label>
+                                    <ion-label>{{item.SchemeGroup}} </ion-label>
                                 </ion-slide>
                             </ion-slides>
                             <ion-img class="nav left_nav" src="assets/img/left_nav.png" (click)="grpswipePrev()"></ion-img>
