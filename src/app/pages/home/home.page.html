@@ -7,10 +7,10 @@
                     <ion-label class="logo-title">Jainity</ion-label>
                 </ion-col>
                 <ion-col size="9" class="menu">
-                    <ion-label (click)="scrollTo('banner')">Home</ion-label>
-                    <ion-label (click)="scrollTo('about')">About</ion-label>
-                    <ion-label (click)="scrollTo('work')">Donate</ion-label>
-                    <ion-label (click)="scrollTo('footer')">Contact</ion-label>
+                    <ion-label (click)="scrollTo('banner')" style="cursor: pointer;">Home</ion-label>
+                    <ion-label (click)="scrollTo('about')" style="cursor: pointer;">About</ion-label>
+                    <ion-label (click)="scrollTo('work')" style="cursor: pointer;">Donate</ion-label>
+                    <ion-label (click)="scrollTo('footer')" style="cursor: pointer;">Contact</ion-label>
                 </ion-col>
             </ion-row>
         </ion-grid>
@@ -33,7 +33,7 @@
                             <ion-col>
                                 <ion-label class="tag-line">Connecting donors and institutes around the world</ion-label>
                                 <ion-label class="subtag-line">Get direct donations in your bank account</ion-label>
-                                <ion-button>Connect</ion-button>
+                                <ion-button (click)="OnConnectClick()">Connect</ion-button>
                             </ion-col>
                         </ion-row>
                         <ion-row class="banner_list_box">
@@ -370,7 +370,8 @@
                                     <div class="slider_img">
                                         <ion-img [src]='item.InstituteLogo'></ion-img>
                                     </div>
-                                    <ion-label>{{item.InstituteName}} <span>({{item.Address2}})</span></ion-label>
+                                    <!-- <ion-label>{{item.InstituteName}} <span>({{item.Address2}})</span></ion-label> -->
+                                    <ion-label>{{item.InstituteName}}</ion-label>
                                 </ion-slide>
                             </ion-slides>
                             <ion-img class="nav left_nav" src="assets/img/left_nav.png" (click)="InstswipePrev()"></ion-img>

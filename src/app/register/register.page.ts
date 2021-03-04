@@ -21,8 +21,7 @@ export class RegisterPage implements OnInit {
   fnameerror:any='';
   lnameerror:any='';
   moberror:any='';
-
-
+  
   constructor(private route: Router,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,
     public toastController: ToastController) {

@@ -1,6 +1,7 @@
+import { RegisterPage } from './../register/register.page';
 import { Tools } from './../shared/tools';
 import { Component } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { ToastController, ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
@@ -17,8 +18,8 @@ export class LoginPage {
 
   constructor(private route: Router,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,
-    public toastController: ToastController) {
-      
+    public toastController: ToastController,public modalCtrl: ModalController) {
+
     this.loginForm = this.formBuilder.group({
       phone: ['',[Validators.required, Validators.maxLength(10),Validators.pattern('[0-9]+')]],
       //  email: ['pratik.aipl@gmail.com', [Validators.required, Validators.email]],
@@ -26,10 +27,22 @@ export class LoginPage {
     });
   
   }
+  
+  async onRegClick() {  
 
- onRegClick() {
-  this.route.navigateByUrl('/register');
-  }
+    const modal = await this.modalCtrl.create({  
+      component: RegisterPage ,
+    });  
+    modal.onDidDismiss().then(result => {
+      console.log(result.data);
+    });
+
+    return await modal.present();  
+  }  
+
+//  onRegClick() {
+//   this.route.navigateByUrl('/register');
+//   }
 
   onLoginClick() {
     var msg = ''
