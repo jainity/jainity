@@ -23,7 +23,7 @@
                 <div class="slider-box">
                     <ion-slides pager="true" [options]="slideOpts2" #mySlider>
                         <ion-slide class="page_banner" *ngFor="let item of TopslideItem">
-                            <div class="page_banner">
+                            <div class="page_img_banner">
                                 <ion-img [src]='item.Image'></ion-img>
                             </div>
                         </ion-slide>
@@ -111,20 +111,28 @@
         </ion-row>
     </ion-grid>
 
-    <ion-grid class="container" id="way">
-        <ion-row class="about-box">
+    <ion-grid id="way">
+        <ion-row class="way-block" style="background-image: url('assets/img//way.jpg');">
             <ion-col>
-                <ion-label class="content-title">Why Jainity?</ion-label>
-                <div>
-                    <ion-label class="title"><span class="left">&#x0203B;</span>Vision</ion-label>
-                    <ion-label class="content" style="margin-left: 20px;">A digital platform to transform Jain charity with a community-centric approach for the eternity of Jain values</ion-label>
-                </div>
-
-                <div style="margin-top: 15px;">
-                    <ion-label class="title"><span class="left">&#x0203B;</span>Mission</ion-label>
-                    <ion-label class="content" style="margin-left: 20px;">Jainity is the world’s first digital platform for making donation towards Jain causes.
-                    </ion-label>
-                </div>
+                <ion-grid class="container">
+                    <ion-label class="section-title">way jainity?</ion-label>
+                    <ion-row class="way-box">
+                        <ion-col size='6'>
+                            <div class="icon">
+                                <ion-img src="assets/img/Vision.png"></ion-img>
+                            </div>
+                            <ion-label class="title">Vision</ion-label>
+                            <ion-label class="content">A digital platform to transform Jain charity with a community-centric approach for the eternity of Jain values</ion-label>
+                        </ion-col>
+                        <ion-col size='6'>
+                            <div class="icon">
+                                <ion-img src="assets/img/mission.png"></ion-img>
+                            </div>
+                            <ion-label class="title">Mission</ion-label>
+                            <ion-label class="content">Jainity is the world’s first digital platform for making donation towards Jain causes.</ion-label>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>                    
             </ion-col>
         </ion-row>
     </ion-grid>
@@ -134,7 +142,7 @@
             <ion-col>
                 <ion-grid class="container">
                     <ion-label class="section-title">How it works</ion-label>
-                    <ion-label class="content" style="margin-top: -15px;">
+                    <ion-label class="content" style="text-align: center; max-width: 870px; margin: 0 auto; margin-top: -15px;">
                         The platform accessible via website and mobile phones will make the transfer directly from the donor account to the institute’s account and generate verified receipt instantly.
                     </ion-label>
                     <ion-row class="work-block" style="margin-top: 30px;">
@@ -168,125 +176,36 @@
                     </ion-row>
 
                     <ion-row class="work-block" style="margin-top: 50px;">
-                        <ion-col>
+                        <ion-col size="6" class="col-w-50">
                             <div class="work_box">
                                 <div class="work_icon">
                                     <ion-img src="assets/img/donate_icon.png"></ion-img>
                                 </div>
                                 <ion-label class="title">DONOR</ion-label>
-                                <ion-row style="font-size: 6px;color: white;">
-                                    <ion-label>It's Very simple.All you have to do is:</ion-label>
-                                </ion-row>
-
-                                <ion-row>
-                                    <div class="cont_icon">
-                                        <ion-img src="../../../assets/img/content.png"></ion-img>
-                                    </div>
-                                    <ion-col>
-                                        <ion-label style="font-size: 4px;color: white;">
-                                            Create your free jainity account with your mobile number and email
-                                        </ion-label>
-                                    </ion-col>
-                                </ion-row>
-
-                                <ion-row>
-                                    <div class="cont_icon">
-                                        <ion-img src="../../../assets/img/content.png"></ion-img>
-                                    </div>
-                                    <ion-col>
-                                        <ion-label style="font-size: 4px;color: white;">
-                                            Select Jain cause(s)
-                                        </ion-label>
-                                    </ion-col>
-                                </ion-row>
-
-                                <ion-row>
-                                    <div class="cont_icon">
-                                        <ion-img src="../../../assets/img/content.png"></ion-img>
-
-                                    </div>
-                                    <ion-col>
-                                        <ion-label style="font-size: 4px;color: white;">
-                                            Make Payment using your bank account or payment card and provide copy of your identity document such as PAN and AADHAR CARD.
-                                        </ion-label>
-                                    </ion-col>
-
-                                </ion-row>
-
-                                <ion-row>
-                                    <div class="cont_icon">
-                                        <ion-img src="../../../assets/img/content.png"></ion-img>
-                                    </div>
-                                    <ion-col style="font-size: 4px;color: white;">
-                                        <ion-label>
-                                            Receive payment confirmation,donation receipt and tax deduction certificate (if applicable)
-                                        </ion-label>
-                                    </ion-col>
-                                </ion-row>
-
+                                <ion-label class="content bold">It's Very simple.All you have to do is:</ion-label>
+                                <div class="content_list">
+                                    <ion-label class="content">Create your free jainity account with your mobile number and email</ion-label>
+                                    <ion-label class="content">Select Jain cause(s) </ion-label>
+                                    <ion-label class="content">Make Payment using your bank account or payment card and provide copy of your identity document such as PAN and AADHAR CARD.</ion-label>
+                                    <ion-label class="content">Receive payment confirmation,donation receipt and tax deduction certificate (if applicable)</ion-label>
+                                </div>
                             </div>
                         </ion-col>
-
-                        <ion-col>
+                        <ion-col size="6" class="col-w-50">
                             <div class="work_box">
                                 <div class="work_icon">
-                                    <ion-img src="../../../assets/img/institute.png"></ion-img>
+                                    <ion-img src="assets/img/donate_icon.png"></ion-img>
                                 </div>
                                 <ion-label class="title">INSTITUTE</ion-label>
-                                <ion-label style="font-size: 6px;color: white; ">
-                                    Registering Your institute and managing your causes is a straight forward process.
-                                </ion-label>
-
-
-                                <ion-row>
-                                    <div class="cont_icon">
-                                        <ion-img src="../../../assets/img/content.png"></ion-img>
-                                    </div>
-                                    <ion-col>
-                                        <ion-label style="font-size: 4px;color: white;">
-                                            Create your free jainity account with your mobile number and email (or use your existing account)
-                                        </ion-label>
-                                    </ion-col>
-                                </ion-row>
-
-                                <ion-row>
-                                    <div class="cont_icon">
-                                        <ion-img src="../../../assets/img/content.png"></ion-img>
-                                    </div>
-                                    <ion-col>
-                                        <ion-label style="font-size: 4px;color: white;">
-                                            Submit your institute details,upload requested documents,provide registration information and specify bank details for receiving donations
-                                        </ion-label>
-                                    </ion-col>
-                                </ion-row>
-
-                                <ion-row>
-                                    <div class="cont_icon">
-                                        <ion-img src="../../../assets/img/content.png"></ion-img>
-                                    </div>
-                                    <ion-col>
-                                        <ion-label style="font-size: 4px;color: white;">
-                                            manage your institute page,list your causes,add more members from your institute
-                                        </ion-label>
-                                    </ion-col>
-                                </ion-row>
-
-                                <ion-row>
-                                    <div class="cont_icon">
-                                        <ion-img src="../../../assets/img/content.png"></ion-img>
-                                    </div>
-                                    <ion-col>
-                                        <ion-label style="font-size: 4px;color: white;">
-                                            Receive notification on each donation and verify donor identify as necessary
-                                        </ion-label>
-                                    </ion-col>
-                                </ion-row>
-
-
+                                <ion-label class="content bold">Registering Your institute and managing your causes is a straight forward process.</ion-label>
+                                <div class="content_list">
+                                    <ion-label class="content">Create your free jainity account with your mobile number and email (or use your existing account)</ion-label>
+                                    <ion-label class="content">Submit your institute details,upload requested documents,provide registration information and specify bank details for receiving donations </ion-label>
+                                    <ion-label class="content">manage your institute page,list your causes,add more members from your institute </ion-label>
+                                    <ion-label class="content">Receive notification on each donation and verify donor identify as necessary</ion-label>
+                                </div>
                             </div>
                         </ion-col>
-
-
                     </ion-row>
                 </ion-grid>
             </ion-col>

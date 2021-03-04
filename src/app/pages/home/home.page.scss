@@ -70,11 +70,41 @@ ion-col {
     position: relative;
 }
 
-.page_banner .container {
-    padding: 50px 15px 180px 15px;
-    display: table;
-    min-height: calc(100vh - 69.65px) !important;
+.page_img_banner {
+	height: calc(100vh - 69.65px);
+	overflow: hidden;
+	position: relative;
+	width: 100%;
 }
+.page_img_banner ion-img {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: auto;
+}
+.slider-box ion-slides {
+	position: absolute !important;
+	width: 100%;
+	top: 0px;
+	z-index: 1 !important;
+	height: 100%;
+}
+.slider-box {
+	height: calc(100vh - 69.65px);
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+
+.page_banner .container {
+	padding: 50px 15px 180px 15px;
+	display: table;
+	min-height: calc(100vh - 69.65px) !important;
+	position: relative;
+	z-index: 2;
+}
+
 
 .banner_content_box {
     display: table-cell;
@@ -179,7 +209,7 @@ ion-col {
 
 .content {
     color: #3a3636;
-    font-size: 14px !important;
+    font-size: 15px !important;
     font-family: 'Poppins';
     line-height: 22px !important;
     display: block;
@@ -230,74 +260,27 @@ ion-col {
     transform: rotate(175deg);
 }
 
-#work {
-    background: #ff7400;
-    padding: 60px 0px;
-    position: relative;
-    overflow: hidden;
-}
+#way .way-block {background-size: cover; background-repeat: no-repeat; background-position: center center; padding: 60px 0px;}
+#way .icon {width: 60px;	margin: 0 auto;	display: block; min-height: 58px;}
+#way .title {color: #fff;	text-transform: uppercase;	font-size: 18px !important;	margin: 20px 0;	font-weight: 700;	display: block;	text-align: center;}
+#way .way-box {max-width: 900px;	margin: 0 auto;	align-items: flex-start !important;}
+#way .way-box ion-col {padding: 0px 15px;	text-align: center;}
+#way .content {color: #fff;}
 
-#work::after {
-    content: "";
-    display: block;
-    background-image: url('../../../assets/img/work_bg.png');
-    height: 100%;
-    width: 450px;
-    position: absolute;
-    top: 0px;
-    left: 50%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    opacity: 0.2;
-    transform: translate(-50%, 0);
-    z-index: 1;
-}
 
-#work .work_icon {
-    max-width: 50px;
-    margin: 0 auto;
-    height: 70px;
-    display: block;
-}
+#work {background: #ff7400;    padding: 60px 0px;}
+#work .work-block {margin: 0 -15px;    justify-content: space-between;    position: relative;    z-index: 2;}
+#work .work-block ion-col {max-width: 300px !important;    width: 100%;    padding: 0 15px;}
+#work .work-block ion-col.col-w-50 {max-width: 50%!important;    width: 100%;    padding: 0 15px;}
+#work .work_icon {max-width: 50px; height: 70px;    display: block;}
+#work .title {font-size: 20px !important;    color: #fff;    font-family: 'Poppins-Bold';    text-transform: uppercase;    margin: 0px;    padding: 0px;    display: block;    line-height: 20px;    margin-bottom: 10px;}
+#work .content {color: #fff !important;    line-height: 18px !important;}
+#work .content.bold {min-height: 55px; font-weight: 600;}
+#work .content_list ion-label.content {padding-left: 25px;	padding-bottom: 12px;	position: relative;	line-height: 20px !important;	display: block;}
+#work .content_list ion-label::after {content: ' \00BB';	display: block;	position: absolute;	left: 0px;	top: 0px;	font-size: 30px;	font-weight: 700;}
 
-.cont_icon {
-    max-width: 10px;
-    margin: 0 auto;
-    height: 10px;
-    display: block;
-}
 
-#work .title {
-    font-size: 20px !important;
-    color: #fff;
-    font-family: 'Poppins-Bold';
-    text-transform: uppercase;
-    margin: 0px;
-    padding: 0px;
-    display: block;
-    line-height: 20px;
-    margin-bottom: 10px;
-}
 
-#work .content {
-    color: #fff !important;
-    line-height: 18px !important;
-}
-
-.work-block {
-    margin: 0 -15px;
-    justify-content: space-between;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-}
-
-.work-block ion-col {
-    max-width: 300px !important;
-    width: 100%;
-    padding: 0 15px;
-}
 
 .section-title {
     color: #fff;
