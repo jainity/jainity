@@ -1,0 +1,30 @@
+.rdbtn {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.rdbtn ion-item {
+    height: auto;
+    min-height: auto !important;
+    background: transparent !important;
+    width: auto !important;
+    --min-height: auto !important;
+    --padding-start: 0px !important;
+    --padding-end: 0px !important;
+    --inner-border-width: 0px !important;
+    --background: transparent !important;
+    --margin: 0px !important;
+    --padding: 0px !important;
+    --min-width: auto !important;
+    --inner-padding-end: 0px !important;
+}
+
+.rdbtn ion-item ion-label {
+    position: relative;
+    width: 100%;
+    display: block;
+    margin: 20px;
+    padding: 0px;
+}

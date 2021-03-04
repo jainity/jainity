@@ -601,3 +601,16 @@ ion-col {
 #sliders .slider_tabs_box {
     margin-bottom: 15px;
 }
+
+.setting-modal .modal-wrapper {
+    --ion-background-color: #f12000;
+    --border-radius: 20px;
+    --max-height: 55%;
+    --max-width: 80%;
+    --width: 80%;
+    --height: 50%;
+    --border-style: dotted;
+    --border-color: #428cff;
+    border-width: 5px;
+    top: 20%;
+}

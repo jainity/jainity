@@ -1,7 +1,8 @@
+import { LoginPage } from './../../login/login.page';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController, IonSlides } from '@ionic/angular';
+import { AlertController, IonSlides, ModalController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
 import { Tools } from 'src/app/shared/tools';
 
@@ -55,6 +56,9 @@ export class HomePage implements OnInit {
  
   }
 
+  // OnConnectClick(){
+  //   this.route.navigateByUrl('/login', { replaceUrl: false });
+  // }
   InstswipeNext(){
     this.InstiSlider.slideNext();
   }
@@ -79,15 +83,10 @@ export class HomePage implements OnInit {
 
   constructor(private route: Router,public alertController: AlertController,
      public apiService: ApiService,public formBuilder: FormBuilder,
-    public tools: Tools) {
+    public tools: Tools,public modalCtrl: ModalController) {
 
       this.tools.closeLoader();
 
-
-    // this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Amizara Vasupujya ',loc:'Ghatkopar'})
-    // this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Munisvrat Derasar ',loc:'Matunga'})
-    // this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Shantinath Derasar ',loc:'Sion'})
-    // this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Parshvanath Derasar ',loc:'Borival'})
 
     // this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Amizara Vasupujya ',loc:'Ghatkopar'})
     // this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Munisvrat Derasar ',loc:'Matunga'})
@@ -98,15 +97,23 @@ export class HomePage implements OnInit {
     // this.TopslideItem.push({img:'../../../assets/img/slidedemo.jpg'})
     // this.TopslideItem.push({img:'../../../assets/img/slidesdemoo.jpg'})
 
-    // this.GroupslideItem.push({img:'../../../assets/img/1.png ',title:'Dev Draviya'})
-    // this.GroupslideItem.push({img:'../../../assets/img/2.png',title:'Sarva Sadharan'})
-    // this.GroupslideItem.push({img:'../../../assets/img/3.png',title:'Gyan Puja'})
-
-    // this.GroupslideItem.push({img:'../../../assets/img/1.png ',title:'Dev Draviya'})
-    // this.GroupslideItem.push({img:'../../../assets/img/2.png',title:'Sarva Sadharan'})
-    // this.GroupslideItem.push({img:'../../../assets/img/3.png',title:'Gyan Puja'})
-
    }
+
+   async OnConnectClick() {  
+
+    const modal = await this.modalCtrl.create({  
+      component: LoginPage ,
+      //componentProps: { id: 5, name: 'gaurav' },
+      //cssClass: 'setting-modal',
+      //backdropDismiss: false,
+    });  
+    modal.onDidDismiss().then(result => {
+      console.log(result.data);
+    });
+    
+
+    return await modal.present();  
+  }  
 
   ngOnInit() {}
 
@@ -119,10 +126,11 @@ export class HomePage implements OnInit {
     todayItem.scrollIntoView(true);
     // this.content.scrollTo(0, todayItem.offsetTop, 1000);
   }
+
   onInstituteList(item){
     this.getInstitutetypeList(item.InstituteTypeID);
-
    }
+
   getBannerCall() {
     if (this.tools.isNetwork()) {
       this.tools.openLoader();
@@ -165,12 +173,12 @@ export class HomePage implements OnInit {
 
         //this.tools.closeLoader();
         let res: any = response;
-        
+
         if(res.status){
           this.InstituteType = res.data;
 
           this.sliderType = res.data[0].InstituteType;
-        this.getInstitutetypeList(res.data[0].InstituteTypeID);
+          this.getInstitutetypeList(res.data[0].InstituteTypeID);
 
         }else{
           this.InstituteType=res.message
