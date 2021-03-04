@@ -43,7 +43,7 @@ export class HomePage implements OnInit {
     slidesPerView: 1,
     initialSlide: 0,
     autoplay:true,
-    speed: 700,
+    speed: 500,
     coverflowEffect: {
       rotate: 100,
       stretch: 0,

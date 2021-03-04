@@ -1,3 +1,5 @@
+// @media screen and (max-height:640px){
+// }
 ion-toolbar {
     background: white !important;
     --background: white !important;
@@ -71,40 +73,42 @@ ion-col {
 }
 
 .page_img_banner {
-	height: calc(100vh - 69.65px);
-	overflow: hidden;
-	position: relative;
-	width: 100%;
+    height: calc(100vh - 69.65px);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
 }
+
 .page_img_banner ion-img {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 100%;
-	height: auto;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: auto;
 }
+
 .slider-box ion-slides {
-	position: absolute !important;
-	width: 100%;
-	top: 0px;
-	z-index: 1 !important;
-	height: 100%;
+    position: absolute !important;
+    width: 100%;
+    top: 0px;
+    z-index: 1 !important;
+    height: 100%;
 }
+
 .slider-box {
-	height: calc(100vh - 69.65px);
-	overflow: hidden;
-	position: relative;
-	width: 100%;
+    height: calc(100vh - 69.65px);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
 }
 
 .page_banner .container {
-	padding: 50px 15px 180px 15px;
-	display: table;
-	min-height: calc(100vh - 69.65px) !important;
-	position: relative;
-	z-index: 2;
+    padding: 50px 15px 180px 15px;
+    display: table;
+    min-height: calc(100vh - 69.65px) !important;
+    position: relative;
+    z-index: 2;
 }
-
 
 .banner_content_box {
     display: table-cell;
@@ -260,27 +264,114 @@ ion-col {
     transform: rotate(175deg);
 }
 
-#way .way-block {background-size: cover; background-repeat: no-repeat; background-position: center center; padding: 60px 0px;}
-#way .icon {width: 60px;	margin: 0 auto;	display: block; min-height: 58px;}
-#way .title {color: #fff;	text-transform: uppercase;	font-size: 18px !important;	margin: 20px 0;	font-weight: 700;	display: block;	text-align: center;}
-#way .way-box {max-width: 900px;	margin: 0 auto;	align-items: flex-start !important;}
-#way .way-box ion-col {padding: 0px 15px;	text-align: center;}
-#way .content {color: #fff;}
+#way .way-block {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 60px 0px;
+}
 
+#way .icon {
+    width: 60px;
+    margin: 0 auto;
+    display: block;
+    min-height: 58px;
+}
 
-#work {background: #ff7400;    padding: 60px 0px;}
-#work .work-block {margin: 0 -15px;    justify-content: space-between;    position: relative;    z-index: 2;}
-#work .work-block ion-col {max-width: 300px !important;    width: 100%;    padding: 0 15px;}
-#work .work-block ion-col.col-w-50 {max-width: 50%!important;    width: 100%;    padding: 0 15px;}
-#work .work_icon {max-width: 50px; height: 70px;    display: block;}
-#work .title {font-size: 20px !important;    color: #fff;    font-family: 'Poppins-Bold';    text-transform: uppercase;    margin: 0px;    padding: 0px;    display: block;    line-height: 20px;    margin-bottom: 10px;}
-#work .content {color: #fff !important;    line-height: 18px !important;}
-#work .content.bold {min-height: 55px; font-weight: 600;}
-#work .content_list ion-label.content {padding-left: 25px;	padding-bottom: 12px;	position: relative;	line-height: 20px !important;	display: block;}
-#work .content_list ion-label::after {content: ' \00BB';	display: block;	position: absolute;	left: 0px;	top: 0px;	font-size: 30px;	font-weight: 700;}
+#way .title {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 18px !important;
+    margin: 20px 0;
+    font-weight: 700;
+    display: block;
+    text-align: center;
+}
 
+#way .way-box {
+    max-width: 900px;
+    margin: 0 auto;
+    align-items: flex-start !important;
+}
 
+#way .way-box ion-col {
+    padding: 0px 15px;
+    text-align: center;
+}
 
+#way .content {
+    color: #fff;
+}
+
+#work {
+    background: #ff7400;
+    padding: 60px 0px;
+}
+
+#work .work-block {
+    margin: 0 -15px;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+#work .work-block ion-col {
+    max-width: 300px !important;
+    width: 100%;
+    padding: 0 15px;
+}
+
+#work .work-block ion-col.col-w-50 {
+    max-width: 50%!important;
+    width: 100%;
+    padding: 0 15px;
+}
+
+#work .work_icon {
+    max-width: 50px;
+    height: 70px;
+    display: block;
+}
+
+#work .title {
+    font-size: 20px !important;
+    color: #fff;
+    font-family: 'Poppins-Bold';
+    text-transform: uppercase;
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+
+#work .content {
+    color: #fff !important;
+    line-height: 18px !important;
+}
+
+#work .content.bold {
+    min-height: 55px;
+    font-weight: 600;
+}
+
+#work .content_list ion-label.content {
+    padding-left: 25px;
+    padding-bottom: 12px;
+    position: relative;
+    line-height: 20px !important;
+    display: block;
+}
+
+#work .content_list ion-label::after {
+    content: ' \00BB';
+    display: block;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    font-size: 30px;
+    font-weight: 700;
+}
 
 .section-title {
     color: #fff;
@@ -382,7 +473,7 @@ ion-col {
 
 .social_icons {
     display: flex;
-    justify-content: flex-end;
+    // justify-content: flex-end;
     align-items: center;
 }
 
