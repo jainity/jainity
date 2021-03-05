@@ -1,5 +1,5 @@
 <ion-content>
-    <div class="page_block">
+    <div class="page_block_login">
         <div class="page_box">
             <ion-grid>
                 <ion-row>
@@ -16,7 +16,7 @@
 
                 <ion-row>
                     <ion-col>
-                        <ion-radio-group value="Donor" class="rdbtn">
+                        <ion-radio-group value="Donor" class="rdbtn" [(ngModel)]="radioValue" (ionSelect)="showValue()">
                             <ion-item lines="none">
                                 <ion-label>
                                     <ion-radio value="Donor"></ion-radio>
@@ -31,6 +31,7 @@
                                 </ion-label>
                             </ion-item>
                         </ion-radio-group>
+
                     </ion-col>
                 </ion-row>
 

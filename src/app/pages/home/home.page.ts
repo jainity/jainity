@@ -1,3 +1,4 @@
+import { RegisterPage } from './../../register/register.page';
 import { LoginPage } from './../../login/login.page';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
@@ -99,7 +100,7 @@ export class HomePage implements OnInit {
 
    }
 
-   async OnConnectClick() {  
+ async LoginClick() {  
 
     const modal = await this.modalCtrl.create({  
       component: LoginPage ,
@@ -116,7 +117,38 @@ export class HomePage implements OnInit {
     return await modal.present();  
   }  
 
+   async RegisterClick() {  
+
+    const modal = await this.modalCtrl.create({  
+      component: RegisterPage,
+      //componentProps: { id: 5, name: 'gaurav' },
+      cssClass: 'login-modal',
+    
+      //backdropDismiss: false,
+    });  
+    modal.onDidDismiss().then(result => {
+      console.log(result.data);
+    });
+    
+
+    return await modal.present();  
+  }  
+
+  OnConnectClick(){
+
+    this.route.navigateByUrl('/Dashboard');
+
+  }
   ngOnInit() {}
+
+  onInstituteClick(){
+
+  }
+
+  onSchemeGroupClick(){
+
+  }
+
 
   ionViewDidEnter() {
     this.getBannerCall();

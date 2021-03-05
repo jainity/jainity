@@ -13,7 +13,7 @@ const routes: Routes = [
   },
 
   // {
-  //   path: 'home', canActivate: [AuthGuard],
+  //   path: 'Dashboard', canActivate: [AuthGuard],
   //   loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   // },
  

@@ -32,6 +32,8 @@ export class LoginPage {
 
     const modal = await this.modalCtrl.create({  
       component: RegisterPage ,
+      cssClass: 'login-modal',
+
     });  
     modal.onDidDismiss().then(result => {
       console.log(result.data);
@@ -84,7 +86,6 @@ export class LoginPage {
     }
     }
 
-
   // async onLoginClick() {
   //   const toast = await this.toastController.create({
   //     message: 'This Is Login',
@@ -94,5 +95,4 @@ export class LoginPage {
   //   toast.present();
   // }
   
-
 }

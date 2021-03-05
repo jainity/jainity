@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { ToastController, ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { Tools } from '../shared/tools';
+import { LoginPage } from '../login/login.page';
 
 
 @Component({
@@ -21,10 +22,12 @@ export class RegisterPage implements OnInit {
   fnameerror:any='';
   lnameerror:any='';
   moberror:any='';
-  
+
+  radioValue;
+ 
   constructor(private route: Router,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,
-    public toastController: ToastController) {
+    public toastController: ToastController,public modalCtrl: ModalController) {
       this.tools.closeLoader();
     this.loginForm = this.formBuilder.group({
       fname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50),Validators.pattern('[a-zA-Z]+')]],
@@ -34,11 +37,24 @@ export class RegisterPage implements OnInit {
   
   }
 
+  showValue(){
+    console.log(this.radioValue);
+  }
   ngOnInit() {
   }
 
-  onLogClick() {
-    this.route.navigateByUrl('/login', { replaceUrl: true });
+  async onLogClick() {
+    const modal = await this.modalCtrl.create({  
+      component: LoginPage ,
+            cssClass: 'login-modal',
+
+    });  
+    modal.onDidDismiss().then(result => {
+      console.log(result.data);
+    });
+
+    return await modal.present();  
+
     }
 
 
@@ -76,7 +92,7 @@ export class RegisterPage implements OnInit {
 
         if (this.tools.isNetwork()) {
           this.tools.openLoader();
-          this.apiServices.Register(this.Fname,this.Lname,this.mobileno).subscribe(response => {
+          this.apiServices.Register("",this.Fname,this.Lname,this.mobileno).subscribe(response => {
             let res: any = response;
             if(res.status){
               this.callOTP();
@@ -95,6 +111,7 @@ export class RegisterPage implements OnInit {
         }
       }
     }
+
   callOTP() {
     this.apiServices.SendOTP(this.mobileno).subscribe(response => {
       this.tools.closeLoader();
@@ -117,6 +134,7 @@ export class RegisterPage implements OnInit {
     });
 
   }
+
   errClr() {
     this.fnameerror='';
     this.lnameerror='';

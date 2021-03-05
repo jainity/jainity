@@ -112,9 +112,9 @@ export class ApiService {
     return this.http.post(environment.BaseUrl + "Payment", postDataRow, this.httpOptions);
   }
 
-  Register(Fname,Lname,Mobileno) {
+  Register(RoleId,Fname,Lname,Mobileno) {
     let postData = new FormData();
-    // postData.append('file', imageFile);
+    postData.append('Role_id', RoleId);
     postData.append("FirstName", Fname);
     postData.append("LastName", Lname);
     postData.append("Mobile", Mobileno);

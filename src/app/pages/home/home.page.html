@@ -11,6 +11,9 @@
                     <ion-label (click)="scrollTo('about')" style="cursor: pointer;">About</ion-label>
                     <ion-label (click)="scrollTo('work')" style="cursor: pointer;">Donate</ion-label>
                     <ion-label (click)="scrollTo('footer')" style="cursor: pointer;">Contact</ion-label>
+                    <ion-label (click)="LoginClick()" style="cursor: pointer;">Login</ion-label>
+                    <ion-label (click)="RegisterClick()" style="cursor: pointer;">Register</ion-label>
+
                 </ion-col>
             </ion-row>
         </ion-grid>
@@ -381,7 +384,7 @@
 
                     <ion-row>
                         <ion-col>
-                            <ion-button class="button_link">View All</ion-button>
+                            <ion-button class="button_link" style="text-transform: none;" (click)="onInstituteClick()">View All</ion-button>
                         </ion-col>
                     </ion-row>
 
@@ -398,9 +401,6 @@
                     <ion-row>
                         <ion-label class="content-title" style="margin-left: 50px;">SCHEME GROUP</ion-label>
                     </ion-row>
-                    <ion-label class="content" style="margin-left: 50px;">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's
-                        De Finibus Bonorum et Malorum for use in a type specimen De Finibus Bonorum et Malorum for use in a type specimen book.
-                    </ion-label>
 
                     <ion-row>
                         <ion-col class="sliders_boxs">
@@ -417,6 +417,11 @@
                         </ion-col>
                     </ion-row>
 
+                    <ion-row>
+                        <ion-col>
+                            <ion-button class="button_link" style="text-transform: none;" (click)="onSchemeGroupClick()">View All</ion-button>
+                        </ion-col>
+                    </ion-row>
                 </ion-grid>
             </ion-col>
         </ion-row>
@@ -445,10 +450,10 @@
                         <ion-col size="4">
                             <ion-label class="title">Quick links</ion-label>
                             <div class="link_box">
-                                <ion-label class="link"><a>Home</a></ion-label>
-                                <ion-label class="link"><a>About</a></ion-label>
-                                <ion-label class="link"><a>Donate</a></ion-label>
-                                <ion-label class="link"><a>Contact</a></ion-label>
+                                <ion-label (click)="scrollTo('banner')" style="cursor: pointer;color: white;">Home</ion-label>
+                                <ion-label (click)="scrollTo('about')" style="cursor: pointer;color: white;">About</ion-label>
+                                <ion-label (click)="scrollTo('work')" style="cursor: pointer;color: white;">Donate</ion-label>
+                                <ion-label (click)="scrollTo('footer')" style="cursor: pointer;color: white;">Contact</ion-label>
                                 <ion-label class="link"><a>FAQ</a></ion-label>
                                 <ion-label class="link"><a>Disclaimer</a></ion-label>
                                 <ion-label class="link"><a>Legal</a></ion-label>
