@@ -104,7 +104,7 @@ export class HomePage implements OnInit {
     const modal = await this.modalCtrl.create({  
       component: LoginPage ,
       //componentProps: { id: 5, name: 'gaurav' },
-     // cssClass: 'setting-modal',
+      cssClass: 'login-modal',
     
       //backdropDismiss: false,
     });  

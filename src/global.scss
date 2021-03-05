@@ -429,6 +429,43 @@ p {
     margin: 0 auto;
 }
 
+.login-modal .modal-wrapper {
+	width: 100% !important;
+	height: 490px !important;
+	border: 1px solid #fff !important;
+	max-width: 375px !important;
+	border-radius: 15px !important;
+	padding: 0px !important;
+	margin: 0 auto !important;
+}
+
+.login-modal ion-content {
+	--overflow: hidden !important;
+	display: block;
+}
+
+  .login-modal .page_block_login {
+	width: 100%;
+	text-align: center;
+	margin: 0 auto;
+	padding: 30px;
+	height: auto !important;
+	display: block !important;
+	max-width: 100%;
+}
+
+.login-modal .page_block_login .page_box {
+	display: block;
+	width: 100%;
+}
+
+.login-modal .page_block_login .page_box  .logo {
+	max-width: 170px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+
 .white.content.highlight {
     background: #fff;
     color: #ef7635;
