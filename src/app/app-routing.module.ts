@@ -12,27 +12,23 @@ const routes: Routes = [
     pathMatch: 'full'
   },
 
-  // {
-  //   path: 'Dashboard', canActivate: [AuthGuard],
-  //   loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  // },
+  {
+    path: 'Dashboard', canActivate: [AuthGuard],
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
  
   {
     path: 'about',
     loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
   },
-  {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },
-  {
-    path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-  },
-  {
-    path: 'otpverification',
-    loadChildren: () => import('./otpverification/otpverification.module').then( m => m.OtpverificationPageModule)
-  },
+  // {
+  //   path: 'register',
+  //   loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  // },
+  // {
+  //   path: 'otpverification',
+  //   loadChildren: () => import('./otpverification/otpverification.module').then( m => m.OtpverificationPageModule)
+  // },
   {
     path: 'schemedetails', canActivate: [AuthGuard],
     loadChildren: () => import('./schemedetails/schemedetails.module').then( m => m.SchemedetailsPageModule)
@@ -61,6 +57,24 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'declaimer',
+    loadChildren: () => import('./pages/declaimer/declaimer.module').then( m => m.DeclaimerPageModule)
+  },
+  {
+    path: 'faq',
+    loadChildren: () => import('./pages/faq/faq.module').then( m => m.FaqPageModule)
+  },
+
+  {
+    path: 'termsandcondition',
+    loadChildren: () => import('./pages/termsandcondition/termsandcondition.module').then( m => m.TermsandconditionPageModule)
+  },
+
+  {
+    path: 'privacypolicy',
+    loadChildren: () => import('./pages/privacypolicy/privacypolicy.module').then( m => m.PrivacypolicyPageModule)
   },
 
 ];

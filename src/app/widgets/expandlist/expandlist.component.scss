@@ -1,0 +1,58 @@
+:host {
+    .title {
+        cursor: pointer;
+        line-height: 1.2em;
+        font-size: 15px;
+        position: relative;
+        padding: 5px 5px 5px 10px;
+        font-family: 'Lato-Bold';
+        color: #ef7635;
+        margin: 0;
+        /* Define the style rules for the 'arrow icons' */
+        span {
+            position: absolute;
+            right: 1em;
+            top: 1.2em;
+            font-size: 0.95em;
+        }
+    }
+    .title.indicator::after {
+        top: 10px;
+        left: -10px;
+        height: 12px;
+        width: 12px;
+        margin: 0px;
+        background-color: green;
+        border-radius: 50%;
+        display: block;
+        content: "";
+        position: absolute;
+    }
+    .content {
+        position: relative;
+        font-size: 14px !important;
+        padding: 5px 5px 5px 9px;
+        font-family: 'Lato-Medium';
+        background: transparent;
+        color: black;
+        border: none
+    }
+    ion-button {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+    }
+    /* Following classes display/hide the 'menu'
+     // based on the state change detection in the
+     // component class */
+    .active {
+        display: block
+    }
+    .inactive {
+        display: none;
+    }
+    ion-card-content {
+        background: transparent !important;
+        border: 1px solid white !important;
+    }
+}

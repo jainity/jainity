@@ -1,3 +1,4 @@
+import { OtpverificationPage } from './../../otpverification/otpverification.page';
 import { RegisterPage } from './../../register/register.page';
 import { LoginPage } from './../../login/login.page';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -19,9 +20,20 @@ export class HomePage implements OnInit {
 
   @ViewChild('content') content: any;
   
+  isLogin=false;
   
   sliderType:any;
-  
+
+  name = '';
+  email = '';
+  subject = '';
+  message = '';
+  nameErr = '';
+  emailErr = '';
+  subjectErr = '';
+  messageErr = '';
+  reg:any;
+
   slideOpts ={
     slidesPerView: 4,
     coverflowEffect: {
@@ -57,9 +69,6 @@ export class HomePage implements OnInit {
  
   }
 
-  // OnConnectClick(){
-  //   this.route.navigateByUrl('/login', { replaceUrl: false });
-  // }
   InstswipeNext(){
     this.InstiSlider.slideNext();
   }
@@ -87,7 +96,9 @@ export class HomePage implements OnInit {
     public tools: Tools,public modalCtrl: ModalController) {
 
       this.tools.closeLoader();
+      this.isLogin = this.apiService.getUserData() !=undefined;
 
+//      console.log(,this.apiService.getUserData())
 
     // this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Amizara Vasupujya ',loc:'Ghatkopar'})
     // this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Munisvrat Derasar ',loc:'Matunga'})
@@ -100,46 +111,150 @@ export class HomePage implements OnInit {
 
    }
 
+   checkMail(): boolean {
+    this.reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return (this.email == '' || !this.reg.test(this.email))
+  }
+
+  sendMail(){
+
+  }
+
+
  async LoginClick() {  
 
     const modal = await this.modalCtrl.create({  
       component: LoginPage ,
       //componentProps: { id: 5, name: 'gaurav' },
       cssClass: 'login-modal',
-    
       //backdropDismiss: false,
     });  
     modal.onDidDismiss().then(result => {
       console.log(result.data);
+
+      if(result.data =='register'){
+       this.openRegister();
+      }
+      if(result.data =='OTPPage'){
+        this.openOtp();
+       }
     });
     
 
     return await modal.present();  
   }  
-
-   async RegisterClick() {  
-
+  
+  async openRegister() {
     const modal = await this.modalCtrl.create({  
-      component: RegisterPage,
-      //componentProps: { id: 5, name: 'gaurav' },
-      cssClass: 'login-modal',
-    
-      //backdropDismiss: false,
+      component: RegisterPage ,
+            cssClass: 'register-modal',
+
     });  
     modal.onDidDismiss().then(result => {
       console.log(result.data);
+      if(result.data =='login'){
+        this.openlogin();
+       }
+       if(result.data =='OTPPage'){
+        this.openOtp();
+       }
     });
-    
 
     return await modal.present();  
-  }  
-
-  OnConnectClick(){
-
-    this.route.navigateByUrl('/Dashboard');
-
   }
-  ngOnInit() {}
+
+  async openlogin() {
+    const modal = await this.modalCtrl.create({  
+      component: LoginPage ,
+            cssClass: 'login-modal',
+
+    });  
+    modal.onDidDismiss().then(result => {
+      if(result.data =='login'){
+        this.openlogin();
+       }
+       if(result.data =='register'){
+        this.openRegister();
+       }
+       if(result.data =='OTPPage'){
+        this.openOtp();
+       }
+    });
+
+    return await modal.present();
+  }
+
+  async openOtp() {
+    const modal = await this.modalCtrl.create({  
+      component: OtpverificationPage ,
+            cssClass: 'login-modal',
+
+    });  
+    modal.onDidDismiss().then(result => {
+      if(result.data =='login'){
+        this.openlogin();
+       }
+       if(result.data =='register'){
+        this.openRegister();
+       }
+       if(result.data =='OTPPage'){
+        this.openOtp();
+       }
+    });
+
+    return await modal.present();
+  }
+
+
+   async OnConnectClick(){
+    
+    if (!this.isLogin) {
+
+      const alert = await this.alertController.create({
+        message: 'Coming Soon',
+        buttons: [
+            {
+                text: 'OK',
+                role: 'OK',
+                handler: () => {
+    
+                }
+            },
+        ], backdropDismiss: false
+    });
+    alert.present();
+    }else
+  this.route.navigateByUrl('/Dashboard');
+ }
+
+
+ async LogoutClick(){
+   const alert = await this.alertController.create({
+    message: 'Are you sure you want to logout?',
+    buttons: [
+        {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+
+            }
+        },
+        {
+            text: 'Logout',
+            handler: () => {
+                //this.callLogout(true);
+                this.isLogin = !this.isLogin;
+                localStorage.clear();
+                this.route.navigateByUrl('/home', { replaceUrl: true });
+            }
+        }
+    ], backdropDismiss: false
+});
+return await alert.present();
+ }
+
+  ngOnInit() {
+  }
 
   onInstituteClick(){
 

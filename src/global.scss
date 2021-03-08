@@ -430,41 +430,69 @@ p {
 }
 
 .login-modal .modal-wrapper {
-	width: 100% !important;
-	height: 490px !important;
-	border: 1px solid #fff !important;
-	max-width: 375px !important;
-	border-radius: 15px !important;
-	padding: 0px !important;
-	margin: 0 auto !important;
+    width: 100% !important;
+    height: 490px !important;
+    border: 1px solid #fff !important;
+    max-width: 375px !important;
+    border-radius: 15px !important;
+    padding: 0px !important;
+    margin: 0 auto !important;
 }
 
 .login-modal ion-content {
-	--overflow: hidden !important;
-	display: block;
+    --overflow: hidden !important;
 }
 
-  .login-modal .page_block_login {
-	width: 100%;
-	text-align: center;
-	margin: 0 auto;
-	padding: 30px;
-	height: auto !important;
-	display: block !important;
-	max-width: 100%;
+.login-modal .page_block_login {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    padding: 30px;
+    height: auto !important;
+    max-width: 100%;
 }
 
 .login-modal .page_block_login .page_box {
-	display: block;
-	width: 100%;
+    width: 100%;
 }
 
-.login-modal .page_block_login .page_box  .logo {
-	max-width: 170px;
-	width: 100%;
-	margin: 0 auto;
+.login-modal .page_block_login .page_box .logo {
+    max-width: 170px;
+    width: 100%;
+    margin: 0 auto;
 }
 
+.register-modal .modal-wrapper {
+    width: 100% !important;
+    height: 600px !important;
+    border: 1px solid #fff !important;
+    max-width: 400px !important;
+    border-radius: 15px !important;
+    padding: 0px !important;
+    margin: 0 auto !important;
+}
+
+// .register-modal ion-content {
+//     --overflow: hidden !important;
+// }
+.register-modal .page_block_login {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    padding: 30px;
+    height: auto !important;
+    max-width: 100%;
+}
+
+.register-modal .page_block_login .page_box {
+    width: 100%;
+}
+
+.register-modal .page_block_login .page_box .logo {
+    max-width: 250px;
+    width: 100%;
+    margin: 0 auto;
+}
 
 .white.content.highlight {
     background: #fff;
@@ -604,4 +632,92 @@ p {
 
 .swiper-pagination {
     display: none !important;
+}
+
+span#icons_click {
+    height: 50px;
+    width: 50px;
+    position: fixed;
+    bottom: 40px;
+    overflow: hidden;
+    right: 90px;
+    z-index: 111;
+    cursor: pointer;
+}
+
+.contact-form {
+    position: fixed;
+    background: #fff;
+    right: 30px;
+    bottom: 0%;
+    max-height: calc(100vh - 150px);
+    padding: 0px;
+    overflow: hidden;
+    overflow-y: auto;
+    transition-duration: 700ms;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 360px;
+    z-index: -1;
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+}
+
+.contact-form .form-control {
+    --ion-background-color: transparent;
+    border-bottom: 1px solid #000;
+    color: #000;
+    font-size: 16px;
+}
+
+#closes {
+    display: none;
+}
+
+#contact_forms.open .contact-form {
+    bottom: 100px;
+    opacity: 1;
+    transition-duration: 700ms;
+    z-index: 1111111;
+}
+
+#contact_forms.open #closes {
+    display: block;
+}
+
+#contact_forms.open #contact_icon {
+    display: none;
+}
+
+#contact_forms .heading {
+    padding: 20px;
+    background: #ef7635;
+    padding-bottom: 80px;
+}
+
+#contact_forms .heading ion-label {
+    font-size: 20px !important;
+    line-height: 20px;
+    display: block;
+    color: white;
+    font-family: "Tahoma" !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.8px;
+}
+
+#contact_forms .heading ion-label span {
+    color: white !important;
+    font-size: 14px !important;
+    font-weight: 400;
+    display: block;
+    margin-top: 7px;
+    letter-spacing: 0.2px;
+}
+
+@media (max-width: 420px) {
+    #contact_forms .contact-form {
+        width: calc(100% - 20px);
+        max-width: 100%;
+        right: 10px;
+    }
 }

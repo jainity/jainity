@@ -1,21 +1,24 @@
-import { SharedModule } from './../shared/shared.module';
+import { SharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { OtpverificationPage } from './otpverification.page';
 import { Routes, RouterModule } from '@angular/router';
+import { DeclaimerPage } from './declaimer.page';
+
 
 const routes: Routes = [
   {
     path: '',
-    component: OtpverificationPage
+    component: DeclaimerPage
   }
 ];
+
+
 
 @NgModule({
   imports: [
     SharedModule,FormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [OtpverificationPage]
+  declarations: [DeclaimerPage]
 })
-export class OtpverificationPageModule {}
+export class DeclaimerPageModule {}

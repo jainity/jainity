@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { ToastController, ModalController } from '@ionic/angular';
 import { ApiService } from '../services/api.service';
 import { Tools } from '../shared/tools';
 
@@ -23,7 +23,7 @@ errorMsg:any='';
 
 
   constructor(private router: Router, public route: ActivatedRoute,public formBuilder: FormBuilder,
-    private apiServices: ApiService,public tools: Tools) {
+    private apiServices: ApiService,public tools: Tools,public modalCtrl: ModalController) {
       this.tools.closeLoader(); 
      this.mno =localStorage.getItem('mobileno');
      if(this.mno != undefined && this.mno != null)
@@ -33,6 +33,7 @@ errorMsg:any='';
   onBackClick(){
     this.tools.backPage();
    }
+
   onSubmitClick() {
     //this.router.navigate(['/home']);
 
@@ -40,7 +41,7 @@ errorMsg:any='';
 
       
     if (this.otpcode =='') {
-      msg = msg + 'Please enter OTP <br />'
+      msg = msg + 'Please enter OTP <br/>'
     } 
 
     if (msg != '') {
@@ -58,8 +59,9 @@ errorMsg:any='';
             console.log('response ', res.data[0]);
             //localStorage.setItem('userdata', JSON.stringify(res.data[0]));
             this.apiServices.setUserData(res.data[0])
-            setTimeout(() => {              
-              this.router.navigateByUrl('/home', { replaceUrl: true });
+            setTimeout(() => {    
+              this.modalCtrl.dismiss();          
+              this.router.navigateByUrl('/Dashboard', { replaceUrl: true });
             }, 100);
 
            // this.router.navigate(['/home'], { replaceUrl: true });
@@ -81,7 +83,36 @@ errorMsg:any='';
   }
 
   onResendClick() {
-      this.router.navigate(['/home']);
+      //this.router.navigate(['/home']);
+
+        if (this.tools.isNetwork()) {
+          this.tools.openLoader();
+          this.apiServices.SendOTP(this.mno).subscribe(response => {
+           
+            let res: any = response;
+            if(res.status){
+              localStorage.setItem('mobileno', this.mno);
+              setTimeout(() => {              
+                this.tools.closeLoader();
+  
+               // this.route.navigateByUrl('/otpverification');
+                //this.modalCtrl.dismiss('OTPPage');
+                this.tools.presentAlert('','Send Successfully', 'Ok');
+
+              }, 1000);
+            }else{
+              this.tools.closeLoader();
+              this.tools.presentAlert('','Something wrong...', 'Ok');
+            }
+          }, (error: Response) => {
+            this.tools.closeLoader();
+            console.log('Error ', error);
+            let err:any = error;
+            this.tools.openAlertToken(err.status, err.error.message);    
+          });
+        } else {
+          this.tools.closeLoader();
+        }
     }
 
   ngOnInit() {

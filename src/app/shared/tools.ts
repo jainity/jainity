@@ -37,6 +37,25 @@ export class Tools {
         this.navCtrl.back();
     }
   
+    goHome(){
+        this.router.navigateByUrl('/home',{replaceUrl:true});
+       }
+  goTAC(){
+    this.router.navigateByUrl('/termsandcondition');
+   }
+
+   goPP(){
+    this.router.navigateByUrl('/privacypolicy');
+   }
+
+   goDisclaimer(){
+    this.router.navigateByUrl('/declaimer');
+   }
+
+   goFAQ(){
+    this.router.navigateByUrl('/faq');
+
+   }
 
     isNetwork(){
         this.closeLoader();

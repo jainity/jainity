@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { Tools } from '../shared/tools';
-import { LoginPage } from '../login/login.page';
 
 
 @Component({
@@ -23,7 +22,7 @@ export class RegisterPage implements OnInit {
   lnameerror:any='';
   moberror:any='';
 
-  radioValue;
+  RoleID:any='2';
  
   constructor(private route: Router,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,
@@ -37,24 +36,12 @@ export class RegisterPage implements OnInit {
   
   }
 
-  showValue(){
-    console.log(this.radioValue);
-  }
+  
   ngOnInit() {
   }
 
   async onLogClick() {
-    const modal = await this.modalCtrl.create({  
-      component: LoginPage ,
-            cssClass: 'login-modal',
-
-    });  
-    modal.onDidDismiss().then(result => {
-      console.log(result.data);
-    });
-
-    return await modal.present();  
-
+    this.modalCtrl.dismiss('login');
     }
 
 
@@ -92,7 +79,7 @@ export class RegisterPage implements OnInit {
 
         if (this.tools.isNetwork()) {
           this.tools.openLoader();
-          this.apiServices.Register("",this.Fname,this.Lname,this.mobileno).subscribe(response => {
+          this.apiServices.Register(this.RoleID,this.Fname,this.Lname,this.mobileno).subscribe(response => {
             let res: any = response;
             if(res.status){
               this.callOTP();
@@ -100,7 +87,6 @@ export class RegisterPage implements OnInit {
               this.tools.presentAlert('',res.message, 'Ok');
             }
           }, (error: Response) => {
-            this.tools.closeLoader();
             this.tools.closeLoader();
             console.log('Error ', error);
             let err:any = error;
@@ -118,8 +104,10 @@ export class RegisterPage implements OnInit {
       let res: any = response;
       if(res.status){
         localStorage.setItem('mobileno', this.mobileno);
+
         setTimeout(() => {              
-          this.route.navigateByUrl('/otpverification');
+         // this.route.navigateByUrl('/otpverification');
+          this.modalCtrl.dismiss('OTPPage');
         }, 100);
 
       }else{

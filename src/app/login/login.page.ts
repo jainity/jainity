@@ -29,17 +29,7 @@ export class LoginPage {
   }
   
   async onRegClick() {  
-
-    const modal = await this.modalCtrl.create({  
-      component: RegisterPage ,
-      cssClass: 'login-modal',
-
-    });  
-    modal.onDidDismiss().then(result => {
-      console.log(result.data);
-    });
-
-    return await modal.present();  
+    this.modalCtrl.dismiss('register');
   }  
 
 //  onRegClick() {
@@ -68,7 +58,10 @@ export class LoginPage {
             localStorage.setItem('mobileno', this.mobileno);
             setTimeout(() => {              
               this.tools.closeLoader();
-              this.route.navigateByUrl('/otpverification');
+
+             // this.route.navigateByUrl('/otpverification');
+              this.modalCtrl.dismiss('OTPPage');
+
             }, 1000);
           }else{
             this.tools.closeLoader();

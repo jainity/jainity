@@ -10,16 +10,19 @@
                     <ion-label (click)="scrollTo('banner')" style="cursor: pointer;">Home</ion-label>
                     <ion-label (click)="scrollTo('about')" style="cursor: pointer;">About</ion-label>
                     <ion-label (click)="scrollTo('work')" style="cursor: pointer;">Donate</ion-label>
-                    <ion-label (click)="scrollTo('footer')" style="cursor: pointer;">Contact</ion-label>
-                    <ion-label (click)="LoginClick()" style="cursor: pointer;">Login</ion-label>
-                    <ion-label (click)="RegisterClick()" style="cursor: pointer;">Register</ion-label>
+                    <!-- <ion-label (click)="scrollTo('footer')" style="cursor: pointer;">Contact</ion-label> -->
+                    <ion-label *ngIf="!isLogin" (click)="LoginClick()" style="cursor: pointer;">Login</ion-label>
+                    <ion-label *ngIf="isLogin" (click)="LogoutClick()" style="cursor: pointer;">Logout</ion-label>
+                    <!-- <ion-label (click)="RegisterClick()" style="cursor: pointer;">Register</ion-label> -->
 
                 </ion-col>
             </ion-row>
         </ion-grid>
     </ion-toolbar>
 </ion-header>
+
 <ion-content id="content">
+
     <ion-grid id="banner">
         <ion-row class="page_banner">
             <ion-col>
@@ -34,8 +37,8 @@
                     <ion-grid class="container">
                         <ion-row class="banner_content_box">
                             <ion-col>
-                                <ion-label class="tag-line">Connecting donors and institutes around the world</ion-label>
-                                <ion-label class="subtag-line">Get direct donations in your bank account</ion-label>
+                                <ion-label class="tag-line">Connecting donors and institutes around the world.</ion-label>
+                                <ion-label class="subtag-line">Get direct donations in your bank account.</ion-label>
                                 <ion-button (click)="OnConnectClick()">Connect</ion-button>
                             </ion-col>
                         </ion-row>
@@ -73,8 +76,8 @@
                 <ion-label class="content-title">About US</ion-label>
 
                 <div>
-                    <ion-label class="content">Principles of Jain dharma and Jain institutes (sangh) are well known for its progressive nature lead by visionaries (shravak and sadhu) who have ensured continuity (shaswat) of the dharma and its values by taking entire community together
-                        towards shifting nature of the modern realities at every critical juncture.</ion-label>
+                    <ion-label class="content">Principles of Jain dharma and Jain institutes (sangh) are well known for its progressive nature lead by visionaries (shravak and sadhu) who have ensured continuity (shashwat) of the dharma and its values by taking entire community
+                        together towards shifting nature of the modern realities at every critical juncture.</ion-label>
                 </div>
                 <div>
                     <ion-label class="content" style="margin-top: 10px;">Donating towards Jain causes in a traditional manner has reached its limits and has limited appeal to the new generation of donors that are tech savvy and opt for convenience in every aspect of their life. The maturity of digital and
@@ -91,7 +94,7 @@
 
                 </div>
                 <div>
-                    <ion-label class="content" style="margin-top: 10px;">Jainity aims to become the most trustworthy giving platform for donors. Our guiding principles are based in teachings of Jain Dharma and its values. We are passionate about increasing good karma for all our stakeholders to” uparjit
+                    <ion-label class="content" style="margin-top: 10px;">Jainity aims to become the most trustworthy giving platform for donors. Our guiding principles are based in teachings of Jain Dharma and its values. We are passionate about increasing good karma for all our stakeholders to ”uparjit
                         punya nu bandhi punya”.</ion-label>
 
                 </div>
@@ -125,7 +128,7 @@
                                 <ion-img src="assets/img/Vision.png"></ion-img>
                             </div>
                             <ion-label class="title">Vision</ion-label>
-                            <ion-label class="content">A digital platform to transform Jain charity with a community-centric approach for the eternity of Jain values</ion-label>
+                            <ion-label class="content">A digital platform to transform Jain charity with a community-centric approach for the eternity of Jain values.</ion-label>
                         </ion-col>
                         <ion-col size='6'>
                             <div class="icon">
@@ -155,7 +158,7 @@
                                     <ion-img src="assets/img/cause_icon.png"></ion-img>
                                 </div>
                                 <ion-label class="title">select a cause</ion-label>
-                                <ion-label class="content">Browse different institutes and select a cause</ion-label>
+                                <ion-label class="content">Browse different institutes and select a cause.</ion-label>
                             </div>
                         </ion-col>
                         <ion-col size="4">
@@ -164,7 +167,7 @@
                                     <ion-img src="assets/img/donate_icon.png"></ion-img>
                                 </div>
                                 <ion-label class="title">Make a donation</ion-label>
-                                <ion-label class="content">Donate even micro amounts to needy institutes</ion-label>
+                                <ion-label class="content">Donate even micro amounts to needy institutes.</ion-label>
                             </div>
                         </ion-col>
                         <ion-col size="4">
@@ -173,7 +176,7 @@
                                     <ion-img src="assets/img/Karma_icons.png"></ion-img>
                                 </div>
                                 <ion-label class="title">Good Karma</ion-label>
-                                <ion-label class="content">Earn good karma and your ATG certificate</ion-label>
+                                <ion-label class="content">Earn good karma and your ATG certificate.</ion-label>
                             </div>
                         </ion-col>
                     </ion-row>
@@ -185,12 +188,12 @@
                                     <ion-img src="assets/img/donate_icon.png"></ion-img>
                                 </div>
                                 <ion-label class="title">DONOR</ion-label>
-                                <ion-label class="content bold">It's Very simple.All you have to do is:</ion-label>
+                                <ion-label class="content bold">It's Very simple. All you have to do is:</ion-label>
                                 <div class="content_list">
-                                    <ion-label class="content">Create your free jainity account with your mobile number and email</ion-label>
-                                    <ion-label class="content">Select Jain cause(s) </ion-label>
-                                    <ion-label class="content">Make Payment using your bank account or payment card and provide copy of your identity document such as PAN and AADHAR CARD.</ion-label>
-                                    <ion-label class="content">Receive payment confirmation,donation receipt and tax deduction certificate (if applicable)</ion-label>
+                                    <ion-label class="content">Create your free jainity account with your mobile number and email.</ion-label>
+                                    <ion-label class="content">Select Jain cause(s). </ion-label>
+                                    <ion-label class="content">Make Payment using your bank account or payment card and provide copy of your identity document such as PAN and Aadhar card.</ion-label>
+                                    <ion-label class="content">Receive a payment confirmation, donation receipt and tax deduction certificate (if applicable).</ion-label>
                                 </div>
                             </div>
                         </ion-col>
@@ -202,10 +205,10 @@
                                 <ion-label class="title">INSTITUTE</ion-label>
                                 <ion-label class="content bold">Registering Your institute and managing your causes is a straight forward process.</ion-label>
                                 <div class="content_list">
-                                    <ion-label class="content">Create your free jainity account with your mobile number and email (or use your existing account)</ion-label>
-                                    <ion-label class="content">Submit your institute details,upload requested documents,provide registration information and specify bank details for receiving donations </ion-label>
-                                    <ion-label class="content">manage your institute page,list your causes,add more members from your institute </ion-label>
-                                    <ion-label class="content">Receive notification on each donation and verify donor identify as necessary</ion-label>
+                                    <ion-label class="content">Create your free jainity account with your mobile number and email (or use your existing account).</ion-label>
+                                    <ion-label class="content">Submit your institute details, upload requested documents, provide registration information and specify bank details for receiving donations.</ion-label>
+                                    <ion-label class="content">Manage your institute page, list your causes, add more members from your institute.</ion-label>
+                                    <ion-label class="content">Receive notification on each donation and verify donor identify as necessary.</ion-label>
                                 </div>
                             </div>
                         </ion-col>
@@ -448,35 +451,37 @@
                             </div>
                         </ion-col>
                         <ion-col size="4">
-                            <ion-label class="title">Quick links</ion-label>
+                            <ion-label class="title">Quick Links</ion-label>
                             <div class="link_box">
                                 <ion-label (click)="scrollTo('banner')" style="cursor: pointer;color: white;">Home</ion-label>
                                 <ion-label (click)="scrollTo('about')" style="cursor: pointer;color: white;">About</ion-label>
                                 <ion-label (click)="scrollTo('work')" style="cursor: pointer;color: white;">Donate</ion-label>
-                                <ion-label (click)="scrollTo('footer')" style="cursor: pointer;color: white;">Contact</ion-label>
-                                <ion-label class="link"><a>FAQ</a></ion-label>
-                                <ion-label class="link"><a>Disclaimer</a></ion-label>
-                                <ion-label class="link"><a>Legal</a></ion-label>
+                                <ion-label class="contactusmenu" style="cursor: pointer;color: white;">Contact</ion-label>
+                                <ion-label (click)="this.tools.goFAQ()" style="cursor: pointer;color: white;"><a>FAQ</a></ion-label>
+                                <ion-label (click)="this.tools.goDisclaimer()" style="cursor: pointer;color: white;"><a>Disclaimer</a></ion-label>
+                                <ion-label (click)="this.tools.goTAC()" style="cursor: pointer;color: white;"><a>T & C</a></ion-label>
+                                <ion-label (click)="this.tools.goPP()" style="cursor: pointer;color: white;"><a>Policy</a></ion-label>
+
                             </div>
                         </ion-col>
                         <ion-col size="4">
                             <ion-label class="title">Social</ion-label>
                             <div class="social_icons">
                                 <ion-label class="icons">
-                                    <a href="" target="_blank">
+                                    <a href="https://www.facebook.com/Jainity-101802545134328/?ti=as" target="_blank">
                                         <ion-img src="assets/img/fb.png"></ion-img>
                                     </a>
                                 </ion-label>
                                 <ion-label class="icons">
-                                    <a href="" target="_blank">
-                                        <ion-img src="assets/img/twitter.png"></ion-img>
+                                    <a href="https://instagram.com/jainityapp?igshid=1eb8rk5ppbjw2" target="_blank">
+                                        <ion-img src="../../../assets/img/instagram.png"></ion-img>
                                     </a>
                                 </ion-label>
-                                <ion-label class="icons">
+                                <!-- <ion-label class="icons">
                                     <a href="" target="_blank">
                                         <ion-img src="assets/img/linkdeen.png"></ion-img>
                                     </a>
-                                </ion-label>
+                                </ion-label> -->
                                 <!-- <ion-label class="icons">
                                     <a href="" target="_blank">
 
@@ -490,4 +495,44 @@
         </ion-row>
     </ion-grid>
 
+    <div id="contact_forms">
+        <div class="contact-form">
+            <div class="heading">
+                <ion-label style="text-transform: none !important;">
+                    Contact us! <span>We're not around but we still want to hear from you! Leave us a note:</span>
+                </ion-label>
+            </div>
+            <div class="section">
+                <form>
+                    <div class="form-group">
+                        <ion-input placeholder="Name *" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" [class]="name ==''&&nameErr !=''?'form-control error':'form-control'"></ion-input>
+                        <span [class]="name ==''&&nameErr !=''?'errormsg':''">{{nameErr}}</span>
+                    </div>
+
+                    <div class="form-group">
+                        <ion-input placeholder="Email *" style="text-transform: none;" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" [class]="this.checkMail() && emailErr !=''?'form-control error':'form-control'"></ion-input>
+                        <span [class]="(email =='' || !this.reg.test(email) ) && emailErr !=''?'errormsg':''">{{emailErr}}</span>
+                    </div>
+                    <div class="form-group">
+                        <ion-input placeholder="Subject *" [(ngModel)]="subject" [ngModelOptions]="{standalone: true}" [class]="subject ==''&&subjectErr !=''?'form-control error':'form-control'"></ion-input>
+                        <span [class]="subject ==''&&subjectErr !=''?'errormsg':''">{{subjectErr}}</span>
+
+                    </div>
+                    <div class="form-group">
+                        <ion-textarea placeholder="Type your message here... *" [(ngModel)]="message" [ngModelOptions]="{standalone: true}" [class]="message ==''&&messageErr !=''?'form-control error':'form-control'"></ion-textarea>
+                        <span [class]="message ==''&&messageErr !=''?'errormsg':''">{{messageErr}}</span>
+                    </div>
+                    <div class="button_box">
+                        <ion-button (click)="sendMail()">Send</ion-button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="contact_icon">
+            <span id="icons_click">
+        <ion-img id="contact_icon" src="assets/img/contact_icono.png"></ion-img>
+        <ion-img id="closes" src="assets/img/closeso.png"></ion-img>
+        </span>
+        </div>
+    </div>
 </ion-content>

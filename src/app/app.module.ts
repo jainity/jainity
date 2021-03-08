@@ -1,3 +1,7 @@
+import { OtpverificationPage } from './otpverification/otpverification.page';
+import { RegisterPage } from './register/register.page';
+import { FormsModule } from '@angular/forms';
+import { LoginPage } from './login/login.page';
 import { Tools } from 'src/app/shared/tools';
 import { AuthGuard } from './shared/authguard.service';
 import { Network } from '@ionic-native/network/ngx';
@@ -14,9 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [BrowserModule,HttpClientModule,IonicModule.forRoot(), AppRoutingModule],
+  declarations: [AppComponent,LoginPage,RegisterPage,OtpverificationPage],
+  entryComponents: [LoginPage,RegisterPage,OtpverificationPage],
+  imports: [BrowserModule,FormsModule,HttpClientModule,IonicModule.forRoot(), AppRoutingModule],
   providers: [Network,
     StatusBar,Tools,
     SplashScreen,AuthGuard,InAppBrowser,
