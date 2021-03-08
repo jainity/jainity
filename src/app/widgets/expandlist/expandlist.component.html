@@ -1,40 +1,15 @@
-<ion-grid no-padding style="margin-top: 5px; margin-bottom: 5px; ">
-    <ion-row no-padding (click)="toggleAccordion(name)" style="align-items: center;background: #fff;border-radius: 5px;height: 41px;">
-
-
-        <ion-col no-padding size="11">
-            <ion-label *ngIf='isShow == "1"' class="title indicator"> {{ name }}</ion-label>
-            <ion-label class="title"> {{ name }}</ion-label>
-        </ion-col>
-        <ion-col no-padding size="1">
-            <span *ngIf="isMenuOpen" style="color: #ef7635;">&#9650;</span>
-            <span *ngIf="!isMenuOpen" style="color: #ef7635;">&#9660;</span>
+<ion-grid class="faq_boxs" no-padding>
+    <ion-row no-padding (click)="toggleAccordion(name)" class="headings">
+        <ion-col no-padding size="12">
+            <ion-label class="title"> {{ name }}
+                <span *ngIf="isMenuOpen">&#9650;</span>
+                <span *ngIf="!isMenuOpen">&#9660;</span>
+            </ion-label>
         </ion-col>
     </ion-row>
-    <ion-row no-padding [ngClass]="this.isMenuOpen ? 'active' : 'inactive'">
+    <ion-row class="faq_content" no-padding [ngClass]="this.isMenuOpen ? 'active' : 'inactive'">
         <ion-col no-padding>
             <ion-label class="content"> {{ description }}</ion-label>
-            <!-- <ion-list no-padding *ngIf="scheduleData?.length > 0">
-                <ion-card-content class="ion-no-padding" *ngFor="let shedule of scheduleData" >
-                    <ion-row *ngIf='shedule.isShow==0' style="background: #006000;">
-                        <ion-col size="6">
-                            <ion-label class="content">Date : {{shedule.workingDate}}</ion-label>
-                        </ion-col>
-                        <ion-col size="6">
-                            <ion-label class="content">{{shedule.PlaceName}}</ion-label>
-                        </ion-col>
-                    </ion-row>
-                    <ion-row *ngIf='shedule.isShow==1' style="background: #010B17;">
-                        <ion-col size="6">
-                            <ion-label class="content">Date : {{shedule.workingDate}}</ion-label>
-                        </ion-col>
-                        <ion-col size="6">
-                            <ion-label class="content">{{shedule.PlaceName}}</ion-label>
-                        </ion-col>
-                    </ion-row>
-                </ion-card-content>
-            </ion-list> -->
         </ion-col>
-
     </ion-row>
 </ion-grid>

@@ -19,29 +19,36 @@
 
 <ion-content id="content">
 
-
-    <ion-grid id="Disclaimer">
-        <ion-row>
-            <ion-col>
-                <ion-label>FAQ</ion-label>
-                <div>
-                    <ion-img src='../../../assets/img/faq.png'></ion-img>
-                </div>
-
-                <div class="disclaimer">
-                    <ion-label class="title">Donor Queries</ion-label>
-                    <app-expandlist *ngFor="let faq of this.DonorfaqList" isShow="{{ faq.isShow }}" name="{{ faq.name }}" description="{{faq.description}}"></app-expandlist>
-                </div>
-
-                <div class="disclaimer">
-                    <ion-label class="title">Institute Queries</ion-label>
-                    <app-expandlist *ngFor="let faq of this.InstitutefaqList" isShow="{{ faq.isShow }}" name="{{ faq.name }}" description="{{faq.description}}"></app-expandlist>
+    <ion-grid id="page_banner">
+        <ion-row class="page_banner_block" style="background-image: url('assets/img/faq.png');">
+            <ion-col class="container">
+                <div class="page_banner_box">
+                    <ion-label>FAQ</ion-label>
                 </div>
             </ion-col>
-
         </ion-row>
     </ion-grid>
 
+    <ion-grid id="faq">
+        <ion-row class="faq_block">
+            <ion-col>
+                <ion-grid class="container">
+                    <ion-row>
+                        <ion-col>
+                            <div class="faq_box">
+                                <ion-label class="title">Donor Queries</ion-label>
+                                <app-expandlist *ngFor="let faq of this.DonorfaqList" isShow="{{ faq.isShow }}" name="{{ faq.name }}" description="{{faq.description}}"></app-expandlist>
+                            </div>
+                            <div class="faq_box" style="margin-top: 30px;">
+                                <ion-label class="title">Institute Queries</ion-label>
+                                <app-expandlist *ngFor="let faq of this.InstitutefaqList" isShow="{{ faq.isShow }}" name="{{ faq.name }}" description="{{faq.description}}"></app-expandlist>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
     <ion-grid id="footer">
         <ion-row>
