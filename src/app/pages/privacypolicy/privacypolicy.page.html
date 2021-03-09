@@ -2,7 +2,7 @@
     <ion-toolbar>
         <ion-grid class="container">
             <ion-row style="padding: 10px 0px; align-items: center;">
-                <ion-col size="3" class="logo_box">
+                <ion-col size="3" class="logo_box" (click)="this.tools.goHome()" style="cursor: pointer;">
                     <ion-img class="menu-logo"  src="assets/img/logo_n.png"> </ion-img>
                     <ion-label class="logo-title">Jainity</ion-label>
                 </ion-col>
@@ -26,32 +26,32 @@
             </ion-col>
         </ion-row>
     </ion-grid>
-    
+
     <ion-grid id="page_content">
         <ion-row class="page_content_box">
             <ion-col>
                 <ion-grid class="container">
-                    <ion-row >
+                    <ion-row>
                         <ion-col>
-                        <ion-label class="content">User information on this site is kept strictly confidential. The site may, however, use this information from time to time for purposes such as corresponding with the users for various issues. We shall duly seek permission of the
-                                        users in such cases.</ion-label>
-                        <ion-label class="content" style="margin-top: 10px;">We collect personal information when you create an account or edit your account information or donate. Some of this information is a legal requirement of the Government of India, such as your postal address. Other information is
-                                        used to facilitate your use of the site such as knowing your taxpayer status so that we show you options that you are eligible to make as well as amounts in your local currency.</ion-label>
-                        <ion-label class="content" style="margin-top: 10px;">We do not collect or have access to the credit card numbers or bank account information our third-party vendors collect to process online transactions.
-                                    </ion-label>
+                            <ion-label class="content">User information on this site is kept strictly confidential. The site may, however, use this information from time to time for purposes such as corresponding with the users for various issues. We shall duly seek permission
+                                of the users in such cases.</ion-label>
+                            <ion-label class="content" style="margin-top: 10px;">We collect personal information when you create an account or edit your account information or donate. Some of this information is a legal requirement of the Government of India, such as your postal address. Other information
+                                is used to facilitate your use of the site such as knowing your taxpayer status so that we show you options that you are eligible to make as well as amounts in your local currency.</ion-label>
+                            <ion-label class="content" style="margin-top: 10px;">We do not collect or have access to the credit card numbers or bank account information our third-party vendors collect to process online transactions.
+                            </ion-label>
                             <ion-label class="content" style="margin-top: 10px;">Janity will not share, rent or sell your personal information to third parties.
-                                    </ion-label>
-                            <ion-label class="content" style="margin-top: 10px;">By default, you will also receive monthly newsletters as well as other Jainity emailers from time to time. In case you would not like to receive these newsletters and emailers, you can send a mail to info@giveindia.org with the
-                                        word &#39;Unsubscribe&#39; in the subject line, and we will remove your name from the list. You can also unsubscribe using the Unsubscribe link in the emailer received.</ion-label>
+                            </ion-label>
+                            <ion-label class="content" style="margin-top: 10px;">By default, you will also receive monthly newsletters as well as other Jainity emailers from time to time. In case you would not like to receive these newsletters and emailers, you can send a mail to info@giveindia.org with
+                                the word &#39;Unsubscribe&#39; in the subject line, and we will remove your name from the list. You can also unsubscribe using the Unsubscribe link in the emailer received.</ion-label>
 
                             <ion-label class="content" style="margin-top: 10px;">We take privacy seriously and we value yours. In case you have any further questions or concerns about our Privacy Policy, please write to us at info@jainity.com</ion-label>
-                    
+
                         </ion-col>
                     </ion-row>
                 </ion-grid>
             </ion-col>
         </ion-row>
-    </ion-grid>    
+    </ion-grid>
 
     <ion-grid id="footer">
         <ion-row>
@@ -59,7 +59,7 @@
                 <ion-grid class="container">
                     <ion-row class="footer-box">
                         <ion-col size="4">
-                            <div class="logo_box">
+                            <div class="logo_box" (click)="this.tools.goHome()" style="cursor: pointer;">
                                 <ion-img class="menu-logo"  src="assets/img/logo_n.png"> </ion-img>
                                 <ion-label class="logo-title">Jainity</ion-label>
                             </div>

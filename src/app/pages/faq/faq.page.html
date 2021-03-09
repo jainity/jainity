@@ -2,7 +2,7 @@
     <ion-toolbar>
         <ion-grid class="container">
             <ion-row style="padding: 10px 0px; align-items: center;">
-                <ion-col size="3" class="logo_box">
+                <ion-col size="3" class="logo_box" (click)="this.tools.goHome()" style="cursor: pointer;">
                     <ion-img class="menu-logo"  src="assets/img/logo_n.png"> </ion-img>
                     <ion-label class="logo-title">Jainity</ion-label>
                 </ion-col>
@@ -56,7 +56,7 @@
                 <ion-grid class="container">
                     <ion-row class="footer-box">
                         <ion-col size="4">
-                            <div class="logo_box">
+                            <div class="logo_box" (click)="this.tools.goHome()" style="cursor: pointer;">
                                 <ion-img class="menu-logo"  src="assets/img/logo_n.png"> </ion-img>
                                 <ion-label class="logo-title">Jainity</ion-label>
                             </div>

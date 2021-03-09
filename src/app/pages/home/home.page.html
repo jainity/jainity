@@ -2,8 +2,8 @@
     <ion-toolbar>
         <ion-grid class="container">
             <ion-row style="padding: 10px 0px; align-items: center;">
-                <ion-col size="3" class="logo_box">
-                    <ion-img class="menu-logo"  src="assets/img/logo_n.png"> </ion-img>
+                <ion-col size="3" class="logo_box" (click)="scrollTo('banner')" style="cursor: pointer;">
+                    <ion-img class="menu-logo"   src="assets/img/logo_n.png"> </ion-img>
                     <ion-label class="logo-title">Jainity</ion-label>
                 </ion-col>
                 <ion-col size="9" class="menu">
@@ -437,7 +437,7 @@
                 <ion-grid class="container">
                     <ion-row class="footer-box">
                         <ion-col size="4">
-                            <div class="logo_box">
+                            <div class="logo_box" (click)="scrollTo('banner')" style="cursor: pointer;">
                                 <ion-img class="menu-logo"  src="assets/img/logo_n.png"> </ion-img>
                                 <ion-label class="logo-title">Jainity</ion-label>
                             </div>
@@ -522,7 +522,7 @@
                         <ion-textarea placeholder="Type your message here... *" [(ngModel)]="message" [ngModelOptions]="{standalone: true}" [class]="message ==''&&messageErr !=''?'form-control error':'form-control'"></ion-textarea>
                         <span [class]="message ==''&&messageErr !=''?'errormsg':''">{{messageErr}}</span>
                     </div>
-                    <div class="button_box">
+                    <div style="margin-top: 30px; min-height: 40px;" class="btn-orange w-100">
                         <ion-button (click)="sendMail()">Send</ion-button>
                     </div>
                 </form>

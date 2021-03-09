@@ -2,7 +2,7 @@
     <ion-toolbar>
         <ion-grid class="container">
             <ion-row style="padding: 10px 0px; align-items: center;">
-                <ion-col size="3" class="logo_box">
+                <ion-col size="3" class="logo_box" (click)="this.tools.goHome()" style="cursor: pointer;">
                     <ion-img class="menu-logo"  src="assets/img/logo_n.png"> </ion-img>
                     <ion-label class="logo-title">Jainity</ion-label>
                 </ion-col>
@@ -32,12 +32,16 @@
         <ion-row class="page_content_box">
             <ion-col>
                 <ion-grid class="container">
-                     <ion-row>
+                    <ion-row>
                         <ion-col>
-                            <ion-label class="content">Jainity shall endeavor to put up only such information on the site, as it has verified from the NGOs, or otherwise as being true to the best of their knowledge and belief. However, Jainity does not accept any liability due to inaccuracy of information or data provided on this site.</ion-label>
+                            <ion-label class="content">Jainity shall endeavor to put up only such information on the site, as it has verified from the NGOs, or otherwise as being true to the best of their knowledge and belief. However, Jainity does not accept any liability due
+                                to inaccuracy of information or data provided on this site.</ion-label>
                             <ion-label class="content" style="margin-top: 10px;">Any liabilities arising out of any act or omission by a visitor to this site, by relying on or using the information provided on this site, shall be solely to the account of such visitor.</ion-label>
-                            <ion-label class="content" style="margin-top: 10px;">Jainity will strive to ensure that the Institutes send tax exemption certificates and feedback reports to the donors within reasonable time limits. Jainity shall exert reasonable influence at its command, including withdrawal of non-compliant Institutes from the site, if, in its opinion, the situation merits such action. However, Jainity is indemnified by donors on this site, from any liabilities arising out of any kind of non- compliance by the Institutes. </ion-label>
-                            <ion-label class="content" style="margin-top: 10px;">Jainity disclaims any liability, legal or otherwise, that may arise due to the act, omission or otherwise of any visitor to this site, or caused by the same. Visitors to the site acknowledge that Jainity is purely a &quot;facilitator&quot;                             for transactions between the NGOs and visitors, and as such, stands indemnified from any liabilities that may arise due to the same.  </ion-label>
+                            <ion-label class="content" style="margin-top: 10px;">Jainity will strive to ensure that the Institutes send tax exemption certificates and feedback reports to the donors within reasonable time limits. Jainity shall exert reasonable influence at its command, including withdrawal
+                                of non-compliant Institutes from the site, if, in its opinion, the situation merits such action. However, Jainity is indemnified by donors on this site, from any liabilities arising out of any kind of non- compliance by
+                                the Institutes. </ion-label>
+                            <ion-label class="content" style="margin-top: 10px;">Jainity disclaims any liability, legal or otherwise, that may arise due to the act, omission or otherwise of any visitor to this site, or caused by the same. Visitors to the site acknowledge that Jainity is purely a &quot;facilitator&quot;
+                                for transactions between the NGOs and visitors, and as such, stands indemnified from any liabilities that may arise due to the same. </ion-label>
                             <ion-label class="content" style="margin-top: 10px;">Visitors also acknowledge that visiting this site is an implicit acceptance of this disclaimer on their part.</ion-label>
                             <ion-label class="content" style="margin-top: 10px;">Email:</ion-label>
                             <ion-label class="content" style="margin-top: 10px;">privacy@Jainity.com</ion-label>
@@ -47,7 +51,7 @@
             </ion-col>
         </ion-row>
     </ion-grid>
-                
+
 
 
     <ion-grid id="footer">
@@ -56,7 +60,7 @@
                 <ion-grid class="container">
                     <ion-row class="footer-box">
                         <ion-col size="4">
-                            <div class="logo_box">
+                            <div class="logo_box" (click)="this.tools.goHome()" style="cursor: pointer;">
                                 <ion-img class="menu-logo"  src="assets/img/logo_n.png"> </ion-img>
                                 <ion-label class="logo-title">Jainity</ion-label>
                             </div>
