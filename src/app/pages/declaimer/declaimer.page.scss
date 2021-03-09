@@ -1,5 +1,6 @@
 // @media screen and (max-height:640px){
 // }
+ion-header .menu {display: block;}
 ion-toolbar {
     background: white !important;
     --background: white !important;
@@ -63,7 +64,7 @@ ion-col {
 }
 
 .page_banner {
-    //background-image: url(../../../assets/img/slider.jpg);
+    //background-image: url(../assets/img/slider.jpg);
     min-height: calc(100vh - 69.65px) !important;
     width: 100%;
     background-size: cover;
@@ -225,51 +226,6 @@ ion-col {
     font-family: 'Poppins';
     line-height: 22px !important;
     display: block;
-}
-
-.tag-line-row {
-    background-image: url(../../../assets/img/background.jpg);
-    padding: 80px 15px;
-    text-align: center;
-    background-size: cover;
-    background-position: center center;
-}
-
-.tag-line-row ion-label {
-    font-size: 20px !important;
-    font-style: italic;
-    color: #fff;
-    letter-spacing: 0.8px;
-    text-align: center;
-    position: relative;
-    margin: 0 auto;
-    max-width: 640px;
-    display: block;
-    z-index: 2;
-    font-family: 'Poppins-SemiBold';
-}
-
-.tag-line-row ion-label span {
-    color: #000;
-    font-size: 89px;
-    line-height: 52px;
-    margin: 0px;
-    opacity: 0.3;
-    position: absolute;
-    z-index: -1;
-    font-family: arial;
-}
-
-.tag-line-row ion-label span.left {
-    left: -20px;
-    top: 0px;
-    font-family: arial;
-}
-
-.tag-line-row ion-label span.right {
-    right: -24px;
-    top: -44px;
-    transform: rotate(175deg);
 }
 
 #way .way-block {
@@ -695,4 +651,25 @@ ion-col {
     --border-color: #428cff;
     border-width: 5px;
     top: 20%;
+}
+
+
+@media (max-width: 992px) 
+{
+
+    ion-header .menu {flex: 0 0 101px !important;  max-width: 101px !important;position: relative; width: auto; }
+    ion-header .menu ion-label {
+        padding: 0px 5px !important;
+        margin: 0px 5px !important;
+        font-size: 14px !important;
+    }
+
+    ion-header .menu ion-label:first-child {
+        padding-left: 0px !important;
+        margin-left: 0px !important;
+    }
+    ion-header .menu ion-label:last-child {
+        padding-right: 0px !important;
+        margin-right: 0px !important;
+    }
 }

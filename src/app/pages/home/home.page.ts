@@ -4,7 +4,7 @@ import { LoginPage } from './../../login/login.page';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController, IonSlides, ModalController } from '@ionic/angular';
+import { AlertController, IonSlides, MenuController, ModalController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
 import { Tools } from 'src/app/shared/tools';
 
@@ -68,6 +68,11 @@ export class HomePage implements OnInit {
     }
  
   }
+  openFirst() {
+    this.menu.enable(true, "first"); 
+    this.menu.open("first");
+  }
+
   checkScreen() {
     let innerWidth = window.innerWidth;
     console.log('Inner Width ',innerWidth);
@@ -105,22 +110,12 @@ export class HomePage implements OnInit {
 
 
   constructor(private route: Router,public alertController: AlertController,
-     public apiService: ApiService,public formBuilder: FormBuilder,
+     public apiService: ApiService,public formBuilder: FormBuilder, private menu: MenuController, 
     public tools: Tools,public modalCtrl: ModalController) {
 
       this.tools.closeLoader();
       this.isLogin = this.apiService.getUserData() !=undefined;
 
-//      console.log(,this.apiService.getUserData())
-
-    // this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Amizara Vasupujya ',loc:'Ghatkopar'})
-    // this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Munisvrat Derasar ',loc:'Matunga'})
-    // this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Shantinath Derasar ',loc:'Sion'})
-    // this.slideItem.push({img:'../../../assets/img/slide_img.png',title:'Parshvanath Derasar ',loc:'Borival'})
-
-    // this.TopslideItem.push({img:'../../../assets/img/slider.jpg'})
-    // this.TopslideItem.push({img:'../../../assets/img/slidedemo.jpg'})
-    // this.TopslideItem.push({img:'../../../assets/img/slidesdemoo.jpg'})
 
    }
 
@@ -132,10 +127,11 @@ export class HomePage implements OnInit {
   sendMail(){
 
   }
-
-
+  ionViewWillEnter() {
+    this.menu.enable(false);
+  }
  async LoginClick() {  
-
+  this.menuClose();
     const modal = await this.modalCtrl.create({  
       component: LoginPage ,
       //componentProps: { id: 5, name: 'gaurav' },
@@ -158,6 +154,7 @@ export class HomePage implements OnInit {
   }  
   
   async openRegister() {
+    this.menuClose();
     const modal = await this.modalCtrl.create({  
       component: RegisterPage ,
             cssClass: 'register-modal',
@@ -166,7 +163,7 @@ export class HomePage implements OnInit {
     modal.onDidDismiss().then(result => {
       console.log(result.data);
       if(result.data =='login'){
-        this.openlogin();
+        this.LoginClick();
        }
        if(result.data =='OTPPage'){
         this.openOtp();
@@ -176,28 +173,8 @@ export class HomePage implements OnInit {
     return await modal.present();  
   }
 
-  async openlogin() {
-    const modal = await this.modalCtrl.create({  
-      component: LoginPage ,
-            cssClass: 'login-modal',
-
-    });  
-    modal.onDidDismiss().then(result => {
-      if(result.data =='login'){
-        this.openlogin();
-       }
-       if(result.data =='register'){
-        this.openRegister();
-       }
-       if(result.data =='OTPPage'){
-        this.openOtp();
-       }
-    });
-
-    return await modal.present();
-  }
-
   async openOtp() {
+    this.menuClose();
     const modal = await this.modalCtrl.create({  
       component: OtpverificationPage ,
             cssClass: 'login-modal',
@@ -205,13 +182,10 @@ export class HomePage implements OnInit {
     });  
     modal.onDidDismiss().then(result => {
       if(result.data =='login'){
-        this.openlogin();
+        this.LoginClick();
        }
        if(result.data =='register'){
         this.openRegister();
-       }
-       if(result.data =='OTPPage'){
-        this.openOtp();
        }
     });
 
@@ -285,7 +259,13 @@ return await alert.present();
   scrollTo(elementId:string) {
     let todayItem = document.getElementById(elementId);
     todayItem.scrollIntoView(true);
+    this.menuClose();
+    // this.menu.enable(false); 
     // this.content.scrollTo(0, todayItem.offsetTop, 1000);
+  }
+  menuClose() {
+    if(this.checkScreen() != 4)
+    this.menu.close();
   }
 
   onInstituteList(item){

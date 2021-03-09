@@ -71,90 +71,66 @@ export class FaqPage implements OnInit {
 
     }
 
-
- async LoginClick() {  
-
-    const modal = await this.modalCtrl.create({  
-      component: LoginPage ,
-      //componentProps: { id: 5, name: 'gaurav' },
-      cssClass: 'login-modal',
-      //backdropDismiss: false,
-    });  
-    modal.onDidDismiss().then(result => {
-      console.log(result.data);
-
-      if(result.data =='register'){
-       this.openRegister();
-      }
-      if(result.data =='OTPPage'){
-        this.openOtp();
-       }
-    });
+    async LoginClick() {  
+        const modal = await this.modalCtrl.create({  
+          component: LoginPage ,
+          //componentProps: { id: 5, name: 'gaurav' },
+          cssClass: 'login-modal',
+          //backdropDismiss: false,
+        });  
+        modal.onDidDismiss().then(result => {
+          console.log(result.data);
     
+          if(result.data =='register'){
+           this.openRegister();
+          }
+          if(result.data =='OTPPage'){
+            this.openOtp();
+           }
+        });
+        
+    
+        return await modal.present();  
+      }  
+      
+      async openRegister() {
+        const modal = await this.modalCtrl.create({  
+          component: RegisterPage ,
+                cssClass: 'register-modal',
+    
+        });  
+        modal.onDidDismiss().then(result => {
+          console.log(result.data);
+          if(result.data =='login'){
+            this.LoginClick();
+           }
+           if(result.data =='OTPPage'){
+            this.openOtp();
+           }
+        });
+    
+        return await modal.present();  
+      }
+    
+      async openOtp() {
 
-    return await modal.present();  
-  }  
-  
-  async openRegister() {
-    const modal = await this.modalCtrl.create({  
-      component: RegisterPage ,
-            cssClass: 'register-modal',
-
-    });  
-    modal.onDidDismiss().then(result => {
-      console.log(result.data);
-      if(result.data =='login'){
-        this.openlogin();
-       }
-       if(result.data =='OTPPage'){
-        this.openOtp();
-       }
-    });
-
-    return await modal.present();  
-  }
-
-  async openlogin() {
-    const modal = await this.modalCtrl.create({  
-      component: LoginPage ,
-            cssClass: 'login-modal',
-
-    });  
-    modal.onDidDismiss().then(result => {
-      if(result.data =='login'){
-        this.openlogin();
-       }
-       if(result.data =='register'){
-        this.openRegister();
-       }
-       if(result.data =='OTPPage'){
-        this.openOtp();
-       }
-    });
-
-    return await modal.present();
-  }
-
-  async openOtp() {
-    const modal = await this.modalCtrl.create({  
-      component: OtpverificationPage ,
-            cssClass: 'login-modal',
-
-    });  
-    modal.onDidDismiss().then(result => {
-      if(result.data =='login'){
-        this.openlogin();
-       }
-       if(result.data =='register'){
-        this.openRegister();
-       }
-       if(result.data =='OTPPage'){
-        this.openOtp();
-       }
-    });
-
-    return await modal.present();
-  }
+        const modal = await this.modalCtrl.create({  
+          component: OtpverificationPage ,
+                cssClass: 'login-modal',
+    
+        });  
+        modal.onDidDismiss().then(result => {
+          if(result.data =='login'){
+            this.LoginClick();
+           }
+           if(result.data =='register'){
+            this.openRegister();
+           }
+        });
+    
+        return await modal.present();
+      }
+    
 
  async LogoutClick(){
    const alert = await this.alertController.create({

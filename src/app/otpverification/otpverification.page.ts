@@ -30,9 +30,6 @@ errorMsg:any='';
       this.verificont="Please Enter Verification Code Send to ******"+this.mno.substr(this.mno.length - 4)
   }
 
-  onBackClick(){
-    this.tools.backPage();
-   }
 
   onSubmitClick() {
     //this.router.navigate(['/home']);

@@ -646,127 +646,6 @@ p {
     background: #f3f3f3;
 }
 
-@media (max-width: 1024px) {
-    ion-header .menubars {
-        flex: 0 0 24px;
-        width: 24px;
-        font-size: 24px !important;
-    }
-    .list_block {
-        flex: 0 0 50%;
-        width: 50%;
-    }
-    .list_col {
-        flex: 0 0 50%;
-        width: 50%;
-    }
-    #header2 .search_block {
-        flex: 0 0 300px;
-        width: 300px;
-        position: absolute;
-        right: 0px;
-        top: -5px;
-    }
-    #header #header2 {
-        height: 50px;
-        padding: 10px 0;
-        line-height: 9px;
-    }
-    ion-header .menubars {
-        height: 30px !important;
-    }
-}
-
-@media (max-width: 992px) {
-    ion-header .search_box {
-        border-radius: 6px;
-        margin-top: 0;
-    }
-    #header .open .search_box {
-        padding: 0px 10px 0px 3px;
-    }
-    #header .logo_box {
-        top: 55px;
-    }
-    #header .header-block {
-        right: 0;
-        height: 180px;
-    }
-    ion-tabs {
-        height: auto !important;
-    }
-    .tab-nav-box ion-label {
-        white-space: nowrap;
-        font-size: 14px !important;
-    }
-    ion-label {
-        font-size: 14px !important;
-    }
-    .container {
-        padding: 0px 5px;
-    }
-    ion-header .container {
-        padding: 5px 12px;
-    }
-}
-
-@media (max-width: 768px) {
-    .list_block {
-        flex: 0 0 100%;
-        width: 100%;
-    }
-    .list_col {
-        flex: 0 0 100%;
-        width: 100%;
-    }
-}
-
-@media (max-width: 640px) {
-    ion-label {
-        font-size: 13px !important;
-    }
-    .list_inner_box .white.content {
-        line-height: 15px;
-        margin-bottom: 5px;
-    }
-    .btn-orange {
-        font-size: 13px;
-        display: inline-block;
-        height: 30px;
-    }
-    .prise_boxs ion-button {
-        margin-top: 24px;
-    }
-    .list_block .white.content {
-        margin-bottom: 5px;
-    }
-}
-
-@media (max-width: 480px) {
-    .tab-nav-box {
-        width: auto !important;
-        max-width: none !important;
-        float: none !important;
-        padding: 0px !important;
-        margin: 0px !important;
-        --padding-top: 0 !important;
-        --padding-end: 0 !important;
-        --padding-bottom: 0 !important;
-        --padding-start: 0 !important;
-        max-width: none !important;
-    }
-    ion-tab-bar {
-        height: 42px !important;
-        padding: 0px 5px;
-    }
-    .tab-nav-box ion-label {
-        white-space: nowrap;
-        font-size: 13px !important;
-        word-spacing: -1px !important;
-        letter-spacing: 0px !important;
-    }
-}
-
 .swiper-pagination {
     display: none !important;
 }
@@ -851,13 +730,7 @@ span#icons_click {
     letter-spacing: 0.2px;
 }
 
-@media (max-width: 420px) {
-    #contact_forms .contact-form {
-        width: calc(100% - 20px);
-        max-width: 100%;
-        right: 10px;
-    }
-}
+
 
 ion-header .container {
     max-width: 1215px !important;
@@ -870,4 +743,174 @@ ion-header .container {
 
 #footer .content {
     text-align: justify;
+}
+
+
+
+
+
+
+
+/* responsive web & app*/
+
+#menu_icons {
+	background: #ff7400;
+	width: 44px;
+	padding: 2px 5px;
+	border-radius: 2px;
+	display: none;
+	flex: 0 0 40px;
+}
+#menu_icons span {
+	background: #fff;
+	width: 100%;
+	height: 2px;
+	display: block;
+	margin: 5px 0px;
+	padding: 0;
+}
+
+
+.menus {
+    background: #ff7400 !important;
+	--background: #ff7400 !important;
+}
+  
+.menus ion-list, .menus ion-list ion-item {
+	--padding-start: 0px !important;
+	background: #ff7400 !important;
+	--background: #ff7400 !important;
+	--border-color: #fff !important;
+}
+
+.menus ion-label {
+	color: #fff !important;
+	font-size: 15px !important;
+	display: block !important;
+	margin: 0px !important;
+	padding: 0px !important;
+	font-weight: 600 !important;
+	line-height: 20px !important;
+	padding-left: 16px !important;
+}
+
+// ion-header{
+//     position: fixed !important;
+// }
+
+@media (max-width: 1024px) 
+{
+    ion-header .menubars {flex: 0 0 24px; width: 24px; font-size: 24px !important;}
+    .list_block {flex: 0 0 50%; width: 50%;}
+    .list_col {flex: 0 0 50%; width: 50%;}
+    #header2 .search_block {flex: 0 0 300px; width: 300px; position: absolute; right: 0px; top: -5px;}
+    #header #header2 {height: 50px; padding: 10px 0; line-height: 9px;}
+    ion-header .menubars {height: 30px !important;}
+
+    .slider_img_scheme {height: auto !important;}
+
+    span#icons_click {right: 15px !important;}
+
+    .contact-form {
+        max-height: calc(100vh - 190px);
+    }
+
+    .login-modal .modal-wrapper {
+        width: calc(100% - 30px) !important;
+        margin: 20px auto !important;
+        height: calc(100vh - 50px) !important;
+        max-height: 490px;
+    }
+
+    .login-modal ion-content {
+        --overflow: auto !important;
+    }
+
+    .register-modal .modal-wrapper {
+        width: calc(100% - 30px) !important;
+        margin: 20px auto !important;
+        height: calc(100vh - 50px) !important;
+        max-height: 600px;
+    }
+    .login-modal .page_block_login {
+        padding: 15px !important;
+    }
+    .register-modal .page_block_login {
+        padding: 15px !important;
+    }
+}
+
+@media (max-width: 992px) 
+{
+    ion-header .search_box {border-radius: 6px; margin-top: 0;}
+    #header .open .search_box {padding: 0px 10px 0px 3px;}
+    #header .logo_box {top: 55px;}
+    #header .header-block {right: 0; height: 180px;}
+    ion-tabs {height: auto !important;}
+    .tab-nav-box ion-label {white-space: nowrap;  font-size: 14px !important;}
+    ion-label {font-size: 14px !important;}
+    .container {padding: 0px 5px;}
+    ion-header .container {padding: 5px 12px;}
+
+    .logo_box  {flex: 0 0 170px !important; max-width: 170px !important;}
+
+    ion-header .container {padding-right: 15px !important;}
+    
+    .menu_list {display: none !important;}
+    .tag-line {font-size: 25px !important; line-height: 25px;}
+    .subtag-line {font-size: 16px !important;}
+
+    #page_banner ion-label {font-size: 25px !important;  padding: 40px 0px;}
+    #faq .faq_box .title {margin-bottom: 10px !important;  line-height: 20px; font-size: 20px !important;}
+    #faq .faq_box .headings .title {padding: 8px !important; font-size: 15px !important; padding-right: 28px !important;}
+    #faq .faq_box .headings .title span {right: 8px; font-size: 15px;}
+
+    ion-header .menu {display: none;}
+    #menu_icons {display: block !important;}
+
+    // ion-menu {display: block !important;}
+    
+}
+
+@media (max-width: 768px) {
+    .list_block {flex: 0 0 100%; width: 100%;}
+    .list_col {flex: 0 0 100%; width: 100%;}
+
+    #footer .footer-box {justify-content: center !important;display: block !important;margin: 0 auto;text-align: center;}
+    #footer .footer-box ion-col {display: block; flex: 0 0 100% !important; max-width: 100% !important; width: 100% !important;}
+    #footer .logo_box {margin: 0 auto; text-align: center;}
+    #footer .footer-box .content {max-width: 380px; margin: 0 auto; text-align: center !important;}
+    #footer .title {margin-bottom: 18px;}
+    #footer .footer-box ion-col:nth-child(2), #footer .footer-box ion-col:nth-child(3) {max-width: 230px !important;  margin: 0 auto !important;  margin-top: 25px !important;}
+    #footer .social_icons {justify-content: center;}
+    #footer {padding: 50px 0px;}
+
+    #faq .faq_block {padding: 50px 0px;}
+
+    #page_banner ion-label {font-size: 22px !important; line-height: 22px !important;}
+    #page_content .page_content_box {padding: 50px 0px 35px 0px;}
+    #page_content .content {text-align: justify;}
+    #faq .faq_box .title {font-size: 18px !important;}
+}
+
+@media (max-width: 640px) {
+    ion-label {font-size: 13px !important;}
+    .list_inner_box .white.content {line-height: 15px; margin-bottom: 5px;}
+    .btn-orange {font-size: 13px; display: inline-block; height: 30px;}
+    .prise_boxs ion-button {margin-top: 24px;}
+    .list_block .white.content {margin-bottom: 5px;}
+
+    #footer ion-label {
+        font-size: 15px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .tab-nav-box {width: auto !important; max-width: none !important; float: none !important; padding: 0px !important; margin: 0px !important; --padding-top: 0 !important; --padding-end: 0 !important; --padding-bottom: 0 !important; --padding-start: 0 !important; max-width: none !important;}
+    ion-tab-bar {height: 42px !important; padding: 0px 5px;}
+    .tab-nav-box ion-label {white-space: nowrap; font-size: 13px !important; word-spacing: -1px !important; letter-spacing: 0px !important;}
+}
+
+@media (max-width: 420px) {
+    #contact_forms .contact-form {width: calc(100% - 20px); max-width: 100%; right: 10px;}
 }
