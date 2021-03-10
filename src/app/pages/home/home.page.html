@@ -1,25 +1,25 @@
-<ion-menu side="end" menuId="first"  *ngIf="this.checkScreen() != 4">
+<ion-menu side="end" menuId="first" *ngIf="this.checkScreen() != 4">
     <ion-content class="menus" no-padding>
-      <ion-list style="padding: 0px;">
-        <ion-item class="list-item" (click)="scrollTo('banner')">
-          <ion-label class="lbl-style-m">Home</ion-label>
-        </ion-item>
-        <ion-item class="list-item" (click)="scrollTo('about')">
-            <ion-label class="lbl-style-m">About</ion-label>
-        </ion-item>
-        <ion-item class="list-item" (click)="scrollTo('work')">
-            <ion-label class="lbl-style-m">Donate</ion-label>
-        </ion-item>
-        <ion-item class="list-item"  *ngIf="!isLogin" (click)="LoginClick()">
-            <ion-label class="lbl-style-m">Login</ion-label>
-        </ion-item>
-        <ion-item class="list-item"  *ngIf="isLogin" (click)="LogoutClick()">
-            <ion-label class="lbl-style-m">Logout</ion-label>
-        </ion-item>
-      </ion-list>
+        <ion-list style="padding: 0px;">
+            <ion-item class="list-item" (click)="scrollTo('banner')">
+                <ion-label class="lbl-style-m">Home</ion-label>
+            </ion-item>
+            <ion-item class="list-item" (click)="scrollTo('about')">
+                <ion-label class="lbl-style-m">About</ion-label>
+            </ion-item>
+            <ion-item class="list-item" (click)="scrollTo('work')">
+                <ion-label class="lbl-style-m">Donate</ion-label>
+            </ion-item>
+            <ion-item class="list-item" *ngIf="!isLogin" (click)="LoginClick()">
+                <ion-label class="lbl-style-m">Login</ion-label>
+            </ion-item>
+            <ion-item class="list-item" *ngIf="isLogin" (click)="LogoutClick()">
+                <ion-label class="lbl-style-m">Logout</ion-label>
+            </ion-item>
+        </ion-list>
     </ion-content>
 </ion-menu>
- <ion-router-outlet main   *ngIf="this.checkScreen() != 4"> </ion-router-outlet>
+<ion-router-outlet main *ngIf="this.checkScreen() != 4"> </ion-router-outlet>
 <ion-header>
     <ion-toolbar>
         <ion-grid class="container">
@@ -143,7 +143,7 @@
     </ion-grid>
 
     <ion-grid id="way">
-        <ion-row class="way-block" style="background-image: url('assets/img//way.jpg');">
+        <ion-row class="way-block" style="background-image: url('../../../assets/img/way.jpg');">
             <ion-col>
                 <ion-grid class="container">
                     <ion-label class="section-title">why jainity?</ion-label>

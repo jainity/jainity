@@ -77,6 +77,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/privacypolicy/privacypolicy.module').then( m => m.PrivacypolicyPageModule)
   },
 
+  {
+    path: 'schemegrouplist',
+    loadChildren: () => import('./pages/schemegrouplist/schemegrouplist.module').then( m => m.SchemegrouplistPageModule)
+  },
+
 ];
 
 @NgModule({
