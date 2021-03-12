@@ -215,24 +215,27 @@ export class HomePage implements OnInit {
 
 
    async OnConnectClick(){
-    
-    if (!this.isLogin) {
+    this.route.navigateByUrl('/schemegrouplist');
 
-      const alert = await this.alertController.create({
-        message: 'Coming Soon',
-        buttons: [
-            {
-                text: 'OK',
-                role: 'OK',
-                handler: () => {
+  //   if (!this.isLogin) {
+
+  //     const alert = await this.alertController.create({
+  //       message: 'Coming Soon',
+  //       buttons: [
+  //           {
+  //               text: 'OK',
+  //               role: 'OK',
+  //               handler: () => {
     
-                }
-            },
-        ], backdropDismiss: false
-    });
-    alert.present();
-    }else
-  this.route.navigateByUrl('/Dashboard');
+  //               }
+  //           },
+  //       ], backdropDismiss: false
+  //   });
+  //   alert.present();
+  //   }else
+  // this.route.navigateByUrl('/Dashboard');
+
+
  }
 
 

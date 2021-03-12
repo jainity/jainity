@@ -233,13 +233,14 @@ getInstitutetypeList(ID) {
     this.apiService.getInstituteTypeList(ID).subscribe(response => {
       console.log('RESPONSE>>>');
 
-      this.tools.closeLoader();
       let res: any = response;
       if (res.status) {
         this.InstList = res.data;
       } else {
         this.InstList = res.message
       }
+      this.tools.closeLoader();
+
       console.log(res)
     }, (error: Response) => {
       console.log('ERORR>>>');
@@ -255,4 +256,5 @@ getInstitutetypeList(ID) {
     this.tools.closeLoader();
   }
 }
+
 }

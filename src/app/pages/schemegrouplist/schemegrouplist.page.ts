@@ -178,7 +178,6 @@ return await alert.present();
     localStorage.setItem('schemeId',item.SchemeGroupID)
     localStorage.setItem('TYPE','SchemeGroup')
     localStorage.setItem('Tittle',item.SchemeGroup)
-    
     this.route.navigateByUrl('/schemedetailslist')
    
    }
@@ -189,7 +188,7 @@ return await alert.present();
 
 getSGLISTCall() {
   if (this.tools.isNetwork()) {
-    //this.tools.openLoader();
+    this.tools.openLoader();
     console.log('getSGLISTCall');
     this.apiService.getHomeSchemeGroup().subscribe(response => {
       console.log('getSGLISTCall_RESPONSE>>>');
