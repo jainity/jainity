@@ -19,22 +19,36 @@
 
 <ion-content id="content">
     <ion-grid id="page_banner">
-        <ion-row class="page_banner_block" style="background-image: url('../../../assets/img/SchemeBanner.png');">
+        <ion-row class="page_banner_block" style="background-image: url('../../../assets/img/INSTITUTEBanner.png');">
             <ion-col class="container">
                 <div class="page_banner_box">
-                    <ion-label>SCHEME GROUP</ion-label>
+                    <ion-label>INSTITUTE</ion-label>
                 </div>
             </ion-col>
         </ion-row>
     </ion-grid>
 
     <ion-grid class="content">
+        <ion-row class="slider_tabs_box" style="margin-top: 20px;">
+            <ion-col>
+                <ion-radio-group [(ngModel)]="sliderType" class="slider_tabs">
+                    <ion-item *ngFor="let item of InstituteType" (click)="onInstituteList(item)">
+                        <ion-label>
+                            <ion-radio value={{item.InstituteType}}></ion-radio>
+                            <span class="check_mark">{{item.InstituteType}}</span>
+                        </ion-label>
+                    </ion-item>
+
+                </ion-radio-group>
+            </ion-col>
+        </ion-row>
+
         <ion-row style="margin: 10px; padding: 20px;">
-            <ion-col size="3" style="cursor: pointer;" class="slider_box" *ngFor="let item of SGList" (click)="onSchemeDetails(item)">
+            <ion-col size="3" style="cursor: pointer;" class="slider_box" *ngFor="let item of InstList" (click)="onInstiDetails(item)">
                 <div class="slider_img_scheme">
-                    <ion-img [src]='item.SchemeGroupImage'></ion-img>
+                    <ion-img [src]='item.InstituteLogo'></ion-img>
                 </div>
-                <ion-label style="text-align: center;">{{item.SchemeGroup}} </ion-label>
+                <ion-label style="text-align: center;">{{item.InstituteName}} </ion-label>
             </ion-col>
         </ion-row>
     </ion-grid>

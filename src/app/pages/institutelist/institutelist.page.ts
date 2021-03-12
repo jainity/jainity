@@ -8,16 +8,17 @@ import { ApiService } from '../../services/api.service';
 import { Tools } from '../../shared/tools';
 
 @Component({
-  selector: 'app-schemegrouplist',
-  templateUrl: './schemegrouplist.page.html',
-  styleUrls: ['./schemegrouplist.page.scss'],
+  selector: 'app-institutelist',
+  templateUrl: './institutelist.page.html',
+  styleUrls: ['./institutelist.page.scss'],
 })
-export class SchemegrouplistPage implements OnInit {
+export class InstitutelistPage implements OnInit {
 
   
   isLogin=false;
-  SGList =[];
-
+  InstList =[];
+  InstituteType=[];
+  sliderType:any;
 
 
   constructor(private route: Router,public alertController: AlertController,
@@ -26,7 +27,7 @@ export class SchemegrouplistPage implements OnInit {
 
       this.tools.closeLoader();
       this.isLogin = this.apiService.getUserData() !=undefined;
-      localStorage.removeItem('schemeId');
+      localStorage.removeItem('InstituteId');
 
    }
 
@@ -174,32 +175,40 @@ return await alert.present();
 
   }
 
-  onSchemeDetails(item){
-    localStorage.setItem('schemeId',item.SchemeGroupID)
-    localStorage.setItem('TYPE','SchemeGroup')
-    localStorage.setItem('Tittle',item.SchemeGroup)
-    
-    this.route.navigateByUrl('/schemedetailslist')
-   
-   }
+  onInstiDetails(item){
+    localStorage.setItem('InstituteId',item.InstituteID)
+    localStorage.setItem('TYPE','Institute')
+    localStorage.setItem('Tittle',item.InstituteName)
+    this.route.navigateByUrl('/schemedetailslist');
+
+    }
 
   ionViewDidEnter() {
-    this.getSGLISTCall();
+    this.getInstitutetype();
 }
 
-getSGLISTCall() {
+onInstituteList(item){
+  this.getInstitutetypeList(item.InstituteTypeID);
+ }
+ 
+getInstitutetype() {
   if (this.tools.isNetwork()) {
-    //this.tools.openLoader();
+    this.tools.openLoader();
     console.log('getSGLISTCall');
-    this.apiService.getHomeSchemeGroup().subscribe(response => {
-      console.log('getSGLISTCall_RESPONSE>>>');
+    this.apiService.getInstituteType().subscribe(response => {
+      console.log('getInstitutetype_RESPONSE>>>');
 
-      this.tools.closeLoader();
+      //this.tools.closeLoader();
       let res: any = response;
+
       if(res.status){
-        this.SGList = res.data;
+        this.InstituteType = res.data;
+
+        this.sliderType = res.data[0].InstituteType;
+        this.getInstitutetypeList(res.data[0].InstituteTypeID);
+
       }else{
-        this.SGList=res.message
+        this.InstituteType=res.message
       }
       console.log(res)
     }, (error: Response) => {
@@ -217,4 +226,33 @@ getSGLISTCall() {
   }
 }
 
+getInstitutetypeList(ID) {
+  if (this.tools.isNetwork()) {
+    //this.tools.openLoader();
+    console.log('getSGLISTCall');
+    this.apiService.getInstituteTypeList(ID).subscribe(response => {
+      console.log('RESPONSE>>>');
+
+      this.tools.closeLoader();
+      let res: any = response;
+      if (res.status) {
+        this.InstList = res.data;
+      } else {
+        this.InstList = res.message
+      }
+      console.log(res)
+    }, (error: Response) => {
+      console.log('ERORR>>>');
+      this.tools.closeLoader();
+      this.tools.closeLoader();
+      let err: any = error;
+      console.log('Error ', err);
+      this.tools.openAlertToken(err.status, err.error.message);
+
+    });
+  } else {
+    console.log('ELSE>> ');
+    this.tools.closeLoader();
+  }
+}
 }

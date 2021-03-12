@@ -8,17 +8,21 @@ import { ApiService } from '../../services/api.service';
 import { Tools } from '../../shared/tools';
 
 @Component({
-  selector: 'app-schemegrouplist',
-  templateUrl: './schemegrouplist.page.html',
-  styleUrls: ['./schemegrouplist.page.scss'],
+  selector: 'app-schemedetails',
+  templateUrl: './schemedetails.page.html',
+  styleUrls: ['./schemedetails.page.scss'],
 })
-export class SchemegrouplistPage implements OnInit {
+export class SchemedetailsPage implements OnInit {
 
   
   isLogin=false;
-  SGList =[];
+  DetailsList =[];
 
+  SGid:any;
+  INid:any;
 
+  Type:any;
+  Tittle:any;
 
   constructor(private route: Router,public alertController: AlertController,
      public apiService: ApiService,
@@ -26,7 +30,15 @@ export class SchemegrouplistPage implements OnInit {
 
       this.tools.closeLoader();
       this.isLogin = this.apiService.getUserData() !=undefined;
-      localStorage.removeItem('schemeId');
+
+
+      localStorage.removeItem('Name');
+      localStorage.removeItem('AMT');
+
+      this.SGid=localStorage.getItem('schemeId');
+      this.INid=localStorage.getItem('InstituteId');
+      this.Type=localStorage.getItem('TYPE');
+      this.Tittle=localStorage.getItem('Tittle');
 
    }
 
@@ -163,58 +175,86 @@ export class SchemegrouplistPage implements OnInit {
 return await alert.present();
  }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  onInstituteClick(){
+  onInstituteClick(){}
 
-  }
+  onSchemeGroupClick(){}
 
-  onSchemeGroupClick(){
+  onDonateClick(item){
 
-  }
-
-  onSchemeDetails(item){
-    localStorage.setItem('schemeId',item.SchemeGroupID)
-    localStorage.setItem('TYPE','SchemeGroup')
-    localStorage.setItem('Tittle',item.SchemeGroup)
-    
-    this.route.navigateByUrl('/schemedetailslist')
-   
-   }
-
-  ionViewDidEnter() {
-    this.getSGLISTCall();
-}
-
-getSGLISTCall() {
-  if (this.tools.isNetwork()) {
-    //this.tools.openLoader();
-    console.log('getSGLISTCall');
-    this.apiService.getHomeSchemeGroup().subscribe(response => {
-      console.log('getSGLISTCall_RESPONSE>>>');
-
-      this.tools.closeLoader();
-      let res: any = response;
-      if(res.status){
-        this.SGList = res.data;
-      }else{
-        this.SGList=res.message
+    if (!this.isLogin) {
+      this.LoginClick();
+    }else{
+      var msg = ''
+      console.log('Selected Item ',item)
+      if (item.amount ==undefined || item.amount =='') {
+        msg = msg + 'Please enter Amount <br/>'
       }
-      console.log(res)
-    }, (error: Response) => {
-      console.log('ERORR>>>');
-      this.tools.closeLoader();
-      this.tools.closeLoader();
-      let err:any = error;
-      console.log('Error ', err);
-     this.tools.openAlertToken(err.status, err.error.message);
-
-    });
-  } else {
-    console.log('ELSE>> ');
-    this.tools.closeLoader();
+      
+      if (msg != '') {
+        this.tools.openAlert(msg);
+      } else {
+        if(parseFloat(item.amount)<=100000){
+          localStorage.setItem('Name',this.Tittle)
+        localStorage.setItem('RazorpayMID',item.RazorpayMID)
+        localStorage.setItem('AMT',item.amount) 
+        localStorage.setItem('SchemeDesc',item.SchemeDesc)
+        localStorage.setItem('InstituteSchemeID',item.InstituteSchemeID)
+        localStorage.setItem('InstituteID',item.InstituteID)
+        localStorage.setItem('SchemeName',item.SchemeName)
+        this.route.navigateByUrl('/paymentconfir')
+        }
+        else{
+          this.tools.openAlert('Donation amount cannot be greater 1 lakh rupees');
+        }
+        
+      }
+    }
+      
   }
+  
+  
+  ionViewDidEnter() {
+    this.getSGDTLLISTCall();
 }
+
+  getSGDTLLISTCall() {
+    if (this.tools.isNetwork()) {
+      this.tools.openLoader();
+      console.log('getSGLISTCall');
+      this.apiService.getSchemeWiseDetailList(this.Type,(this.Type=='Institute')?this.INid:this.SGid).subscribe(response => {
+        console.log('RESPONSE>>>');
+
+        this.tools.closeLoader();
+        let res: any = response;
+        if(res.status){
+          this.DetailsList = res.data;
+        }
+
+        console.log(res)
+      }, (error: Response) => {
+        console.log('ERORR>>>');
+        this.tools.closeLoader();
+        this.tools.closeLoader();
+        let err:any = error;
+        console.log('Error ', err);
+       this.tools.openAlertToken(err.status, err.error.message);
+  
+      });
+    } else {
+      console.log('ELSE>> ');
+      this.tools.closeLoader();
+    }
+  }
+
+  onSearchClick() {   
+    this.route.navigateByUrl('/searchitem');
+}
+
+onEnter(event) {}
+
+clearSearch(event) {}
+getItems(event) {}
 
 }

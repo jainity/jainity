@@ -115,6 +115,8 @@ export class HomePage implements OnInit {
 
       this.tools.closeLoader();
       this.isLogin = this.apiService.getUserData() !=undefined;
+      localStorage.removeItem('schemeId');
+      localStorage.removeItem('InstituteId');
 
 
    }
@@ -127,6 +129,25 @@ export class HomePage implements OnInit {
   sendMail(){
 
   }
+
+  onSchemeDetails(item){
+    localStorage.setItem('schemeId',item.SchemeGroupID)
+    localStorage.setItem('TYPE','SchemeGroup')
+    localStorage.setItem('Tittle',item.SchemeGroup)
+    
+    this.route.navigateByUrl('/schemedetailslist')
+   
+   }
+
+   onInstiDetails(item){
+    localStorage.setItem('InstituteId',item.InstituteID)
+    localStorage.setItem('TYPE','Institute')
+    localStorage.setItem('Tittle',item.InstituteName)
+    this.route.navigateByUrl('/schemedetailslist');
+
+    }
+
+
   ionViewWillEnter() {
     this.menu.enable(false);
   }
@@ -244,11 +265,12 @@ return await alert.present();
   }
 
   onInstituteClick(){
+    this.route.navigateByUrl('/institutelist');
 
   }
 
   onSchemeGroupClick(){
-
+    this.route.navigateByUrl('/schemegrouplist');
   }
 
 

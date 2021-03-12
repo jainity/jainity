@@ -22,21 +22,59 @@
         <ion-row class="page_banner_block" style="background-image: url('../../../assets/img/SchemeBanner.png');">
             <ion-col class="container">
                 <div class="page_banner_box">
-                    <ion-label>SCHEME GROUP</ion-label>
+                    <ion-label>{{Tittle}}</ion-label>
                 </div>
             </ion-col>
         </ion-row>
     </ion-grid>
 
     <ion-grid class="content">
-        <ion-row style="margin: 10px; padding: 20px;">
-            <ion-col size="3" style="cursor: pointer;" class="slider_box" *ngFor="let item of SGList" (click)="onSchemeDetails(item)">
-                <div class="slider_img_scheme">
-                    <ion-img [src]='item.SchemeGroupImage'></ion-img>
+
+        <div class="page_wapper">
+            <div class="page_inner">
+                <div class="container">
+                    <div class="page_inner_box">
+                        <ion-grid class="p-0">
+                            <ion-row class="list_row">
+                                <ion-col class="list_col" *ngFor="let item of DetailsList">
+                                    <div class="list_inner_box">
+                                        <ion-grid>
+                                            <ion-row class="p-0">
+                                                <ion-col class="p-0">
+                                                    <ion-label class="white content highlight">{{item.SchemeGroup}}</ion-label>
+                                                    <ion-label class="white content">{{item.SchemeName}}</ion-label>
+                                                    <ion-label class="white content details" style="font-style: italic;
+                                                    font-size: 12px !important;
+                                                    margin-bottom: 10px !important;color: black !important;" innerHtml="(&nbsp;{{item.SchemeDesc}})"></ion-label>
+                                                    <ion-label class="white content">{{item.InstituteName}}</ion-label>
+                                                </ion-col>
+                                            </ion-row>
+                                            <ion-row class="prise_boxs">
+                                                <span>&#8377;</span>
+                                                <ion-col class="p-0">
+                                                    <ion-item>
+                                                        <ion-label position="floating">Amount</ion-label>
+                                                        <ion-input [(ngModel)]="item.amount" type="tel" maxlength="6" required min="1" inputmode="numeric" pattern="[0-9]*" (keydown)="this.tools.isValidNumber($event)" max="100000" pattern="[0-9]{6}"></ion-input>
+                                                    </ion-item>
+                                                </ion-col>
+                                                <ion-col class="p-0">
+                                                    <ion-button class="btn-orange" (click)="onDonateClick(item)" shape="round" expand="block">DONATE</ion-button>
+                                                </ion-col>
+                                            </ion-row>
+                                            <ion-row>
+                                                <ion-label style="color: red !important;">* Donate Upto 1 Lakh.
+                                                </ion-label>
+                                            </ion-row>
+                                        </ion-grid>
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </div>
                 </div>
-                <ion-label style="text-align: center;">{{item.SchemeGroup}} </ion-label>
-            </ion-col>
-        </ion-row>
+            </div>
+        </div>
+
     </ion-grid>
 
 

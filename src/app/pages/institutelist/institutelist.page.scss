@@ -504,11 +504,16 @@ ion-col {
     position: relative;
     height: 280px;
     overflow: hidden;
-    border-radius: 20px;
-    border: 1px solid #ccc;
+    border-radius: 10px;
 }
 
 .slider_img ion-img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 400px;
+    max-width: 100%;
     width: 100%;
 }
 

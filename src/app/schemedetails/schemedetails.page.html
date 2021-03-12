@@ -3,9 +3,7 @@
         <ion-grid class="container">
             <ion-row>
                 <ion-col class="back_icon p-0">
-                    <ion-icon (click)="onBackClick()"
-                        style="cursor: pointer; text-align: start; margin-left: 0; color: white; font-size: 30px;"
-                        name="arrow-back-outline"></ion-icon>
+                    <ion-icon (click)="onBackClick()" style="cursor: pointer; text-align: start; margin-left: 0; color: white; font-size: 30px;" name="arrow-back-outline"></ion-icon>
                 </ion-col>
                 <ion-col class="page_title p-0">
                     <ion-label style="text-align: center; font-size: medium;" color="light">{{Tittle}}</ion-label>
@@ -17,6 +15,7 @@
         </ion-grid>
     </ion-toolbar>
 </ion-header>
+
 <ion-content>
 
     <div class="page_wapper">
@@ -44,21 +43,11 @@
                                             <ion-col class="p-0">
                                                 <ion-item>
                                                     <ion-label position="floating">Amount</ion-label>
-                                                    <ion-input [(ngModel)]="item.amount" type="tel" maxlength="6"  required
-                                                    min="1" inputmode="numeric" pattern="[0-9]*" (keydown)="this.tools.isValidNumber($event)"
-                                                    max="100000" pattern="[0-9]{6}" ></ion-input>
-
-                                                    <!-- <ion-input  maxlength="6" 
-                                                        pattern="[0-9]{6}" 
-                                                        required [(ngModel)]="item.amount" 
-                                                        type="number" 
-                                                            (keyup)="onlyNumberMaxLength($event,6)">
-                                                    </ion-input> -->
+                                                    <ion-input [(ngModel)]="item.amount" type="tel" maxlength="6" required min="1" inputmode="numeric" pattern="[0-9]*" (keydown)="this.tools.isValidNumber($event)" max="100000" pattern="[0-9]{6}"></ion-input>
                                                 </ion-item>
                                             </ion-col>
                                             <ion-col class="p-0">
-                                                <ion-button class="btn-orange" (click)="onDonateClick(item)"
-                                                    shape="round" expand="block">DONATE</ion-button>
+                                                <ion-button class="btn-orange" (click)="onDonateClick(item)" shape="round" expand="block">DONATE</ion-button>
                                             </ion-col>
                                         </ion-row>
                                         <ion-row>

@@ -35,6 +35,8 @@ export class SchemedetailsPage implements OnInit {
       this.Type=localStorage.getItem('TYPE');
       this.Tittle=localStorage.getItem('Tittle');
    }
+
+
    onDonateClick(item){
     var msg = ''
 console.log('Selected Item ',item)
@@ -103,16 +105,13 @@ getSGDTLLISTCall() {
     this.route.navigateByUrl('/searchitem');
 
   }
-   ngOnInit() {
-    }
 
-   onEnter(event) {
-  }
+   ngOnInit() {}
 
-  clearSearch(event) {
-  }
-  getItems(event) {
-  }
+   onEnter(event) {}
+
+  clearSearch(event) {}
+  getItems(event) {}
  
  onBackClick(){
   this.location.back();

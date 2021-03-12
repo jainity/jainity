@@ -82,6 +82,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/schemegrouplist/schemegrouplist.module').then( m => m.SchemegrouplistPageModule)
   },
 
+  {
+    path: 'institutelist',
+    loadChildren: () => import('./pages/institutelist/institutelist.module').then( m => m.InstitutelistPageModule)
+  },
+  
+  {
+    path: 'schemedetailslist',
+    loadChildren: () => import('./pages/schemedetails/schemedetails.module').then( m => m.SchemedetailsPageModule)
+  },
 ];
 
 @NgModule({
