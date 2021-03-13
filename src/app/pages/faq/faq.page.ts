@@ -42,7 +42,7 @@ export class FaqPage implements OnInit {
       this.DonorfaqList.push({name:'Do the donors get 80G certificate on the donations they make?',description:'There are many variations of passages of Lorem Ipsum available,',isShow:'false'})
       this.DonorfaqList.push({name:'How do I know if my donation has reached the program that I am supporting?',description:'There are many variations of passages of Lorem Ipsum available,',isShow:'false'})
       this.DonorfaqList.push({name:'Can I support more than one cause?',description:'There are many variations of passages of Lorem Ipsum available,',isShow:'false'})
-      this.DonorfaqList.push({name:'The donation I made is not reflecting on your platform, but the amount has already been deducted from my bank account. What&#39;s wrong?',description:'There are many variations of passages of Lorem Ipsum available,',isShow:'false'})
+      this.DonorfaqList.push({name:'The donation I made is not reflecting on your platform, but the amount has already been deducted from my bank account. What is wrong?',description:'There are many variations of passages of Lorem Ipsum available,',isShow:'false'})
       this.DonorfaqList.push({name:'don’t seem to remember my password, how do I log in?',description:'There are many variations of passages of Lorem Ipsum available,',isShow:'false'})
       this.DonorfaqList.push({name:'Can I receive a refund for my donation?',description:'There are many variations of passages of Lorem Ipsum available,',isShow:'false'})
       this.DonorfaqList.push({name:'How do I deactivate my account on Janity?',description:'There are many variations of passages of Lorem Ipsum available,',isShow:'false'})

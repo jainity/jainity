@@ -82,7 +82,8 @@
       "com.razorpay.cordova": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "browser"
     ]
   }
 }
