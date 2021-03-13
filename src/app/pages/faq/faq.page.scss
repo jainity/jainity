@@ -4,7 +4,11 @@ ion-toolbar {
     background: white !important;
     --background: white !important;
 }
-ion-header .menu {display: block;}
+
+ion-header .menu {
+    display: block;
+}
+
 ion-grid,
 ion-col {
     padding: 0px;
@@ -226,6 +230,7 @@ ion-col {
     line-height: 22px !important;
     display: block;
 }
+
 #way .way-block {
     background-size: cover;
     background-repeat: no-repeat;
@@ -651,16 +656,18 @@ ion-col {
     top: 20%;
 }
 
-@media (max-width: 992px) 
-{
-
-    ion-header .menu {flex: 0 0 101px !important;  max-width: 101px !important;position: relative; width: auto; }
+@media (max-width: 992px) {
+    ion-header .menu {
+        flex: 0 0 141px !important;
+        max-width: 141px !important;
+        position: relative;
+        width: auto;
+    }
     ion-header .menu ion-label {
         padding: 0px 5px !important;
         margin: 0px 5px !important;
         font-size: 14px !important;
     }
-
     ion-header .menu ion-label:first-child {
         padding-left: 0px !important;
         margin-left: 0px !important;

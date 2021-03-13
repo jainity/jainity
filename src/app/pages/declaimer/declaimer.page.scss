@@ -1,6 +1,9 @@
 // @media screen and (max-height:640px){
 // }
-ion-header .menu {display: block;}
+ion-header .menu {
+    display: block;
+}
+
 ion-toolbar {
     background: white !important;
     --background: white !important;
@@ -653,17 +656,18 @@ ion-col {
     top: 20%;
 }
 
-
-@media (max-width: 992px) 
-{
-
-    ion-header .menu {flex: 0 0 101px !important;  max-width: 101px !important;position: relative; width: auto; }
+@media (max-width: 992px) {
+    ion-header .menu {
+        flex: 0 0 141px !important;
+        max-width: 141px !important;
+        position: relative;
+        width: auto;
+    }
     ion-header .menu ion-label {
         padding: 0px 5px !important;
         margin: 0px 5px !important;
         font-size: 14px !important;
     }
-
     ion-header .menu ion-label:first-child {
         padding-left: 0px !important;
         margin-left: 0px !important;

@@ -481,8 +481,8 @@ ion-col {
     position: absolute;
 }
 
-.slider_grids{
-	margin: 0px -15px;
+.slider_grids {
+    margin: 0px -15px;
 }
 
 .slider_box {
@@ -515,9 +515,8 @@ ion-col {
     width: 100%;
 }
 
-
 .slider_grids {
-	padding: 45px 0px;
+    padding: 45px 0px;
 }
 
 .slider_box ion-label {
@@ -659,8 +658,7 @@ ion-col {
     top: 20%;
 }
 
-@media (max-width: 1024px) 
-{
+@media (max-width: 1024px) {
     .slider_box {
         flex: 0 0 33.3333% !important;
         max-width: 33.3333% !important;
@@ -670,8 +668,8 @@ ion-col {
 
 @media (max-width: 992px) {
     ion-header .menu {
-        flex: 0 0 101px !important;
-        max-width: 101px !important;
+        flex: 0 0 141px !important;
+        max-width: 141px !important;
         position: relative;
         width: auto;
     }
@@ -690,36 +688,49 @@ ion-col {
     }
 }
 
-
-@media (max-width: 768px) 
-{
+@media (max-width: 768px) {
     .slider_box {
         flex: 0 0 50% !important;
         max-width: 50% !important;
         width: 100% !important;
     }
-    .slider_box ion-label {font-size: 15px !important;text-align: left !important;}
+    .slider_box ion-label {
+        font-size: 15px !important;
+    }
     .slider_tabs_box.slider_page {
         padding-top: 50px;
     }
     .slider_grids {
         padding-bottom: 30px;
     }
-  
 }
 
-@media (max-width: 640px) 
-{
-    .slider_box ion-label {font-size: 15px !important;}
-    .tag-line {text-align: left !important;}
-    #sliders ion-img.nav {left: 0px;width: 15px;}
-    #sliders .sliders_boxs {padding: 0px 25px !important;}
-
-    .button_link {font-size: 17px; margin-top: 5px;}
-    .slider_tabs ion-item ion-label .check_mark {font-size: 15px;padding: 10px 12px;line-height: 16px;}
+@media (max-width: 640px) {
+    .slider_box ion-label {
+        font-size: 15px !important;
+    }
+    .tag-line {
+        text-align: left !important;
+    }
+    #sliders ion-img.nav {
+        left: 0px;
+        width: 15px;
+    }
+    #sliders .sliders_boxs {
+        padding: 0px 25px !important;
+    }
+    .button_link {
+        font-size: 17px;
+        margin-top: 5px;
+    }
+    .slider_tabs ion-item ion-label .check_mark {
+        font-size: 15px;
+        padding: 10px 12px;
+        line-height: 16px;
+    }
 }
-@media (max-width: 480px) 
-{
+
+@media (max-width: 480px) {
     .slider_box {
         flex: 0 0 100% !important;
         max-width: 100% !important;
