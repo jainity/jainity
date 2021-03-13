@@ -28,8 +28,8 @@
         </ion-row>
     </ion-grid>
 
-    <ion-grid class="content">
-        <ion-row style="margin: 10px; padding: 20px;">
+    <ion-grid class="content container">
+        <ion-row class="slider_grids">
             <ion-col size="3" style="cursor: pointer;" class="slider_box" *ngFor="let item of SGList" (click)="onSchemeDetails(item)">
                 <div class="slider_img_scheme">
                     <ion-img [src]='item.SchemeGroupImage'></ion-img>

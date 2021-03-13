@@ -32,6 +32,7 @@ ion-col {
     font-family: 'Poppins';
     text-transform: uppercase;
     letter-spacing: 7px;
+    vertical-align: middle;
 }
 
 .menu {
@@ -731,46 +732,49 @@ ion-col {
 
     .section-title {font-size: 22px !important; margin-bottom: 20px; margin-top: 0; line-height: 20px;}
 
-    
+    .tag-line-row  ion-label {text-align: justify !important;}
 }
 
 @media (max-width: 768px) 
 {
-    .banner_content_box {display: block; text-align: center;}
-    .banner_list_box {margin-top: 15px;justify-content: center;}
+
+    
+    .banner_content_box {display: block; }
+    .banner_list_box {margin-top: 15px;justify-content: space-between;}
     .banner_list_box ion-col {flex: 0 0 33.33% !important; max-width: 33.3333% !important;padding: 10px 0px;  width: 100% !important;}
     #work .content {margin-top: 0px !important;}
     #way .icon {width: 50px; min-height: auto;}
     #way .title {font-size: 16px !important; margin: 15px 0 12px 0px; line-height: 16px;}
     #way .way-box ion-col {flex: 0 0 100% !important; max-width: 100% !important; width: 100% !important; margin-top: 0px; padding: 0px !important;}
-    #way .way-box .content {display: block; max-width: 320px; margin: 0 auto; margin-bottom: 30px;}
+    #way .way-box .content {display: block; max-width: 320px; margin: 0px; margin-bottom: 30px; text-align: justify;}
     #way .way-block {padding: 50px 0px 20px 0px;}
     
     #work {padding: 50px 0px 20px 0px;}
-    #work .section-title ~ .content {max-width: 400px !important; margin: 0 auto !important; margin-bottom: 30px !important;}
-    #work .work-block ion-col {max-width: 100% !important;width: 100% !important; padding: 0 15px; flex: 0 0 100% !important; text-align: center !important;}
-    #work .work_icon {max-width: 40px; height: auto; display: block; margin: 0 auto; margin-bottom: 10px;}
+    #work .section-title ~ .content { margin: 0px !important; margin-bottom: 30px !important; text-align: justify !important;}
+    #work .work-block ion-col {max-width: 100% !important;width: 100% !important; padding: 0 15px; flex: 0 0 100% !important; text-align: justify !important;}
+    #work .work_icon {max-width: 40px; height: auto; display: block; margin: 0px; margin-bottom: 10px;}
     #work .work_box {margin-bottom: 30px;}
     #work .content_list {text-align: justify !important;}
     #work .work-block {margin-top: 0px !important;}
     #work .work-block ion-col.col-w-50 {max-width: 100% !important;width: 100% !important;padding: 0 15px;flex: 0 0 100% !important;}
-    #work .content_list {text-align: justify !important;max-width: 380px;margin: 0 auto; margin-top: 10px;}
-    #work .content.bold {min-height: auto;  font-weight: 600;   line-height: 20px !important; max-width: 380px; margin: 0 auto;}
+    #work .content_list {text-align: justify !important; margin: 0px; margin-top: 10px;}
+    #work .content.bold {min-height: auto; font-weight: 600; line-height: 20px !important; margin: 0px; text-align: justify;}
     
     #sliders {padding: 50px 0px 40px 0 !important;}
 
     .content-title {text-align: center; margin: 0px !important; width: 100% !important;}
-
-    
-    
+  
 }
 
 @media (max-width: 640px) 
 {
     .slider_box ion-label {font-size: 15px !important;}
+    .tag-line {text-align: left !important;}
     #sliders ion-img.nav {left: 0px;width: 15px;}
     #sliders .sliders_boxs {padding: 0px 25px !important;}
 
     .button_link {font-size: 17px; margin-top: 5px;}
     .slider_tabs ion-item ion-label .check_mark {font-size: 15px;padding: 10px 12px;line-height: 16px;}
+
+    .banner_content_box {display: block; text-align: justify;}
 }
