@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AlertController, ToastController } from '@ionic/angular';
+import { AlertController, ModalController, ToastController } from '@ionic/angular';
 import { ApiService } from '../services/api.service';
 import { Tools } from '../shared/tools';
 import { Location } from '@angular/common';
@@ -36,7 +36,7 @@ export class PaymentconfirPage implements OnInit {
   cardDetails: any = {};
 
   constructor(private route: Router,public router: ActivatedRoute,public alertController: AlertController, public apiService: ApiService,public formBuilder: FormBuilder,
-    public tools: Tools,private location: Location,
+    public tools: Tools,private location: Location,public modalCtrl: ModalController,
     public toastController: ToastController) {
    
     this.user= this.apiService.getUserData();
@@ -57,7 +57,6 @@ export class PaymentconfirPage implements OnInit {
 
     var msg = ''
 
-      
     if (this.Rname =='') {
       msg = msg + 'Please enter Reciept name<br />'
     } else if (this.Rname.length < 3) {
@@ -70,6 +69,7 @@ export class PaymentconfirPage implements OnInit {
       this.tools.openAlert(msg);
     } else {
       if(this.RazorpayMID !=''){
+        this.modalCtrl.dismiss();          
         this.payWithRazor();
       }else{
         this.tools.openAlert('Transfer Account Details Not Proper');
@@ -83,6 +83,7 @@ export class PaymentconfirPage implements OnInit {
   }
 
   payWithRazor() {
+
     var options = {
       description: this.SchemeDesc  ,
       image: 'assets/img/logo.png',

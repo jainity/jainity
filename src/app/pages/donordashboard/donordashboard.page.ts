@@ -6,24 +6,21 @@ import { Router } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
 import { ApiService } from '../../services/api.service';
 import { Tools } from '../../shared/tools';
-import { PaymentconfirPage } from 'src/app/paymentconfir/paymentconfir.page';
+import { Chart } from 'chart.js';
 
 @Component({
-  selector: 'app-schemedetails',
-  templateUrl: './schemedetails.page.html',
-  styleUrls: ['./schemedetails.page.scss'],
+  selector: 'app-donordashboard',
+  templateUrl: './donordashboard.page.html',
+  styleUrls: ['./donordashboard.page.scss'],
 })
-export class SchemedetailsPage implements OnInit {
+export class DonordashboardPage implements OnInit {
+  @ViewChild('barChart') barChart;
 
   
   isLogin=false;
-  DetailsList =[];
-
-  SGid:any;
-  INid:any;
-
-  Type:any;
-  Tittle:any;
+  mydonateList =[];
+  bars: any;
+  colorArray: any;
 
   constructor(private route: Router,public alertController: AlertController,
      public apiService: ApiService,
@@ -31,18 +28,16 @@ export class SchemedetailsPage implements OnInit {
 
       this.tools.closeLoader();
       this.isLogin = this.apiService.getUserData() !=undefined;
-
-
-      localStorage.removeItem('Name');
-      localStorage.removeItem('AMT');
-
-      this.SGid=localStorage.getItem('schemeId');
-      this.INid=localStorage.getItem('InstituteId');
-      this.Type=localStorage.getItem('TYPE');
-      this.Tittle=localStorage.getItem('Tittle');
+      this.generateColorArray(25);
 
    }
 
+   generateColorArray(num) {
+    this.colorArray = [];
+    for (let i = 0; i < num; i++) {
+      this.colorArray.push('#' + Math.floor(Math.random() * 16777215).toString(16));
+    }
+  }
 
  async LoginClick() {  
 
@@ -178,91 +173,33 @@ return await alert.present();
 
   ngOnInit() {}
 
-  onInstituteClick(){}
 
-  onSchemeGroupClick(){}
-
-  async onDonateClick(item){
-
-    if (!this.isLogin) {
-      this.LoginClick();
-    }else{
-      var msg = ''
-      console.log('Selected Item ',item)
-      if (item.amount ==undefined || item.amount =='') {
-        msg = msg + 'Please enter Amount <br/>'
-      }
-      
-      if (msg != '') {
-        this.tools.openAlert(msg);
-      } else {
-        if(parseFloat(item.amount)<=100000){
-        localStorage.setItem('Name',this.Tittle)
-        localStorage.setItem('RazorpayMID',item.RazorpayMID)
-        localStorage.setItem('AMT',item.amount) 
-        localStorage.setItem('SchemeDesc',item.SchemeDesc)
-        localStorage.setItem('InstituteSchemeID',item.InstituteSchemeID)
-        localStorage.setItem('InstituteID',item.InstituteID)
-        localStorage.setItem('SchemeName',item.SchemeName)
-
-        //this.route.navigateByUrl('/paymentconfir')
-
-
-
-        const modal = await this.modalCtrl.create({  
-          component: PaymentconfirPage ,
-          cssClass: 'register-modal',
-          //backdropDismiss: false,
-        });  
-        modal.onDidDismiss().then(result => {
-          console.log(result.data);
-    
-          // if(result.data =='register'){
-          //  this.openRegister();
-          // }
-          // if(result.data =='OTPPage'){
-          //   this.openOtp();
-          //  }
-        });
-        return await modal.present();
-
-        }
-        else{
-          this.tools.openAlert('Donation amount cannot be greater 1 lakh rupees');
-        }
-        
-      }
-    }
-      
-  }
-  
-  
   ionViewDidEnter() {
-    this.getSGDTLLISTCall();
-}
+    this.getmyDonationLISTCall();
+    this.createBarChart();
+  }
 
-  getSGDTLLISTCall() {
+  getmyDonationLISTCall() {
     if (this.tools.isNetwork()) {
       this.tools.openLoader();
       console.log('getSGLISTCall');
-      this.apiService.getSchemeWiseDetailList(this.Type,(this.Type=='Institute')?this.INid:this.SGid).subscribe(response => {
+      this.apiService.getMyDonation(this.apiService.getUserData().id).subscribe(response => {
         console.log('RESPONSE>>>');
 
         this.tools.closeLoader();
         let res: any = response;
-        if(res.status){
-          this.DetailsList = res.data;
-        }
-
+        if (res.status) {
+          this.mydonateList = res.data;
+        } 
         console.log(res)
       }, (error: Response) => {
         console.log('ERORR>>>');
         this.tools.closeLoader();
         this.tools.closeLoader();
-        let err:any = error;
+        let err: any = error;
         console.log('Error ', err);
-       this.tools.openAlertToken(err.status, err.error.message);
-  
+        this.tools.openAlertToken(err.status, err.error.message);
+
       });
     } else {
       console.log('ELSE>> ');
@@ -270,13 +207,29 @@ return await alert.present();
     }
   }
 
-  onSearchClick() {   
-    this.route.navigateByUrl('/searchitem');
-}
 
-onEnter(event) {}
-
-clearSearch(event) {}
-getItems(event) {}
-
+  createBarChart() {
+    this.bars = new Chart(this.barChart.nativeElement, {
+      type: 'doughnut',
+      data: {
+        labels: ['India', 'Canada', 'China', 'Brazil', 'Russia', 'Others'],
+        datasets: [{
+          label: 'Viewers in millions',
+          data: [8, 3.8, 5, 6.9, 2.9, 7.5],
+          backgroundColor: this.colorArray, // array should have same number of elements as number of dataset
+          borderColor: this.colorArray,// array should have same number of elements as number of dataset
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  }
 }

@@ -1,0 +1,679 @@
+// @media screen and (max-height:640px){
+// }
+ion-header .menu {
+    display: block;
+}
+
+ion-toolbar {
+    background: white !important;
+    --background: white !important;
+}
+
+ion-grid,
+ion-col {
+    padding: 0px;
+    margin: 0px;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0px 15px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.menu-logo {
+    width: 30px !important;
+    margin: 0px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.logo-title {
+    font-size: 18px !important;
+    font-family: 'Poppins';
+    text-transform: uppercase;
+    letter-spacing: 7px;
+}
+
+.menu {
+    text-align: right;
+}
+
+.menu ion-label {
+    padding: 0px 10px;
+    margin: 0px 10px;
+    display: inline-block;
+    color: #000;
+    font-family: 'Poppins';
+    font-size: 16px !important;
+}
+
+.menu ion-label:first-child {
+    padding-left: 0px;
+    margin-left: 0px;
+}
+
+.menu ion-label:last-child {
+    padding-right: 0px;
+    margin-right: 0px;
+}
+
+.banner_list_box ion-img {
+    max-width: 80px;
+    margin: 0 auto;
+}
+
+.page_banner {
+    //background-image: url(../assets/img/slider.jpg);
+    min-height: calc(100vh - 69.65px) !important;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.page_img_banner {
+    height: calc(100vh - 69.65px);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.page_img_banner ion-img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: auto;
+}
+
+.slider-box ion-slides {
+    position: absolute !important;
+    width: 100%;
+    top: 0px;
+    z-index: 1 !important;
+    height: 100%;
+}
+
+.slider-box {
+    height: calc(100vh - 69.65px);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.page_banner .container {
+    padding: 50px 15px 180px 15px;
+    display: table;
+    min-height: calc(100vh - 69.65px) !important;
+    position: relative;
+    z-index: 2;
+}
+
+.banner_content_box {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.banner_content_box ion-button {
+    --background: #ed3237;
+    margin-top: 15px;
+    width: 180px;
+    height: 50px;
+    border-radius: 50px;
+    overflow: hidden;
+    font-family: 'Poppins-Bold';
+    font-size: 18px;
+}
+
+.banner_list_box {
+    position: absolute;
+    width: calc(100% - 30px);
+    left: 15px;
+    bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.banner_list_box ion-label {
+    font-family: 'Poppins';
+    font-size: 16px !important;
+    color: #000;
+    text-transform: capitalize;
+    margin-top: 8px;
+    display: block;
+}
+
+.banner_list_box ion-col {
+    flex: 0 0 90px;
+    text-align: center;
+    width: 100%;
+    max-width: 90px;
+}
+
+.tag-line {
+    font-size: 44px !important;
+    font-family: 'Poppins-Bold';
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0px;
+    padding: 0;
+    line-height: 45px;
+    letter-spacing: 0.8px;
+    display: block;
+    text-shadow: 0 0 3px #000;
+    margin-bottom: 13px;
+}
+
+.subtag-line {
+    font-size: 20px !important;
+    font-family: 'Poppins-SemiBold';
+    color: #fff;
+    margin: 0px;
+    padding: 0px;
+    line-height: 30px;
+    letter-spacing: 0.8px;
+    display: block;
+    text-shadow: 0 0 3px #000;
+}
+
+.disclaimer {
+    font-size: 8px !important;
+    font-family: 'Poppins-SemiBold';
+    margin-left: 25px;
+    margin-right: 25px;
+    padding: 15px;
+}
+
+.about-box {
+    padding: 60px 0px;
+    margin: 0px -15px;
+}
+
+.about-box ion-col {
+    padding: 0px 15px !important;
+}
+
+.content-title {
+    color: #ed3237;
+    font-size: 30px !important;
+    display: block;
+    font-family: 'Poppins-Bold';
+    text-transform: uppercase;
+    padding-bottom: 15px;
+}
+
+.about_img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.about_img ion-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+}
+
+.content {
+    color: #3a3636;
+    font-size: 15px !important;
+    font-family: 'Poppins';
+    line-height: 22px !important;
+    display: block;
+}
+
+#way .way-block {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 60px 0px;
+}
+
+#way .icon {
+    width: 60px;
+    margin: 0 auto;
+    display: block;
+    min-height: 58px;
+}
+
+#way .title {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 18px !important;
+    margin: 20px 0;
+    font-weight: 700;
+    display: block;
+    text-align: center;
+}
+
+#way .way-box {
+    max-width: 900px;
+    margin: 0 auto;
+    align-items: flex-start !important;
+}
+
+#way .way-box ion-col {
+    padding: 0px 15px;
+    text-align: center;
+}
+
+#way .content {
+    color: #fff;
+}
+
+#work {
+    background: #ff7400;
+    padding: 60px 0px;
+}
+
+#work .work-block {
+    margin: 0 -15px;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+#work .work-block ion-col {
+    max-width: 300px !important;
+    width: 100%;
+    padding: 0 15px;
+}
+
+#work .work-block ion-col.col-w-50 {
+    max-width: 50%!important;
+    width: 100%;
+    padding: 0 15px;
+}
+
+#work .work_icon {
+    max-width: 50px;
+    height: 70px;
+    display: block;
+}
+
+#work .title {
+    font-size: 20px !important;
+    color: #fff;
+    font-family: 'Poppins-Bold';
+    text-transform: uppercase;
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+
+#work .content {
+    color: #fff !important;
+    line-height: 18px !important;
+}
+
+#work .content.bold {
+    min-height: 55px;
+    font-weight: 600;
+}
+
+#work .content_list ion-label.content {
+    padding-left: 25px;
+    padding-bottom: 12px;
+    position: relative;
+    line-height: 20px !important;
+    display: block;
+}
+
+#work .content_list ion-label::after {
+    content: ' \00BB';
+    display: block;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.section-title {
+    color: #fff;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Poppins-Bold';
+    font-size: 26px !important;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 30px;
+    margin-top: -15px;
+}
+
+.txt-title {
+    color: #000;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Poppins-Bold';
+    font-size: 20px !important;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+#advantage {
+    padding: 60px 0px;
+    background: #f6f6f6;
+}
+
+#advantage .title {
+    font-family: 'Poppins-Bold';
+    font-size: 28px !important;
+    margin-bottom: 10px;
+    display: block;
+}
+
+#advantage .rows,
+#advantage .rows ion-row {
+    margin: 0px -15px;
+}
+
+#advantage .rows ion-col {
+    padding: 0px 15px;
+}
+
+#advantage .icon {
+    max-width: 60px;
+    flex: 0 0 60px;
+}
+
+#advantage .rows .title {
+    font-size: 17px !important;
+    margin-bottom: 4px !important;
+    text-transform: uppercase;
+}
+
+#advantage .cols {
+    margin-top: 30px;
+}
+
+#footer {
+    padding: 60px 0;
+    background: #008c8c;
+}
+
+#footer .title {
+    color: #fff;
+    font-family: 'Poppins-Bold';
+    font-size: 22px !important;
+    border-bottom: 1px solid #fff;
+    display: inline-block;
+    margin-bottom: 28px;
+}
+
+.link_box ion-label {
+    flex: 0 0 50%;
+    padding-bottom: 10px;
+}
+
+.link_box ion-label a {
+    color: #fff;
+    font-size: 15px;
+    font-family: 'Poppins';
+}
+
+.link_box {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#footer .content {
+    color: #fff !important;
+    margin-top: 10px;
+}
+
+.social_icons {
+    display: flex;
+    // justify-content: flex-end;
+    align-items: center;
+}
+
+.social_icons ion-label {
+    background: #016060;
+    flex: 0 0 40px;
+    margin: 0px 5px;
+    padding: 10px;
+    border-radius: 50%;
+    height: 40px;
+    line-height: 50px;
+    display: block;
+}
+
+.social_icons ion-label:first-child {
+    margin-left: 0px;
+}
+
+.social_icons ion-label:last-child {
+    margin-right: 0px;
+}
+
+.footer-box ion-col {
+    max-width: 190px !important;
+    width: 100% !important;
+}
+
+.footer-box ion-col:first-child {
+    max-width: 332px !important;
+    width: 100% !important;
+}
+
+.footer-box {
+    justify-content: space-between;
+}
+
+.slider_box_banner {
+    position: absolute;
+}
+
+.slider_box {
+    position: relative;
+    padding: 20px;
+    display: block !important;
+}
+
+.slider_img {
+    width: 100%;
+    display: block !important;
+    flex: 0 0 100%;
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.slider_img_scheme {
+    width: 100%;
+    display: block !important;
+    flex: 0 0 100%;
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 0px;
+}
+
+.slider_img ion-img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 400px;
+    max-width: 100%;
+    width: 100%;
+}
+
+.slider_box ion-label {
+    font-size: 16px !important;
+    font-family: 'Poppins';
+    display: block;
+    line-height: 18px;
+    margin-top: 12px;
+}
+
+.slider_box ion-label span {
+    font-size: 13px !important;
+    display: block;
+}
+
+#sliders {
+    padding: 60px 0px;
+}
+
+#slider .slider_tabs_box {
+    margin-bottom: 20px;
+}
+
+#sliders .sliders_boxs {
+    padding: 0px 30px !important;
+    position: relative;
+}
+
+#sliders ion-img.nav {
+    position: absolute;
+    top: 49%;
+    transform: translate(0%, -50%);
+    left: 0px;
+    width: 20px;
+    height: 37px;
+    cursor: pointer;
+}
+
+#sliders ion-img.nav.right_nav {
+    left: auto;
+    right: 0px;
+}
+
+.slider_tabs {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.slider_tabs ion-item {
+    height: auto;
+    min-height: auto !important;
+    border: none !important;
+    background: transparent !important;
+    width: auto !important;
+    --min-height: auto !important;
+    --padding-start: 0px !important;
+    --padding-end: 0px !important;
+    --inner-border-width: 0px !important;
+    --background: transparent !important;
+    --background-activated: transparent;
+    --background-focused: transparent;
+    --background-hover: transparent;
+    --background-activated-opacity: 0 !important;
+    --background-focused-opacity: 0 !important;
+    --background-hover-opacity: 0 !important;
+    --margin: 0px !important;
+    --padding: 0px !important;
+    --min-width: auto !important;
+    --inner-padding-end: 0px !important;
+}
+
+.slider_tabs ion-item ion-label {
+    position: relative;
+    width: 100%;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+}
+
+.slider_tabs ion-item ion-label ion-radio {
+    position: absolute;
+    top: 0 !important;
+    left: 0px !important;
+    width: 100%;
+    height: 100%;
+    margin: 0px !important;
+    padding: 0px;
+    opacity: 0;
+    z-index: 2;
+}
+
+.slider_tabs ion-item ion-label .check_mark {
+    color: #000;
+    font-family: 'Poppins';
+    font-size: 16px;
+    padding: 10px 22px;
+    background: transparent;
+    display: block;
+    line-height: 16px;
+}
+
+.slider_tabs ion-item ion-label ion-radio.radio-checked~.check_mark {
+    background: #f5d525;
+}
+
+.button_link {
+    color: #000;
+    font-family: 'Poppins';
+    font-size: 18px;
+    padding: 0px;
+    --padding: 0px !important;
+    background: transparent !important;
+    --background: transparent !important;
+    border: none !important;
+    --border: none !important;
+    --box-shadow: 0px !important;
+    margin: 0 auto;
+    display: block;
+    width: 120px;
+    margin-top: 25px;
+}
+
+#sliders .slider_tabs_box {
+    margin-bottom: 15px;
+}
+
+.setting-modal .modal-wrapper {
+    --ion-background-color: #f12000;
+    --border-radius: 20px;
+    --max-height: 55%;
+    --max-width: 80%;
+    --width: 80%;
+    --height: 50%;
+    --border-style: dotted;
+    --border-color: #428cff;
+    border-width: 5px;
+    top: 20%;
+}
+
+@media (max-width: 992px) {
+    ion-header .menu {
+        flex: 0 0 141px !important;
+        max-width: 141px !important;
+        position: relative;
+        width: auto;
+    }
+    ion-header .menu ion-label {
+        padding: 0px 5px !important;
+        margin: 0px 5px !important;
+        font-size: 14px !important;
+    }
+    ion-header .menu ion-label:first-child {
+        padding-left: 0px !important;
+        margin-left: 0px !important;
+    }
+    ion-header .menu ion-label:last-child {
+        padding-right: 0px !important;
+        margin-right: 0px !important;
+    }
+}

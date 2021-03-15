@@ -215,7 +215,7 @@ export class HomePage implements OnInit {
 
 
    async OnConnectClick(){
-    this.route.navigateByUrl('/schemegrouplist');
+    this.route.navigateByUrl('/donordashboard');
 
   //   if (!this.isLogin) {
 

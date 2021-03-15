@@ -12,10 +12,10 @@ const routes: Routes = [
     pathMatch: 'full'
   },
 
-  {
-    path: 'Dashboard', canActivate: [AuthGuard],
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
+  // {
+  //   path: 'Dashboard', canActivate: [AuthGuard],
+  //   loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  // },
  
   {
     path: 'about',
@@ -50,10 +50,10 @@ const routes: Routes = [
     path: 'reciept', canActivate: [AuthGuard],
     loadChildren: () => import('./reciept/reciept.module').then( m => m.RecieptPageModule)
   },
-  {
-    path: 'paymentconfir', canActivate: [AuthGuard],
-    loadChildren: () => import('./paymentconfir/paymentconfir.module').then( m => m.PaymentconfirPageModule)
-  },
+  // {
+  //   path: 'paymentconfir', canActivate: [AuthGuard],
+  //   loadChildren: () => import('./paymentconfir/paymentconfir.module').then( m => m.PaymentconfirPageModule)
+  // },
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
@@ -90,6 +90,10 @@ const routes: Routes = [
   {
     path: 'schemedetailslist',
     loadChildren: () => import('./pages/schemedetails/schemedetails.module').then( m => m.SchemedetailsPageModule)
+  },
+  {
+    path: 'donordashboard',
+    loadChildren: () => import('./pages/donordashboard/donordashboard.module').then( m => m.DonordashboardPageModule)
   },
 ];
 

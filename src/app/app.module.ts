@@ -1,3 +1,4 @@
+import { PaymentconfirPage } from './paymentconfir/paymentconfir.page';
 import { OtpverificationPage } from './otpverification/otpverification.page';
 import { RegisterPage } from './register/register.page';
 import { FormsModule } from '@angular/forms';
@@ -18,8 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 @NgModule({
-  declarations: [AppComponent,LoginPage,RegisterPage,OtpverificationPage],
-  entryComponents: [LoginPage,RegisterPage,OtpverificationPage],
+  declarations: [AppComponent,LoginPage,RegisterPage,OtpverificationPage,PaymentconfirPage],
+  entryComponents: [LoginPage,RegisterPage,OtpverificationPage,PaymentconfirPage],
   imports: [BrowserModule,FormsModule,HttpClientModule,IonicModule.forRoot(), AppRoutingModule],
   providers: [Network,
     StatusBar,Tools,

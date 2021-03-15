@@ -58,7 +58,7 @@ errorMsg:any='';
             this.apiServices.setUserData(res.data[0])
             setTimeout(() => {    
               this.modalCtrl.dismiss();          
-              this.router.navigateByUrl('/Dashboard', { replaceUrl: true });
+              this.router.navigateByUrl('/home', { replaceUrl: true });
             }, 100);
 
            // this.router.navigate(['/home'], { replaceUrl: true });
