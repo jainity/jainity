@@ -15,6 +15,20 @@ ion-col {
     margin: 0px;
 }
 
+.hadings {
+	color: #000 !important;
+	font-weight: 700 !important;
+	font-size: 17px !important;
+	margin: 28px 0px 25px 0px !important;
+	display: block !important;
+    line-height: 15px !important;
+}
+
+ion-list-header.hadings {
+	margin: 0px !important;
+    margin-top: 16px !important;
+}
+
 .container {
     max-width: 1200px;
     width: 100%;
