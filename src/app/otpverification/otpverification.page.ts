@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ToastController, ModalController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { ApiService } from '../services/api.service';
 import { Tools } from '../shared/tools';
 
@@ -57,8 +57,15 @@ errorMsg:any='';
             //localStorage.setItem('userdata', JSON.stringify(res.data[0]));
             this.apiServices.setUserData(res.data[0])
             setTimeout(() => {    
-              this.modalCtrl.dismiss();          
-              this.router.navigateByUrl('/home', { replaceUrl: true });
+              this.modalCtrl.dismiss();   
+              console.log("USERID>>>>>>> ",this.apiServices.getUserData().role_id);       
+              if(this.apiServices.getUserData().role_id==2){
+                this.router.navigateByUrl('/donordashboard', { replaceUrl: true });
+              } else if(this.apiServices.getUserData().role_id==3){
+                this.router.navigateByUrl('/home', { replaceUrl: true });
+              }else{
+                this.router.navigateByUrl('/home', { replaceUrl: true });
+              }
             }, 100);
 
            // this.router.navigate(['/home'], { replaceUrl: true });

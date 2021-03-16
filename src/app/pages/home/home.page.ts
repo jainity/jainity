@@ -215,25 +215,25 @@ export class HomePage implements OnInit {
 
 
    async OnConnectClick(){
-    //this.route.navigateByUrl('/donordashboard');
+    this.route.navigateByUrl('/donordashboard');
 
-    if (!this.isLogin) {
+  //   if (!this.isLogin) {
 
-      const alert = await this.alertController.create({
-        message: 'Coming Soon',
-        buttons: [
-            {
-                text: 'OK',
-                role: 'OK',
-                handler: () => {
+  //     const alert = await this.alertController.create({
+  //       message: 'Coming Soon',
+  //       buttons: [
+  //           {
+  //               text: 'OK',
+  //               role: 'OK',
+  //               handler: () => {
     
-                }
-            },
-        ], backdropDismiss: false
-    });
-    alert.present();
-    }else
-  this.route.navigateByUrl('/schemegrouplist');
+  //               }
+  //           },
+  //       ], backdropDismiss: false
+  //   });
+  //   alert.present();
+  //   }else
+  // this.route.navigateByUrl('/schemegrouplist');
 
 
  }
