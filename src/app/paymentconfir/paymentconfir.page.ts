@@ -78,9 +78,7 @@ export class PaymentconfirPage implements OnInit {
 
    }
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
   payWithRazor() {
 
@@ -119,8 +117,6 @@ export class PaymentconfirPage implements OnInit {
 
     RazorpayCheckout.open(options, successCallback, cancelCallback);
   }
-
-
 
   PayemntCall(PaymentID){
     if (this.tools.isNetwork()) {

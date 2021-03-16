@@ -126,9 +126,7 @@ export class HomePage implements OnInit {
     return (this.email == '' || !this.reg.test(this.email))
   }
 
-  sendMail(){
-
-  }
+  sendMail(){ }
 
   onSchemeDetails(item){
     localStorage.setItem('schemeId',item.SchemeGroupID)
@@ -151,6 +149,7 @@ export class HomePage implements OnInit {
   ionViewWillEnter() {
     this.menu.enable(false);
   }
+  
  async LoginClick() {  
   this.menuClose();
     const modal = await this.modalCtrl.create({  
@@ -288,6 +287,7 @@ return await alert.present();
     // this.menu.enable(false); 
     // this.content.scrollTo(0, todayItem.offsetTop, 1000);
   }
+  
   menuClose() {
     if(this.checkScreen() != 4)
     this.menu.close();
