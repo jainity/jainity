@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ToastController, ModalController } from '@ionic/angular';
+import { ToastController, ModalController, NavParams } from '@ionic/angular';
 import { ApiService } from '../services/api.service';
 import { Tools } from '../shared/tools';
 
@@ -21,10 +21,11 @@ verificont:any = "";
 loginForm: FormGroup;
 errorMsg:any='';
 
-
-  constructor(private router: Router, public route: ActivatedRoute,public formBuilder: FormBuilder,
+fromPage;
+  constructor(private router: Router,public navParams: NavParams, public route: ActivatedRoute,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,public modalCtrl: ModalController) {
       this.tools.closeLoader(); 
+      this.fromPage = this.navParams.get("value");
      this.mno =localStorage.getItem('mobileno');
      if(this.mno != undefined && this.mno != null)
       this.verificont="Please Enter Verification Code Send to ******"+this.mno.substr(this.mno.length - 4)
@@ -57,14 +58,22 @@ errorMsg:any='';
             //localStorage.setItem('userdata', JSON.stringify(res.data[0]));
             this.apiServices.setUserData(res.data[0])
             setTimeout(() => {    
-              this.modalCtrl.dismiss();   
-              console.log("USERID>>>>>>> ",this.apiServices.getUserData().role_id);       
-              if(this.apiServices.getUserData().role_id==2){
-                this.router.navigateByUrl('/donordashboard', { replaceUrl: true });
-              } else if(this.apiServices.getUserData().role_id==3){
-                this.router.navigateByUrl('/home', { replaceUrl: true });
-              }else{
-                this.router.navigateByUrl('/home', { replaceUrl: true });
+              
+              if(this.fromPage == 'schemedetails')
+              this.modalCtrl.dismiss(this.fromPage);  
+              else{
+
+               this.modalCtrl.dismiss() 
+               console.log("USERID>>>>>>> ",this.apiServices.getUserData().role_id);       
+              
+               if(this.apiServices.getUserData().role_id==2){
+                 this.router.navigateByUrl('/donordashboard', { replaceUrl: true });
+               } else if(this.apiServices.getUserData().role_id==3){
+                 this.router.navigateByUrl('/home', { replaceUrl: true });
+               }else{
+                 this.router.navigateByUrl('/home', { replaceUrl: true });
+               }
+ 
               }
             }, 100);
 
