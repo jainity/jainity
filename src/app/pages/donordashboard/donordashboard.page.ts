@@ -19,6 +19,7 @@ export class DonordashboardPage implements OnInit {
   
   isLogin=false;
   mydonateList =[];
+  donornameList =[];
   bars: any;
   colorArray: any;
 
@@ -28,7 +29,7 @@ export class DonordashboardPage implements OnInit {
 
       this.tools.closeLoader();
       this.isLogin = this.apiService.getUserData() !=undefined;
-      this.generateColorArray(25);
+      this.generateColorArray(100);
 
    }
 
@@ -186,11 +187,12 @@ return await alert.present();
       this.apiService.getMyDonation(this.apiService.getUserData().id).subscribe(response => {
         console.log('RESPONSE>>>');
 
-        this.tools.closeLoader();
+        //this.tools.closeLoader();
         let res: any = response;
         if (res.status) {
           this.mydonateList = res.data;
         } 
+        this.getDonorLISTCall();
         console.log(res)
       }, (error: Response) => {
         console.log('ERORR>>>');
@@ -207,6 +209,33 @@ return await alert.present();
     }
   }
 
+  getDonorLISTCall() {
+    if (this.tools.isNetwork()) {
+     // this.tools.openLoader();
+      console.log('getSGLISTCall');
+      this.apiService.getDonor().subscribe(response => {
+        console.log('RESPONSE>>>');
+
+        this.tools.closeLoader();
+        let res: any = response;
+        if (res.status) {
+          this.donornameList = res.data;
+        } 
+        console.log(res)
+      }, (error: Response) => {
+        console.log('ERORR>>>');
+        this.tools.closeLoader();
+        this.tools.closeLoader();
+        let err: any = error;
+        console.log('Error ', err);
+        this.tools.openAlertToken(err.status, err.error.message);
+
+      });
+    } else {
+      console.log('ELSE>> ');
+      this.tools.closeLoader();
+    }
+  }
 
   createBarChart() {
     this.bars = new Chart(this.barChart.nativeElement, {

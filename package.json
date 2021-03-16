@@ -29,6 +29,9 @@
     "@ionic/angular": "^5.5.3",
     "add": "2.0.6",
     "chart.js": "^2.9.4",
+    "cordova-android": "9.0.0",
+    "cordova-browser": "6.0.0",
+    "cordova-ios": "6.2.0",
     "cordova-res": "^0.15.3",
     "rxjs": "~6.5.5",
     "tslib": "^2.1.0",
@@ -81,7 +84,9 @@
       "com.razorpay.cordova": {}
     },
     "platforms": [
-      "android"
+      "ios",
+      "android",
+      "browser"
     ]
   }
 }

@@ -138,6 +138,11 @@ export class ApiService {
     this.setHeader();
     return this.http.get(environment.BaseUrl + "trasaction/?user_id="+ID, this.httpOptions);
   }
+  getDonor(): any {
+    this.setHeader();
+    return this.http.get(environment.BaseUrl + "donor/top_donor", this.httpOptions);
+  }
+
   getSchemeGroup(): any {
     this.setHeader();
     return this.http.get(environment.BaseUrl + "scheme_group", this.httpOptions);
