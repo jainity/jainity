@@ -92,7 +92,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/schemedetails/schemedetails.module').then( m => m.SchemedetailsPageModule)
   },
   {
-    path: 'donordashboard',
+    path: 'donordashboard',canActivate: [AuthGuard],
     loadChildren: () => import('./pages/donordashboard/donordashboard.module').then( m => m.DonordashboardPageModule)
   },
 ];
