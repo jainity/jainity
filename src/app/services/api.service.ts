@@ -143,6 +143,14 @@ export class ApiService {
     return this.http.get(environment.BaseUrl + "donor/top_donor", this.httpOptions);
   }
 
+  getSchemeGroupWiseReport(): any {
+    this.setHeader();
+    return this.http.get(environment.BaseUrl + "report/scheme_group_wise_report", this.httpOptions);
+  }
+  getDonationCount(): any {
+    this.setHeader();
+    return this.http.get(environment.BaseUrl + "report/donation_count", this.httpOptions);
+  }
   getSchemeGroup(): any {
     this.setHeader();
     return this.http.get(environment.BaseUrl + "scheme_group", this.httpOptions);

@@ -20,6 +20,12 @@ export class DonordashboardPage implements OnInit {
   isLogin=false;
   mydonateList =[];
   donornameList =[];
+  SGReportList =[];
+
+  MyContribution:any;
+  TotalContribution:any;
+
+
   bars: any;
   colorArray: any;
 
@@ -176,23 +182,56 @@ return await alert.present();
 
 
   ionViewDidEnter() {
-    this.getmyDonationLISTCall();
-    this.createBarChart();
+    this.getDonationcount();
+  }
+
+  getDonationcount() {
+    if (this.tools.isNetwork()) {
+      this.tools.openLoader();
+      console.log('getSGLISTCall');
+      this.apiService.getDonationCount().subscribe(response => {
+        console.log('getDonationCount>>>',response);
+
+        //this.tools.closeLoader();
+        this.getmyDonationLISTCall();
+        let res: any = response;
+        if (res.status) {
+          //this.mydonateList = res.data;
+        this.MyContribution=res.MyDonation;
+        this.TotalContribution=res.TotalAmount;
+
+        } 
+        this.getDonorLISTCall();
+        console.log(res)
+      }, (error: Response) => {
+        console.log('ERORR>>>');
+        this.tools.closeLoader();
+        this.tools.closeLoader();
+        let err: any = error;
+        console.log('Error ', err);
+        this.tools.openAlertToken(err.status, err.error.message);
+
+      });
+    } else {
+      console.log('ELSE>> ');
+      this.tools.closeLoader();
+    }
   }
 
   getmyDonationLISTCall() {
     if (this.tools.isNetwork()) {
-      this.tools.openLoader();
+      //this.tools.openLoader();
       console.log('getSGLISTCall');
       this.apiService.getMyDonation(this.apiService.getUserData().id).subscribe(response => {
         console.log('RESPONSE>>>');
+
+        this.getDonorLISTCall();
 
         //this.tools.closeLoader();
         let res: any = response;
         if (res.status) {
           this.mydonateList = res.data;
         } 
-        this.getDonorLISTCall();
         console.log(res)
       }, (error: Response) => {
         console.log('ERORR>>>');
@@ -216,7 +255,7 @@ return await alert.present();
       this.apiService.getDonor().subscribe(response => {
         console.log('RESPONSE>>>');
 
-        this.tools.closeLoader();
+        this.getSchemGroupWiseLIST();
         let res: any = response;
         if (res.status) {
           this.donornameList = res.data;
@@ -237,14 +276,50 @@ return await alert.present();
     }
   }
 
+  getSchemGroupWiseLIST() {
+    if (this.tools.isNetwork()) {
+     // this.tools.openLoader();
+      console.log('getSGLISTCall');
+      this.apiService.getSchemeGroupWiseReport().subscribe(response => {
+
+        this.tools.closeLoader();
+        let res: any = response;
+        if (res.status) {
+          this.SGReportList = res.data;
+        } 
+        this.createBarChart();
+        console.log(res)
+      }, (error: Response) => {
+        console.log('ERORR>>>');
+        this.tools.closeLoader();
+        this.tools.closeLoader();
+        let err: any = error;
+        console.log('Error ', err);
+        this.tools.openAlertToken(err.status, err.error.message);
+
+      });
+    } else {
+      console.log('ELSE>> ');
+      this.tools.closeLoader();
+    }
+  }
+
   createBarChart() {
-    this.bars = new Chart(this.barChart.nativeElement, {
+    let ctx = this.barChart.nativeElement;
+    ctx.height = 230;
+  
+    this.bars = new Chart(ctx, {
       type: 'doughnut',
       data: {
-        labels: ['India', 'Canada', 'China', 'Brazil', 'Russia', 'Others'],
+        // labels: ['India', 'Canada', 'China', 'Brazil', 'Russia', 'Others'],
+       labels: this.SGReportList.map(function(item) {
+        return item['SchemeGroup'];
+      }),
         datasets: [{
-          label: 'Viewers in millions',
-          data: [8, 3.8, 5, 6.9, 2.9, 7.5],
+          //label: 'Viewers in millions',
+          data: this.SGReportList.map(function(item) {
+            return item['Total']/100;
+          }),
           backgroundColor: this.colorArray, // array should have same number of elements as number of dataset
           borderColor: this.colorArray,// array should have same number of elements as number of dataset
           borderWidth: 1
