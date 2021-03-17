@@ -1,4 +1,3 @@
-import { EventService } from './shared/EventService';
 import { PaymentconfirPage } from './paymentconfir/paymentconfir.page';
 import { OtpverificationPage } from './otpverification/otpverification.page';
 import { RegisterPage } from './register/register.page';
@@ -18,6 +17,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { EventService } from './services/EventService';
 
 @NgModule({
   declarations: [AppComponent,LoginPage,RegisterPage,OtpverificationPage,PaymentconfirPage],
