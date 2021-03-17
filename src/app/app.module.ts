@@ -1,3 +1,4 @@
+import { EventService } from './shared/EventService';
 import { PaymentconfirPage } from './paymentconfir/paymentconfir.page';
 import { OtpverificationPage } from './otpverification/otpverification.page';
 import { RegisterPage } from './register/register.page';
@@ -24,7 +25,7 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
   imports: [BrowserModule,FormsModule,HttpClientModule,IonicModule.forRoot(), AppRoutingModule],
   providers: [Network,
     StatusBar,Tools,
-    SplashScreen,AuthGuard,InAppBrowser,
+    SplashScreen,AuthGuard,InAppBrowser,EventService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {provide: LocationStrategy, useClass: PathLocationStrategy},
   

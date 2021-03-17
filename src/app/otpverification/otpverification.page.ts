@@ -1,3 +1,4 @@
+import { EventService } from './../services/EventService';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -22,7 +23,7 @@ loginForm: FormGroup;
 errorMsg:any='';
 
 fromPage;
-  constructor(private router: Router,public navParams: NavParams, public route: ActivatedRoute,public formBuilder: FormBuilder,
+  constructor(private eventService:EventService, private router: Router,public navParams: NavParams, public route: ActivatedRoute,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,public modalCtrl: ModalController) {
       this.tools.closeLoader(); 
       this.fromPage = this.navParams.get("value");
@@ -53,10 +54,12 @@ fromPage;
           this.tools.closeLoader();
           let res: any = response;
           if(res.status){
-            localStorage.setItem('login_token', res.token);
-            console.log('response ', res.data[0]);
+            // localStorage.setItem('login_token', res.token);
+            this.apiServices.setLoginToken(res.token);
+            console.log('response ===>  ', res );
             //localStorage.setItem('userdata', JSON.stringify(res.data[0]));
             this.apiServices.setUserData(res.data[0])
+            this.eventService.publishFormOtp();
             setTimeout(() => {    
               
               if(this.fromPage == 'schemedetails')

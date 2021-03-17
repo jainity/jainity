@@ -1,3 +1,4 @@
+import { EventService } from './EventService';
 import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -11,9 +12,14 @@ export class ApiService {
   httpOptions: any;
   bacisAuth;
 
-  constructor(private http: HttpClient, public alertController: AlertController,public router: Router,) {
+  constructor(private eventServic:EventService, private http: HttpClient, public alertController: AlertController,public router: Router,) {
     this.bacisAuth = 'Basic ' + btoa(environment.username + ":" + environment.password);
     this.setHeader();
+
+    this.eventServic.formOtp$.subscribe(() => {
+      this.setHeader();
+      // this.callPageByApi();    
+    });
 
   }
   setHeader() {
@@ -49,6 +55,9 @@ export class ApiService {
       return localStorage['login_token'];
     }
     return;
+  }
+  setLoginToken(loginToken) {
+    localStorage.setItem('loginToken', loginToken)
   }
   getUserId() {
     console.log('User Info--> ',this.getUserData())
@@ -97,6 +106,7 @@ export class ApiService {
   }
   PayemntCall(Rname,Uid,PaymentID,AMT,InstituteSchemeID,InstituteID,SchemeName,MID) {
 
+    this.setHeader();
     let postDataRow =  {
       PayId: PaymentID,
       Amt: AMT,
