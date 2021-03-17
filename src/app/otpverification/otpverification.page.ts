@@ -54,17 +54,19 @@ fromPage;
           this.tools.closeLoader();
           let res: any = response;
           if(res.status){
-            // localStorage.setItem('login_token', res.token);
-            this.apiServices.setLoginToken(res.token);
+            localStorage.setItem('login_token', res.token);
+           // this.apiServices.setLoginToken(res.token);
             console.log('response ===>  ', res );
             //localStorage.setItem('userdata', JSON.stringify(res.data[0]));
             this.apiServices.setUserData(res.data[0])
-            this.eventService.publishFormOtp();
             setTimeout(() => {    
-              
+              this.eventService.publishFormOtp();
+
               //this for pass login logout condition
               if(this.fromPage == 'schemedetails'){
-                console.log('getLoginToken:::::: ',this.apiServices.getLoginToken());
+               // console.log('getLoginToken:::::: ',this.apiServices.getLoginToken());
+                console.log('getLoginToken::::::>>> ',localStorage.getItem('login_token'));
+
                 this.modalCtrl.dismiss(this.fromPage); 
               }
               else{

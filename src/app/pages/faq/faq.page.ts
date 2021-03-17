@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
 import { ApiService } from '../../services/api.service';
 import { Tools } from '../../shared/tools';
+import { EventService } from 'src/app/services/EventService';
 
 @Component({
   selector: 'app-faq',
@@ -19,12 +20,14 @@ export class FaqPage implements OnInit {
   DonorfaqList=[];
   InstitutefaqList=[];
 
-  constructor(private route: Router,public alertController: AlertController,
+  constructor(private eventServic:EventService,private route: Router,public alertController: AlertController,
      public apiService: ApiService,
     public tools: Tools,public modalCtrl: ModalController) {
 
       this.tools.closeLoader();
-      this.isLogin = this.apiService.getUserData() !=undefined;
+      this.eventServic.formOtp$.subscribe(() => {
+        this.isLogin = this.apiService.getUserData() !=undefined;
+      });
 
 //Donor Query
       this.DonorfaqList.push({name:'How do I donate on Jainity?',description:'There are many variations of passages of Lorem Ipsum available,',isShow:'true'})

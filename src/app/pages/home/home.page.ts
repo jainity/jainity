@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { AlertController, IonSlides, MenuController, ModalController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
 import { Tools } from 'src/app/shared/tools';
+import { EventService } from 'src/app/services/EventService';
 
 @Component({
   selector: 'app-home',
@@ -109,7 +110,7 @@ export class HomePage implements OnInit {
   InstituteType=[];
 
 
-  constructor(private route: Router,public alertController: AlertController,
+  constructor(private eventServic:EventService,private route: Router,public alertController: AlertController,
      public apiService: ApiService,public formBuilder: FormBuilder, private menu: MenuController, 
     public tools: Tools,public modalCtrl: ModalController) {
 
@@ -118,6 +119,10 @@ export class HomePage implements OnInit {
       localStorage.removeItem('schemeId');
       localStorage.removeItem('InstituteId');
 
+      this.eventServic.formOtp$.subscribe(() => {
+        this.isLogin = this.apiService.getUserData() !=undefined;
+
+      });
 
    }
 
@@ -318,7 +323,6 @@ return await alert.present();
       }, (error: Response) => {
         console.log('ERORR>>>');
         this.tools.closeLoader();
-        this.tools.closeLoader();
         let err:any = error;
         console.log('Error ', err);
        this.tools.openAlertToken(err.status, err.error.message);
@@ -353,7 +357,6 @@ return await alert.present();
       }, (error: Response) => {
         console.log('ERORR>>>');
         this.tools.closeLoader();
-        this.tools.closeLoader();
         let err:any = error;
         console.log('Error ', err);
        this.tools.openAlertToken(err.status, err.error.message);
@@ -383,7 +386,6 @@ return await alert.present();
       }, (error: Response) => {
         console.log('ERORR>>>');
         this.tools.closeLoader();
-        this.tools.closeLoader();
         let err: any = error;
         console.log('Error ', err);
         this.tools.openAlertToken(err.status, err.error.message);
@@ -412,7 +414,6 @@ return await alert.present();
         console.log(res)
       }, (error: Response) => {
         console.log('ERORR>>>');
-        this.tools.closeLoader();
         this.tools.closeLoader();
         let err:any = error;
         console.log('Error ', err);

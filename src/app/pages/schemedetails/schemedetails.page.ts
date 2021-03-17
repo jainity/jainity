@@ -7,6 +7,7 @@ import { AlertController, ModalController } from '@ionic/angular';
 import { ApiService } from '../../services/api.service';
 import { Tools } from '../../shared/tools';
 import { PaymentconfirPage } from 'src/app/paymentconfir/paymentconfir.page';
+import { EventService } from 'src/app/services/EventService';
 
 @Component({
   selector: 'app-schemedetails',
@@ -25,13 +26,14 @@ export class SchemedetailsPage implements OnInit {
   Type:any;
   Tittle:any;
 
-  constructor(private route: Router,public alertController: AlertController,
+  constructor(private eventServic:EventService,private route: Router,public alertController: AlertController,
      public apiService: ApiService,
     public tools: Tools,public modalCtrl: ModalController) {
 
       this.tools.closeLoader();
-      this.isLogin = this.apiService.getUserData() !=undefined;
-
+      this.eventServic.formOtp$.subscribe(() => {
+        this.isLogin = this.apiService.getUserData() !=undefined;
+      });
 
       localStorage.removeItem('Name');
       localStorage.removeItem('AMT');

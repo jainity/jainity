@@ -7,6 +7,7 @@ import { AlertController, ModalController } from '@ionic/angular';
 import { ApiService } from '../../services/api.service';
 import { Tools } from '../../shared/tools';
 import { Chart } from 'chart.js';
+import { EventService } from 'src/app/services/EventService';
 
 @Component({
   selector: 'app-donordashboard',
@@ -29,12 +30,15 @@ export class DonordashboardPage implements OnInit {
   bars: any;
   colorArray: any;
 
-  constructor(private route: Router,public alertController: AlertController,
+  constructor(private eventServic:EventService,private route: Router,public alertController: AlertController,
      public apiService: ApiService,
     public tools: Tools,public modalCtrl: ModalController) {
 
-      this.tools.closeLoader();
       this.isLogin = this.apiService.getUserData() !=undefined;
+      this.tools.closeLoader();
+      this.eventServic.formOtp$.subscribe(() => {
+        this.isLogin = this.apiService.getUserData() !=undefined;
+      });
       this.generateColorArray(100);
 
    }

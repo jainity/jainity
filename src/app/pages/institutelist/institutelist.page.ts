@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
 import { ApiService } from '../../services/api.service';
 import { Tools } from '../../shared/tools';
+import { EventService } from 'src/app/services/EventService';
 
 @Component({
   selector: 'app-institutelist',
@@ -21,12 +22,14 @@ export class InstitutelistPage implements OnInit {
   sliderType:any;
 
 
-  constructor(private route: Router,public alertController: AlertController,
+  constructor(private eventServic:EventService,private route: Router,public alertController: AlertController,
      public apiService: ApiService,
     public tools: Tools,public modalCtrl: ModalController) {
 
       this.tools.closeLoader();
-      this.isLogin = this.apiService.getUserData() !=undefined;
+      this.eventServic.formOtp$.subscribe(() => {
+        this.isLogin = this.apiService.getUserData() !=undefined;
+      });
       localStorage.removeItem('InstituteId');
 
    }

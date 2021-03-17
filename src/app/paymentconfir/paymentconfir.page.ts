@@ -120,6 +120,7 @@ export class PaymentconfirPage implements OnInit {
 
   PayemntCall(PaymentID){
     if (this.tools.isNetwork()) {
+      console.log('OTP_token',localStorage.getItem('login_token'));
       this.tools.openLoader();
       this.apiService.PayemntCall(this.Rname,this.user.id,PaymentID,(parseInt(this.AMT)*100),this.InstituteSchemeID,this.InstituteID,this.SchemeName,this.RazorpayMID).subscribe(response => {
         this.tools.closeLoader();

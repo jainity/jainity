@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class ApiService {
   apiKey = '';
   httpOptions: any;
+  httpOptionss: any;
+
   bacisAuth;
 
   constructor(private eventServic:EventService, private http: HttpClient, public alertController: AlertController,public router: Router,) {
@@ -23,7 +25,7 @@ export class ApiService {
 
   }
   setHeader() {
-    console.log('getLoginToken ' , this.getLoginToken())
+    console.log('getLoginToken>>header>> ' , this.getLoginToken())
     if (this.getLoginToken() == undefined) {
       console.log('Basic auth ' + this.bacisAuth)
       this.httpOptions = {
@@ -51,7 +53,7 @@ export class ApiService {
     }
   }
   getLoginToken() {
-    console.log("login_token>>",localStorage['login_token']);
+    console.log("get_login_token>>>",localStorage['login_token']);
     if (localStorage['login_token']) {
       return localStorage.getItem('login_token');
     }
@@ -107,7 +109,7 @@ export class ApiService {
   }
   PayemntCall(Rname,Uid,PaymentID,AMT,InstituteSchemeID,InstituteID,SchemeName,MID) {
 
-    this.setHeader();
+    
     let postDataRow =  {
       PayId: PaymentID,
       Amt: AMT,
@@ -119,8 +121,18 @@ export class ApiService {
       RECDisplayName: Rname,
       DonorID: Uid,
   }
-
-    return this.http.post(environment.BaseUrl + "Payment", postDataRow, this.httpOptions);
+  this.httpOptionss = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Headers': "Access-Control-Allow-Headers,Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+      'Access-Control-Allow-Origin': '*',
+      //'Authorization': this.bacisAuth,
+      'X-JAINITY-API-KEY': environment.apikey,
+      'User-Id': this.getUserId(),
+      'Authorization': 'Bearer '+this.getLoginToken(),
+    })
+  };
+    return this.http.post(environment.BaseUrl + "Payment", postDataRow, this.httpOptionss);
   }
 
   Register(RoleId,Fname,Lname,Mobileno) {
