@@ -180,6 +180,9 @@ return await alert.present();
 
   ngOnInit() {}
 
+  donateclick(){
+    this.route.navigateByUrl('/schemegrouplist');
+  }
 
   ionViewDidEnter() {
     this.getDonationcount();

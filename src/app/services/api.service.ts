@@ -45,8 +45,9 @@ export class ApiService {
     }
   }
   getLoginToken() {
+    console.log("login_token>>",localStorage['login_token']);
     if (localStorage['login_token']) {
-      return localStorage['login_token'];
+      return localStorage.getItem('login_token');
     }
     return;
   }
@@ -96,7 +97,7 @@ export class ApiService {
     return this.http.post(environment.BaseUrl + "auth/logout", postData, this.httpOptions);
   }
   PayemntCall(Rname,Uid,PaymentID,AMT,InstituteSchemeID,InstituteID,SchemeName,MID) {
-
+this.setHeader();
     let postDataRow =  {
       PayId: PaymentID,
       Amt: AMT,

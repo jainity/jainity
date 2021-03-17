@@ -214,25 +214,25 @@ export class HomePage implements OnInit {
 
 
    async OnConnectClick(){
-    this.route.navigateByUrl('/donordashboard');
+    this.route.navigateByUrl('/schemegrouplist');
 
-//     if (!this.isLogin) {
+  //   if (!this.isLogin) {
 
-//       const alert = await this.alertController.create({
-//         message: 'Coming Soon',
-//         buttons: [
-//             {
-//                 text: 'OK',
-//                 role: 'OK',
-//                 handler: () => {
+  //     const alert = await this.alertController.create({
+  //       message: 'Coming Soon',
+  //       buttons: [
+  //           {
+  //               text: 'OK',
+  //               role: 'OK',
+  //               handler: () => {
     
-//                 }
-//             },
-//         ], backdropDismiss: false
-//     });
-//     alert.present();
-//     }else
-//   this.route.navigateByUrl('/schemegrouplist');
+  //               }
+  //           },
+  //       ], backdropDismiss: false
+  //   });
+  //   alert.present();
+  //   }else
+  // this.route.navigateByUrl('/schemegrouplist');
 
 
   }
@@ -287,7 +287,7 @@ return await alert.present();
     // this.menu.enable(false); 
     // this.content.scrollTo(0, todayItem.offsetTop, 1000);
   }
-  
+
   menuClose() {
     if(this.checkScreen() != 4)
     this.menu.close();

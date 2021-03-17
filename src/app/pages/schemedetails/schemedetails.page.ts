@@ -112,7 +112,7 @@ export class SchemedetailsPage implements OnInit {
     const modal = await this.modalCtrl.create({  
       component: OtpverificationPage ,
             cssClass: 'login-modal',
-            componentProps: { value: 'schemedetails' }
+            componentProps: { value: 'schemedetails' } //this for pass login logout condition
     });  
     modal.onDidDismiss().then(result => {
       if(result.data =='login'){
@@ -124,10 +124,9 @@ export class SchemedetailsPage implements OnInit {
        if(result.data =='OTPPage'){
         this.openOtp();
        }
-       if(result.data =='schemedetails'){
-        // this.openOtp();
-        this.isLogin = this.apiService.getUserData() !=undefined;
-
+       //this for pass login logout condition
+       if(result.data =='schemedetails'){ 
+        this.isLogin = this.apiService.getUserData() != undefined;
        }
     });
 

@@ -127,7 +127,7 @@ export class PaymentconfirPage implements OnInit {
         console.log('response ', res);
 
         if(res.status){
-          this.tools.presentAlert('',res.message, 'Ok',true);
+          this.tools.donatepresentAlert('',res.message, 'Ok',true);
         //  this.route.navigate(['/home']);
         }else{
           this.tools.presentAlert('','Something wrong...', 'Ok');

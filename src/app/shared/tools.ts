@@ -239,6 +239,26 @@ export class Tools {
         });
         await alert.present();
     }
+    
+
+    async donatepresentAlert(title, msg, btnOk,isMove?) {
+        if(this.loading ! =undefined) 
+        this.loading.dismiss();
+        const alert = await this.alertController.create({
+            header: title,
+            message: msg,
+            buttons: [
+                {
+                    text: btnOk,
+                    handler: () => {
+                        if(isMove)
+                        this.router.navigateByUrl('/schemegrouplist', { replaceUrl: true });
+                    }
+                }
+            ]
+        });
+        await alert.present();
+    }
 
     async presentAlert(title, msg, btnOk,isMove?) {
         if(this.loading ! =undefined) 

@@ -21,11 +21,12 @@ verificont:any = "";
 loginForm: FormGroup;
 errorMsg:any='';
 
-fromPage;
+fromPage; //this for pass login logout condition
+
   constructor(private router: Router,public navParams: NavParams, public route: ActivatedRoute,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,public modalCtrl: ModalController) {
       this.tools.closeLoader(); 
-      this.fromPage = this.navParams.get("value");
+      this.fromPage = this.navParams.get("value"); //this for pass login logout condition
      this.mno =localStorage.getItem('mobileno');
      if(this.mno != undefined && this.mno != null)
       this.verificont="Please Enter Verification Code Send to ******"+this.mno.substr(this.mno.length - 4)
@@ -54,17 +55,19 @@ fromPage;
           let res: any = response;
           if(res.status){
             localStorage.setItem('login_token', res.token);
-            console.log('response ', res.data[0]);
+            console.log('response OTP >>>', res);
             //localStorage.setItem('userdata', JSON.stringify(res.data[0]));
             this.apiServices.setUserData(res.data[0])
             setTimeout(() => {    
               
-              if(this.fromPage == 'schemedetails')
-              this.modalCtrl.dismiss(this.fromPage);  
+              //this for pass login logout condition
+              if(this.fromPage == 'schemedetails'){
+                console.log('getLoginToken:::::: ',this.apiServices.getLoginToken());
+                this.modalCtrl.dismiss(this.fromPage); 
+              }
               else{
 
                this.modalCtrl.dismiss() 
-               console.log("USERID>>>>>>> ",this.apiServices.getUserData().role_id);       
               
                if(this.apiServices.getUserData().role_id==2){
                  this.router.navigateByUrl('/donordashboard', { replaceUrl: true });
