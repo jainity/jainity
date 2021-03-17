@@ -1,3 +1,4 @@
+import { EventService } from './../services/EventService';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -21,9 +22,8 @@ verificont:any = "";
 loginForm: FormGroup;
 errorMsg:any='';
 
-fromPage; //this for pass login logout condition
-
-  constructor(private router: Router,public navParams: NavParams, public route: ActivatedRoute,public formBuilder: FormBuilder,
+fromPage;
+  constructor(private eventService:EventService, private router: Router,public navParams: NavParams, public route: ActivatedRoute,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,public modalCtrl: ModalController) {
       this.tools.closeLoader(); 
       this.fromPage = this.navParams.get("value"); //this for pass login logout condition
@@ -54,10 +54,12 @@ fromPage; //this for pass login logout condition
           this.tools.closeLoader();
           let res: any = response;
           if(res.status){
-            localStorage.setItem('login_token', res.token);
-            console.log('response OTP >>>', res);
+            // localStorage.setItem('login_token', res.token);
+            this.apiServices.setLoginToken(res.token);
+            console.log('response ===>  ', res );
             //localStorage.setItem('userdata', JSON.stringify(res.data[0]));
             this.apiServices.setUserData(res.data[0])
+            this.eventService.publishFormOtp();
             setTimeout(() => {    
               
               //this for pass login logout condition
