@@ -217,6 +217,9 @@ export class HomePage implements OnInit {
     return await modal.present();
   }
 
+  OnOrgClick(){
+    this.route.navigateByUrl('/institutelist');
+  }
 
    async OnConnectClick(){
     this.route.navigateByUrl('/schemegrouplist');

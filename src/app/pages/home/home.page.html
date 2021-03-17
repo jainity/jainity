@@ -60,9 +60,11 @@
                     <ion-grid class="container">
                         <ion-row class="banner_content_box">
                             <ion-col>
-                                <ion-label class="tag-line">Connecting donors and institutes around the world.</ion-label>
+                                <ion-label class="tag-line">Connecting donors and organizations around the world.</ion-label>
                                 <ion-label class="subtag-line">Get direct donations in your bank account.</ion-label>
-                                <ion-button (click)="OnConnectClick()">Connect</ion-button>
+                                <ion-button (click)="OnConnectClick()">Donor</ion-button>
+                                <ion-button (click)="OnOrgClick()">Organization</ion-button>
+
                             </ion-col>
                         </ion-row>
                         <ion-row class="banner_list_box">
@@ -99,7 +101,7 @@
                 <ion-label class="content-title">About US</ion-label>
 
                 <div>
-                    <ion-label class="content">Principles of Jain dharma and Jain institutes (sangh) are well known for its progressive nature lead by visionaries (shravak and sadhu) who have ensured continuity (shashwat) of the dharma and its values by taking entire community
+                    <ion-label class="content">Principles of Jain dharma and Jain organizations (sangh) are well known for its progressive nature lead by visionaries (shravak and sadhu) who have ensured continuity (shashwat) of the dharma and its values by taking entire community
                         together towards shifting nature of the modern realities at every critical juncture.</ion-label>
                 </div>
                 <div>
@@ -125,7 +127,8 @@
             </ion-col>
             <ion-col class="about_img_box">
                 <div class="about_img">
-                    <ion-img src='../../../assets/img/about_img.jpg'></ion-img>
+                    <ion-img src='../../../assets/img/bg.jpg'></ion-img>
+                    <ion-img style="padding: 20px;" src='../../../assets/img/images_box.png'></ion-img>
                 </div>
 
             </ion-col>
@@ -172,9 +175,9 @@
                 <ion-grid class="container">
                     <ion-label class="section-title">How it works</ion-label>
                     <ion-label class="content" style="text-align: center; max-width: 870px; margin: 0 auto; margin-top: -15px;">
-                        The platform accessible via website and mobile phones will make the transfer directly from the donor account to the institute’s account and generate verified receipt instantly.
+                        The platform accessible via website and mobile phones will make the transfer directly from the donor account to the organization’s account and generate verified receipt instantly.
                     </ion-label>
-                    <ion-row class="work-block" style="margin-top: 30px;">
+                    <!-- <ion-row class="work-block" style="margin-top: 30px;">
                         <ion-col size="4">
                             <div class="work_box">
                                 <div class="work_icon">
@@ -202,7 +205,7 @@
                                 <ion-label class="content">Earn good karma and your ATG certificate.</ion-label>
                             </div>
                         </ion-col>
-                    </ion-row>
+                    </ion-row> -->
 
                     <ion-row class="work-block" style="margin-top: 50px;">
                         <ion-col size="6" class="col-w-50">
@@ -225,12 +228,12 @@
                                 <div class="work_icon">
                                     <ion-img src="../../../assets/img/institute.png"></ion-img>
                                 </div>
-                                <ion-label class="title">INSTITUTE</ion-label>
-                                <ion-label class="content bold">Registering Your institute and managing your causes is a straight forward process.</ion-label>
+                                <ion-label class="title">Organization</ion-label>
+                                <ion-label class="content bold">Registering Your organization and managing your causes is a straight forward process.</ion-label>
                                 <div class="content_list">
                                     <ion-label class="content">Create your free jainity account with your mobile number and email (or use your existing account).</ion-label>
-                                    <ion-label class="content">Submit your institute details, upload requested documents, provide registration information and specify bank details for receiving donations.</ion-label>
-                                    <ion-label class="content">Manage your institute page, list your causes, add more members from your institute.</ion-label>
+                                    <ion-label class="content">Submit your organization details, upload requested documents, provide registration information and specify bank details for receiving donations.</ion-label>
+                                    <ion-label class="content">Manage your organization page, list your causes, add more members from your organization.</ion-label>
                                     <ion-label class="content">Receive notification on each donation and verify donor identify as necessary.</ion-label>
                                 </div>
                             </div>
@@ -248,7 +251,7 @@
                 <ion-grid class="container">
                     <ion-row class="slider_tabs_box">
                         <ion-col>
-                            <ion-label class="content-title" style="margin-left: 50px;">INSTITUTE</ion-label>
+                            <ion-label class="content-title" style="margin-left: 50px;">Organization</ion-label>
 
                             <ion-radio-group [(ngModel)]="sliderType" class="slider_tabs">
                                 <ion-item *ngFor="let item of InstituteType" (click)="onInstituteList(item)">
@@ -294,7 +297,7 @@
             <ion-col>
                 <ion-grid class="container">
                     <ion-row>
-                        <ion-label class="content-title" style="margin-left: 50px;">SCHEME GROUP</ion-label>
+                        <ion-label class="content-title" style="margin-left: 50px;">Cause GROUP</ion-label>
                     </ion-row>
 
                     <ion-row>

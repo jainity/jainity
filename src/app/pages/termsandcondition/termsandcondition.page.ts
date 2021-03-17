@@ -22,6 +22,7 @@ export class TermsandconditionPage implements OnInit {
      public apiService: ApiService,
     public tools: Tools,public modalCtrl: ModalController) {
 
+      this.isLogin = this.apiService.getUserData() !=undefined;
       this.tools.closeLoader();
       this.eventServic.formOtp$.subscribe(() => {
         this.isLogin = this.apiService.getUserData() !=undefined;
