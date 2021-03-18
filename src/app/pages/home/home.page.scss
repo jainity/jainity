@@ -690,6 +690,22 @@ ion-col {
     top: 20%;
 }
 
+
+.about_img_box {
+	width: 100%;
+	height: 100%;
+	padding: 50px !important;
+	display: table;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.about_img_box ion-img {
+	display: table-cell;
+	vertical-align: middle;
+	width: 100%;
+}
+
 @media (max-width: 1024px) 
 {
     .page_banner {min-height: auto !important;}
@@ -723,7 +739,7 @@ ion-col {
     .banner_list_box ion-label {font-size: 15px !important;}
 
     .content-title {font-size: 22px !important; padding-bottom: 12px; line-height: 22px;}
-    .banner_content_box  ion-button {width: 130px; height: 40px; font-size: 16px;}
+    .banner_content_box  ion-button {width: 160px; height: 40px; font-size: 16px;}
 
     .tag-line-row ion-label span {display: none !important;}
     .tag-line-row ion-label {font-size: 18px !important; text-align: center; max-width: 100% !important;  display: block; width: 100%;}
@@ -733,6 +749,18 @@ ion-col {
     .section-title {font-size: 22px !important; margin-bottom: 20px; margin-top: 0; line-height: 20px;}
 
     .tag-line-row  ion-label {text-align: justify !important;}
+
+    .about_img_box {
+        width: 100%;
+        height: auto;
+        padding: 50px !important;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+    .about_img_box ion-img {
+        display: block;
+        width: 100%;
+    }
 }
 
 @media (max-width: 768px) 
@@ -777,4 +805,6 @@ ion-col {
     .slider_tabs ion-item ion-label .check_mark {font-size: 15px;padding: 10px 12px;line-height: 16px;}
 
     .banner_content_box {display: block; text-align: justify;}
+
+    .about_img_box {padding: 20px 15px !important;}
 }
