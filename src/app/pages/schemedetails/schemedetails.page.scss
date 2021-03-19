@@ -704,8 +704,8 @@ p {
 
 @media (max-width: 992px) {
     ion-header .menu {
-        flex: 0 0 141px !important;
-        max-width: 141px !important;
+        flex: 0 0 110px !important;
+        max-width: 110px !important;
         position: relative;
         width: auto;
     }
@@ -721,5 +721,10 @@ p {
     ion-header .menu ion-label:last-child {
         padding-right: 0px !important;
         margin-right: 0px !important;
+    }
+
+
+    ion-grid.content {
+        padding: 50px 0px;
     }
 }

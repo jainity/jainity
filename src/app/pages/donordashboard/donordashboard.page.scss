@@ -27,6 +27,7 @@ ion-col {
 ion-list-header.hadings {
 	margin: 0px !important;
     margin-top: 16px !important;
+    margin-bottom: 9px !important;
 }
 
 .container {
@@ -672,8 +673,8 @@ ion-list-header.hadings {
 
 @media (max-width: 992px) {
     ion-header .menu {
-        flex: 0 0 141px !important;
-        max-width: 141px !important;
+        flex: 0 0 110px !important;
+        max-width: 110px !important;
         position: relative;
         width: auto;
     }

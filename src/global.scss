@@ -431,7 +431,7 @@ p {
 
 .login-modal .modal-wrapper {
     width: 100% !important;
-    height: 490px !important;
+    height: 470px !important;
     border: 1px solid #fff !important;
     max-width: 375px !important;
     border-radius: 15px !important;
@@ -464,7 +464,7 @@ p {
 
 .register-modal .modal-wrapper {
     width: 100% !important;
-    height: 600px !important;
+    height: 625px !important;
     border: 1px solid #fff !important;
     max-width: 400px !important;
     border-radius: 15px !important;
@@ -479,7 +479,7 @@ p {
     width: 100%;
     text-align: center;
     margin: 0 auto;
-    padding: 30px;
+    padding: 20px;
     height: auto !important;
     max-width: 100%;
 }
@@ -530,7 +530,7 @@ p {
 }
 
 .list_inner_box .white.content p {
-    display: inline-block;
+	display: inline;
 }
 
 #contact_forms .section {
@@ -633,6 +633,8 @@ p {
     font-size: 15px !important;
     font-family: "Poppins";
     line-height: 22px !important;
+    padding: 0px !important;
+    display: inline-block;
 }
 
 #page_content .content {
@@ -791,7 +793,69 @@ ion-header .container {
 .logo_box {
     text-align: left;
 }
+
+
+.list_block_row {margin: 0px -10px;}
+.list_block_cols {padding: 0px 10px !important;}
+
+.char_row {margin: 0px -10px;}
+.char_col {padding: 0px 10px !important;}
+
+.list_block_cols .light.bold {
+	width: 100%;
+	display: block;
+	font-weight: 700;
+	color: #fff;
+	font-size: 15px !important;
+}
+.list_block_cols .list_box {
+	align-items: center;
+}
+
+.welcome-card {
+	padding: 0px !important;
+	margin: 0px !important;
+}
+
+.tables {display: table; width: 100%; margin-bottom: 10px;}
+.tables .tables-heading {display: table-row; text-align: center;}
+.tables .tables-heading .tables-content {
+	white-space: nowrap;
+}
+.tables .tables-heading .cell {
+	vertical-align: middle;
+	font-size: 15px;
+	font-weight: 700;
+	background: #ef7635;
+	padding: 14px 12px;
+	color: #fff;
+}
+.tables .tables-heading .cell:first-child {
+	border-radius: 5px 0px 0px 0px;
+}
+.tables .tables-heading .cell:last-child {
+	border-radius: 0px 5px 0px 0px;
+}
+.tables .tables-row {display: table-row;}
+.tables .cell {
+	display: table-cell;
+	text-align: left;
+	border-top: 2px solid #f3f3f3;
+	vertical-align: middle;
+	padding: 10px 12px;
+	background-color: #fff;
+	font-size: 15px;
+}
+
+
+
+
+
+
+
 @media (max-width: 1024px) {
+
+
     ion-header .menubars {
         flex: 0 0 24px;
         width: 24px;
@@ -880,6 +944,10 @@ ion-header .container {
     .container {
         padding: 0px 5px;
     }
+
+    ion-label br {
+        display: none;
+    }
     ion-header .container {
         padding: 5px 12px;
     }
@@ -925,7 +993,9 @@ ion-header .container {
         display: block !important;
     }
     // ion-menu {display: block !important;}
-
+    #faq .faq_box .faq_content {
+        padding: 7px;
+    }
  
 }
 
@@ -942,8 +1012,32 @@ ion-header .container {
     #faq .faq_block {padding: 50px 0px;}
     #page_banner ion-label {font-size: 22px !important;line-height: 22px !important;}
     #page_content .page_content_box {padding: 50px 0px 35px 0px;}
-    #page_content .content {text-align: justify;}
+    #page_content .content {text-align: left;}
     #faq .faq_box .title {font-size: 18px !important;}
+
+    #footer .content {
+        text-align: left !important;
+    }
+    #about .content {
+        text-align: left;
+    }
+
+    .list_block_cols {
+        padding: 0px 10px !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 15px !important;
+    }
+    .list_block_row {
+        margin-bottom: -15px;
+    }
+
+    .tables-row .cell .tables-content {
+        min-width: 150px;
+    }
+    .tables-row .cell:last-child .tables-content {
+        min-width: auto;
+    }
 }
 @media (max-width: 640px) {
     ion-label {
@@ -992,6 +1086,17 @@ ion-header .container {
         word-spacing: -1px !important;
         letter-spacing: 0px !important;
     }
+    #page_banner ion-label {
+        font-size: 18px !important;
+        line-height: 22px !important;
+    }
+
+    .page_block .logo {
+        max-width: 150px;
+        width: 100%;
+        margin: 0 auto;
+        margin-bottom: 15px;
+    }
 }
 
 @media (max-width: 420px) {
@@ -1004,4 +1109,20 @@ ion-header .container {
 
 .details p {
     color: black !important;
+}
+
+
+
+
+
+#contact_forms .btn-orange.w-100 {
+	margin-top: 0px !important;
+}
+
+
+
+
+.logo-title {
+    display: inline-block;
+    vertical-align: middle;
 }
