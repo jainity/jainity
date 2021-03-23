@@ -6,7 +6,7 @@
                 <ion-row class="list_box">
                     <ion-col class="list_count">
                         <!-- <ion-label color="light">₹ {{(item.PaidValue)}}</ion-label> -->
-                        <ion-label color="light">{{ item.PaidValue | currency :'INR':'symbol':'1.0-0' }}</ion-label>
+                        <ion-label color="light"><span class="rupe">&#8377;</span>{{ item.PaidValue | currency :'INR':'':'1.0-0' }}</ion-label>
                     </ion-col>
                     <ion-col class="list_content">
                         <ion-label class="white content">{{item.RefNO}}</ion-label>

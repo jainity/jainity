@@ -37,11 +37,11 @@
                         <ion-col>
                             <div class="faq_box">
                                 <ion-label class="title">Donor Queries</ion-label>
-                                <app-expandlist *ngFor="let faq of this.DonorfaqList" isShow="{{ faq.isShow }}" name="{{ faq.name }}" description="{{faq.description}}"></app-expandlist>
+                                <app-expandlist *ngFor="let faq of this.DonorfaqList" isShow="{{faq.isShow}}" name="{{faq.name}}" description="{{faq.description}}"></app-expandlist>
                             </div>
                             <div class="faq_box" style="margin-top: 30px;">
                                 <ion-label class="title">Institute Queries</ion-label>
-                                <app-expandlist *ngFor="let faq of this.InstitutefaqList" isShow="{{ faq.isShow }}" name="{{ faq.name }}" description="{{faq.description}}"></app-expandlist>
+                                <app-expandlist *ngFor="let faq of this.InstitutefaqList" isShow="{{faq.isShow}}" name="{{faq.name}}" description="{{faq.description}}"></app-expandlist>
                             </div>
                         </ion-col>
                     </ion-row>
