@@ -373,9 +373,6 @@ p {
     padding: 0px;
 }
 
-.no-scroll {
-    //--overflow: hidden;
-}
 
 .page_box {
     display: table-cell;
@@ -1125,4 +1122,19 @@ ion-header .container {
 .logo-title {
     display: inline-block;
     vertical-align: middle;
+}
+
+.list_inner_box .white.content.color {
+	color: darkslategray !important;
+	font-weight: 600;
+}
+
+span.rupe {
+	font-family: 'arial';
+}
+.list_inner_box .white.content.bold {
+	font-weight: 600;
+}
+.list_inner_box p b, .list_inner_box p strong {
+	font-weight: normal !important;
 }

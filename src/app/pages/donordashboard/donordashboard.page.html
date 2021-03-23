@@ -45,7 +45,7 @@
                                                 </ion-col>
                                                 <ion-col class="list_content" style="margin-left: 20px;">
                                                     <ion-label color="light">My Contribution</ion-label>
-                                                    <ion-label class="light bold">{{ this.MyContribution/100 | currency :'INR':'symbol':'1.0-0' }}</ion-label>
+                                                    <ion-label class="light bold"><span class="rupe">&#8377;</span>{{ this.MyContribution/100 | currency :'INR':'':'1.0-0' }}</ion-label>
                                                 </ion-col>
                                             </ion-row>
                                         </ion-grid>
@@ -61,7 +61,7 @@
                                                 </ion-col>
                                                 <ion-col class="list_content" style="margin-left: 20px;">
                                                     <ion-label color="light">Total Contribution</ion-label>
-                                                    <ion-label class="light bold">{{ this.TotalContribution/100 | currency :'INR':'symbol':'1.0-0' }}</ion-label>
+                                                    <ion-label class="light bold"><span class="rupe">&#8377;</span>{{ this.TotalContribution/100 | currency :'INR':'':'1.0-0' }}</ion-label>
                                                 </ion-col>
                                             </ion-row>
                                         </ion-grid>
@@ -99,7 +99,7 @@
                                                         <div class="tables-content">{{item.SchemeName}}</div>
                                                     </div>										
                                                     <div class="cell">
-                                                        <div class="tables-content">{{ item.PaidValue/100 | currency :'INR':'symbol':'1.0-0' }}</div>
+                                                        <div class="tables-content"><span class="rupe">&#8377;</span>{{ item.PaidValue/100 | currency :'INR':'':'1.0-0' }}</div>
                                                     </div>											
                                                 </div> 
                                             </div>  
@@ -127,7 +127,7 @@
                                                         <div class="tables-content">{{item.RECDisplayName}}</div>
                                                     </div>						        		
                                                     <div class="cell">
-                                                        <div class="tables-content">{{ item.TxnAmt/100 | currency :'INR':'symbol':'1.0-0' }}</div>
+                                                        <div class="tables-content"><span class="rupe">&#8377;</span>{{ item.TxnAmt/100 | currency :'INR':'':'1.0-0' }}</div>
                                                     </div>												
                                                 </div> 
                                             </div>  
