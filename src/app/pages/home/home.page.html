@@ -31,8 +31,9 @@
                 <ion-col size="9" class="menu">
                     <ion-label (click)="scrollTo('banner')" style="cursor: pointer;">Home</ion-label>
                     <ion-label (click)="scrollTo('about')" style="cursor: pointer;">About</ion-label>
-                    <ion-label (click)="scrollTo('work')" style="cursor: pointer;">Donate</ion-label>
+                    <ion-label (click)="OnConnectClick()" style="cursor: pointer;">Donate</ion-label>
                     <ion-label *ngIf="!isLogin" (click)="LoginClick()" style="cursor: pointer;">Login</ion-label>
+                    <ion-label *ngIf="isLogin" (click)="DDClick()" style="cursor: pointer;">{{this.Loginusername}}</ion-label>
                     <ion-label *ngIf="isLogin" (click)="LogoutClick()" style="cursor: pointer;">Logout</ion-label>
 
                 </ion-col>
@@ -350,7 +351,7 @@
                             <div class="link_box">
                                 <ion-label (click)="scrollTo('banner')" style="cursor: pointer;color: white;">Home</ion-label>
                                 <ion-label (click)="scrollTo('about')" style="cursor: pointer;color: white;">About</ion-label>
-                                <ion-label (click)="scrollTo('work')" style="cursor: pointer;color: white;">Donate</ion-label>
+                                <ion-label (click)="OnConnectClick()" style="cursor: pointer;color: white;">Donate</ion-label>
                                 <ion-label class="contactusmenu" style="cursor: pointer;color: white;">Contact</ion-label>
                                 <ion-label (click)="this.tools.goFAQ()" style="cursor: pointer;color: white;"><a>FAQ</a></ion-label>
                                 <ion-label (click)="this.tools.goDisclaimer()" style="cursor: pointer;color: white;"><a>Disclaimer</a></ion-label>
@@ -384,20 +385,24 @@
         <div class="contact-form">
             <div class="heading">
                 <ion-label style="text-transform: none !important;">
-                    Contact us! <span>We're not around but we still want to hear from you! Leave us a note:</span>
+                    Contact us! <span>Get direct donations in your bank account</span>
                 </ion-label>
             </div>
             <div class="section">
                 <form>
                     <div class="form-group">
-                        <ion-input placeholder="Name *" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" [class]="name ==''&&nameErr !=''?'form-control error':'form-control'"></ion-input>
+                        <ion-input placeholder="Full Name *" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" [class]="name ==''&&nameErr !=''?'form-control error':'form-control'"></ion-input>
                         <span [class]="name ==''&&nameErr !=''?'errormsg':''">{{nameErr}}</span>
                     </div>
-
                     <div class="form-group">
+                        <ion-input placeholder="Contact Number *" [(ngModel)]="contactno" [ngModelOptions]="{standalone: true}" [class]="contactno ==''&&contactnoErr !=''?'form-control error':'form-control'"></ion-input>
+                        <span [class]="contactno ==''&&contactnoErr !=''?'errormsg':''">{{contactnoErr}}</span>
+
+                    </div>
+                    <!-- <div class="form-group">
                         <ion-input placeholder="Email *" style="text-transform: none;" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" [class]="this.checkMail() && emailErr !=''?'form-control error':'form-control'"></ion-input>
                         <span [class]="(email =='' || !this.reg.test(email) ) && emailErr !=''?'errormsg':''">{{emailErr}}</span>
-                    </div>
+                    </div> 
                     <div class="form-group">
                         <ion-input placeholder="Subject *" [(ngModel)]="subject" [ngModelOptions]="{standalone: true}" [class]="subject ==''&&subjectErr !=''?'form-control error':'form-control'"></ion-input>
                         <span [class]="subject ==''&&subjectErr !=''?'errormsg':''">{{subjectErr}}</span>
@@ -406,11 +411,23 @@
                     <div class="form-group">
                         <ion-textarea placeholder="Type your message here... *" [(ngModel)]="message" [ngModelOptions]="{standalone: true}" [class]="message ==''&&messageErr !=''?'form-control error':'form-control'"></ion-textarea>
                         <span [class]="message ==''&&messageErr !=''?'errormsg':''">{{messageErr}}</span>
+                    </div>-->
+                    <div>
+                        <ion-button style="margin-top: 30px; min-height: 40px;" class="btn-orange w-100" shape="round" expand="block" (click)="sendMail()">Submit</ion-button>
                     </div>
-                    <div style="margin-top: 30px; min-height: 40px;" class="btn-orange w-100">
-                        <ion-button (click)="sendMail()">Send</ion-button>
+                    <div style="text-align: center; margin-top: 30px;">
+                        <ion-label>
+                            Or connect with us on WhatsApp
+                        </ion-label>
                     </div>
+                    <div style="text-align: center;">
+                        <a href="https://wa.me/919321130735?text=I'm%20interested%20in%20associating%20with%20you%20for%20Jainity%20App" target="_blank">
+                            <ion-img class="icons" style="margin: 0 auto; margin-top: 20px;width: 30px;height: 30px;" src="../../../assets/img/Whatspp.png"></ion-img>
+                        </a>
+                    </div>
+
                 </form>
+
             </div>
         </div>
         <div class="contact_icon">

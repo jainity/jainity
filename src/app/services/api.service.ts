@@ -157,9 +157,9 @@ export class ApiService {
     return this.http.post(environment.BaseUrl + "scheme/search", postData, this.httpOptions);
   }
 
-  getMyDonation(ID): any {
+  getMyDonation(LIMIT): any {
     this.setHeader();
-    return this.http.get(environment.BaseUrl + "trasaction/?user_id="+ID, this.httpOptions);
+    return this.http.get(environment.BaseUrl + "trasaction/?limit="+LIMIT, this.httpOptions);
   }
   getDonor(): any {
     this.setHeader();

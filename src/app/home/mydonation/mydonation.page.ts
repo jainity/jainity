@@ -32,7 +32,7 @@ export class MydonationPage implements OnInit {
     if (this.tools.isNetwork()) {
       this.tools.openLoader();
       console.log('getSGLISTCall');
-      this.apiServices.getMyDonation(this.apiService.getUserData().id).subscribe(response => {
+      this.apiServices.getMyDonation('All').subscribe(response => {
         console.log('RESPONSE>>>');
 
         this.tools.closeLoader();

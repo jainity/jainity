@@ -26,14 +26,20 @@ export class HomePage implements OnInit {
   sliderType:any;
 
   name = '';
+  contactno = '';
   email = '';
   subject = '';
   message = '';
+  
   nameErr = '';
+  contactnoErr = '';
+
   emailErr = '';
   subjectErr = '';
   messageErr = '';
   reg:any;
+
+  Loginusername:any;
 
   slideOpts ={
     slidesPerView: this.checkScreen(),
@@ -118,6 +124,7 @@ export class HomePage implements OnInit {
       this.isLogin = this.apiService.getUserData() !=undefined;
       localStorage.removeItem('schemeId');
       localStorage.removeItem('InstituteId');
+      this.Loginusername=this.apiService.getUserData().first_name +" "+this.apiService.getUserData().last_name ;
 
       this.eventServic.formOtp$.subscribe(() => {
         this.isLogin = this.apiService.getUserData() !=undefined;
@@ -125,6 +132,7 @@ export class HomePage implements OnInit {
       });
 
    }
+
 
    checkMail(): boolean {
     this.reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -427,6 +435,11 @@ return await alert.present();
       console.log('ELSE>> ');
       this.tools.closeLoader();
     }
+  }
+
+  DDClick(){
+    this.route.navigateByUrl('/donordashboard', { replaceUrl: true });
+
   }
 
 }
