@@ -702,6 +702,11 @@ p {
     color: #fff !important;
 }
 
+.list_inner_box .white.content {
+    min-height: 44px;
+    display: block;
+}
+
 @media (max-width: 992px) {
     ion-header .menu {
         flex: 0 0 110px !important;
@@ -722,9 +727,14 @@ p {
         padding-right: 0px !important;
         margin-right: 0px !important;
     }
-
-
     ion-grid.content {
         padding: 50px 0px;
+    }
+}
+
+@media (max-width: 480px) {
+    list_inner_box .white.content {
+        min-height: auto;
+        display: block;
     }
 }

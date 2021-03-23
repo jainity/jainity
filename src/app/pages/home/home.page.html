@@ -33,7 +33,7 @@
                     <ion-label (click)="scrollTo('about')" style="cursor: pointer;">About</ion-label>
                     <ion-label (click)="OnConnectClick()" style="cursor: pointer;">Donate</ion-label>
                     <ion-label *ngIf="!isLogin" (click)="LoginClick()" style="cursor: pointer;">Login</ion-label>
-                    <ion-label *ngIf="isLogin" (click)="DDClick()" style="cursor: pointer;">{{this.Loginusername}}</ion-label>
+                    <ion-label *ngIf="isLogin" (click)="DDClick()" style="cursor: pointer;">{{this.apiService.getUserData().first_name}}</ion-label>
                     <ion-label *ngIf="isLogin" (click)="LogoutClick()" style="cursor: pointer;">Logout</ion-label>
 
                 </ion-col>

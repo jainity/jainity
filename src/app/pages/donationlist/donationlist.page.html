@@ -124,11 +124,11 @@
                                                     <ion-label color="black">{{item.SchemeName}}</ion-label>
                                                 </ion-col>
                                                 <ion-col class="list_content">
-                                                    <ion-label color="black">{{ item.PaidValue/100 | currency :'INR':'symbol':'1.0-0' }}</ion-label>
+                                                    <ion-label color="black">{{ item.PaidValue | currency :'INR':'symbol':'1.0-0' }}</ion-label>
                                                 </ion-col>
                                                 <ion-col class="list_content">
                                                     <ion-label class="icons">
-                                                        <a target="_blank" href="" (click)="onviewreceiptClick(item)">View Receipt</a>
+                                                        <ion-label style="text-decoration: underline; cursor: pointer; color: #ef7635;" (click)="onviewreceiptClick(item)">View Receipt</ion-label>
                                                     </ion-label>
                                                 </ion-col>
                                             </ion-row>

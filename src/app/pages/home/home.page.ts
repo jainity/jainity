@@ -124,7 +124,6 @@ export class HomePage implements OnInit {
       this.isLogin = this.apiService.getUserData() !=undefined;
       localStorage.removeItem('schemeId');
       localStorage.removeItem('InstituteId');
-      this.Loginusername=this.apiService.getUserData().first_name +" "+this.apiService.getUserData().last_name ;
 
       this.eventServic.formOtp$.subscribe(() => {
         this.isLogin = this.apiService.getUserData() !=undefined;
