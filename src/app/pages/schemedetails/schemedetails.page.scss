@@ -79,7 +79,7 @@ ion-col {
 
 .page_banner {
     //background-image: url(../assets/img/slider.jpg);
-    min-height: calc(100vh - 69.65px) !important;
+    //min-height: calc(100vh - 69.65px) !important;
     width: 100%;
     background-size: cover;
     background-position: center center;
@@ -88,7 +88,7 @@ ion-col {
 }
 
 .page_img_banner {
-    height: calc(100vh - 69.65px);
+    //height: calc(100vh - 69.65px);
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -111,7 +111,7 @@ ion-col {
 }
 
 .slider-box {
-    height: calc(100vh - 69.65px);
+    // height: calc(100vh - 69.65px);
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -120,7 +120,7 @@ ion-col {
 .page_banner .container {
     padding: 50px 15px 180px 15px;
     display: table;
-    min-height: calc(100vh - 69.65px) !important;
+    //min-height: calc(100vh - 69.65px) !important;
     position: relative;
     z-index: 2;
 }

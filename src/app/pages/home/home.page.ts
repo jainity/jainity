@@ -147,8 +147,57 @@ export class HomePage implements OnInit {
     return (this.email == '' || !this.reg.test(this.email))
   }
 
-  sendMail(){ }
+  sendMail() {
+    var msg = ''
+    this.errClr();
 
+    if (this.name =='') {
+      msg = msg + 'Please enter Full name'
+     this.nameErr = 'Please enter Full name'
+   } else if (this.name.length < 3) {
+      msg = msg + 'Full name should be at least 3 letters long and without any space'
+     this.nameErr = 'Full name should be at least 3 letters long and without any space'
+   }else if (this.contactno =='') {
+        msg = msg + 'Please enter contact number'
+        this.contactnoErr= 'Please enter contact number'
+  } else if (this.contactno.length != 10) {
+        msg = msg + 'Please enter valid contact number'
+        this.contactnoErr= 'Please enter valid contact number'
+  }
+
+    if (msg != '') {
+    //  this.errorMsg=msg;
+  // this.tools.openAlert(msg);
+    } else {
+      this.errClr();
+    
+      if (this.tools.isNetwork()) {
+        this.tools.openLoader();
+        this.apiService.SendConatctQuery(this.name,this.contactno).subscribe(response => {
+          let res: any = response;
+          this.tools.closeLoader();
+          if(res.status){
+            setTimeout(() => {              
+              this.modalCtrl.dismiss('OTPPage');
+            }, 1000);
+          }else{
+            this.tools.presentAlert('','Something wrong...', 'Ok');
+          }
+        }, (error: Response) => {
+          this.tools.closeLoader();
+          console.log('Error ', error);
+          let err:any = error;
+          this.tools.openAlertToken(err.status, err.error.message);    
+        });
+      }
+    }
+    }
+
+    errClr() {
+      this.nameErr='';
+      this.contactnoErr='';
+    }
+  
   onSchemeDetails(item){
     localStorage.setItem('schemeId',item.SchemeGroupID)
     localStorage.setItem('TYPE','SchemeGroup')

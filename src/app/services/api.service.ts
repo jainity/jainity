@@ -93,6 +93,16 @@ export class ApiService {
     console.log('Params ',postData);
     return this.http.post(environment.BaseUrl + "auth/send_otp", postData, this.httpOptions);
   }
+
+  SendConatctQuery(name,contactno) {
+    let postData = new FormData();
+    postData.append("Mobile", name);
+    postData.append("Mobile", contactno);
+    postData.append("device_token", "");
+    console.log('Params ',postData);
+    return this.http.post(environment.BaseUrl + "auth/send_otp", postData, this.httpOptions);
+  }
+
   VerificationOTP(OTP,Mobile) {
     let postData = new FormData();
     // postData.append('file', imageFile);

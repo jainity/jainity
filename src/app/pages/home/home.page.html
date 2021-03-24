@@ -33,7 +33,7 @@
                     <ion-label (click)="scrollTo('about')" style="cursor: pointer;">About</ion-label>
                     <ion-label (click)="OnConnectClick()" style="cursor: pointer;">Donate</ion-label>
                     <ion-label *ngIf="!isLogin" (click)="LoginClick()" style="cursor: pointer;">Login</ion-label>
-                    <ion-label *ngIf="isLogin" (click)="DDClick()" style="cursor: pointer;">{{this.apiService.getUserData().first_name}}</ion-label>
+                    <ion-label *ngIf="isLogin" (click)="DDClick()" style="cursor: pointer;">{{'Hi, '+this.apiService.getUserData().first_name}}</ion-label>
                     <ion-label *ngIf="isLogin" (click)="LogoutClick()" style="cursor: pointer;">Logout</ion-label>
 
                 </ion-col>
@@ -269,9 +269,9 @@
                         <ion-col class="sliders_boxs">
                             <ion-slides pager="true" [options]="slideOpts" #InstiSlider>
                                 <ion-slide class="slider_box" *ngFor="let item of slideItem" (click)="onInstiDetails(item)">
-                                    <!-- <div class="slider_img"> -->
-                                        <ion-img class="slider_img" [src]="item.InstituteLogo" ></ion-img>
-                                    <!-- </div> -->
+                                    <div class="slider_img">
+                                        <ion-img [src]='item.InstituteLogo'></ion-img>
+                                    </div>
                                     <ion-label>{{item.InstituteName}}</ion-label>
                                 </ion-slide>
                             </ion-slides>
@@ -301,11 +301,11 @@
 
                     <ion-row>
                         <ion-col class="sliders_boxs">
-                            <ion-slides pager="true" [options]="slideOptsCause" #GroupSlider>
+                            <ion-slides pager="true" [options]="slideOpts" #GroupSlider>
                                 <ion-slide class="slider_box" *ngFor="let item of GroupslideItem" (click)="onSchemeDetails(item)">
-                                    <!-- <div class="slider_img_scheme"> -->
-                                        <ion-img class="slider_img_scheme" [src]="item.SchemeGroupImage"></ion-img>
-                                    <!-- </div> -->
+                                    <div class="slider_img_scheme">
+                                        <ion-img [src]='item.SchemeGroupImage'></ion-img>
+                                    </div>
                                     <ion-label>{{item.SchemeGroup}} </ion-label>
                                 </ion-slide>
                             </ion-slides>
@@ -390,11 +390,11 @@
                 <form>
                     <div class="form-group">
                         <ion-input placeholder="Full Name *" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" [class]="name ==''&&nameErr !=''?'form-control error':'form-control'"></ion-input>
-                        <span [class]="name ==''&&nameErr !=''?'errormsg':''">{{nameErr}}</span>
+                        <span style="color: red;" [class]="name ==''&&nameErr !=''?'errormsg':''">{{nameErr}}</span>
                     </div>
                     <div class="form-group">
                         <ion-input placeholder="Contact Number *" [(ngModel)]="contactno" [ngModelOptions]="{standalone: true}" [class]="contactno ==''&&contactnoErr !=''?'form-control error':'form-control'"></ion-input>
-                        <span [class]="contactno ==''&&contactnoErr !=''?'errormsg':''">{{contactnoErr}}</span>
+                        <span style="color: red;" [class]="contactno ==''&&contactnoErr !=''?'errormsg':''">{{contactnoErr}}</span>
 
                     </div>
                     <!-- <div class="form-group">
