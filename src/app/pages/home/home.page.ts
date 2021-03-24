@@ -30,7 +30,10 @@ export class HomePage implements OnInit {
   email = '';
   subject = '';
   message = '';
+  captchacode = '';
+
   
+  captchacodeErr = '';
   nameErr = '';
   contactnoErr = '';
 
@@ -40,6 +43,8 @@ export class HomePage implements OnInit {
   reg:any;
 
   Loginusername:any;
+
+  randomNumber:string="";
 
   slideOpts ={
     slidesPerView: this.checkScreen(),
@@ -147,6 +152,21 @@ export class HomePage implements OnInit {
     return (this.email == '' || !this.reg.test(this.email))
   }
 
+
+  ngOnInit() {
+    this.randomNumber=this.generateRandomNumber(11111,99999);
+  }
+
+  generateRandomNumber(min,max){
+
+      var rand=min+Math.random()*(max-min);
+      rand=Math.round(rand);
+      return rand.toString();
+  }
+
+
+
+
   sendMail() {
     var msg = ''
     this.errClr();
@@ -163,7 +183,17 @@ export class HomePage implements OnInit {
   } else if (this.contactno.length != 10) {
         msg = msg + 'Please enter valid contact number'
         this.contactnoErr= 'Please enter valid contact number'
-  }
+  }else if (this.captchacode =='') {
+  msg = msg + 'Please enter Captcha Code'
+  this.captchacodeErr= 'Please enter Captcha Code'
+  } else if (this.randomNumber != this.captchacode) {
+    
+    this.captchacode="";
+    this.randomNumber=this.generateRandomNumber(11111,99999);
+
+    msg = msg + 'Please enter valid Captcha Code'
+    this.captchacodeErr= 'Please enter valid Captcha Code'
+} 
 
     if (msg != '') {
     //  this.errorMsg=msg;
@@ -175,11 +205,11 @@ export class HomePage implements OnInit {
         this.tools.openLoader();
         this.apiService.SendConatctQuery(this.name,this.contactno).subscribe(response => {
           let res: any = response;
-          this.tools.closeLoader();
           if(res.status){
-            setTimeout(() => {              
-              this.modalCtrl.dismiss('OTPPage');
-            }, 1000);
+            this.errClr;
+            this.tools.closeLoader();
+            this.tools.presentAlert('',res.message, 'Ok');
+
           }else{
             this.tools.presentAlert('','Something wrong...', 'Ok');
           }
@@ -196,6 +226,7 @@ export class HomePage implements OnInit {
     errClr() {
       this.nameErr='';
       this.contactnoErr='';
+      this.captchacodeErr='';
     }
   
   onSchemeDetails(item){
@@ -336,8 +367,7 @@ export class HomePage implements OnInit {
 return await alert.present();
  }
 
-  ngOnInit() {
-  }
+ 
 
   onInstituteClick(){
     this.route.navigateByUrl('/institutelist');

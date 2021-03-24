@@ -26,6 +26,7 @@ export class SchemedetailsPage implements OnInit {
   Type:any;
   Tittle:any;
   TopslideItem=[];
+  bannerimg:any;
 
   slideOpts2 ={
     slidesPerView: 1,
@@ -262,45 +263,23 @@ return await alert.present();
   
   
   ionViewDidEnter() {
-    this.getBannerCall();
+    this.getSGDTLLISTCall();
 }
 
-getBannerCall() {
-  if (this.tools.isNetwork()) {
-    this.tools.openLoader();
-    console.log('getSGLISTCall');
-    this.apiService.getHomeBanner().subscribe(response => {
-      console.log('getBanner_RESPONSE>>>');
-      let res: any = response;
-      this.getSGDTLLISTCall();
-      if(res.status){
-        this.TopslideItem = res.data;
-      }else{
-        this.TopslideItem=res.message
-      }
-      console.log(res)
-    }, (error: Response) => {
-      console.log('ERORR>>>');
-      this.tools.closeLoader();
-      let err:any = error;
-      console.log('Error ', err);
-     this.tools.openAlertToken(err.status, err.error.message);
-
-    });
-  }
-}
 
   getSGDTLLISTCall() {
     if (this.tools.isNetwork()) {
-      //this.tools.openLoader();
+      this.tools.openLoader();
       console.log('getSGLISTCall');
       this.apiService.getSchemeWiseDetailList(this.Type,(this.Type=='Institute')?this.INid:this.SGid).subscribe(response => {
         console.log('RESPONSE>>>');
 
-        this.tools.closeLoader();
         let res: any = response;
+        this.tools.closeLoader();
+
         if(res.status){
           this.DetailsList = res.data;
+          this.bannerimg=res.BannerImage;
         }
 
         console.log(res)

@@ -96,11 +96,11 @@ export class ApiService {
 
   SendConatctQuery(name,contactno) {
     let postData = new FormData();
-    postData.append("Mobile", name);
+    postData.append("Name", name);
     postData.append("Mobile", contactno);
     postData.append("device_token", "");
     console.log('Params ',postData);
-    return this.http.post(environment.BaseUrl + "auth/send_otp", postData, this.httpOptions);
+    return this.http.post(environment.BaseUrl + "contact_us", postData, this.httpOptions);
   }
 
   VerificationOTP(OTP,Mobile) {
