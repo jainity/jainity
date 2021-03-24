@@ -68,69 +68,84 @@
                                     </ion-col>
                                 </ion-row>
                             </ion-grid>
+
                             <ion-grid>
                                 <ion-row>
                                     <ion-col>
                                         <ion-label color="black" class="hadings">My Donation</ion-label>
-                                        <div  class="table-responsive" style=" overflow-x:auto;">
+                                        <div class="table-responsive" style=" overflow-x:auto;">
                                             <div class="tables" cellspacing="1px">
                                                 <div id="headings" class="tables-heading">
                                                     <div class="cell">
                                                         <div class="tables-content">Institute Name</div>
-                                                       </div> 
+                                                    </div>
                                                     <div class="cell">
                                                         <div class="tables-content">Scheme Group</div>
-                                                       </div> 	
+                                                    </div>
                                                     <div class="cell">
                                                         <div class="tables-content">Scheme</div>
-                                                    </div>		
+                                                    </div>
                                                     <div class="cell">
                                                         <div class="tables-content">Amount</div>
-                                                    </div>			
+                                                    </div>
+                                                    <div class="cell">
+                                                        <div class="tables-content">Receipt</div>
+                                                    </div>
                                                 </div>
                                                 <div class="tables-row" *ngFor="let item of mydonateList;">
                                                     <div class="cell">
                                                         <div class="tables-content">{{item.InstituteName}}</div>
-                                                    </div>						        		
+                                                    </div>
                                                     <div class="cell">
                                                         <div class="tables-content">{{item.SchemeGroup}}</div>
-                                                    </div>										
+                                                    </div>
                                                     <div class="cell">
                                                         <div class="tables-content">{{item.SchemeName}}</div>
-                                                    </div>										
+                                                    </div>
                                                     <div class="cell">
-                                                        <div class="tables-content"><span class="rupe">&#8377;</span>{{ item.PaidValue/100 | currency :'INR':'':'1.0-0' }}</div>
-                                                    </div>											
-                                                </div> 
-                                            </div>  
-                                        </div>	 
+                                                        <div class="tables-content"><span class="rupe">&#8377;</span>{{ item.PaidValue | currency :'INR':'':'1.0-0' }}</div>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <div class="tables-content">
+                                                            <ion-label style="text-decoration: underline; cursor: pointer; color: #ef7635;" (click)="onviewreceiptClick(item)">View Receipt</ion-label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ion-col>
                                 </ion-row>
-                            </ion-grid>                            
+                            </ion-grid>
+
+                            <ion-row>
+                                <ion-col>
+                                    <ion-button class="button_link" style="text-transform: none;" (click)="viewallClick()">View All</ion-button>
+                                </ion-col>
+                            </ion-row>
 
                             <ion-grid>
                                 <ion-row class="char_row">
                                     <ion-col class="char_col">
-                                        <ion-label color="black" class="hadings">Top Donars</ion-label>                                                 
-                                        <div  class="table-responsive" style=" overflow-x:auto;">
+                                        <ion-label color="black" class="hadings">Top Donars</ion-label>
+                                        <div class="table-responsive" style=" overflow-x:auto;">
                                             <div class="tables" cellspacing="1px">
                                                 <div id="headings" class="tables-heading">
                                                     <div class="cell">
                                                         <div class="tables-content">Donors Name</div>
-                                                    </div> 		
+                                                    </div>
                                                     <div class="cell">
                                                         <div class="tables-content">Amount</div>
-                                                    </div>			
+                                                    </div>
                                                 </div>
                                                 <div class="tables-row" *ngFor="let item of donornameList;">
                                                     <div class="cell">
                                                         <div class="tables-content">{{item.RECDisplayName}}</div>
-                                                    </div>						        		
+                                                    </div>
                                                     <div class="cell">
-                                                        <div class="tables-content"><span class="rupe">&#8377;</span>{{ item.TxnAmt/100 | currency :'INR':'':'1.0-0' }}</div>
-                                                    </div>												
-                                                </div> 
-                                            </div>  
+                                                        <div class="tables-content"><span class="rupe">&#8377;</span>{{ item.TxnAmt | currency :'INR':'':'1.0-0' }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </ion-col>
                                     <ion-col class="char_col">

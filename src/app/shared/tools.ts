@@ -305,23 +305,13 @@ export class Tools {
     //         this.loading.dismiss();
     //     }
 
-    public async closeLoader(): Promise<void> {
-
-        // console.log('Loading dismissed ');     
-         if (this.isShowing) {
-           this.isShowing = false;
-           await this.loadingController.dismiss();
-         }
+    public async closeLoader() {
+        await this.loadingController.dismiss();
+        await this.loadingController.dismiss();
+        await this.loadingController.dismiss();
+        await this.loadingController.dismiss();
+        await this.loadingController.dismiss();
        }
-// async closeLoader() {
-//   let topLoader = await this.loadingController.getTop();
-//   while (topLoader) {
-//     if (!(await topLoader.dismiss())) {
-//       throw new Error('Could not dismiss the topmost loader. Aborting...');
-//     }
-//     topLoader = await this.loadingController.getTop();
-//   }
-// }
     dataURItoBlob(dataURI) {
         // convert base64/URLEncoded data component to raw binary data held in a string
         let byteString;

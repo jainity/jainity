@@ -93,6 +93,16 @@ export class ApiService {
     console.log('Params ',postData);
     return this.http.post(environment.BaseUrl + "auth/send_otp", postData, this.httpOptions);
   }
+
+  SendConatctQuery(name,contactno) {
+    let postData = new FormData();
+    postData.append("Mobile", name);
+    postData.append("Mobile", contactno);
+    postData.append("device_token", "");
+    console.log('Params ',postData);
+    return this.http.post(environment.BaseUrl + "auth/send_otp", postData, this.httpOptions);
+  }
+
   VerificationOTP(OTP,Mobile) {
     let postData = new FormData();
     // postData.append('file', imageFile);
@@ -157,9 +167,9 @@ export class ApiService {
     return this.http.post(environment.BaseUrl + "scheme/search", postData, this.httpOptions);
   }
 
-  getMyDonation(ID): any {
+  getMyDonation(LIMIT): any {
     this.setHeader();
-    return this.http.get(environment.BaseUrl + "trasaction/?user_id="+ID, this.httpOptions);
+    return this.http.get(environment.BaseUrl + "trasaction/?limit="+LIMIT, this.httpOptions);
   }
   getDonor(): any {
     this.setHeader();

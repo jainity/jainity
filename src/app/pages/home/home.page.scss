@@ -531,22 +531,24 @@ ion-col {
 
 .slider_img {
     width: 100%;
-    display: block !important;
-    flex: 0 0 100%;
+    // display: block !important;
+    // flex: 0 0 100%;
     position: relative;
     overflow: hidden;
+    height: 280px !important;
     border-radius: 20px;
-    border: 1px solid #ccc;
+    border: 0px solid #ccc;
 }
 
 .slider_img_scheme {
     width: 100%;
-    display: block !important;
-    flex: 0 0 100%;
+    // display: block !important;
+    // flex: 0 0 100%;
+    height: 280px !important;
     position: relative;
     overflow: hidden;
     border-radius: 20px;
-    border: 1px solid #ccc;
+    border: 0px solid #ccc;
 }
 
 

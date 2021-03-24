@@ -25,12 +25,28 @@ export class SchemedetailsPage implements OnInit {
 
   Type:any;
   Tittle:any;
+  TopslideItem=[];
 
+  slideOpts2 ={
+    slidesPerView: 1,
+    initialSlide: 0,
+    autoplay:true,
+    speed: 500,
+    coverflowEffect: {
+      rotate: 100,
+      stretch: 0,
+      shadowOffset: 20,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
+     
+    }
+ 
+  }
   constructor(private eventServic:EventService,private route: Router,public alertController: AlertController,
      public apiService: ApiService,
     public tools: Tools,public modalCtrl: ModalController) {
 
-      this.tools.closeLoader();
       this.isLogin = this.apiService.getUserData() !=undefined;
       this.eventServic.formOtp$.subscribe(() => {
         this.isLogin = this.apiService.getUserData() !=undefined;
@@ -246,12 +262,37 @@ return await alert.present();
   
   
   ionViewDidEnter() {
-    this.getSGDTLLISTCall();
+    this.getBannerCall();
+}
+
+getBannerCall() {
+  if (this.tools.isNetwork()) {
+    this.tools.openLoader();
+    console.log('getSGLISTCall');
+    this.apiService.getHomeBanner().subscribe(response => {
+      console.log('getBanner_RESPONSE>>>');
+      let res: any = response;
+      this.getSGDTLLISTCall();
+      if(res.status){
+        this.TopslideItem = res.data;
+      }else{
+        this.TopslideItem=res.message
+      }
+      console.log(res)
+    }, (error: Response) => {
+      console.log('ERORR>>>');
+      this.tools.closeLoader();
+      let err:any = error;
+      console.log('Error ', err);
+     this.tools.openAlertToken(err.status, err.error.message);
+
+    });
+  }
 }
 
   getSGDTLLISTCall() {
     if (this.tools.isNetwork()) {
-      this.tools.openLoader();
+      //this.tools.openLoader();
       console.log('getSGLISTCall');
       this.apiService.getSchemeWiseDetailList(this.Type,(this.Type=='Institute')?this.INid:this.SGid).subscribe(response => {
         console.log('RESPONSE>>>');
@@ -266,15 +307,11 @@ return await alert.present();
       }, (error: Response) => {
         console.log('ERORR>>>');
         this.tools.closeLoader();
-        this.tools.closeLoader();
         let err:any = error;
         console.log('Error ', err);
        this.tools.openAlertToken(err.status, err.error.message);
   
       });
-    } else {
-      console.log('ELSE>> ');
-      this.tools.closeLoader();
     }
   }
 

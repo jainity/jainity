@@ -27,7 +27,6 @@ export class InstitutelistPage implements OnInit {
     public tools: Tools,public modalCtrl: ModalController) {
 
       this.isLogin = this.apiService.getUserData() !=undefined;
-      this.tools.closeLoader();
       this.eventServic.formOtp$.subscribe(() => {
         this.isLogin = this.apiService.getUserData() !=undefined;
       });
@@ -201,63 +200,49 @@ getInstitutetype() {
     console.log('getSGLISTCall');
     this.apiService.getInstituteType().subscribe(response => {
       console.log('getInstitutetype_RESPONSE>>>');
-
-      //this.tools.closeLoader();
       let res: any = response;
-
       if(res.status){
         this.InstituteType = res.data;
-
         this.sliderType = res.data[0].InstituteType;
         this.getInstitutetypeList(res.data[0].InstituteTypeID);
-
       }else{
+        this.tools.closeLoader();
         this.InstituteType=res.message
       }
       console.log(res)
     }, (error: Response) => {
       console.log('ERORR>>>');
       this.tools.closeLoader();
-      this.tools.closeLoader();
       let err:any = error;
       console.log('Error ', err);
      this.tools.openAlertToken(err.status, err.error.message);
 
     });
-  } else {
-    console.log('ELSE>> ');
-    this.tools.closeLoader();
   }
 }
 
 getInstitutetypeList(ID) {
   if (this.tools.isNetwork()) {
-    //this.tools.openLoader();
     console.log('getSGLISTCall');
     this.apiService.getInstituteTypeList(ID).subscribe(response => {
       console.log('RESPONSE>>>');
 
+      this.tools.closeLoader();
       let res: any = response;
       if (res.status) {
         this.InstList = res.data;
       } else {
         this.InstList = res.message
       }
-      this.tools.closeLoader();
-
       console.log(res)
     }, (error: Response) => {
       console.log('ERORR>>>');
-      this.tools.closeLoader();
       this.tools.closeLoader();
       let err: any = error;
       console.log('Error ', err);
       this.tools.openAlertToken(err.status, err.error.message);
 
     });
-  } else {
-    console.log('ELSE>> ');
-    this.tools.closeLoader();
   }
 }
 

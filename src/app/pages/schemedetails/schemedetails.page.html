@@ -18,15 +18,22 @@
 </ion-header>
 
 <ion-content id="content">
-    <ion-grid id="page_banner">
-        <ion-row class="page_banner_block" style="background-image: url('../../../assets/img/SchemeBanner.png');">
-            <ion-col class="container">
-                <div class="page_banner_box">
-                    <ion-label>{{Tittle}}</ion-label>
-                </div>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+
+
+    <ion-slides pager="true" [options]="slideOpts2" #mySlider>
+        <ion-slide class="page_banner" *ngFor="let item of TopslideItem">
+            <ion-grid id="page_banner">
+                <ion-row class="page_banner_block" style="background-image: url({{item.Image}});">
+                    <ion-col class="container">
+                        <div class="page_banner_box">
+                            <ion-label>{{this.Tittle}}</ion-label>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-slide>
+    </ion-slides>
+
 
     <ion-grid class="content">
 
@@ -45,7 +52,7 @@
                                                     <ion-label class="white content bold">{{item.SchemeName}}</ion-label>
                                                     <ion-label class="white content details" style="font-style: italic;
                                                     font-size: 12px !important; margin-bottom: 10px !important;color: black !important;" innerHtml="(&nbsp;{{item.SchemeDesc}})"></ion-label>
-                                                    <ion-label class="white content color">{{item.InstituteName}}</ion-label>
+                                                    <ion-label class="white content color" style="color: red !important;">{{item.InstituteName}}</ion-label>
                                                 </ion-col>
                                             </ion-row>
                                             <ion-row class="prise_boxs">

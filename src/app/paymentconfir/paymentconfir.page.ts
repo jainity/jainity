@@ -5,6 +5,7 @@ import { AlertController, ModalController, ToastController } from '@ionic/angula
 import { ApiService } from '../services/api.service';
 import { Tools } from '../shared/tools';
 import { Location } from '@angular/common';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 declare var RazorpayCheckout: any;
 
@@ -36,7 +37,7 @@ export class PaymentconfirPage implements OnInit {
   cardDetails: any = {};
 
   constructor(private route: Router,public router: ActivatedRoute,public alertController: AlertController, public apiService: ApiService,public formBuilder: FormBuilder,
-    public tools: Tools,private location: Location,public modalCtrl: ModalController,
+    public tools: Tools,private location: Location,private iab: InAppBrowser,public modalCtrl: ModalController,
     public toastController: ToastController) {
    
     this.user= this.apiService.getUserData();
@@ -51,6 +52,8 @@ export class PaymentconfirPage implements OnInit {
     this.SchemeName=localStorage.getItem('SchemeName');
 
     this.Rname=this.user.first_name +' '+this.user.last_name;
+    localStorage.removeItem('reciept');
+
    }
 
   onpaynowClick(){
@@ -128,7 +131,8 @@ export class PaymentconfirPage implements OnInit {
         console.log('response ', res);
 
         if(res.status){
-          this.tools.donatepresentAlert('',res.message, 'Ok',true);
+         // this.tools.donatepresentAlert('',res.message, 'Ok',true);
+          this.openReceipt(res.PdfName);
         //  this.route.navigate(['/home']);
         }else{
           this.tools.presentAlert('','Something wrong...', 'Ok');
@@ -140,8 +144,24 @@ export class PaymentconfirPage implements OnInit {
         this.tools.openAlertToken(err.status, err.error.message);
   
       });
+    }
+  }
+
+  openReceipt(PDFUrl) {
+    localStorage.setItem('reciept', PDFUrl);
+    if (PDFUrl != undefined && PDFUrl != '') {
+
+      const browserPay = this.iab.create(PDFUrl, '_blank', {});
+      // browserPay.on("loadstart").subscribe((event) => {
+      //   // console.log('Pay Data loadstart url ',event.url);
+      // });
+      browserPay.on("exit").subscribe(
+        (event) => {
+          this.route.navigateByUrl('/schemegrouplist', { replaceUrl: true });
+        }
+      );
     } else {
-      this.tools.closeLoader();
+      this.tools.openAlert('Receipt not found!');
     }
   }
 

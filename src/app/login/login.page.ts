@@ -52,19 +52,15 @@ export class LoginPage {
       if (this.tools.isNetwork()) {
         this.tools.openLoader();
         this.apiServices.SendOTP(this.mobileno).subscribe(response => {
-         
           let res: any = response;
+          this.tools.closeLoader();
           if(res.status){
             localStorage.setItem('mobileno', this.mobileno);
             setTimeout(() => {              
-              this.tools.closeLoader();
-
-             // this.route.navigateByUrl('/otpverification');
               this.modalCtrl.dismiss('OTPPage');
 
             }, 1000);
           }else{
-            this.tools.closeLoader();
             this.tools.presentAlert('','Something wrong...', 'Ok');
           }
         }, (error: Response) => {
@@ -73,8 +69,6 @@ export class LoginPage {
           let err:any = error;
           this.tools.openAlertToken(err.status, err.error.message);    
         });
-      } else {
-        this.tools.closeLoader();
       }
     }
     }

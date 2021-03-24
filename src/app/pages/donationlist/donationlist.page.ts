@@ -6,19 +6,26 @@ import { Router } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
 import { ApiService } from '../../services/api.service';
 import { Tools } from '../../shared/tools';
+import { Chart } from 'chart.js';
 import { EventService } from 'src/app/services/EventService';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
-  selector: 'app-termsandcondition',
-  templateUrl: './termsandcondition.page.html',
-  styleUrls: ['./termsandcondition.page.scss'],
+  selector: 'app-donationlist',
+  templateUrl: './donationlist.page.html',
+  styleUrls: ['./donationlist.page.scss'],
 })
-export class TermsandconditionPage implements OnInit {
+export class DonationlistPage implements OnInit {
 
   
   isLogin=false;
+  mydonateList =[];
+  donornameList =[];
 
-  constructor(private eventServic:EventService,private route: Router,public alertController: AlertController,
+  MyContribution:any;
+  TotalContribution:any;
+
+  constructor(private eventServic:EventService,private iab: InAppBrowser,private route: Router,public alertController: AlertController,
      public apiService: ApiService,
     public tools: Tools,public modalCtrl: ModalController) {
 
@@ -28,7 +35,6 @@ export class TermsandconditionPage implements OnInit {
       });
 
    }
-
 
  async LoginClick() {  
 
@@ -164,10 +170,83 @@ return await alert.present();
 
   ngOnInit() {}
 
-  onInstituteClick(){}
+  donateclick(){
+    this.route.navigateByUrl('/schemegrouplist');
+  }
 
-  onSchemeGroupClick(){}
-  
-  ionViewDidEnter() {}
+  ionViewDidEnter() {
+    this.getDonationcount();
+  }
 
+  getDonationcount() {
+    if (this.tools.isNetwork()) {
+      this.tools.openLoader();
+      console.log('getSGLISTCall');
+      this.apiService.getDonationCount().subscribe(response => {
+        console.log('getDonationCount>>>',response);
+        this.getmyDonationLISTCall();
+        let res: any = response;
+        if (res.status) {
+          //this.mydonateList = res.data;
+        this.MyContribution=res.MyDonation;
+        this.TotalContribution=res.TotalAmount;
+
+        } 
+        console.log(res)
+      }, (error: Response) => {
+        console.log('ERORR>>>');
+        this.tools.closeLoader();
+        let err: any = error;
+        console.log('Error ', err);
+        this.tools.openAlertToken(err.status, err.error.message);
+
+      });
+    }
+  }
+
+  getmyDonationLISTCall() {
+    if (this.tools.isNetwork()) {
+      //this.tools.openLoader();
+      console.log('getSGLISTCall');
+      this.apiService.getMyDonation('All').subscribe(response => {
+        console.log('RESPONSE>>>');
+
+        this.tools.closeLoader();
+        let res: any = response;
+        if (res.status) {
+          this.mydonateList = res.data;
+        } 
+        console.log(res)
+      }, (error: Response) => {
+        console.log('ERORR>>>');
+        this.tools.closeLoader();
+        let err: any = error;
+        console.log('Error ', err);
+        this.tools.openAlertToken(err.status, err.error.message);
+
+      });
+    }
+  }
+ 
+  onviewreceiptClick(item){
+    this.openReceipt(item.PDFUrl)
+  }
+
+  openReceipt(PDFUrl) {
+    localStorage.setItem('reciept', PDFUrl);
+    if (PDFUrl != undefined && PDFUrl != '') {
+
+      const browserPay = this.iab.create(PDFUrl, '_blank', {});
+      // browserPay.on("loadstart").subscribe((event) => {
+      //   // console.log('Pay Data loadstart url ',event.url);
+      // });
+      browserPay.on("exit").subscribe(
+        (event) => {
+
+        }
+      );
+    } else {
+      this.tools.openAlert('Receipt not found!');
+    }
+  }
 }

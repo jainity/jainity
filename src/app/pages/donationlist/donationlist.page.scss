@@ -15,6 +15,20 @@ ion-col {
     margin: 0px;
 }
 
+.hadings {
+	color: #000 !important;
+	font-weight: 700 !important;
+	font-size: 17px !important;
+	margin: 28px 0px 25px 0px !important;
+	display: block !important;
+    line-height: 15px !important;
+}
+
+ion-list-header.hadings {
+	margin: 0px !important;
+    margin-top: 16px !important;
+}
+
 .container {
     max-width: 1200px;
     width: 100%;
@@ -489,8 +503,8 @@ ion-col {
 
 .slider_img {
     width: 100%;
-    // display: block !important;
-    // flex: 0 0 100%;
+    display: block !important;
+    flex: 0 0 100%;
     position: relative;
     height: 280px;
     overflow: hidden;
@@ -499,8 +513,8 @@ ion-col {
 
 .slider_img_scheme {
     width: 100%;
-    // display: block !important;
-    // flex: 0 0 100%;
+    display: block !important;
+    flex: 0 0 100%;
     position: relative;
     height: 280px;
     overflow: hidden;
@@ -658,8 +672,8 @@ ion-col {
 
 @media (max-width: 992px) {
     ion-header .menu {
-        flex: 0 0 110px !important;
-        max-width: 110px !important;
+        flex: 0 0 141px !important;
+        max-width: 141px !important;
         position: relative;
         width: auto;
     }

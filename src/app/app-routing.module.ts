@@ -95,6 +95,10 @@ const routes: Routes = [
     path: 'donordashboard',canActivate: [AuthGuard],
     loadChildren: () => import('./pages/donordashboard/donordashboard.module').then( m => m.DonordashboardPageModule)
   },
+  {
+    path: 'donationlist',canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/donationlist/donationlist.module').then( m => m.DonationlistPageModule)
+  },
 ];
 
 @NgModule({

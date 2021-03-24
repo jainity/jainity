@@ -11,7 +11,7 @@ import { Tools } from '../../shared/tools';
 export class AlldonationPage implements OnInit {
 
   constructor(private route: Router,public toastController: ToastController,public tools:Tools) { 
-    this.tools.closeLoader();
+    
   }
 
   ngOnInit() {

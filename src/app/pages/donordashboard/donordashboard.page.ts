@@ -8,6 +8,7 @@ import { ApiService } from '../../services/api.service';
 import { Tools } from '../../shared/tools';
 import { Chart } from 'chart.js';
 import { EventService } from 'src/app/services/EventService';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
   selector: 'app-donordashboard',
@@ -30,11 +31,10 @@ export class DonordashboardPage implements OnInit {
   bars: any;
   colorArray: any;
 
-  constructor(private eventServic:EventService,private route: Router,public alertController: AlertController,
+  constructor(private eventServic:EventService,private iab: InAppBrowser,private route: Router,public alertController: AlertController,
      public apiService: ApiService,
     public tools: Tools,public modalCtrl: ModalController) {
 
-      this.tools.closeLoader();
       this.isLogin = this.apiService.getUserData() !=undefined;
       this.eventServic.formOtp$.subscribe(() => {
         this.isLogin = this.apiService.getUserData() !=undefined;
@@ -198,8 +198,6 @@ return await alert.present();
       console.log('getSGLISTCall');
       this.apiService.getDonationCount().subscribe(response => {
         console.log('getDonationCount>>>',response);
-
-        //this.tools.closeLoader();
         this.getmyDonationLISTCall();
         let res: any = response;
         if (res.status) {
@@ -213,15 +211,11 @@ return await alert.present();
       }, (error: Response) => {
         console.log('ERORR>>>');
         this.tools.closeLoader();
-        this.tools.closeLoader();
         let err: any = error;
         console.log('Error ', err);
         this.tools.openAlertToken(err.status, err.error.message);
 
       });
-    } else {
-      console.log('ELSE>> ');
-      this.tools.closeLoader();
     }
   }
 
@@ -229,12 +223,9 @@ return await alert.present();
     if (this.tools.isNetwork()) {
       //this.tools.openLoader();
       console.log('getSGLISTCall');
-      this.apiService.getMyDonation(this.apiService.getUserData().id).subscribe(response => {
+      this.apiService.getMyDonation('7').subscribe(response => {
         console.log('RESPONSE>>>');
-
         this.getDonorLISTCall();
-
-        //this.tools.closeLoader();
         let res: any = response;
         if (res.status) {
           this.mydonateList = res.data;
@@ -243,16 +234,12 @@ return await alert.present();
       }, (error: Response) => {
         console.log('ERORR>>>');
         this.tools.closeLoader();
-        this.tools.closeLoader();
         let err: any = error;
         console.log('Error ', err);
         this.tools.openAlertToken(err.status, err.error.message);
 
       });
-    } else {
-      console.log('ELSE>> ');
-      this.tools.closeLoader();
-    }
+    } 
   }
 
   getDonorLISTCall() {
@@ -271,16 +258,12 @@ return await alert.present();
       }, (error: Response) => {
         console.log('ERORR>>>');
         this.tools.closeLoader();
-        this.tools.closeLoader();
         let err: any = error;
         console.log('Error ', err);
         this.tools.openAlertToken(err.status, err.error.message);
 
       });
-    } else {
-      console.log('ELSE>> ');
-      this.tools.closeLoader();
-    }
+    } 
   }
 
   getSchemGroupWiseLIST() {
@@ -299,16 +282,12 @@ return await alert.present();
       }, (error: Response) => {
         console.log('ERORR>>>');
         this.tools.closeLoader();
-        this.tools.closeLoader();
         let err: any = error;
         console.log('Error ', err);
         this.tools.openAlertToken(err.status, err.error.message);
 
       });
-    } else {
-      console.log('ELSE>> ');
-      this.tools.closeLoader();
-    }
+    } 
   }
 
   createBarChart() {
@@ -342,5 +321,32 @@ return await alert.present();
         }
       }
     });
+  }
+
+  viewallClick(){
+    this.route.navigateByUrl('/donationlist');
+
+  }
+
+  onviewreceiptClick(item){
+    this.openReceipt(item.PDFUrl)
+  }
+
+  openReceipt(PDFUrl) {
+    localStorage.setItem('reciept', PDFUrl);
+    if (PDFUrl != undefined && PDFUrl != '') {
+
+      const browserPay = this.iab.create(PDFUrl, '_blank', {});
+      // browserPay.on("loadstart").subscribe((event) => {
+      //   // console.log('Pay Data loadstart url ',event.url);
+      // });
+      browserPay.on("exit").subscribe(
+        (event) => {
+
+        }
+      );
+    } else {
+      this.tools.openAlert('Receipt not found!');
+    }
   }
 }

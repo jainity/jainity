@@ -16,7 +16,6 @@ export class HomePage {
 
 
   constructor(public alertController: AlertController, public apiService: ApiService,private router: Router, public route: ActivatedRoute,public formBuilder: FormBuilder,public tools: Tools, public toastController: ToastController) {
-      this.tools.closeLoader();
       localStorage.removeItem('reciept');
     }
   
@@ -80,8 +79,6 @@ callLogout(isShow) {
           this.tools.closeLoader();
           console.log('Error ', error);
         });
-      }else{
-        this.tools.closeLoader();
       }
   }
 }

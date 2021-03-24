@@ -26,17 +26,26 @@ export class HomePage implements OnInit {
   sliderType:any;
 
   name = '';
+  contactno = '';
   email = '';
   subject = '';
   message = '';
+  
   nameErr = '';
+  contactnoErr = '';
+
   emailErr = '';
   subjectErr = '';
   messageErr = '';
   reg:any;
 
+  Loginusername:any;
+
   slideOpts ={
     slidesPerView: this.checkScreen(),
+    initialSlide: 0,
+    preloadImages: true,
+    lazy: false,
     coverflowEffect: {
       rotate: 50,
       stretch: 0,
@@ -45,12 +54,20 @@ export class HomePage implements OnInit {
       modifier: 1,
       slideShadows: true,
     }
-    // cubeEffect: {
-    //   shadow: true,
-    //   slideShadows: true,
-    //   shadowOffset: 20,
-    //   shadowScale: 0.94,
-    // }
+  }
+  slideOptsCause ={
+    slidesPerView: this.checkScreen(),
+    initialSlide: 0,
+    preloadImages: true,
+    lazy: false,
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      shadowOffset: 20,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
+    }
   }
 
   slideOpts2 ={
@@ -114,25 +131,73 @@ export class HomePage implements OnInit {
      public apiService: ApiService,public formBuilder: FormBuilder, private menu: MenuController, 
     public tools: Tools,public modalCtrl: ModalController) {
 
-      this.tools.closeLoader();
       this.isLogin = this.apiService.getUserData() !=undefined;
       localStorage.removeItem('schemeId');
       localStorage.removeItem('InstituteId');
 
       this.eventServic.formOtp$.subscribe(() => {
         this.isLogin = this.apiService.getUserData() !=undefined;
-
       });
 
    }
+
 
    checkMail(): boolean {
     this.reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return (this.email == '' || !this.reg.test(this.email))
   }
 
-  sendMail(){ }
+  sendMail() {
+    var msg = ''
+    this.errClr();
 
+    if (this.name =='') {
+      msg = msg + 'Please enter Full name'
+     this.nameErr = 'Please enter Full name'
+   } else if (this.name.length < 3) {
+      msg = msg + 'Full name should be at least 3 letters long and without any space'
+     this.nameErr = 'Full name should be at least 3 letters long and without any space'
+   }else if (this.contactno =='') {
+        msg = msg + 'Please enter contact number'
+        this.contactnoErr= 'Please enter contact number'
+  } else if (this.contactno.length != 10) {
+        msg = msg + 'Please enter valid contact number'
+        this.contactnoErr= 'Please enter valid contact number'
+  }
+
+    if (msg != '') {
+    //  this.errorMsg=msg;
+  // this.tools.openAlert(msg);
+    } else {
+      this.errClr();
+    
+      if (this.tools.isNetwork()) {
+        this.tools.openLoader();
+        this.apiService.SendConatctQuery(this.name,this.contactno).subscribe(response => {
+          let res: any = response;
+          this.tools.closeLoader();
+          if(res.status){
+            setTimeout(() => {              
+              this.modalCtrl.dismiss('OTPPage');
+            }, 1000);
+          }else{
+            this.tools.presentAlert('','Something wrong...', 'Ok');
+          }
+        }, (error: Response) => {
+          this.tools.closeLoader();
+          console.log('Error ', error);
+          let err:any = error;
+          this.tools.openAlertToken(err.status, err.error.message);    
+        });
+      }
+    }
+    }
+
+    errClr() {
+      this.nameErr='';
+      this.contactnoErr='';
+    }
+  
   onSchemeDetails(item){
     localStorage.setItem('schemeId',item.SchemeGroupID)
     localStorage.setItem('TYPE','SchemeGroup')
@@ -286,6 +351,8 @@ return await alert.present();
 
   ionViewDidEnter() {
     this.getBannerCall();
+    this.InstiSlider.update();
+    this.GroupSlider.update();
 }
 
   scrollTo(elementId:string) {
@@ -311,12 +378,8 @@ return await alert.present();
       console.log('getSGLISTCall');
       this.apiService.getHomeBanner().subscribe(response => {
         console.log('getBanner_RESPONSE>>>');
-
-        //this.tools.closeLoader();
         let res: any = response;
         this.getInstitutetype();
-        this.getSGLISTCall();
-
         if(res.status){
           this.TopslideItem = res.data;
         }else{
@@ -331,25 +394,19 @@ return await alert.present();
        this.tools.openAlertToken(err.status, err.error.message);
   
       });
-    } else {
-      console.log('ELSE>> ');
-      this.tools.closeLoader();
     }
   }
 
   getInstitutetype() {
     if (this.tools.isNetwork()) {
-      //this.tools.openLoader();
       console.log('getSGLISTCall');
       this.apiService.getInstituteType().subscribe(response => {
         console.log('getInstitutetype_RESPONSE>>>');
-
-        //this.tools.closeLoader();
         let res: any = response;
 
         if(res.status){
           this.InstituteType = res.data;
-
+          this.getSGLISTCall();
           this.sliderType = res.data[0].InstituteType;
           this.getInstitutetypeList(res.data[0].InstituteTypeID);
 
@@ -365,20 +422,14 @@ return await alert.present();
        this.tools.openAlertToken(err.status, err.error.message);
   
       });
-    } else {
-      console.log('ELSE>> ');
-      this.tools.closeLoader();
-    }
+    } 
   }
 
   getInstitutetypeList(ID) {
     if (this.tools.isNetwork()) {
-      //this.tools.openLoader();
       console.log('getSGLISTCall');
       this.apiService.getInstituteTypeList(ID).subscribe(response => {
         console.log('RESPONSE>>>');
-
-       // this.tools.closeLoader();
         let res: any = response;
         if (res.status) {
           this.slideItem = res.data;
@@ -388,25 +439,19 @@ return await alert.present();
         console.log(res)
       }, (error: Response) => {
         console.log('ERORR>>>');
-        this.tools.closeLoader();
         let err: any = error;
         console.log('Error ', err);
         this.tools.openAlertToken(err.status, err.error.message);
 
       });
-    } else {
-      console.log('ELSE>> ');
-      this.tools.closeLoader();
     }
   }
 
   getSGLISTCall() {
     if (this.tools.isNetwork()) {
-      //this.tools.openLoader();
       console.log('getSGLISTCall');
       this.apiService.getHomeSchemeGroup().subscribe(response => {
         console.log('getSGLISTCall_RESPONSE>>>');
-
         this.tools.closeLoader();
         let res: any = response;
         if(res.status){
@@ -423,10 +468,12 @@ return await alert.present();
        this.tools.openAlertToken(err.status, err.error.message);
   
       });
-    } else {
-      console.log('ELSE>> ');
-      this.tools.closeLoader();
     }
+  }
+
+  DDClick(){
+    this.route.navigateByUrl('/donordashboard', { replaceUrl: true });
+
   }
 
 }
