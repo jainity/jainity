@@ -25,7 +25,6 @@ export class SchemegrouplistPage implements OnInit {
      public apiService: ApiService,
     public tools: Tools,public modalCtrl: ModalController) {
 
-      this.tools.closeLoader();
       this.isLogin = this.apiService.getUserData() !=undefined;
 
       this.eventServic.formOtp$.subscribe(() => {
@@ -209,15 +208,11 @@ getSGLISTCall() {
     }, (error: Response) => {
       console.log('ERORR>>>');
       this.tools.closeLoader();
-      this.tools.closeLoader();
       let err:any = error;
       console.log('Error ', err);
      this.tools.openAlertToken(err.status, err.error.message);
 
     });
-  } else {
-    console.log('ELSE>> ');
-    this.tools.closeLoader();
   }
 }
 

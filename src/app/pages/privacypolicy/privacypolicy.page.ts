@@ -22,7 +22,6 @@ export class PrivacypolicyPage implements OnInit {
      public apiService: ApiService,
     public tools: Tools,public modalCtrl: ModalController) {
 
-      this.tools.closeLoader();
       this.isLogin = this.apiService.getUserData() !=undefined;
       this.eventServic.formOtp$.subscribe(() => {
         this.isLogin = this.apiService.getUserData() !=undefined;

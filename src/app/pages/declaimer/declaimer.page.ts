@@ -26,7 +26,6 @@ export class DeclaimerPage implements OnInit {
     public tools: Tools,public modalCtrl: ModalController) {
 
       this.isLogin = this.apiService.getUserData() !=undefined;
-      this.tools.closeLoader();
       this.eventServic.formOtp$.subscribe(() => {
         this.isLogin = this.apiService.getUserData() !=undefined;
       });

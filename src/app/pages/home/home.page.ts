@@ -43,6 +43,9 @@ export class HomePage implements OnInit {
 
   slideOpts ={
     slidesPerView: this.checkScreen(),
+    initialSlide: 0,
+    preloadImages: true,
+    lazy: false,
     coverflowEffect: {
       rotate: 50,
       stretch: 0,
@@ -51,12 +54,20 @@ export class HomePage implements OnInit {
       modifier: 1,
       slideShadows: true,
     }
-    // cubeEffect: {
-    //   shadow: true,
-    //   slideShadows: true,
-    //   shadowOffset: 20,
-    //   shadowScale: 0.94,
-    // }
+  }
+  slideOptsCause ={
+    slidesPerView: this.checkScreen(),
+    initialSlide: 0,
+    preloadImages: true,
+    lazy: false,
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      shadowOffset: 20,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
+    }
   }
 
   slideOpts2 ={
@@ -120,14 +131,12 @@ export class HomePage implements OnInit {
      public apiService: ApiService,public formBuilder: FormBuilder, private menu: MenuController, 
     public tools: Tools,public modalCtrl: ModalController) {
 
-      this.tools.closeLoader();
       this.isLogin = this.apiService.getUserData() !=undefined;
       localStorage.removeItem('schemeId');
       localStorage.removeItem('InstituteId');
 
       this.eventServic.formOtp$.subscribe(() => {
         this.isLogin = this.apiService.getUserData() !=undefined;
-
       });
 
    }
@@ -293,6 +302,8 @@ return await alert.present();
 
   ionViewDidEnter() {
     this.getBannerCall();
+    this.InstiSlider.update();
+    this.GroupSlider.update();
 }
 
   scrollTo(elementId:string) {
@@ -318,12 +329,8 @@ return await alert.present();
       console.log('getSGLISTCall');
       this.apiService.getHomeBanner().subscribe(response => {
         console.log('getBanner_RESPONSE>>>');
-
-        //this.tools.closeLoader();
         let res: any = response;
         this.getInstitutetype();
-        this.getSGLISTCall();
-
         if(res.status){
           this.TopslideItem = res.data;
         }else{
@@ -338,25 +345,19 @@ return await alert.present();
        this.tools.openAlertToken(err.status, err.error.message);
   
       });
-    } else {
-      console.log('ELSE>> ');
-      this.tools.closeLoader();
     }
   }
 
   getInstitutetype() {
     if (this.tools.isNetwork()) {
-      //this.tools.openLoader();
       console.log('getSGLISTCall');
       this.apiService.getInstituteType().subscribe(response => {
         console.log('getInstitutetype_RESPONSE>>>');
-
-        //this.tools.closeLoader();
         let res: any = response;
 
         if(res.status){
           this.InstituteType = res.data;
-
+          this.getSGLISTCall();
           this.sliderType = res.data[0].InstituteType;
           this.getInstitutetypeList(res.data[0].InstituteTypeID);
 
@@ -372,20 +373,14 @@ return await alert.present();
        this.tools.openAlertToken(err.status, err.error.message);
   
       });
-    } else {
-      console.log('ELSE>> ');
-      this.tools.closeLoader();
-    }
+    } 
   }
 
   getInstitutetypeList(ID) {
     if (this.tools.isNetwork()) {
-      //this.tools.openLoader();
       console.log('getSGLISTCall');
       this.apiService.getInstituteTypeList(ID).subscribe(response => {
         console.log('RESPONSE>>>');
-
-       // this.tools.closeLoader();
         let res: any = response;
         if (res.status) {
           this.slideItem = res.data;
@@ -395,25 +390,19 @@ return await alert.present();
         console.log(res)
       }, (error: Response) => {
         console.log('ERORR>>>');
-        this.tools.closeLoader();
         let err: any = error;
         console.log('Error ', err);
         this.tools.openAlertToken(err.status, err.error.message);
 
       });
-    } else {
-      console.log('ELSE>> ');
-      this.tools.closeLoader();
     }
   }
 
   getSGLISTCall() {
     if (this.tools.isNetwork()) {
-      //this.tools.openLoader();
       console.log('getSGLISTCall');
       this.apiService.getHomeSchemeGroup().subscribe(response => {
         console.log('getSGLISTCall_RESPONSE>>>');
-
         this.tools.closeLoader();
         let res: any = response;
         if(res.status){
@@ -430,9 +419,6 @@ return await alert.present();
        this.tools.openAlertToken(err.status, err.error.message);
   
       });
-    } else {
-      console.log('ELSE>> ');
-      this.tools.closeLoader();
     }
   }
 

@@ -35,9 +35,5 @@
       "PACKAGE_NAME": "com.jainity"
     }
   },
-  "dependent_plugins": {
-    "cordova-plugin-cocoapod-support": {
-      "PACKAGE_NAME": "com.jainity"
-    }
-  }
+  "dependent_plugins": {}
 }

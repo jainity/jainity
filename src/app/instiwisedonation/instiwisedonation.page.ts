@@ -45,15 +45,11 @@ getInstitutewise() {
     }, (error: Response) => {
       console.log('ERORR>>>');
       this.tools.closeLoader();
-      this.tools.closeLoader();
       let err:any = error;
       console.log('Error ', err);
      this.tools.openAlertToken(err.status, err.error.message);
 
     });
-  } else {
-    console.log('ELSE>> ');
-    this.tools.closeLoader();
   }
 }
 

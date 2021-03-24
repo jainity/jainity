@@ -17,7 +17,6 @@ export class InstitutePage implements OnInit {
   constructor(private route: Router,public alertController: AlertController, public apiService: ApiService,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,
     public toastController: ToastController)  { 
-      this.tools.closeLoader();
       localStorage.removeItem('InstituteId');
   }
 
@@ -52,15 +51,11 @@ getInstiLISTCall() {
     }, (error: Response) => {
       console.log('ERORR>>>');
       this.tools.closeLoader();
-      this.tools.closeLoader();
       let err:any = error;
       console.log('Error ', err);
      this.tools.openAlertToken(err.status, err.error.message);
 
     });
-  } else {
-    console.log('ELSE>> ');
-    this.tools.closeLoader();
   }
 }
 

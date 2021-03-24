@@ -25,7 +25,6 @@ errorMsg:any='';
 fromPage;
   constructor(private eventService:EventService, private router: Router,public navParams: NavParams, public route: ActivatedRoute,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,public modalCtrl: ModalController) {
-      this.tools.closeLoader(); 
       this.fromPage = this.navParams.get("value"); //this for pass login logout condition
      this.mno =localStorage.getItem('mobileno');
      if(this.mno != undefined && this.mno != null)
@@ -90,14 +89,11 @@ fromPage;
           }
         }, (error: Response) => {
           this.tools.closeLoader();
-          this.tools.closeLoader();
           console.log('Error ', error);
           let err:any = error;
           this.tools.openAlertToken(err.status, err.error.message);
     
         });
-      } else {
-        this.tools.closeLoader();
       }
     }
   }
@@ -109,11 +105,11 @@ fromPage;
           this.tools.openLoader();
           this.apiServices.SendOTP(this.mno).subscribe(response => {
            
+            this.tools.closeLoader();
             let res: any = response;
             if(res.status){
               localStorage.setItem('mobileno', this.mno);
               setTimeout(() => {              
-                this.tools.closeLoader();
   
                // this.route.navigateByUrl('/otpverification');
                 //this.modalCtrl.dismiss('OTPPage');
@@ -121,17 +117,13 @@ fromPage;
 
               }, 1000);
             }else{
-              this.tools.closeLoader();
               this.tools.presentAlert('','Something wrong...', 'Ok');
             }
           }, (error: Response) => {
-            this.tools.closeLoader();
             console.log('Error ', error);
             let err:any = error;
             this.tools.openAlertToken(err.status, err.error.message);    
           });
-        } else {
-          this.tools.closeLoader();
         }
     }
 

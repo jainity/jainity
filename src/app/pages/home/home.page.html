@@ -269,9 +269,9 @@
                         <ion-col class="sliders_boxs">
                             <ion-slides pager="true" [options]="slideOpts" #InstiSlider>
                                 <ion-slide class="slider_box" *ngFor="let item of slideItem" (click)="onInstiDetails(item)">
-                                    <div class="slider_img">
-                                        <ion-img [src]='item.InstituteLogo'></ion-img>
-                                    </div>
+                                    <!-- <div class="slider_img"> -->
+                                        <ion-img class="slider_img" [src]="item.InstituteLogo" ></ion-img>
+                                    <!-- </div> -->
                                     <ion-label>{{item.InstituteName}}</ion-label>
                                 </ion-slide>
                             </ion-slides>
@@ -301,11 +301,11 @@
 
                     <ion-row>
                         <ion-col class="sliders_boxs">
-                            <ion-slides pager="true" [options]="slideOpts" #GroupSlider>
+                            <ion-slides pager="true" [options]="slideOptsCause" #GroupSlider>
                                 <ion-slide class="slider_box" *ngFor="let item of GroupslideItem" (click)="onSchemeDetails(item)">
-                                    <div class="slider_img_scheme">
-                                        <ion-img [src]='item.SchemeGroupImage'></ion-img>
-                                    </div>
+                                    <!-- <div class="slider_img_scheme"> -->
+                                        <ion-img class="slider_img_scheme" [src]="item.SchemeGroupImage"></ion-img>
+                                    <!-- </div> -->
                                     <ion-label>{{item.SchemeGroup}} </ion-label>
                                 </ion-slide>
                             </ion-slides>

@@ -27,7 +27,6 @@ export class RegisterPage implements OnInit {
   constructor(private route: Router,public formBuilder: FormBuilder,
     private apiServices: ApiService,public tools: Tools,
     public toastController: ToastController,public modalCtrl: ModalController) {
-      this.tools.closeLoader();
     this.loginForm = this.formBuilder.group({
       fname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50),Validators.pattern('[a-zA-Z]+')]],
       lname: ['', [Validators.required, Validators.maxLength(50),Validators.pattern('[a-zA-Z]+')]],
@@ -84,6 +83,7 @@ export class RegisterPage implements OnInit {
             if(res.status){
               this.callOTP();
             }else{
+              this.tools.closeLoader();
               this.tools.presentAlert('',res.message, 'Ok');
             }
           }, (error: Response) => {
@@ -92,8 +92,6 @@ export class RegisterPage implements OnInit {
             let err:any = error;
             this.tools.openAlertToken(err.status, err.error.message);
           });
-        } else {
-          this.tools.closeLoader();
         }
       }
     }
@@ -104,7 +102,6 @@ export class RegisterPage implements OnInit {
       let res: any = response;
       if(res.status){
         localStorage.setItem('mobileno', this.mobileno);
-
         setTimeout(() => {              
          // this.route.navigateByUrl('/otpverification');
           this.modalCtrl.dismiss('OTPPage');

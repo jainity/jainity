@@ -29,7 +29,6 @@ export class DonationlistPage implements OnInit {
      public apiService: ApiService,
     public tools: Tools,public modalCtrl: ModalController) {
 
-      this.tools.closeLoader();
       this.isLogin = this.apiService.getUserData() !=undefined;
       this.eventServic.formOtp$.subscribe(() => {
         this.isLogin = this.apiService.getUserData() !=undefined;
@@ -185,8 +184,6 @@ return await alert.present();
       console.log('getSGLISTCall');
       this.apiService.getDonationCount().subscribe(response => {
         console.log('getDonationCount>>>',response);
-
-        //this.tools.closeLoader();
         this.getmyDonationLISTCall();
         let res: any = response;
         if (res.status) {
@@ -199,15 +196,11 @@ return await alert.present();
       }, (error: Response) => {
         console.log('ERORR>>>');
         this.tools.closeLoader();
-        this.tools.closeLoader();
         let err: any = error;
         console.log('Error ', err);
         this.tools.openAlertToken(err.status, err.error.message);
 
       });
-    } else {
-      console.log('ELSE>> ');
-      this.tools.closeLoader();
     }
   }
 
@@ -232,9 +225,6 @@ return await alert.present();
         this.tools.openAlertToken(err.status, err.error.message);
 
       });
-    } else {
-      console.log('ELSE>> ');
-      this.tools.closeLoader();
     }
   }
  

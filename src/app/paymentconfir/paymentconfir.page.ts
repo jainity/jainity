@@ -144,8 +144,6 @@ export class PaymentconfirPage implements OnInit {
         this.tools.openAlertToken(err.status, err.error.message);
   
       });
-    } else {
-      this.tools.closeLoader();
     }
   }
 
