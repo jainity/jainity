@@ -58,7 +58,7 @@ export class Tools {
    }
 
     isNetwork(){
-        this.closeLoader();
+       // this.closeLoader();
         if (this.network.type == 'none') {
             this.presentAlert('No internet', 'You do not have an Internet connection. Please check your connection status', 'Ok')
             return false;
@@ -148,17 +148,17 @@ export class Tools {
 
     async openLoader(cssClass = '', msg?) {
         // console.log(' ===> ',msg);
-        if (!this.isShowing) {
-            this.isShowing = true;
+        // if (!this.isShowing) {
+        //     this.isShowing = true;
                
     this.loading = await this.loadingController.create({
             message: msg ? msg : '',
             cssClass: cssClass,
         });
         await this.loading.present();
-    }else {
-        this.isShowing = true;
-      }
+    // }else {
+    //     this.isShowing = true;
+    //   }
         // setTimeout(() => {
         //     this.loading.dismiss();
         // }, 2000);

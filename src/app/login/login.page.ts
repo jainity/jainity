@@ -1,4 +1,3 @@
-import { RegisterPage } from './../register/register.page';
 import { Tools } from './../shared/tools';
 import { Component } from '@angular/core';
 import { ToastController, ModalController } from '@ionic/angular';
@@ -54,7 +53,7 @@ export class LoginPage {
         this.apiServices.SendOTP(this.mobileno).subscribe(response => {
           let res: any = response;
           if(res.status){
-            this.tools.closeLoader();
+           this.tools.closeLoader();
             localStorage.setItem('mobileno', this.mobileno);
             setTimeout(() => {              
               this.modalCtrl.dismiss('OTPPage');

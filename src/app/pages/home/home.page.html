@@ -32,9 +32,9 @@
                     <ion-label (click)="scrollTo('banner')" style="cursor: pointer;">Home</ion-label>
                     <ion-label (click)="scrollTo('about')" style="cursor: pointer;">About</ion-label>
                     <ion-label (click)="OnConnectClick()" style="cursor: pointer;">Donate</ion-label>
-                    <ion-label *ngIf="!isLogin" (click)="LoginClick()" style="cursor: pointer;">Login</ion-label>
-                    <ion-label *ngIf="isLogin" (click)="DDClick()" style="cursor: pointer;">{{'Hi, '+this.apiService.getUserData().first_name+" "+this.apiService.getUserData().last_name}}</ion-label>
-                    <ion-icon *ngIf="isLogin" (click)="DDClick()" style="cursor: pointer;" name="caret-down-outline" style="margin-left: -15px; margin-bottom: -2px;"></ion-icon>
+                    <ion-label *ngIf="this.apiService.getUserData()==undefined" (click)="LoginClick()" style="cursor: pointer;">Login</ion-label>
+                    <ion-label *ngIf="this.apiService.getUserData()!=undefined" (click)="DDClick($event)" style="cursor: pointer;">{{'Hi, '+this.apiService.getUserData().first_name+" "+this.apiService.getUserData().last_name}}</ion-label>
+                    <ion-icon *ngIf="this.apiService.getUserData()!=undefined" (click)="DDClick($event)" style="cursor: pointer;" name="caret-down-outline" style="margin-left: -15px; margin-bottom: -2px;"></ion-icon>
                     <!-- <ion-label *ngIf="isLogin" (click)="LogoutClick()" style="cursor: pointer;">Logout</ion-label> -->
 
                     <!-- <ion-item *ngIf="isLogin" lines="none">
