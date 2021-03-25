@@ -4,10 +4,13 @@ import { LoginPage } from './../../login/login.page';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController, IonSlides, MenuController, ModalController } from '@ionic/angular';
+import { AlertController, IonSlides, MenuController, ModalController, PopoverController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
 import { Tools } from 'src/app/shared/tools';
 import { EventService } from 'src/app/services/EventService';
+import { NotificationsComponent } from 'src/app/notifications/notifications.component';
+
+declare const removeMenu:any;
 
 @Component({
   selector: 'app-home',
@@ -16,6 +19,7 @@ import { EventService } from 'src/app/services/EventService';
 })
 export class HomePage implements OnInit {
 
+  
   @ViewChild('InstiSlider')  InstiSlider: IonSlides
   @ViewChild('GroupSlider')  GroupSlider: IonSlides
 
@@ -132,7 +136,7 @@ export class HomePage implements OnInit {
   InstituteType=[];
 
 
-  constructor(private eventServic:EventService,private route: Router,public alertController: AlertController,
+  constructor(public popoverCtrl: PopoverController,private eventServic:EventService,private route: Router,public alertController: AlertController,
      public apiService: ApiService,public formBuilder: FormBuilder, private menu: MenuController, 
     public tools: Tools,public modalCtrl: ModalController) {
 
@@ -143,6 +147,8 @@ export class HomePage implements OnInit {
       this.eventServic.formOtp$.subscribe(() => {
         this.isLogin = this.apiService.getUserData() !=undefined;
       });
+      console.log('isLogin>>>>>>',this.isLogin);
+
 
    }
 
@@ -154,16 +160,23 @@ export class HomePage implements OnInit {
 
 
   ngOnInit() {
-    this.randomNumber=this.generateRandomNumber(11111,99999);
+    this.randomNumber=this.generateRandomNumber();
   }
 
-  generateRandomNumber(min,max){
+  generateRandomNumber(){
 
-      var rand=min+Math.random()*(max-min);
-      rand=Math.round(rand);
-      return rand.toString();
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  
+    for (var i = 0; i < 5; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+  
+    return text;
+
+      // var rand=min+Math.random()*(max-min);
+      // rand=Math.round(rand);
+      // return rand.toString();
   }
-
 
 
 
@@ -189,7 +202,7 @@ export class HomePage implements OnInit {
   } else if (this.randomNumber != this.captchacode) {
     
     this.captchacode="";
-    this.randomNumber=this.generateRandomNumber(11111,99999);
+    this.randomNumber=this.generateRandomNumber();
 
     msg = msg + 'Please enter valid Captcha Code'
     this.captchacodeErr= 'Please enter valid Captcha Code'
@@ -206,10 +219,14 @@ export class HomePage implements OnInit {
         this.apiService.SendConatctQuery(this.name,this.contactno).subscribe(response => {
           let res: any = response;
           if(res.status){
-            this.errClr;
+            this.errClr();
             this.tools.closeLoader();
             this.tools.presentAlert('',res.message, 'Ok');
-
+            removeMenu();
+            this.name='';
+            this.contactno='';
+            this.captchacode='';
+            
           }else{
             this.tools.presentAlert('','Something wrong...', 'Ok');
           }
@@ -501,9 +518,25 @@ return await alert.present();
     }
   }
 
-  DDClick(){
-    this.route.navigateByUrl('/donordashboard', { replaceUrl: true });
+  // DDClick(){
+  //   this.route.navigateByUrl('/donordashboard', { replaceUrl: true });
 
+  // }
+  async DDClick(ev: any) {
+    const popover = await this.popoverCtrl.create({
+      component: NotificationsComponent,
+      event: ev,
+      translucent: true,
+      animated: true,  
+      showBackdrop: true  
+    });
+    return await popover.present();
   }
+
+  onrecaptcha(){
+    this.captchacode="";
+    this.randomNumber=this.generateRandomNumber();
+  }
+
 
 }

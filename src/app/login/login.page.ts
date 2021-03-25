@@ -53,8 +53,8 @@ export class LoginPage {
         this.tools.openLoader();
         this.apiServices.SendOTP(this.mobileno).subscribe(response => {
           let res: any = response;
-          this.tools.closeLoader();
           if(res.status){
+            this.tools.closeLoader();
             localStorage.setItem('mobileno', this.mobileno);
             setTimeout(() => {              
               this.modalCtrl.dismiss('OTPPage');

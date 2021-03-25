@@ -33,8 +33,19 @@
                     <ion-label (click)="scrollTo('about')" style="cursor: pointer;">About</ion-label>
                     <ion-label (click)="OnConnectClick()" style="cursor: pointer;">Donate</ion-label>
                     <ion-label *ngIf="!isLogin" (click)="LoginClick()" style="cursor: pointer;">Login</ion-label>
-                    <ion-label *ngIf="isLogin" (click)="DDClick()" style="cursor: pointer;">{{'Hi, '+this.apiService.getUserData().first_name}}</ion-label>
-                    <ion-label *ngIf="isLogin" (click)="LogoutClick()" style="cursor: pointer;">Logout</ion-label>
+                    <ion-label *ngIf="isLogin" (click)="DDClick()" style="cursor: pointer;">{{'Hi, '+this.apiService.getUserData().first_name+" "+this.apiService.getUserData().last_name}}</ion-label>
+                    <ion-icon *ngIf="isLogin" (click)="DDClick()" style="cursor: pointer;" name="caret-down-outline" style="margin-left: -15px; margin-bottom: -2px;"></ion-icon>
+                    <!-- <ion-label *ngIf="isLogin" (click)="LogoutClick()" style="cursor: pointer;">Logout</ion-label> -->
+
+                    <!-- <ion-item *ngIf="isLogin" lines="none">
+                        <ion-label *ngIf="isLogin">{{'Hi, '+this.apiService.getUserData().first_name+" "+this.apiService.getUserData().last_name}}</ion-label>
+                        <ion-select interface="popover">
+                            <ion-select-option *ngIf="isLogin" value="dashboard">Dash board</ion-select-option>
+                            <ion-select-option *ngIf="isLogin" value="mytransaction">My Transaction</ion-select-option>
+                            <ion-select-option *ngIf="isLogin" value="logout">Logout</ion-select-option>
+
+                        </ion-select>
+                    </ion-item> -->
 
                 </ion-col>
                 <ion-col id="menu_icons" (click)="openFirst()">
@@ -407,7 +418,7 @@
 
                             </div>
                         </ion-col>
-                        <ion-col size="2.5">
+                        <ion-col size="2.6">
                             <div class="form-group">
                                 <ion-input style="background: #f37635;text-align: center; margin-left: 5px; color: white;" [class]="captchacode ==''&&captchacodeErr !=''?'form-control error':'form-control'">{{this.randomNumber}}</ion-input>
 
@@ -415,7 +426,7 @@
                         </ion-col>
                         <ion-col>
                             <div style="height: 25px;width: 25px; margin-left: 10px;">
-                                <ion-img src="../../../assets/img/reload.png"></ion-img>
+                                <ion-img (click)="onrecaptcha()" src="../../../assets/img/reload.png"></ion-img>
                             </div>
                         </ion-col>
                     </ion-row>

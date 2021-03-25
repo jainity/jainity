@@ -5,6 +5,7 @@ import { Platform, LoadingController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
+declare const removeMenu:any;
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',

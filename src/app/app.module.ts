@@ -1,3 +1,4 @@
+import { NotificationsComponent } from './notifications/notifications.component';
 import { PaymentconfirPage } from './paymentconfir/paymentconfir.page';
 import { OtpverificationPage } from './otpverification/otpverification.page';
 import { RegisterPage } from './register/register.page';
@@ -20,8 +21,8 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { EventService } from './services/EventService';
 
 @NgModule({
-  declarations: [AppComponent,LoginPage,RegisterPage,OtpverificationPage,PaymentconfirPage],
-  entryComponents: [LoginPage,RegisterPage,OtpverificationPage,PaymentconfirPage],
+  declarations: [AppComponent,LoginPage,RegisterPage,OtpverificationPage,PaymentconfirPage,NotificationsComponent],
+  entryComponents: [LoginPage,RegisterPage,OtpverificationPage,PaymentconfirPage,NotificationsComponent],
   imports: [BrowserModule,FormsModule,HttpClientModule,IonicModule.forRoot(), AppRoutingModule],
   providers: [Network,
     StatusBar,Tools,

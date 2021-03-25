@@ -1163,15 +1163,6 @@ ion-header .container {
     margin-top: 0px !important;
 }
 
-
-#contact_forms .section ion-row {
-    align-items: center !important;
-}
-
-#contact_forms .section ion-row ion-col:nth-child(2) ion-input {padding: 0px 6px !important;}
-#contact_forms .section ion-row ion-col:last-child div {margin-bottom: 10px;}
-
-
 .logo-title {
     display: inline-block;
     vertical-align: middle;
@@ -1193,4 +1184,16 @@ span.rupe {
 .list_inner_box p b,
 .list_inner_box p strong {
     font-weight: normal !important;
+}
+
+#contact_forms .section ion-row {
+    align-items: center !important;
+}
+
+#contact_forms .section ion-row ion-col:nth-child(2) ion-input {
+    padding: 0px 6px !important;
+}
+
+#contact_forms .section ion-row ion-col:last-child div {
+    margin-bottom: 10px;
 }
