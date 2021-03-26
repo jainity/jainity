@@ -26,7 +26,6 @@
             </ion-col>
         </ion-row>
     </ion-grid>
-
     <ion-grid id="page_content">
         <ion-row class="page_content_box">
             <ion-col>
@@ -34,49 +33,34 @@
                     <ion-row>
                         <ion-col>
                             <ion-grid>
-                                <ion-row>
-                                    <ion-col>
+                                <ion-row class="list_block_row">
+                                    <ion-col class="list_block_cols">
                                         <ion-grid>
-                                            <ion-row>
-                                                <ion-col>
-                                                    <ion-row class="list_box" style="background: red;">
-                                                        <ion-col class="list_count">
-                                                            <div class="roundedInput">
-                                                                <ion-img src="../../../assets/img/contribution.png" style="padding: 15px;"></ion-img>
-                                                            </div>
-                                                        </ion-col>
-                                                        <ion-col class="list_content" style="margin-left: 20px; margin-top: 5px;">
-                                                            <ion-label color="light">My Contribution</ion-label>
-                                                            <ion-row>
-                                                                <ion-label color="light">{{ this.MyContribution/100 | currency :'INR':'symbol':'1.0-0' }}</ion-label>
-                                                            </ion-row>
-                                                        </ion-col>
-
-                                                    </ion-row>
+                                            <ion-row class="list_box" style="background: red;">
+                                                <ion-col class="list_count">
+                                                    <div class="roundedInput">
+                                                        <ion-img src="../../../assets/img/contribution.png" style="padding: 15px;"></ion-img>
+                                                    </div>
+                                                </ion-col>
+                                                <ion-col class="list_content" style="margin-left: 20px;">
+                                                    <ion-label color="light">My Contribution</ion-label>
+                                                    <ion-label class="light bold"><span class="rupe">&#8377;</span> {{ this.MyContribution/100 | currency :'INR':'':'1.0-0' }}</ion-label>
                                                 </ion-col>
                                             </ion-row>
                                         </ion-grid>
                                     </ion-col>
-
-                                    <ion-col>
+                                    <ion-col class="list_block_cols">
                                         <ion-grid>
-                                            <ion-row>
-                                                <ion-col>
-                                                    <ion-row class="list_box" style="background: red; margin-left: 15px;">
-                                                        <ion-col class="list_count">
-                                                            <!-- <ion-label class="roundedInput" color="light">5</ion-label> -->
-                                                            <div class="roundedInput">
-                                                                <ion-img src="../../../assets/img/contributionTotal.png" style="padding: 15px;"></ion-img>
-                                                            </div>
-                                                        </ion-col>
-                                                        <ion-col class="list_content" style="margin-left: 20px; margin-top: 5px;">
-                                                            <ion-label color="light">Total Contribution</ion-label>
-                                                            <ion-row>
-                                                                <ion-label color="light">{{ this.TotalContribution/100 | currency :'INR':'symbol':'1.0-0' }}</ion-label>
-                                                            </ion-row>
-                                                        </ion-col>
-
-                                                    </ion-row>
+                                            <ion-row class="list_box" style="background: red;">
+                                                <ion-col class="list_count">
+                                                    <!-- <ion-label class="roundedInput" color="light">5</ion-label> -->
+                                                    <div class="roundedInput">
+                                                        <ion-img src="../../../assets/img/contributionTotal.png" style="padding: 15px;"></ion-img>
+                                                    </div>
+                                                </ion-col>
+                                                <ion-col class="list_content" style="margin-left: 20px;">
+                                                    <ion-label color="light">Total Contribution</ion-label>
+                                                    <ion-label class="light bold"><span class="rupe">&#8377;</span> {{ this.TotalContribution/100 | currency :'INR':'':'1.0-0' }}</ion-label>
                                                 </ion-col>
                                             </ion-row>
                                         </ion-grid>
@@ -88,64 +72,55 @@
                                 <ion-row>
                                     <ion-col>
                                         <ion-label color="black" class="hadings">My Donation</ion-label>
-                                        <ion-row class="list_box" style="padding: 13px 8px !important; background: #ef7635; border-radius: 5px 5px 0px 0px !important; height: auto !important;">
-                                            <ion-col class="list_content">
-                                                <ion-label color="light">Organization</ion-label>
-                                            </ion-col>
-                                            <ion-col class="list_content">
-                                                <ion-label color="light">Cause Group</ion-label>
-                                            </ion-col>
-                                            <ion-col class="list_content">
-                                                <ion-label color="light">Cause</ion-label>
-                                            </ion-col>
-                                            <ion-col class="list_content">
-                                                <ion-label color="light">Amount</ion-label>
-                                            </ion-col>
-                                            <ion-col class="list_content">
-                                                <ion-label color="light">Receipt</ion-label>
-                                            </ion-col>
-                                        </ion-row>
+                                        <div class="table-responsive" style=" overflow-x:auto;">
+                                            <div class="tables" cellspacing="1px">
+                                                <div id="headings" class="tables-heading">
+                                                    <div class="cell">
+                                                        <div class="tables-content">Organization</div>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <div class="tables-content">Cause Group</div>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <div class="tables-content">Cause</div>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <div class="tables-content">Amount</div>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <div class="tables-content">Receipt</div>
+                                                    </div>
+                                                </div>
+                                                <div class="tables-row" *ngFor="let item of mydonateList;">
+                                                    <div class="cell">
+                                                        <div class="tables-content">{{item.InstituteName}}</div>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <div class="tables-content">{{item.SchemeGroup}}</div>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <div class="tables-content">{{item.SchemeName}}</div>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <div class="tables-content"><span class="rupe">&#8377;</span>{{ item.PaidValue | currency :'INR':'':'1.0-0' }}</div>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <div class="tables-content">
+                                                            <ion-label style="text-decoration: underline; cursor: pointer; color: #ef7635;" (click)="onviewreceiptClick(item)">View Receipt</ion-label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ion-col>
                                 </ion-row>
                             </ion-grid>
-
-                            <ion-grid>
-                                <ion-row>
-                                    <ion-col>
-                                        <ion-grid>
-                                            <ion-row class="list_box" *ngFor="let item of mydonateList;" style="max-height: 60px; background: #fff;margin-bottom: 2px ;">
-                                                <ion-col class="list_content">
-                                                    <ion-label color="black">{{item.InstituteName}}</ion-label>
-                                                </ion-col>
-                                                <ion-col class="list_content">
-                                                    <ion-label color="black">{{item.SchemeGroup}}</ion-label>
-                                                </ion-col>
-                                                <ion-col class="list_content">
-                                                    <ion-label color="black">{{item.SchemeName}}</ion-label>
-                                                </ion-col>
-                                                <ion-col class="list_content">
-                                                    <ion-label color="black">{{ item.PaidValue | currency :'INR':'symbol':'1.0-0' }}</ion-label>
-                                                </ion-col>
-                                                <ion-col class="list_content">
-                                                    <ion-label class="icons">
-                                                        <ion-label style="text-decoration: underline; cursor: pointer; color: #ef7635;" (click)="onviewreceiptClick(item)">View Receipt</ion-label>
-                                                    </ion-label>
-                                                </ion-col>
-                                            </ion-row>
-                                        </ion-grid>
-                                    </ion-col>
-                                </ion-row>
-                            </ion-grid>
-
                         </ion-col>
                     </ion-row>
                 </ion-grid>
             </ion-col>
         </ion-row>
     </ion-grid>
-
-
-
     <ion-grid id="footer">
         <ion-row>
             <ion-col>
@@ -206,5 +181,4 @@
             </ion-col>
         </ion-row>
     </ion-grid>
-
 </ion-content>

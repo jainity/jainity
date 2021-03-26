@@ -1172,11 +1172,13 @@ ion-header .container {
     color: #ed3237 !important;
     font-weight: 600;
 }
-
 span.rupe {
-    font-family: 'arial';
+	font-family: "arial";
+	font-weight: normal !important;
 }
-
+.tables .cell:last-child {
+	white-space: nowrap;
+}
 .list_inner_box .white.content.bold {
     font-weight: 600;
 }
