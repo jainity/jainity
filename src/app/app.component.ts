@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 declare const removeMenu:any;
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -36,6 +37,7 @@ export class AppComponent {
         // this.route.navigateByUrl('/home', { replaceUrl: true });
     }, 100);
 }
+
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();

@@ -148,16 +148,17 @@ export class HomePage implements OnInit {
         this.isLogin = this.apiService.getUserData() !=undefined;
       });
       console.log('isLogin>>>>>>',this.isLogin);
-
+      this.eventServic.closemenu$.subscribe(() => {
+        this.menuClose();
+      });
 
    }
 
 
-   checkMail(): boolean {
+  checkMail(): boolean {
     this.reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return (this.email == '' || !this.reg.test(this.email))
   }
-
 
   ngOnInit() {
     this.randomNumber=this.generateRandomNumber();
@@ -177,8 +178,6 @@ export class HomePage implements OnInit {
       // rand=Math.round(rand);
       // return rand.toString();
   }
-
-
 
   sendMail() {
     var msg = ''
@@ -240,7 +239,7 @@ export class HomePage implements OnInit {
     }
     }
 
-    errClr() {
+  errClr() {
       this.nameErr='';
       this.contactnoErr='';
       this.captchacodeErr='';
@@ -255,7 +254,7 @@ export class HomePage implements OnInit {
    
    }
 
-   onInstiDetails(item){
+  onInstiDetails(item){
     localStorage.setItem('InstituteId',item.InstituteID)
     localStorage.setItem('TYPE','Institute')
     localStorage.setItem('Tittle',item.InstituteName)
@@ -537,6 +536,4 @@ return await alert.present();
     this.captchacode="";
     this.randomNumber=this.generateRandomNumber();
   }
-
-
 }
