@@ -164,6 +164,21 @@ export class Tools {
         // }, 2000);
     }
 
+    generateRandomNumber(){
+
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      
+        for (var i = 0; i < 5; i++)
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+      
+        return text;
+    
+          // var rand=min+Math.random()*(max-min);
+          // rand=Math.round(rand);
+          // return rand.toString();
+      }
+      
     async openAlert(message) {
         const alert = await this.alertController.create({
             message: message ? message : 'This is an alert message.',

@@ -161,23 +161,13 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    this.randomNumber=this.generateRandomNumber();
+    this.randomNumber='';
+    this.captchacode='';
+
+  this.randomNumber=this.tools.generateRandomNumber();
   }
 
-  generateRandomNumber(){
 
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  
-    for (var i = 0; i < 5; i++)
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
-  
-    return text;
-
-      // var rand=min+Math.random()*(max-min);
-      // rand=Math.round(rand);
-      // return rand.toString();
-  }
 
   sendMail() {
     var msg = ''
@@ -201,7 +191,7 @@ export class HomePage implements OnInit {
   } else if (this.randomNumber != this.captchacode) {
     
     this.captchacode="";
-    this.randomNumber=this.generateRandomNumber();
+    this.randomNumber=this.tools.generateRandomNumber();
 
     msg = msg + 'Please enter valid Captcha Code'
     this.captchacodeErr= 'Please enter valid Captcha Code'
@@ -533,7 +523,9 @@ return await alert.present();
   }
 
   onrecaptcha(){
-    this.captchacode="";
-    this.randomNumber=this.generateRandomNumber();
+    this.captchacode='';
+    this.randomNumber='';
+  
+    this.randomNumber=this.tools.generateRandomNumber();
   }
 }

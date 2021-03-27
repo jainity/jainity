@@ -155,4 +155,83 @@
         </ion-row>
     </ion-grid>
 
+    <div id="contact_forms">
+        <div class="contact-form">
+            <div class="heading">
+                <ion-label style="text-transform: none !important;">
+                    Contact us! <span>Get direct donations in your bank account</span>
+                </ion-label>
+            </div>
+            <div class="section">
+                <form>
+                    <div class="form-group">
+                        <ion-input placeholder="Full Name *" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" [class]="name ==''&&nameErr !=''?'form-control error':'form-control'"></ion-input>
+                        <span style="color: red;" [class]="name ==''&&nameErr !=''?'errormsg':''">{{nameErr}}</span>
+                    </div>
+                    <div class="form-group">
+                        <ion-input placeholder="Contact Number *" maxlength=10; [(ngModel)]="contactno" [ngModelOptions]="{standalone: true}" [class]="contactno ==''&&contactnoErr !=''?'form-control error':'form-control'"></ion-input>
+                        <span style="color: red;" [class]="contactno ==''&&contactnoErr !=''?'errormsg':''">{{contactnoErr}}</span>
+
+                    </div>
+
+
+                    <ion-row>
+                        <ion-col size="7.7">
+                            <div class="form-group">
+                                <ion-input placeholder="Enter captcha code *" [(ngModel)]="captchacode" [ngModelOptions]="{standalone: true}" [class]="captchacode ==''&&captchacodeErr !=''?'form-control error':'form-control'"></ion-input>
+                                <span style="color: red;" [class]="captchacode ==''&&captchacodeErr !=''?'errormsg':''">{{captchacodeErr}}</span>
+
+                            </div>
+                        </ion-col>
+                        <ion-col size="2.6">
+                            <div class="form-group">
+                                <ion-input style="background: #f37635;text-align: center; margin-left: 5px; color: white;" [class]="captchacode ==''&&captchacodeErr !=''?'form-control error':'form-control'">{{this.randomNumber}}</ion-input>
+
+                            </div>
+                        </ion-col>
+                        <ion-col>
+                            <div style="height: 25px;width: 25px; margin-left: 10px;">
+                                <ion-img (click)="onrecaptcha()" src="../../../assets/img/reload.png"></ion-img>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                    <!-- <div class="form-group">
+                        <ion-input placeholder="Email *" style="text-transform: none;" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" [class]="this.checkMail() && emailErr !=''?'form-control error':'form-control'"></ion-input>
+                        <span [class]="(email =='' || !this.reg.test(email) ) && emailErr !=''?'errormsg':''">{{emailErr}}</span>
+                    </div> 
+                    <div class="form-group">
+                        <ion-input placeholder="Subject *" [(ngModel)]="subject" [ngModelOptions]="{standalone: true}" [class]="subject ==''&&subjectErr !=''?'form-control error':'form-control'"></ion-input>
+                        <span [class]="subject ==''&&subjectErr !=''?'errormsg':''">{{subjectErr}}</span>
+
+                    </div>
+                    <div class="form-group">
+                        <ion-textarea placeholder="Type your message here... *" [(ngModel)]="message" [ngModelOptions]="{standalone: true}" [class]="message ==''&&messageErr !=''?'form-control error':'form-control'"></ion-textarea>
+                        <span [class]="message ==''&&messageErr !=''?'errormsg':''">{{messageErr}}</span>
+                    </div>-->
+                    <div>
+                        <ion-button style="margin-top: 30px; min-height: 40px;" class="btn-orange w-100" shape="round" expand="block" (click)="sendMail()">Submit</ion-button>
+                    </div>
+                    <div style="text-align: center; margin-top: 30px;">
+                        <ion-label>
+                            Or connect with us on WhatsApp
+                        </ion-label>
+                    </div>
+                    <div style="text-align: center;">
+                        <a href="https://wa.me/919321130735?text=I'm%20interested%20in%20associating%20with%20you%20for%20Jainity%20App" target="_blank">
+                            <ion-img class="icons" style="margin: 0 auto; margin-top: 20px;width: 30px;height: 30px;" src="../../../assets/img/Whatspp.png"></ion-img>
+                        </a>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+        <div class="contact_icon">
+            <span id="icons_click">
+        <ion-img id="contact_icon" src="../../../assets/img/contact_icono.png"></ion-img>
+        <ion-img id="closes" src="../../../assets/img/closeso.png"></ion-img>
+        </span>
+        </div>
+    </div>
+
 </ion-content>

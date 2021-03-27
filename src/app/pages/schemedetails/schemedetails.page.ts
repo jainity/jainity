@@ -9,12 +9,23 @@ import { Tools } from '../../shared/tools';
 import { PaymentconfirPage } from 'src/app/paymentconfir/paymentconfir.page';
 import { EventService } from 'src/app/services/EventService';
 
+declare const removeMenu:any;
+
 @Component({
   selector: 'app-schemedetails',
   templateUrl: './schemedetails.page.html',
   styleUrls: ['./schemedetails.page.scss'],
 })
 export class SchemedetailsPage implements OnInit {
+
+  randomNumber='';
+  name = '';
+  contactno = '';
+  captchacode = '';
+
+  captchacodeErr = '';
+  nameErr = '';
+  contactnoErr = '';
 
   
   isLogin=false;
@@ -201,8 +212,6 @@ export class SchemedetailsPage implements OnInit {
 return await alert.present();
  }
 
-  ngOnInit() {}
-
   onInstituteClick(){}
 
   onSchemeGroupClick(){}
@@ -302,5 +311,86 @@ onEnter(event) {}
 
 clearSearch(event) {}
 getItems(event) {}
+
+
+ngOnInit() {
+  this.randomNumber='';
+  this.captchacode='';
+
+  this.randomNumber=this.tools.generateRandomNumber();
+}
+
+onrecaptcha(){
+  this.captchacode='';
+  this.randomNumber='';
+
+  this.randomNumber=this.tools.generateRandomNumber();
+}
+
+sendMail() {
+  var msg = ''
+  this.errClr();
+
+  if (this.name =='') {
+    msg = msg + 'Please enter Full name'
+   this.nameErr = 'Please enter Full name'
+ } else if (this.name.length < 3) {
+    msg = msg + 'Full name should be at least 3 letters long and without any space'
+   this.nameErr = 'Full name should be at least 3 letters long and without any space'
+ }else if (this.contactno =='') {
+      msg = msg + 'Please enter contact number'
+      this.contactnoErr= 'Please enter contact number'
+} else if (this.contactno.length != 10) {
+      msg = msg + 'Please enter valid contact number'
+      this.contactnoErr= 'Please enter valid contact number'
+}else if (this.captchacode =='') {
+      msg = msg + 'Please enter Captcha Code'
+      this.captchacodeErr= 'Please enter Captcha Code'
+} else if (this.randomNumber != this.captchacode) {
+      this.captchacode="";
+      this.randomNumber='';
+      this.randomNumber=this.tools.generateRandomNumber();
+
+      msg = msg + 'Please enter valid Captcha Code'
+      this.captchacodeErr= 'Please enter valid Captcha Code'
+} 
+
+  if (msg != '') {
+  //  this.errorMsg=msg;
+// this.tools.openAlert(msg);
+  } else {
+    this.errClr();
+  
+    if (this.tools.isNetwork()) {
+      this.tools.openLoader();
+      this.apiService.SendConatctQuery(this.name,this.contactno).subscribe(response => {
+        let res: any = response;
+        if(res.status){
+          this.errClr();
+          this.tools.closeLoader();
+          this.tools.presentAlert('',res.message, 'Ok');
+          removeMenu();
+          this.name='';
+          this.contactno='';
+          this.captchacode='';
+          
+        }else{
+          this.tools.presentAlert('','Something wrong...', 'Ok');
+        }
+      }, (error: Response) => {
+        this.tools.closeLoader();
+        console.log('Error ', error);
+        let err:any = error;
+        this.tools.openAlertToken(err.status, err.error.message);    
+      });
+    }
+  }
+  }
+
+errClr() {
+  this.nameErr='';
+  this.contactnoErr='';
+  this.captchacodeErr='';
+}
 
 }
