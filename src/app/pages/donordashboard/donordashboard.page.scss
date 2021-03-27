@@ -1,9 +1,8 @@
 // @media screen and (max-height:640px){
 // }
-ion-header .menu {
-    display: block;
-}
-
+// ion-header .menu {
+//     display: block;
+// }
 ion-toolbar {
     background: white !important;
     --background: white !important;
@@ -16,16 +15,16 @@ ion-col {
 }
 
 .hadings {
-	color: #000 !important;
-	font-weight: 700 !important;
-	font-size: 17px !important;
-	margin: 28px 0px 25px 0px !important;
-	display: block !important;
+    color: #000 !important;
+    font-weight: 700 !important;
+    font-size: 17px !important;
+    margin: 28px 0px 25px 0px !important;
+    display: block !important;
     line-height: 15px !important;
 }
 
 ion-list-header.hadings {
-	margin: 0px !important;
+    margin: 0px !important;
     margin-top: 16px !important;
     margin-bottom: 9px !important;
 }
@@ -672,6 +671,21 @@ ion-list-header.hadings {
 }
 
 @media (max-width: 992px) {
+    .logo_box {
+        flex: 0 0 170px !important;
+        max-width: 170px !important;
+    }
+    #menu_icons {
+        display: block;
+    }
+    .menu {
+        flex: 0 0 50px !important;
+        max-width: 50px !important;
+        position: relative;
+    }
+    .menu_list {
+        display: none !important;
+    }
     ion-header .menu {
         flex: 0 0 110px !important;
         max-width: 110px !important;

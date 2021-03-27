@@ -1,8 +1,9 @@
 import { Network } from '@ionic-native/network/ngx';
-import { ToastController, LoadingController, AlertController, NavController } from '@ionic/angular';
+import { ToastController, LoadingController, AlertController, NavController, PopoverController, MenuController } from '@ionic/angular';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { NotificationsComponent } from '../notifications/notifications.component';
 @Injectable()
 export class Tools {
    
@@ -11,6 +12,8 @@ export class Tools {
     isShowing =false;
 
     constructor(
+        private menu: MenuController, 
+        public popoverCtrl: PopoverController,
         public alertController: AlertController,
         public toastController: ToastController, public network: Network,
         public loadingController: LoadingController, public router: Router,private navCtrl: NavController,
@@ -40,6 +43,61 @@ export class Tools {
     goHome(){
         this.router.navigateByUrl('/home',{replaceUrl:true});
        }
+       goSchemeGroup(){
+        this.router.navigateByUrl('/schemegrouplist',{replaceUrl:true});
+        this.menuClose();
+       }
+
+       async OpenSidePopup(ev: any) {
+        const popover = await this.popoverCtrl.create({
+          component: NotificationsComponent,
+          event: ev,
+          translucent: true,
+          animated: true,  
+          showBackdrop: true  
+        });
+        return await popover.present();
+      }
+//*************************************************** new implements */
+
+
+checkScreen() {
+    let innerWidth = window.innerWidth;
+    console.log('Inner Width ',innerWidth);
+    switch (true) {
+      case 340 <= innerWidth && innerWidth <= 400:
+        return 1;
+      case 401 <= innerWidth && innerWidth <= 700:
+        return 2;
+      case 701 <= innerWidth && innerWidth <= 900:
+        return 3;
+      case 901 <= innerWidth:
+        return 4;
+    }
+  }
+
+  scrollTo(elementId:string) {
+    let todayItem = document.getElementById(elementId);
+    todayItem.scrollIntoView(true);
+    this.menuClose();
+    // this.menu.enable(false); 
+    // this.content.scrollTo(0, todayItem.offsetTop, 1000);
+  }
+
+  menuClose() {
+    if(this.checkScreen() != 4)
+    this.menu.close();
+  }
+
+//   openFirst() {
+//     this.menu.enable(true, "first"); 
+//     this.menu.open("first");
+//   }
+
+
+//*************************************************** new implements */
+
+
   goTAC(){
     this.router.navigateByUrl('/termsandcondition');
    }

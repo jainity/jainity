@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AlertController, ModalController, ToastController } from '@ionic/angular';
+import { AlertController, isPlatform, ModalController, Platform, ToastController } from '@ionic/angular';
 import { ApiService } from '../services/api.service';
 import { Tools } from '../shared/tools';
 import { Location } from '@angular/common';
@@ -37,7 +37,7 @@ export class PaymentconfirPage implements OnInit {
   cardDetails: any = {};
 
   constructor(private route: Router,public router: ActivatedRoute,public alertController: AlertController, public apiService: ApiService,public formBuilder: FormBuilder,
-    public tools: Tools,private location: Location,private iab: InAppBrowser,public modalCtrl: ModalController,
+    public plt: Platform, public tools: Tools,private location: Location,private iab: InAppBrowser,public modalCtrl: ModalController,
     public toastController: ToastController) {
    
     this.user= this.apiService.getUserData();
@@ -132,7 +132,13 @@ export class PaymentconfirPage implements OnInit {
 
         if(res.status){
          // this.tools.donatepresentAlert('',res.message, 'Ok',true);
-          this.openReceipt(res.PdfName);
+          if (this.plt.is('ios')) {
+            this.openReceipt(res.PdfName);
+          }else if (this.plt.is('android')) {
+            window.open(res.PdfName);
+          }else{ 
+            this.openReceipt(res.PdfName);
+          }
         //  this.route.navigate(['/home']);
         }else{
           this.tools.presentAlert('','Something wrong...', 'Ok');

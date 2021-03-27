@@ -3,7 +3,7 @@ import { RegisterPage } from '../../register/register.page';
 import { LoginPage } from '../../login/login.page';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController, MenuController } from '@ionic/angular';
 import { ApiService } from '../../services/api.service';
 import { Tools } from '../../shared/tools';
 import { EventService } from 'src/app/services/EventService';
@@ -21,9 +21,14 @@ export class InstitutelistPage implements OnInit {
   InstituteType=[];
   sliderType:any;
 
-
+  openFirst() {
+    this.menu.enable(true, "first"); 
+    this.menu.open("first");
+  }
+  
+ 
   constructor(private eventServic:EventService,private route: Router,public alertController: AlertController,
-     public apiService: ApiService,
+     public apiService: ApiService, private menu: MenuController,
     public tools: Tools,public modalCtrl: ModalController) {
 
       this.isLogin = this.apiService.getUserData() !=undefined;
@@ -31,11 +36,18 @@ export class InstitutelistPage implements OnInit {
         this.isLogin = this.apiService.getUserData() !=undefined;
       });
       localStorage.removeItem('InstituteId');
+      this.eventServic.closemenu$.subscribe(() => {
+        this.tools.menuClose();
+      });
 
    }
 
+   ionViewWillEnter() {
+    this.menu.enable(false);
+  }
 
  async LoginClick() {  
+  this.tools.menuClose();
 
     const modal = await this.modalCtrl.create({  
       component: LoginPage ,
@@ -59,6 +71,8 @@ export class InstitutelistPage implements OnInit {
   }  
   
   async openRegister() {
+    this.tools.menuClose();
+
     const modal = await this.modalCtrl.create({  
       component: RegisterPage ,
             cssClass: 'register-modal',
@@ -78,6 +92,8 @@ export class InstitutelistPage implements OnInit {
   }
 
   async openlogin() {
+    this.tools.menuClose();
+
     const modal = await this.modalCtrl.create({  
       component: LoginPage ,
             cssClass: 'login-modal',
@@ -99,6 +115,8 @@ export class InstitutelistPage implements OnInit {
   }
 
   async openOtp() {
+    this.tools.menuClose();
+
     const modal = await this.modalCtrl.create({  
       component: OtpverificationPage ,
             cssClass: 'login-modal',
@@ -143,6 +161,8 @@ export class InstitutelistPage implements OnInit {
 
 
  async LogoutClick(){
+  this.tools.menuClose();
+
    const alert = await this.alertController.create({
     message: 'Are you sure you want to logout?',
     buttons: [

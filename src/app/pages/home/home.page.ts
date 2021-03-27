@@ -51,7 +51,7 @@ export class HomePage implements OnInit {
   randomNumber:string="";
 
   slideOpts ={
-    slidesPerView: this.checkScreen(),
+    slidesPerView: this.tools.checkScreen(),
     initialSlide: 0,
     preloadImages: true,
     lazy: false,
@@ -65,7 +65,7 @@ export class HomePage implements OnInit {
     }
   }
   slideOptsCause ={
-    slidesPerView: this.checkScreen(),
+    slidesPerView: this.tools.checkScreen(),
     initialSlide: 0,
     preloadImages: true,
     lazy: false,
@@ -95,25 +95,14 @@ export class HomePage implements OnInit {
     }
  
   }
+
+
   openFirst() {
     this.menu.enable(true, "first"); 
     this.menu.open("first");
   }
-
-  checkScreen() {
-    let innerWidth = window.innerWidth;
-    console.log('Inner Width ',innerWidth);
-    switch (true) {
-      case 340 <= innerWidth && innerWidth <= 400:
-        return 1;
-      case 401 <= innerWidth && innerWidth <= 700:
-        return 2;
-      case 701 <= innerWidth && innerWidth <= 900:
-        return 3;
-      case 901 <= innerWidth:
-        return 4;
-    }
-  }
+  
+ 
   InstswipeNext(){
     this.InstiSlider.slideNext();
   }
@@ -149,7 +138,7 @@ export class HomePage implements OnInit {
       });
       console.log('isLogin>>>>>>',this.isLogin);
       this.eventServic.closemenu$.subscribe(() => {
-        this.menuClose();
+        this.tools.menuClose();
       });
 
    }
@@ -166,8 +155,6 @@ export class HomePage implements OnInit {
 
   this.randomNumber=this.tools.generateRandomNumber();
   }
-
-
 
   sendMail() {
     var msg = ''
@@ -259,7 +246,7 @@ export class HomePage implements OnInit {
   }
   
  async LoginClick() {  
-  this.menuClose();
+  this.tools.menuClose();
     const modal = await this.modalCtrl.create({  
       component: LoginPage ,
       //componentProps: { id: 5, name: 'gaurav' },
@@ -282,7 +269,7 @@ export class HomePage implements OnInit {
   }  
   
   async openRegister() {
-    this.menuClose();
+    this.tools.menuClose();
     const modal = await this.modalCtrl.create({  
       component: RegisterPage ,
             cssClass: 'register-modal',
@@ -302,7 +289,7 @@ export class HomePage implements OnInit {
   }
 
   async openOtp() {
-    this.menuClose();
+    this.tools.menuClose();
     const modal = await this.modalCtrl.create({  
       component: OtpverificationPage ,
             cssClass: 'login-modal',
@@ -324,29 +311,29 @@ export class HomePage implements OnInit {
     this.route.navigateByUrl('/institutelist');
   }
 
-   async OnConnectClick(){
-    this.route.navigateByUrl('/schemegrouplist');
+  //  async OnConnectClick(){
+  //   this.route.navigateByUrl('/schemegrouplist');
 
-  //   if (!this.isLogin) {
+  // //   if (!this.isLogin) {
 
-  //     const alert = await this.alertController.create({
-  //       message: 'Coming Soon',
-  //       buttons: [
-  //           {
-  //               text: 'OK',
-  //               role: 'OK',
-  //               handler: () => {
+  // //     const alert = await this.alertController.create({
+  // //       message: 'Coming Soon',
+  // //       buttons: [
+  // //           {
+  // //               text: 'OK',
+  // //               role: 'OK',
+  // //               handler: () => {
     
-  //               }
-  //           },
-  //       ], backdropDismiss: false
-  //   });
-  //   alert.present();
-  //   }else
-  // this.route.navigateByUrl('/schemegrouplist');
+  // //               }
+  // //           },
+  // //       ], backdropDismiss: false
+  // //   });
+  // //   alert.present();
+  // //   }else
+  // // this.route.navigateByUrl('/schemegrouplist');
 
 
-  }
+  // }
 
 
  async LogoutClick(){
@@ -392,18 +379,7 @@ return await alert.present();
     this.GroupSlider.update();
 }
 
-  scrollTo(elementId:string) {
-    let todayItem = document.getElementById(elementId);
-    todayItem.scrollIntoView(true);
-    this.menuClose();
-    // this.menu.enable(false); 
-    // this.content.scrollTo(0, todayItem.offsetTop, 1000);
-  }
-
-  menuClose() {
-    if(this.checkScreen() != 4)
-    this.menu.close();
-  }
+  
 
   onInstituteList(item){
     this.getInstitutetypeList(item.InstituteTypeID);
@@ -512,16 +488,16 @@ return await alert.present();
   //   this.route.navigateByUrl('/donordashboard', { replaceUrl: true });
 
   // }
-  async DDClick(ev: any) {
-    const popover = await this.popoverCtrl.create({
-      component: NotificationsComponent,
-      event: ev,
-      translucent: true,
-      animated: true,  
-      showBackdrop: true  
-    });
-    return await popover.present();
-  }
+  // async DDClick(ev: any) {
+  //   const popover = await this.popoverCtrl.create({
+  //     component: NotificationsComponent,
+  //     event: ev,
+  //     translucent: true,
+  //     animated: true,  
+  //     showBackdrop: true  
+  //   });
+  //   return await popover.present();
+  // }
 
   onrecaptcha(){
     this.captchacode='';

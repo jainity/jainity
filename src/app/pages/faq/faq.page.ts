@@ -3,7 +3,7 @@ import { RegisterPage } from '../../register/register.page';
 import { LoginPage } from '../../login/login.page';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController, MenuController } from '@ionic/angular';
 import { ApiService } from '../../services/api.service';
 import { Tools } from '../../shared/tools';
 import { EventService } from 'src/app/services/EventService';
@@ -20,13 +20,22 @@ export class FaqPage implements OnInit {
   DonorfaqList=[];
   InstitutefaqList=[];
 
+
+  openFirst() {
+    this.menu.enable(true, "first"); 
+    this.menu.open("first");
+  }
   constructor(private eventServic:EventService,private route: Router,public alertController: AlertController,
-     public apiService: ApiService,
+     public apiService: ApiService,private menu: MenuController, 
     public tools: Tools,public modalCtrl: ModalController) {
 
       this.isLogin = this.apiService.getUserData() !=undefined;
       this.eventServic.formOtp$.subscribe(() => {
         this.isLogin = this.apiService.getUserData() !=undefined;
+      });
+
+      this.eventServic.closemenu$.subscribe(() => {
+        this.tools.menuClose();
       });
 
 //Donor Query
@@ -74,7 +83,13 @@ export class FaqPage implements OnInit {
 
     }
 
+    ionViewWillEnter() {
+      this.menu.enable(false);
+    }
+
     async LoginClick() {  
+      this.tools.menuClose();
+
         const modal = await this.modalCtrl.create({  
           component: LoginPage ,
           //componentProps: { id: 5, name: 'gaurav' },
@@ -97,6 +112,8 @@ export class FaqPage implements OnInit {
       }  
       
       async openRegister() {
+        this.tools.menuClose();
+
         const modal = await this.modalCtrl.create({  
           component: RegisterPage ,
                 cssClass: 'register-modal',
@@ -116,6 +133,7 @@ export class FaqPage implements OnInit {
       }
     
       async openOtp() {
+        this.tools.menuClose();
 
         const modal = await this.modalCtrl.create({  
           component: OtpverificationPage ,
@@ -136,6 +154,8 @@ export class FaqPage implements OnInit {
     
 
  async LogoutClick(){
+  this.tools.menuClose();
+
    const alert = await this.alertController.create({
     message: 'Are you sure you want to logout?',
     buttons: [

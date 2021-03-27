@@ -1,9 +1,8 @@
 // @media screen and (max-height:640px){
 // }
-ion-header .menu {
-    display: block;
-}
-
+// ion-header .menu {
+//     display: block;
+// }
 ion-toolbar {
     background: white !important;
     --background: white !important;
@@ -667,6 +666,21 @@ ion-col {
 }
 
 @media (max-width: 992px) {
+    .logo_box {
+        flex: 0 0 170px !important;
+        max-width: 170px !important;
+    }
+    #menu_icons {
+        display: block;
+    }
+    .menu {
+        flex: 0 0 50px !important;
+        max-width: 50px !important;
+        position: relative;
+    }
+    .menu_list {
+        display: none !important;
+    }
     ion-header .menu {
         flex: 0 0 110px !important;
         max-width: 110px !important;
