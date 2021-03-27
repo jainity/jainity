@@ -29,7 +29,7 @@ export class NotificationsComponent implements OnInit {
     if(this.apiService.getUserData().role_id==2){
       this.route.navigateByUrl('/donordashboard', { replaceUrl: true });
     } else if(this.apiService.getUserData().role_id==3){
-      this.route.navigateByUrl('/home', { replaceUrl: true });
+      this.route.navigateByUrl('/organizationdashboard', { replaceUrl: true });
     }else{
       this.route.navigateByUrl('/home', { replaceUrl: true });
     }

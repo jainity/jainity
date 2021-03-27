@@ -99,6 +99,10 @@ const routes: Routes = [
     path: 'donationlist',canActivate: [AuthGuard],
     loadChildren: () => import('./pages/donationlist/donationlist.module').then( m => m.DonationlistPageModule)
   },
+  {
+    path: 'organizationdashboard',canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/organizationdashboard/organizationdashboard.module').then( m => m.OrganizationdashboardPageModule)
+  },
 ];
 
 @NgModule({

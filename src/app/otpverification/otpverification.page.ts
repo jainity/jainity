@@ -75,7 +75,7 @@ fromPage;
                if(this.apiServices.getUserData().role_id==2){
                  this.router.navigateByUrl('/donordashboard', { replaceUrl: true });
                } else if(this.apiServices.getUserData().role_id==3){
-                 this.router.navigateByUrl('/home', { replaceUrl: true });
+                 this.router.navigateByUrl('/organizationdashboard', { replaceUrl: true });
                }else{
                  this.router.navigateByUrl('/home', { replaceUrl: true });
                }
