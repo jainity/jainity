@@ -190,7 +190,8 @@ export class HomePage implements OnInit {
   this.captchacodeErr= 'Please enter Captcha Code'
   } else if (this.randomNumber != this.captchacode) {
     
-    this.captchacode="";
+    this.captchacode='';
+    this.randomNumber='';
     this.randomNumber=this.tools.generateRandomNumber();
 
     msg = msg + 'Please enter valid Captcha Code'

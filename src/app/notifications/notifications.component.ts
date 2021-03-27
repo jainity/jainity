@@ -37,7 +37,13 @@ export class NotificationsComponent implements OnInit {
 
   onMytransactionClick(){
     this.popoverCtrl.dismiss();
-    this.route.navigateByUrl('/donationlist', { replaceUrl: true });
+    if(this.apiService.getUserData().role_id==2){
+      this.route.navigateByUrl('/donationlist', { replaceUrl: true });
+    } else if(this.apiService.getUserData().role_id==3){
+      this.route.navigateByUrl('/organizationdashboard', { replaceUrl: true });
+    }else{
+      this.route.navigateByUrl('/home', { replaceUrl: true });
+    }
   }
  
   async onlogoutClick(){
