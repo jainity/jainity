@@ -203,7 +203,8 @@ return await alert.present();
   ngOnInit() {}
 
   donateclick(){
-    this.route.navigateByUrl('/schemegrouplist');
+    this.route.navigateByUrl('/schemegrouplist', { replaceUrl: true });
+
   }
 
   ionViewDidEnter() {
@@ -342,8 +343,7 @@ return await alert.present();
   }
 
   viewallClick(){
-    this.route.navigateByUrl('/donationlist');
-
+    this.route.navigateByUrl('/donationlist', { replaceUrl: true });
   }
 
   onviewreceiptClick(item){

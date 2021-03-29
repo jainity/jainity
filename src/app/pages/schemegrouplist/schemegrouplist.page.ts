@@ -151,7 +151,8 @@ export class SchemegrouplistPage implements OnInit {
     });
     alert.present();
     }else
-  this.route.navigateByUrl('/Dashboard');
+  this.route.navigateByUrl('/Dashboard', { replaceUrl: true });
+
  }
 
 
@@ -196,7 +197,8 @@ return await alert.present();
     localStorage.setItem('schemeId',item.SchemeGroupID)
     localStorage.setItem('TYPE','SchemeGroup')
     localStorage.setItem('Tittle',item.SchemeGroup)
-    this.route.navigateByUrl('/schemedetailslist')
+    this.route.navigateByUrl('/schemedetailslist', { replaceUrl: true });
+
    
    }
 

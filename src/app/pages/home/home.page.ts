@@ -136,7 +136,7 @@ export class HomePage implements OnInit {
       this.eventServic.formOtp$.subscribe(() => {
         this.isLogin = this.apiService.getUserData() !=undefined;
       });
-      console.log('isLogin>>>>>>',this.isLogin);
+
       this.eventServic.closemenu$.subscribe(() => {
         this.tools.menuClose();
       });
@@ -228,7 +228,8 @@ export class HomePage implements OnInit {
     localStorage.setItem('TYPE','SchemeGroup')
     localStorage.setItem('Tittle',item.SchemeGroup)
     
-    this.route.navigateByUrl('/schemedetailslist')
+    this.route.navigateByUrl('/schemedetailslist', { replaceUrl: true });
+
    
    }
 
@@ -236,7 +237,8 @@ export class HomePage implements OnInit {
     localStorage.setItem('InstituteId',item.InstituteID)
     localStorage.setItem('TYPE','Institute')
     localStorage.setItem('Tittle',item.InstituteName)
-    this.route.navigateByUrl('/schemedetailslist');
+    this.route.navigateByUrl('/schemedetailslist', { replaceUrl: true });
+
 
     }
 
@@ -308,7 +310,8 @@ export class HomePage implements OnInit {
   }
 
   OnOrgClick(){
-    this.route.navigateByUrl('/institutelist');
+    this.route.navigateByUrl('/institutelist', { replaceUrl: true });
+
   }
 
   //  async OnConnectClick(){
@@ -364,12 +367,14 @@ return await alert.present();
  
 
   onInstituteClick(){
-    this.route.navigateByUrl('/institutelist');
+    this.route.navigateByUrl('/institutelist', { replaceUrl: true });
+
 
   }
 
   onSchemeGroupClick(){
-    this.route.navigateByUrl('/schemegrouplist');
+    this.route.navigateByUrl('/schemegrouplist', { replaceUrl: true });
+
   }
 
 

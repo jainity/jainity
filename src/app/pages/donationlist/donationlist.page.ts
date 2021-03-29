@@ -36,6 +36,7 @@ export class DonationlistPage implements OnInit {
       this.eventServic.formOtp$.subscribe(() => {
         this.isLogin = this.apiService.getUserData() !=undefined;
       });
+      
       this.eventServic.closemenu$.subscribe(() => {
         this.tools.menuClose();
       });
@@ -155,7 +156,8 @@ export class DonationlistPage implements OnInit {
     });
     alert.present();
     }else
-  this.route.navigateByUrl('/Dashboard');
+  this.route.navigateByUrl('/home', { replaceUrl: true });
+
  }
 
 
@@ -189,7 +191,8 @@ return await alert.present();
   ngOnInit() {}
 
   donateclick(){
-    this.route.navigateByUrl('/schemegrouplist');
+    this.route.navigateByUrl('/schemegrouplist', { replaceUrl: true });
+
   }
 
   ionViewDidEnter() {

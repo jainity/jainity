@@ -147,7 +147,8 @@ export class DeclaimerPage implements OnInit {
     });
     alert.present();
     }else
-  this.route.navigateByUrl('/Dashboard');
+  this.route.navigateByUrl('/Dashboard', { replaceUrl: true });
+
  }
 
 
@@ -170,6 +171,7 @@ export class DeclaimerPage implements OnInit {
                 this.isLogin = !this.isLogin;
                 localStorage.clear();
                 this.route.navigateByUrl('/home', { replaceUrl: true });
+
             }
         }
     ], backdropDismiss: false

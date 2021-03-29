@@ -129,7 +129,6 @@ export class PrivacypolicyPage implements OnInit {
     return await modal.present();
   }
 
-
    async OnConnectClick(){
     
     if (!this.isLogin) {

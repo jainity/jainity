@@ -131,7 +131,6 @@ export class TermsandconditionPage implements OnInit {
     return await modal.present();
   }
 
-
    async OnConnectClick(){
     
     if (!this.isLogin) {
@@ -152,7 +151,6 @@ export class TermsandconditionPage implements OnInit {
     }else
   this.route.navigateByUrl('/Dashboard');
  }
-
 
  async LogoutClick(){
   this.tools.menuClose();

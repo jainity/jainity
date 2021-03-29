@@ -139,7 +139,7 @@ export class PaymentconfirPage implements OnInit {
           }else{ 
             this.openReceipt(res.PdfName);
           }
-        //  this.route.navigate(['/home']);
+        //  this.route.navigate(['/home']); 
         }else{
           this.tools.presentAlert('','Something wrong...', 'Ok');
         }

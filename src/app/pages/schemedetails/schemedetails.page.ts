@@ -17,7 +17,12 @@ declare const removeMenu:any;
   styleUrls: ['./schemedetails.page.scss'],
 })
 export class SchemedetailsPage implements OnInit {
-
+  
+  openFirst() {
+    this.menu.enable(true, "first"); 
+    this.menu.open("first");
+  }
+  
   randomNumber='';
   name = '';
   contactno = '';
@@ -57,10 +62,7 @@ export class SchemedetailsPage implements OnInit {
 
   }
 
- openFirst() {
-  this.menu.enable(true, "first"); 
-  this.menu.open("first");
-}
+ 
   constructor(private eventServic:EventService,private route: Router,public alertController: AlertController,
      public apiService: ApiService, private menu: MenuController,
     public tools: Tools,public modalCtrl: ModalController) {
@@ -77,14 +79,13 @@ export class SchemedetailsPage implements OnInit {
       this.INid=localStorage.getItem('InstituteId');
       this.Type=localStorage.getItem('TYPE');
       this.Tittle=localStorage.getItem('Tittle');
+      
       this.eventServic.closemenu$.subscribe(() => {
         this.tools.menuClose();
       });
    }
 
-   ionViewWillEnter() {
-    this.menu.enable(false);
-  }
+   
 
  async LoginClick() {  
   this.tools.menuClose();
@@ -181,6 +182,9 @@ export class SchemedetailsPage implements OnInit {
     return await modal.present();
   }
 
+  ionViewWillEnter() {
+    this.menu.enable(false);
+  }
 
    async OnConnectClick(){
     
@@ -323,7 +327,8 @@ return await alert.present();
   }
 
   onSearchClick() {   
-    this.route.navigateByUrl('/searchitem');
+    this.route.navigateByUrl('/searchitem', { replaceUrl: true });
+
 }
 
 onEnter(event) {}

@@ -157,6 +157,7 @@ export class InstitutelistPage implements OnInit {
     alert.present();
     }else
   this.route.navigateByUrl('/Dashboard');
+
  }
 
 
@@ -202,7 +203,8 @@ return await alert.present();
     localStorage.setItem('InstituteId',item.InstituteID)
     localStorage.setItem('TYPE','Institute')
     localStorage.setItem('Tittle',item.InstituteName)
-    this.route.navigateByUrl('/schemedetailslist');
+    this.route.navigateByUrl('/schemedetailslist', { replaceUrl: true });
+
 
     }
 
