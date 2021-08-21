@@ -11,7 +11,6 @@ export class ApiService {
   apiKey = '';
   httpOptions: any;
   httpOptionss: any;
-
   bacisAuth;
 
   constructor(private eventServic:EventService, private http: HttpClient, public alertController: AlertController,public router: Router,) {
@@ -154,6 +153,7 @@ export class ApiService {
     postData.append("device_token", "");
     return this.http.post(environment.BaseUrl + "auth/register", postData, this.httpOptions);
   }
+
   getSchemeWiseDetailList(type,ID) {
     let postData = new FormData();
     
@@ -161,6 +161,7 @@ export class ApiService {
     postData.append("device_token", "");
     return this.http.post(environment.BaseUrl + "scheme", postData, this.httpOptions);
   }
+
   getSearchScheme(search) {
     let postData = new FormData();
     postData.append("search", search);
@@ -171,6 +172,7 @@ export class ApiService {
     this.setHeader();
     return this.http.get(environment.BaseUrl + "trasaction/?limit="+LIMIT, this.httpOptions);
   }
+
   getDonor(): any {
     this.setHeader();
     return this.http.get(environment.BaseUrl + "donor/top_donor", this.httpOptions);
