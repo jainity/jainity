@@ -118,7 +118,11 @@ export class PaymentconfirPage implements OnInit {
       alert(error.description + ' (Error ' + error.code + ')');
     };
 
-    RazorpayCheckout.open(options, successCallback, cancelCallback);
+    // RazorpayCheckout.open(options, successCallback, cancelCallback);
+    RazorpayCheckout.on('payment.success', successCallback);
+    RazorpayCheckout.on('payment.cancel', cancelCallback);
+    RazorpayCheckout.open(options);
+
   }
 
   PayemntCall(PaymentID){

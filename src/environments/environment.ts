@@ -7,8 +7,8 @@ export const environment = {
   username: 'admin',
   password:'API@JAINITY@123',
   apikey:'kkcoswggwgwkkc8w4ok808o48kswc40c0www4wss',
-  BaseUrl:'https://dev.jainity.com/api/',
-    // BaseUrl: 'http://192.168.0.109/wemeasure/api/v1/',
+  // BaseUrl:'https://dev.jainity.com/api/',
+  BaseUrl:'https://dev.jainity.pi2.life/api/',
 };
 
 /*

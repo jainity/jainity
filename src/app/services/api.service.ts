@@ -68,7 +68,7 @@ export class ApiService {
     return "";
   }
   getUserData() {
-    console.log('User Data --> ',localStorage['userdata'])
+    // console.log('User Data --> ',localStorage['userdata'])
     if (localStorage['userdata']) {
       return JSON.parse(localStorage.getItem('userdata'));
     }

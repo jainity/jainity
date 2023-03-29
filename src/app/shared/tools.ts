@@ -63,7 +63,7 @@ export class Tools {
 
 checkScreen() {
     let innerWidth = window.innerWidth;
-    console.log('Inner Width ',innerWidth);
+    // console.log('Inner Width ',innerWidth);
     switch (true) {
       case 340 <= innerWidth && innerWidth <= 400:
         return 1;
