@@ -31,9 +31,13 @@ export class PaymentconfirPage implements OnInit {
 
   currency: string = 'INR';
   currencyIcon: string = '₹';
-  razor_key = 'rzp_test_gvQZfFxrBXARoJ';
-  // razor_key = 'rzp_live_AaeZGFsxalFwFO';
-  //razor_key = 'rzp_live_uhxDubpeOj3IkE';
+  //RezorPay Test Credential
+  razor_key = 'rzp_test_eTqJCAowGjjszI';
+  // key_secret : 1pkzmDgQp9SxdgTf0GgHyuCz
+  
+  //RezorPay Live Credential
+  // razor_key = 'rzp_live_tlvTQBFq4ayAE0';
+  // key_secret : lGEOfaWvhv9qMmWluv5zHnhU
   cardDetails: any = {};
 
   constructor(private route: Router,public router: ActivatedRoute,public alertController: AlertController, public apiService: ApiService,public formBuilder: FormBuilder,
@@ -87,7 +91,7 @@ export class PaymentconfirPage implements OnInit {
 
     var options = {
       description: this.SchemeDesc  ,
-      image: 'assets/img/logo.png',
+      image: '../../assets/img/logo.png',
       currency: this.currency,
       key: this.razor_key,
       amount: (parseInt(this.AMT)*100),
@@ -118,10 +122,10 @@ export class PaymentconfirPage implements OnInit {
       alert(error.description + ' (Error ' + error.code + ')');
     };
 
-    // RazorpayCheckout.open(options, successCallback, cancelCallback);
-    RazorpayCheckout.on('payment.success', successCallback);
-    RazorpayCheckout.on('payment.cancel', cancelCallback);
-    RazorpayCheckout.open(options);
+    RazorpayCheckout.open(options, successCallback, cancelCallback);
+    // RazorpayCheckout.on('payment.success', successCallback);
+    // RazorpayCheckout.on('payment.cancel', cancelCallback);
+    // RazorpayCheckout.open(options);
 
   }
 
@@ -133,7 +137,6 @@ export class PaymentconfirPage implements OnInit {
         this.tools.closeLoader();
         let res: any = response;
         console.log('response ', res);
-
         if(res.status){
          // this.tools.donatepresentAlert('',res.message, 'Ok',true);
           if (this.plt.is('ios')) {
